@@ -1,0 +1,21 @@
+
+experiment:
+  protocol_version: "0.1"
+  stage: pilot
+
+  inference:
+    do_sample: false
+    max_new_tokens: null
+    batch_size: 1
+
+  reproducibility:
+    record_git_commit: true
+    record_environment: true
+    record_model_revision: true
+    record_dataset_revision: true
+    record_raw_predictions: true
+
+  outputs:
+    format: jsonl
+    directory: results
+    overwrite: false
