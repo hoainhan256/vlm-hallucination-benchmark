@@ -4,6 +4,14 @@ Hạ tầng mã nguồn và quy trình nghiên cứu cho đánh giá ảo giác 
 
 Repository đang ở giai đoạn thiết lập infrastructure. Nó không tải model/dataset, không chạy inference và không tạo kết quả benchmark chính thức.
 
+## Bắt đầu theo nhóm
+
+Đọc [`START_HERE.md`](START_HERE.md) trước khi sửa mã nguồn. Sau đó đọc hướng dẫn nhóm tương ứng:
+
+- [Nhóm POPE](docs/guides/pope_team.md)
+- [Nhóm HallusionBench](docs/guides/hallusionbench_team.md)
+- [Nhóm MMHal-Bench](docs/guides/mmhal_team.md)
+
 ## Phạm vi
 
 - 3 mô hình: Qwen3-VL-4B-Instruct, SmolVLM2-2.2B-Instruct, Phi-4-multimodal-instruct
