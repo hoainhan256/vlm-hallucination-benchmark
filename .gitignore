@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# Model weights
+*.safetensors
+*.bin
+*.ckpt
+*.pt
+*.pth
+
+# Datasets and generated outputs
+data/raw/
+results/raw/
+checkpoints/
+
+# Notebook
+.ipynb_checkpoints/
