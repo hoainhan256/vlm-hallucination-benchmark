@@ -1,21 +1,56 @@
 
 experiment:
   protocol_version: "0.1"
-  stage: pilot
+  stage: "pilot"
+  seed: 0
+  batch_size: 1
 
-  inference:
+  combinations:
+    - model: "qwen3_vl"
+      benchmark: "pope"
+    - model: "smolvlm2"
+      benchmark: "pope"
+    - model: "phi4_multimodal"
+      benchmark: "pope"
+    - model: "qwen3_vl"
+      benchmark: "hallusionbench"
+    - model: "smolvlm2"
+      benchmark: "hallusionbench"
+    - model: "phi4_multimodal"
+      benchmark: "hallusionbench"
+    - model: "qwen3_vl"
+      benchmark: "mmhal"
+    - model: "smolvlm2"
+      benchmark: "mmhal"
+    - model: "phi4_multimodal"
+      benchmark: "mmhal"
+
+  generation_config:
     do_sample: false
     max_new_tokens: null
-    batch_size: 1
+    temperature: null
+    top_p: null
+    status: "PENDING_VERIFICATION"
 
-  reproducibility:
-    record_git_commit: true
-    record_environment: true
-    record_model_revision: true
-    record_dataset_revision: true
-    record_raw_predictions: true
+  device_policy:
+    allow_cpu_offload: true
+    require_dtype_unchanged: true
+    require_device_allocation_record: true
+    block_if_incompatible: true
 
-  outputs:
-    format: jsonl
-    directory: results
+  output_policy:
+    format: "jsonl"
+    directory: "results"
     overwrite: false
+    preserve_raw_predictions: true
+
+  resume_policy:
+    enabled: true
+    no_duplicate_samples: true
+    never_overwrite_completed: true
+    merge_only_matching_run_config: true
+
+  logging_policy:
+    record_environment: true
+    record_errors: true
+    record_sample_progress: true
