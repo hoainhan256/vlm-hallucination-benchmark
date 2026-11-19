@@ -1,0 +1,18 @@
+datasets:
+  pope:
+    source: lmms-lab/POPE
+    revision: null
+    subsets:
+      - random
+      - popular
+      - adversarial
+
+  hallusionbench:
+    source: tianyi-lab/HallusionBench
+    revision: null
+    subset: null
+
+  mmhal:
+    source: Shengcao1006/MMHal-Bench
+    revision: null
+    subset: null
