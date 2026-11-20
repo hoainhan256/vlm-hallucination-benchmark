@@ -842,7 +842,6 @@ class HuggingFaceHallusionModel:
                 phi4_cfg.attn_implementation = attn
             model_kwargs["config"] = phi4_cfg
             model_kwargs["attn_implementation"] = attn
-            model_kwargs["_attn_implementation"] = attn
             self.model = AutoModelForCausalLM.from_pretrained(self.run_config.model_id, **model_kwargs)
         else:
             raise ValueError(f"Unsupported loader family: {family}")
@@ -930,6 +929,17 @@ class HuggingFaceHallusionModel:
         if not gen_kwargs.get("do_sample", False):
             gen_kwargs.pop("temperature", None)
             gen_kwargs.pop("top_p", None)
+
+        if self.spec["loader_family"] == "phi4_multimodal":
+            import inspect
+
+            # Workaround for Microsoft Phi-4-multimodal remote code on transformers >= 4.49/5.x
+            # where generate() may pass num_logits_to_keep=None into forward().
+            try:
+                if "num_logits_to_keep" in inspect.signature(self.model.forward).parameters:
+                    gen_kwargs.setdefault("num_logits_to_keep", 1)
+            except (TypeError, ValueError):
+                pass
 
         with torch.inference_mode():
             output_ids = self.model.generate(**moved, **gen_kwargs)
