@@ -1,7 +1,6 @@
 """HallusionBench scoring and artifact export module."""
 
 from collections import defaultdict
-import hashlib
 import json
 from pathlib import Path
 import re
@@ -52,11 +51,13 @@ except ModuleNotFoundError:
             if sid not in merged or rec.get("status") == "COMPLETED":
                 merged[sid] = rec
         return list(merged.values())
-    
+
+
 def parse_yes_no(raw_text: Any) -> str | None:
     """Chuẩn hóa câu trả lời của VLM về 'yes', 'no' hoặc None (format violation).
 
-    Cần đối chiếu và cập nhật thêm các rule biên từ evaluation.py gốc của HallusionBench.
+    Quy tắc rule-based; cần đối chiếu với evaluation.py gốc của HallusionBench
+    trước khi chạy official.
     """
     if raw_text is None:
         return None
@@ -84,25 +85,82 @@ def parse_yes_no(raw_text: Any) -> str | None:
     return None
 
 
+def _resolve_figure_key(meta: Mapping[str, Any]) -> str | None:
+    """Lấy khóa gộp cấp hình ảnh (fAcc) từ schema chuẩn hoặc ghép từ trường gốc."""
+    if meta.get("figure_key") is not None:
+        return str(meta["figure_key"])
+    if meta.get("set_id") is not None and meta.get("figure_id") is not None:
+        return f"{meta.get('category', '')}:{meta.get('subcategory', '')}:{meta['set_id']}:{meta['figure_id']}"
+    return None
+
+
+def _resolve_pair_key(meta: Mapping[str, Any]) -> str | None:
+    """Lấy khóa gộp cấp cặp câu hỏi (qAcc) từ schema chuẩn hoặc ghép từ trường gốc."""
+    if meta.get("pair_key") is not None:
+        return str(meta["pair_key"])
+    if meta.get("set_id") is not None and meta.get("question_id") is not None:
+        return f"{meta.get('category', '')}:{meta.get('subcategory', '')}:{meta['set_id']}:{meta['question_id']}"
+    return None
+
+
+def _compute_subset_metrics(items: list[dict[str, Any]]) -> dict[str, Any]:
+    """Tính aAcc, fAcc, qAcc và ghi rõ mẫu số cho một tập mẫu hợp lệ."""
+    total_q = len(items)
+    correct_q = sum(1 for r in items if r["is_correct"])
+    a_acc = (correct_q / total_q) if total_q > 0 else 0.0
+
+    # fAcc: Tất cả câu hỏi thuộc cùng 1 figure phải trả lời đúng
+    figure_groups: dict[str, list[bool]] = defaultdict(list)
+    for r in items:
+        if r["figure_key"] is not None:
+            figure_groups[r["figure_key"]].append(r["is_correct"])
+    total_f = len(figure_groups)
+    correct_f = sum(1 for outcomes in figure_groups.values() if all(outcomes))
+    f_acc = (correct_f / total_f) if total_f > 0 else 0.0
+
+    # qAcc: Cả cặp câu hỏi kiểm soát (>= 2 biến thể) phải trả lời đúng
+    pair_groups: dict[str, list[bool]] = defaultdict(list)
+    for r in items:
+        if r["pair_key"] is not None:
+            pair_groups[r["pair_key"]].append(r["is_correct"])
+    complete_pairs = {k: v for k, v in pair_groups.items() if len(v) >= 2}
+    total_p = len(complete_pairs)
+    correct_p = sum(1 for outcomes in complete_pairs.values() if all(outcomes))
+    q_acc = (correct_p / total_p) if total_p > 0 else 0.0
+
+    return {
+        "aAcc": round(a_acc, 6),
+        "fAcc": round(f_acc, 6),
+        "qAcc": round(q_acc, 6),
+        "counts": {
+            "scored_questions": total_q,
+            "scored_figures": total_f,
+            "scored_complete_pairs": total_p,
+            "incomplete_pairs_skipped": len(pair_groups) - total_p,
+        },
+    }
+
+
 def score_hallusionbench(
     predictions: Iterable[Mapping[str, Any]],
     dataset_records: Mapping[str, Mapping[str, Any]],
-    protocol_version: str = "unverified_draft",
+    protocol_version: str = "unverified_draft_rule_based",
+    evaluation_mode: str = "alternative_evaluation_rule_based",
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
-    """Tính aAcc, fAcc, qAcc và tách danh sách lỗi kỹ thuật / định dạng."""
+    """Tính metric tổng và phân nhóm (VD/VS, Easy/Hard), đồng thời tách lỗi kỹ thuật/định dạng."""
     pred_list = [dict(p) for p in predictions]
     schema_errors = validate_predictions(pred_list)
     if schema_errors:
         raise ValueError(f"Invalid predictions schema: {schema_errors}")
 
     error_records: list[dict[str, Any]] = []
-    valid_results: dict[str, dict[str, Any]] = {}
+    valid_results: list[dict[str, Any]] = []
 
     for pred in pred_list:
         sample_id = str(pred["sample_id"])
         status = pred.get("status")
 
-        # 1. Tách lỗi kỹ thuật từ bước inference (không tính vào mẫu số điểm)
+        # 1. Tách lỗi kỹ thuật từ bước inference (tuyệt đối không tính vào mẫu số điểm)
         if status != "COMPLETED":
             error_records.append({
                 "sample_id": sample_id,
@@ -112,7 +170,7 @@ def score_hallusionbench(
             })
             continue
 
-        # 2. Kiểm tra khớp metadata từ bộ dữ liệu của A
+        # 2. Kiểm tra khớp metadata từ bộ dữ liệu đã khóa của Thành viên A
         meta = dataset_records.get(sample_id)
         if meta is None:
             error_records.append({
@@ -122,7 +180,7 @@ def score_hallusionbench(
             })
             continue
 
-        # 3. Parse câu trả lời Yes/No
+        # 3. Chuẩn hóa câu trả lời Yes/No
         parsed_pred = parse_yes_no(pred.get("prediction"))
         gt_answer = str(meta["reference_answer"]).strip().lower()
 
@@ -133,64 +191,58 @@ def score_hallusionbench(
                 "raw_prediction": pred.get("raw_prediction", pred.get("prediction")),
                 "detail": "Could not extract deterministic Yes/No answer",
             })
-            # Lưu ý: Cần đối chiếu evaluation.py gốc xem format violation bị tính 0 điểm
-            # hay loại khỏi tập hợp lệ. Mặc định tạm tính is_correct = False trong valid_results:
             is_correct = False
         else:
             is_correct = parsed_pred == gt_answer
 
-        valid_results[sample_id] = {
+        category = str(meta["category"]).strip().upper() if meta.get("category") else None
+        difficulty = str(meta["difficulty"]).strip().lower() if meta.get("difficulty") else None
+
+        valid_results.append({
+            "sample_id": sample_id,
             "is_correct": is_correct,
             "parsed_pred": parsed_pred,
             "gt_answer": gt_answer,
-            "category": meta.get("category"),         # VD hoặc VS
+            "category": category,
             "subcategory": meta.get("subcategory"),
-            "difficulty": meta.get("difficulty"),     # Easy hoặc Hard (nếu có)
-            "figure_key": meta.get("figure_key"),     # Khóa gộp cấp hình ảnh (fAcc)
-            "pair_key": meta.get("pair_key"),         # Khóa gộp cấp cặp câu hỏi (qAcc)
-        }
+            "difficulty": difficulty,
+            "figure_key": _resolve_figure_key(meta),
+            "pair_key": _resolve_pair_key(meta),
+        })
 
-    # Tính aAcc (Question-level accuracy)
-    total_q = len(valid_results)
-    correct_q = sum(1 for r in valid_results.values() if r["is_correct"])
-    a_acc = (correct_q / total_q) if total_q > 0 else 0.0
+    overall = _compute_subset_metrics(valid_results)
 
-    # Tính fAcc (Figure-level accuracy: tất cả câu hỏi thuộc cùng 1 figure phải đúng)
-    figure_groups: dict[str, list[bool]] = defaultdict(list)
-    for r in valid_results.values():
-        if r["figure_key"] is not None:
-            figure_groups[str(r["figure_key"])].append(r["is_correct"])
-    total_f = len(figure_groups)
-    correct_f = sum(1 for outcomes in figure_groups.values() if all(outcomes))
-    f_acc = (correct_f / total_f) if total_f > 0 else 0.0
+    # Phân tách theo VD (Visual Dependent) và VS (Visual Supplement)
+    by_category: dict[str, Any] = {}
+    for cat in sorted({r["category"] for r in valid_results if r["category"]}):
+        cat_items = [r for r in valid_results if r["category"] == cat]
+        by_category[cat] = _compute_subset_metrics(cat_items)
 
-    # Tính qAcc (Question-pair accuracy: cả cặp kiểm soát phải đúng)
-    # Lưu ý: Cần kiểm tra thêm điều kiện cặp đủ 2 câu (len == 2) khi chạy pilot/incomplete run
-    pair_groups: dict[str, list[bool]] = defaultdict(list)
-    for r in valid_results.values():
-        if r["pair_key"] is not None:
-            pair_groups[str(r["pair_key"])].append(r["is_correct"])
-    complete_pairs = {k: v for k, v in pair_groups.items() if len(v) >= 2}
-    total_p = len(complete_pairs)
-    correct_p = sum(1 for outcomes in complete_pairs.values() if all(outcomes))
-    q_acc = (correct_p / total_p) if total_p > 0 else 0.0
+    # Phân tách theo Easy / Hard (nếu dataset có trường difficulty)
+    by_difficulty: dict[str, Any] = {}
+    for diff in sorted({r["difficulty"] for r in valid_results if r["difficulty"]}):
+        diff_items = [r for r in valid_results if r["difficulty"] == diff]
+        by_difficulty[diff] = _compute_subset_metrics(diff_items)
 
     metrics = {
         "benchmark": "hallusionbench",
         "protocol_version": protocol_version,
-        "counts": {
+        "evaluation_mode": evaluation_mode,
+        "summary_counts": {
             "total_predictions_received": len(pred_list),
-            "scored_questions": total_q,
-            "scored_figures": total_f,
-            "scored_complete_pairs": total_p,
-            "incomplete_pairs_skipped": len(pair_groups) - total_p,
+            "scored_questions": overall["counts"]["scored_questions"],
+            "scored_figures": overall["counts"]["scored_figures"],
+            "scored_complete_pairs": overall["counts"]["scored_complete_pairs"],
+            "incomplete_pairs_skipped": overall["counts"]["incomplete_pairs_skipped"],
             "error_records": len(error_records),
         },
         "metrics": {
-            "aAcc": round(a_acc, 6),
-            "fAcc": round(f_acc, 6),
-            "qAcc": round(q_acc, 6),
+            "aAcc": overall["aAcc"],
+            "fAcc": overall["fAcc"],
+            "qAcc": overall["qAcc"],
         },
+        "by_category": by_category,
+        "by_difficulty": by_difficulty,
     }
     return metrics, error_records
 
@@ -199,9 +251,10 @@ def export_hallusionbench_artifacts(
     predictions: Iterable[Mapping[str, Any]],
     dataset_records: Mapping[str, Mapping[str, Any]],
     output_dir: str | Path,
-    protocol_version: str = "unverified_draft",
+    protocol_version: str = "unverified_draft_rule_based",
+    evaluation_mode: str = "alternative_evaluation_rule_based",
 ) -> None:
-    """Xuất predictions.jsonl (hỗ trợ resume), metrics.json và errors.jsonl."""
+    """Xuất predictions.jsonl (hỗ trợ resume an toàn), metrics.json và errors.jsonl."""
     out_path = Path(output_dir)
     out_path.mkdir(parents=True, exist_ok=True)
 
@@ -210,7 +263,10 @@ def export_hallusionbench_artifacts(
     merged_preds = merge_result_records(existing_preds, predictions)
 
     metrics, error_records = score_hallusionbench(
-        merged_preds, dataset_records, protocol_version=protocol_version
+        merged_preds,
+        dataset_records,
+        protocol_version=protocol_version,
+        evaluation_mode=evaluation_mode,
     )
 
     with pred_file.open("w", encoding="utf-8") as f:
