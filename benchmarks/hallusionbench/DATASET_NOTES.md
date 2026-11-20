@@ -160,23 +160,23 @@ Quy tắc chọn pilot mặc định (`select_frozen_pilot`) bảo đảm:
 
 ---
 
-## 5. Bảng thống kê kiểm chứng thực tế (điền từ output `--mode audit`)
+## 5. Bảng thống kê kiểm chứng thực tế (đã chạy `--mode audit` ngày 20/11/2026)
 
-> **Lưu ý:** Không điền sẵn con số suy đoán hay chép từ bài báo. Chỉ điền bảng này sau khi chạy lệnh `--mode audit` ở Mục 4.2 trên dữ liệu thật đã tải về.
+> **Nguồn bằng chứng:** Chạy trực tiếp `python -m benchmarks.hallusionbench.dataset --mode audit` trên Google Colab (Linux x86_64, Python 3.13.16, Pillow 11.3.0, Git commit `a8130ebe6090604cb0370c757314ba2c66790407`), lưu tại `audit_and_pilot/hallusionbench_audit_report.json`.
 
 | Chỉ số kiểm chứng | Giá trị thực đo (`--mode audit`) | Ghi chú |
 |---|---|---|
-| Nguồn & revision thực tải | `PENDING_LOCAL_AUDIT` | Ghi rõ `repo_id` + commit SHA |
-| `HallusionBench.json` SHA-256 | `PENDING_LOCAL_AUDIT` | Trích từ trường `json_sha256` |
-| Tổng số dòng (`total_raw_records`) | `PENDING_LOCAL_AUDIT` | Đối chiếu với con số bài báo (1.129) |
-| Số dòng hợp lệ (`valid_records`) | `PENDING_LOCAL_AUDIT` | Kiểm tra `schema_error_records == 0` |
-| Số `sample_id` trùng (`duplicate_sample_id_count`) | `PENDING_LOCAL_AUDIT` | Yêu cầu `0` |
-| Phân bố `visual_input` (`"0"` / `"1"` / `"2"`) | `PENDING_LOCAL_AUDIT` | Text-only / Ảnh gốc / Ảnh chỉnh sửa |
-| Số ảnh thực tồn tại / thiếu / lỗi hỏng | `PENDING_LOCAL_AUDIT` | Kiểm tra `missing == 0`, `corrupt == 0` |
-| Số ảnh lệch hoa/thường `.PNG` vs `.png` | `PENDING_LOCAL_AUDIT` | Trích từ `case_mismatch_image_samples` |
-| Số nhóm set / nhóm hình / cặp câu hỏi | `PENDING_LOCAL_AUDIT` | `set_group_count` / `figure_group_count` / `question_pair_count` |
-| Phân bố `VD` / `VS` và `subcategory` | `PENDING_LOCAL_AUDIT` | Trích từ `distributions` |
-| Pilot manifest (`pilot_ids.json`) SHA-256 | `PENDING_LOCAL_AUDIT` | Trích từ `pilot_ids_sha256` |
+| Nguồn & revision thực tải | `rayguan/HallusionBench` @ `2067dfdce5abc7efdbb0927f4721ae282f0b6c51` | Bản Hugging Face của tác giả đầu; chờ trưởng nhóm khóa `configs/datasets.yaml` |
+| License | `BSD-3-Clause` | Khớp cả `tianyi-lab/HallusionBench` và `rayguan/HallusionBench` |
+| `HallusionBench.json` SHA-256 | `ca6e0fb677dd56e5fb0e2700d06c58d01f8a6ae66e0f1773b2ac48c0a095d051` | Khóa toàn vẹn dữ liệu JSON |
+| Tổng số dòng (`total_raw_records`) | **1.129** (`valid_records: 1.129`, `schema_error_records: 0`) | Khớp bài báo CVPR 2024; `is_clean = true` |
+| Số `sample_id` trùng (`duplicate_sample_id_count`) | **0** | Quy tắc ID ghép duy nhất 100% |
+| Phân bố `visual_input` (`"0"` / `"1"` / `"2"`) | `"0"` (text-only): **178** / `"1"` (ảnh gốc): **447** / `"2"` (ảnh sửa): **504** | Tổng mẫu có ảnh: **951**; `text_only_with_ignored_filename: 0` |
+| Số ảnh thực tồn tại / thiếu / lỗi hỏng (PIL) | **346** ảnh duy nhất / **0** thiếu / **0** hỏng | Khớp 346 ảnh bài báo CVPR 2024 |
+| Số ảnh lệch hoa/thường `.PNG` vs `.png` | **34 mẫu** (các file `VS/chart/*.PNG`) | Tự khớp case-insensitive xác định trên Linux |
+| Số nhóm set / nhóm hình / cặp câu hỏi | **167** set / **403** figure (**346** visual figures) / **455** question pairs | Kích thước `question_pair`: `1: 3`, `2: 256`, `3: 170`, `4: 26` |
+| Phân bố `VD` / `VS` và `subcategory` | **VD: 591** / **VS: 538** (`chart: 206`, `figure: 80`, `illusion: 144`, `map: 96`, `math: 108`, `ocr: 170`, `table: 155`, `video: 170`) | Phân bố `gt_answer`: `no ("0"): 645`, `yes ("1"): 484` |
+| Pilot manifest ([pilot_ids.json](pilot_ids.json)) | **64 mẫu** (**6** nhóm trọn vẹn: `VS::chart::set_0..3`, `VD::illusion::set_0..1`; `52 VS / 12 VD`; `24` text-only / `26` ảnh gốc / `14` ảnh sửa) | `pilot_ids_sha256`: `9fa51b50ee851ac0fc46314620dd1d51cc2c34b83687759f0b97dce0b3649386` |
 
 ---
 
@@ -185,6 +185,6 @@ Quy tắc chọn pilot mặc định (`select_frozen_pilot`) bảo đảm:
 - [x] `schema.py`: định nghĩa đầy đủ trường gốc, khóa ghép `sample_id`, khóa cấu trúc nhóm/hình/cặp, kiểm tra lỗi schema và chặn rò rỉ nhãn.
 - [x] `dataset.py`: loader read-only không tự tải mạng, hỗ trợ `visual_input=0/1/2`, kiểm tra tồn tại & toàn vẹn ảnh, audit toàn diện và chọn/kiểm chứng tập pilot trọn nhóm.
 - [x] `tests/test_dataset.py`: unit test CPU-only cho record hợp lệ, thiếu trường, ảnh không tồn tại, ảnh hỏng, mẫu text-only, lệch chữ hoa/thường `.PNG`, trùng `sample_id`, lỗi liên kết nhóm/cặp, pilot trọn nhóm và CLI.
-- [x] `DATASET_NOTES.md`: tài liệu đối chiếu nguồn, schema, quirks, hướng dẫn tái tạo và mẫu bảng audit.
-- [ ] Chạy `--mode audit` trên dữ liệu thật đã tải ngoài repo, điền bảng Mục 5 và tạo `pilot_ids.json`.
-- [ ] Gửi bằng chứng nguồn/revision/license/checksum cho nhóm trưởng duyệt khóa `configs/datasets.yaml`.
+- [x] `DATASET_NOTES.md`: tài liệu đối chiếu nguồn, schema, quirks, hướng dẫn tái tạo và bảng thống kê kiểm chứng thực tế.
+- [x] Đã chạy `--mode audit` trên dữ liệu thật ngoài repo (`is_clean: true`), điền bảng Mục 5 và khóa [pilot_ids.json](pilot_ids.json) (64 mẫu trọn 6 nhóm).
+- [ ] Gửi bằng chứng nguồn/revision/license/checksum trong Mục 5 cho nhóm trưởng duyệt khóa `configs/datasets.yaml` (Blocker P0).

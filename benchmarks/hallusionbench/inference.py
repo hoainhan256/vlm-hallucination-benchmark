@@ -513,7 +513,9 @@ class HallusionInferenceRunner:
             if r.get("status") == "COMPLETED"
         }
 
-        if not errors_path.exists():
+        if not existing_records or not errors_path.exists():
+            # Start with a clean errors.jsonl on fresh runs (clears stale pre-inference BLOCKED entries
+            # when retrying a previously blocked run_id with 0 predictions).
             errors_path.write_text("", encoding="utf-8")
 
         (self.output_dir / "run_config.yaml").write_text(
@@ -779,12 +781,24 @@ class HuggingFaceHallusionModel:
                 **model_kwargs,
             )
         elif family == "phi4_multimodal":
-            from transformers import AutoModelForCausalLM
+            from transformers import AutoConfig, AutoModelForCausalLM
 
-            if not self.run_config.attn_implementation:
-                # Explicitly record non-flash attention choice if user sets it via CLI;
-                # do not crash silently.
-                pass
+            attn = self.run_config.attn_implementation or "eager"
+            cfg_kwargs: dict[str, Any] = {
+                "trust_remote_code": self.run_config.trust_remote_code,
+            }
+            if self.run_config.model_revision:
+                cfg_kwargs["revision"] = self.run_config.model_revision
+            phi4_cfg = AutoConfig.from_pretrained(self.run_config.model_id, **cfg_kwargs)
+            # Phi-4-multimodal's remote config.json hardcodes _attn_implementation="flash_attention_2";
+            # override it explicitly on the config object before from_pretrained for T4/non-FA2 GPUs.
+            phi4_cfg._attn_implementation = attn
+            phi4_cfg._attn_implementation_autoset = False
+            if hasattr(phi4_cfg, "attn_implementation"):
+                phi4_cfg.attn_implementation = attn
+            model_kwargs["config"] = phi4_cfg
+            model_kwargs["attn_implementation"] = attn
+            model_kwargs["_attn_implementation"] = attn
             self.model = AutoModelForCausalLM.from_pretrained(
                 self.run_config.model_id,
                 **model_kwargs,
@@ -795,12 +809,30 @@ class HuggingFaceHallusionModel:
         self.model.eval()
         self._capture_runtime_info()
 
+    def _resolve_hub_commit_sha(self, revision: str | None) -> str | None:
+        """Resolve exact 40-char Hugging Face commit SHA when transformers _commit_hash is None."""
+        try:
+            from huggingface_hub import HfApi
+
+            info = HfApi().model_info(self.run_config.model_id, revision=revision)
+            sha = getattr(info, "sha", None)
+            if isinstance(sha, str) and sha.strip():
+                return sha.strip()
+        except Exception:
+            pass
+        return revision
+
     def _capture_runtime_info(self) -> None:
         model_commit = getattr(getattr(self.model, "config", None), "_commit_hash", None)
         proc_commit = getattr(self.processor, "_commit_hash", None)
         if proc_commit is None:
             tok = getattr(self.processor, "tokenizer", None)
             proc_commit = getattr(tok, "_commit_hash", None)
+
+        if not model_commit:
+            model_commit = self._resolve_hub_commit_sha(self.run_config.model_revision)
+        if not proc_commit:
+            proc_commit = self._resolve_hub_commit_sha(self.run_config.processor_revision) or model_commit
 
         hf_device_map = getattr(self.model, "hf_device_map", None)
         if hf_device_map is not None:
@@ -991,6 +1023,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--processor-revision", default=None)
     parser.add_argument("--dataset-json", type=Path, default=None)
     parser.add_argument("--data-root", type=Path, default=None)
+    parser.add_argument("--dataset-source", default="tianyi-lab/HallusionBench")
     parser.add_argument("--dataset-revision", default=None)
     parser.add_argument(
         "--pilot-file",
@@ -1036,6 +1069,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         attn_implementation=args.attn_implementation,
         device_map=args.device_map,
         trust_remote_code=trust_remote,
+        dataset_source=args.dataset_source,
         dataset_revision=args.dataset_revision,
         max_new_tokens=args.max_new_tokens,
     )
