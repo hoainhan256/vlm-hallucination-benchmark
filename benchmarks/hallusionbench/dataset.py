@@ -1,12 +1,11 @@
-"""HallusionBench dataset loader, integrity auditor, and frozen pilot selector (Member A).
+"""HallusionBench Part A — Schema, read-only dataset loader, integrity auditor, and 8-subcategory pilot selector.
 
-Complies with:
-- docs/dataset_policy.md (read-only, no mutation of questions/images/labels, record revisions/checksums)
-- benchmarks/base.py (does NOT download datasets automatically on import or load)
-- PHAN_CONG_NHOM_2_HALLUSIONBENCH_V2.md Section 3 (Member A deliverables)
-
-This module depends only on the Python standard library (with optional Pillow support
-for pixel-level image readability checks).
+Design rules (docs/dataset_policy.md & benchmarks/base.py):
+- Never downloads datasets automatically on import or load.
+- Never mutates raw questions, images, or ground-truth labels.
+- Preserves text-only controls strictly (visual_input="0" -> image_path=None).
+- Protects model inputs from ground-truth label leakage via to_model_safe_dict().
+- Preserves set, figure, and question-pair links for aAcc / fAcc / qAcc scoring.
 """
 
 from __future__ import annotations
@@ -16,6 +15,7 @@ import hashlib
 import json
 import sys
 from collections import Counter
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 
@@ -23,29 +23,170 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from benchmarks.hallusionbench.schema import (  # noqa: E402
-    KNOWN_RAW_FIELDS,
-    OFFICIAL_GITHUB_SOURCE,
-    OFFICIAL_LICENSE,
-    DuplicateSampleIdError,
-    GroupIntegrityError,
-    HallusionSample,
-    HallusionSchemaError,
-    derive_difficulty,
-    make_figure_group_key,
-    make_group_or_pair_key,
-    make_question_pair_key,
-    make_stable_sample_id,
-    parse_category,
-    parse_gt_answer,
-    parse_visual_input,
-    validate_normalized_samples,
-    validate_raw_record,
+
+# ---------------------------------------------------------------------------
+# Official HallusionBench metadata & schema constants
+# ---------------------------------------------------------------------------
+
+DATASET_NAME = "HallusionBench"
+OFFICIAL_GITHUB_SOURCE = "tianyi-lab/HallusionBench"
+HF_AUTHOR_MIRROR_SOURCE = "rayguan/HallusionBench"
+KNOWN_HF_REVISION_CANDIDATE = "2067dfdce5abc7efdbb0927f4721ae282f0b6c51"
+OFFICIAL_LICENSE = "BSD-3-Clause"
+
+VALID_CATEGORIES = ("VD", "VS")
+VALID_VISUAL_INPUT_CODES = ("0", "1", "2")
+GT_ANSWER_TO_YESNO = {"0": "no", "1": "yes"}
+YESNO_TO_GT_ANSWER = {"no": "0", "yes": "1"}
+
+REQUIRED_RAW_FIELDS = (
+    "category",
+    "subcategory",
+    "visual_input",
+    "set_id",
+    "figure_id",
+    "question_id",
+    "question",
+    "gt_answer",
+)
+OPTIONAL_RAW_FIELDS = ("filename", "gt_answer_details", "sample_note", "same")
+KNOWN_RAW_FIELDS = frozenset(
+    REQUIRED_RAW_FIELDS + OPTIONAL_RAW_FIELDS + ("sample_id", "image_path", "reference_answer", "difficulty")
+)
+
+# Fields that MUST NEVER be passed into prompt construction or model inputs.
+FORBIDDEN_MODEL_INPUT_FIELDS = frozenset(
+    {
+        "gt_answer",
+        "gt_answer_details",
+        "reference_answer",
+        "reference",
+        "answer",
+        "label",
+        "sample_note",
+    }
 )
 
 
+class HallusionSchemaError(ValueError):
+    """Raised when a raw or normalized HallusionBench record violates schema rules."""
+
+
+class DuplicateSampleIdError(HallusionSchemaError):
+    """Raised when two records resolve to the exact same stable sample_id."""
+
+
+class GroupIntegrityError(HallusionSchemaError):
+    """Raised when HallusionBench group/figure/question-pair links are broken."""
+
+
+# ---------------------------------------------------------------------------
+# Strict field parsers & deterministic ID / grouping helpers
+# ---------------------------------------------------------------------------
+
+def _clean_id_token(value: Any, field_name: str) -> str:
+    if value is None or isinstance(value, bool):
+        raise HallusionSchemaError(f"Field '{field_name}' must be a non-empty string/int, got {value!r}")
+    token = str(value).strip()
+    if not token:
+        raise HallusionSchemaError(f"Field '{field_name}' cannot be empty")
+    return token
+
+
+def parse_visual_input(value: Any) -> tuple[bool, str]:
+    """Parse visual_input strictly into (requires_image, raw_code).
+
+    - '0' / 0 / False -> text-only control (no image)
+    - '1' / 1 / True  -> original image
+    - '2' / 2         -> edited/manipulated image
+    """
+    if isinstance(value, bool):
+        return (True, "1") if value else (False, "0")
+    if isinstance(value, int):
+        if value == 0:
+            return False, "0"
+        if value == 1:
+            return True, "1"
+        if value == 2:
+            return True, "2"
+    if isinstance(value, str):
+        norm = value.strip().lower()
+        if norm in {"0", "false", "no"}:
+            return False, "0"
+        if norm in {"1", "true", "yes"}:
+            return True, "1"
+        if norm == "2":
+            return True, "2"
+    raise HallusionSchemaError(f"Unsupported visual_input value: {value!r}; expected 0, 1, or 2")
+
+
+def parse_gt_answer(value: Any) -> tuple[str, str]:
+    """Parse ground-truth label into (raw_gt_answer, reference_answer)."""
+    if isinstance(value, bool):
+        raise HallusionSchemaError(f"Ambiguous boolean gt_answer {value!r}; expected '0'/'1' or 'no'/'yes'")
+    if isinstance(value, int):
+        if value == 0:
+            return "0", "no"
+        if value == 1:
+            return "1", "yes"
+    if isinstance(value, str):
+        norm = value.strip().lower()
+        if norm in GT_ANSWER_TO_YESNO:
+            return norm, GT_ANSWER_TO_YESNO[norm]
+        if norm in YESNO_TO_GT_ANSWER:
+            return YESNO_TO_GT_ANSWER[norm], norm
+    raise HallusionSchemaError(f"Unsupported gt_answer value: {value!r}; expected '0', '1', 'no', or 'yes'")
+
+
+def parse_category(value: Any) -> str:
+    """Validate HallusionBench top-level category ('VD' or 'VS')."""
+    if not isinstance(value, str) or not value.strip():
+        raise HallusionSchemaError(f"Missing or invalid category: {value!r}")
+    cat = value.strip().upper()
+    if cat not in VALID_CATEGORIES:
+        raise HallusionSchemaError(f"Unsupported category {value!r}; expected one of {VALID_CATEGORIES}")
+    return cat
+
+
+def derive_difficulty(category: str, visual_input_raw: str) -> str | None:
+    """Derive structural easy/hard tag from HallusionBench category and visual_input."""
+    cat = category.strip().upper()
+    vis = str(visual_input_raw).strip()
+    if cat == "VD":
+        return "easy" if vis == "1" else ("hard" if vis == "2" else None)
+    if cat == "VS":
+        return "easy" if vis == "0" else ("hard" if vis in {"1", "2"} else None)
+    return None
+
+
+def make_stable_sample_id(
+    category: str,
+    subcategory: str,
+    set_id: str,
+    figure_id: str,
+    question_id: str,
+    visual_input_raw: str,
+) -> str:
+    """Build deterministic composite sample_id (question_id alone is NOT unique)."""
+    return (
+        f"cat{category}_sub{subcategory}_set{set_id}_"
+        f"fig{figure_id}_q{question_id}_vis{visual_input_raw}"
+    )
+
+
+def make_group_or_pair_key(category: str, subcategory: str, set_id: str) -> str:
+    return f"{category}::{subcategory}::set_{set_id}"
+
+
+def make_figure_group_key(category: str, subcategory: str, set_id: str, figure_id: str) -> str:
+    return f"{category}::{subcategory}::set_{set_id}::fig_{figure_id}"
+
+
+def make_question_pair_key(category: str, subcategory: str, set_id: str, question_id: str) -> str:
+    return f"{category}::{subcategory}::set_{set_id}::q_{question_id}"
+
+
 def sha256_file(path: str | Path) -> str:
-    """Compute SHA-256 hex digest of a file."""
     digest = hashlib.sha256()
     with Path(path).open("rb") as handle:
         for chunk in iter(lambda: handle.read(65536), b""):
@@ -54,30 +195,154 @@ def sha256_file(path: str | Path) -> str:
 
 
 def sha256_json(payload: Any) -> str:
-    """Compute deterministic SHA-256 hex digest of a JSON-serializable object."""
     encoded = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
     return hashlib.sha256(encoded).hexdigest()
 
+
+# ---------------------------------------------------------------------------
+# Sample dataclass & validation
+# ---------------------------------------------------------------------------
+
+@dataclass(frozen=True)
+class HallusionSample:
+    """Normalized, immutable HallusionBench sample contract shared across A -> B -> C."""
+
+    sample_id: str
+    question: str
+    image_path: str | None
+    visual_input: bool
+    visual_input_raw: str
+    reference_answer: str
+    gt_answer: str
+    category: str
+    subcategory: str
+    set_id: str
+    figure_id: str
+    question_id: str
+    filename: str | None
+    group_or_pair_key: str
+    figure_group_key: str
+    question_pair_key: str
+    difficulty: str | None = None
+    gt_answer_details: str | None = None
+    sample_note: str | None = None
+    source_index: int | None = None
+    image_case_mismatch: bool = False
+    extra_fields: dict[str, Any] = field(default_factory=dict)
+
+    @property
+    def figure_key(self) -> str | None:
+        """Figure key for fAcc (None for text-only samples with no visual figure)."""
+        return self.figure_group_key if self.visual_input else None
+
+    @property
+    def pair_key(self) -> str:
+        """Question-pair key for qAcc."""
+        return self.question_pair_key
+
+    def to_dict(self) -> dict[str, Any]:
+        payload = asdict(self)
+        payload["figure_key"] = self.figure_key
+        payload["pair_key"] = self.pair_key
+        return payload
+
+    def to_model_safe_dict(self) -> dict[str, Any]:
+        """Return a label-free dict excluding all FORBIDDEN_MODEL_INPUT_FIELDS."""
+        payload = self.to_dict()
+        for forbidden in FORBIDDEN_MODEL_INPUT_FIELDS:
+            payload.pop(forbidden, None)
+        return payload
+
+
+def validate_raw_record(raw_record: Any, index: int | None = None) -> list[str]:
+    prefix = f"Record[{index}]" if index is not None else "Record"
+    if not isinstance(raw_record, Mapping):
+        return [f"{prefix}: expected a JSON object/mapping, got {type(raw_record).__name__}"]
+
+    errors: list[str] = []
+    for req_field in REQUIRED_RAW_FIELDS:
+        if req_field not in raw_record or raw_record[req_field] is None:
+            errors.append(f"{prefix}: missing required field '{req_field}'")
+
+    if raw_record.get("category") is not None:
+        try:
+            parse_category(raw_record["category"])
+        except HallusionSchemaError as exc:
+            errors.append(f"{prefix}: {exc}")
+
+    for id_field in ("subcategory", "set_id", "figure_id", "question_id"):
+        if raw_record.get(id_field) is not None:
+            try:
+                _clean_id_token(raw_record[id_field], id_field)
+            except HallusionSchemaError as exc:
+                errors.append(f"{prefix}: {exc}")
+
+    question = raw_record.get("question")
+    if question is not None and (not isinstance(question, str) or not question.strip()):
+        errors.append(f"{prefix}: field 'question' must be a non-empty string")
+
+    visual_bool: bool | None = None
+    if raw_record.get("visual_input") is not None:
+        try:
+            visual_bool, _ = parse_visual_input(raw_record["visual_input"])
+        except HallusionSchemaError as exc:
+            errors.append(f"{prefix}: {exc}")
+
+    if raw_record.get("gt_answer") is not None:
+        try:
+            parse_gt_answer(raw_record["gt_answer"])
+        except HallusionSchemaError as exc:
+            errors.append(f"{prefix}: {exc}")
+
+    if visual_bool is True:
+        raw_filename = raw_record.get("filename")
+        raw_image_path = raw_record.get("image_path")
+        has_filename = isinstance(raw_filename, str) and bool(raw_filename.strip())
+        has_image_path = isinstance(raw_image_path, str) and bool(raw_image_path.strip())
+        if not (has_filename or has_image_path):
+            errors.append(f"{prefix}: visual_input requires a non-empty 'filename' or 'image_path'")
+
+    return errors
+
+
+def validate_normalized_samples(samples: Sequence[HallusionSample]) -> list[str]:
+    errors: list[str] = []
+    seen_ids: dict[str, int] = {}
+    for idx, sample in enumerate(samples):
+        if sample.sample_id in seen_ids:
+            errors.append(f"Duplicate sample_id '{sample.sample_id}' at indices {seen_ids[sample.sample_id]} and {idx}")
+        else:
+            seen_ids[sample.sample_id] = idx
+        if not sample.question.strip():
+            errors.append(f"Sample {sample.sample_id}: empty question")
+        if sample.category not in VALID_CATEGORIES:
+            errors.append(f"Sample {sample.sample_id}: invalid category {sample.category!r}")
+        if sample.visual_input_raw not in VALID_VISUAL_INPUT_CODES:
+            errors.append(f"Sample {sample.sample_id}: invalid visual_input_raw {sample.visual_input_raw!r}")
+        if sample.visual_input is False and sample.image_path is not None:
+            errors.append(f"Sample {sample.sample_id}: text-only sample must have image_path=None")
+        if sample.visual_input is True and (not sample.image_path or not str(sample.image_path).strip()):
+            errors.append(f"Sample {sample.sample_id}: visual sample is missing image_path")
+        if sample.gt_answer not in GT_ANSWER_TO_YESNO or GT_ANSWER_TO_YESNO[sample.gt_answer] != sample.reference_answer:
+            errors.append(f"Sample {sample.sample_id}: gt_answer/reference_answer mismatch")
+    return errors
+
+
+# ---------------------------------------------------------------------------
+# Image resolution & readability checks
+# ---------------------------------------------------------------------------
 
 def _find_existing_case_insensitive(
     path: Path,
     expected_name: str | None = None,
 ) -> tuple[Path | None, bool]:
-    """Return (matched_path, case_mismatch).
-
-    On case-sensitive filesystems (Linux/Kaggle/Colab), 9 official HallusionBench
-    VS/chart files use uppercase '.PNG' while HallusionBench.json references '.png'.
-    On case-insensitive filesystems (Windows), Path.resolve() canonicalizes case to
-    the on-disk spelling, so we compare against the original `expected_name` to
-    detect case mismatches consistently across OSes.
-    """
+    """Resolve filename case-insensitively while flagging OS-independent case mismatches."""
     parent = path.parent
     if not parent.is_dir():
         return None, False
 
     target_name = expected_name if expected_name is not None else path.name
     target_lower = target_name.lower()
-
     entries = sorted(p for p in parent.iterdir() if p.is_file())
     for entry in entries:
         if entry.name == target_name:
@@ -89,13 +354,11 @@ def _find_existing_case_insensitive(
 
 
 def check_image_readable(image_path: str | Path) -> tuple[bool, str | None]:
-    """Verify an image file is non-empty and readable (using Pillow if installed, else magic bytes)."""
     path = Path(image_path)
     if not path.is_file():
         return False, f"Image file does not exist: {path}"
     if path.stat().st_size == 0:
         return False, f"Image file is empty (0 bytes): {path}"
-
     try:
         from PIL import Image
 
@@ -103,7 +366,6 @@ def check_image_readable(image_path: str | Path) -> tuple[bool, str | None]:
             img.verify()
         return True, None
     except ImportError:
-        # Fallback magic-header check when Pillow is unavailable.
         header = path.read_bytes()[:12]
         valid_magic = (
             header.startswith(b"\x89PNG\r\n\x1a\n")
@@ -113,9 +375,7 @@ def check_image_readable(image_path: str | Path) -> tuple[bool, str | None]:
             or (header.startswith(b"RIFF") and header[8:12] == b"WEBP")
             or header.startswith(b"BM")
         )
-        if not valid_magic:
-            return False, f"Unrecognized or corrupt image header (Pillow unavailable): {path}"
-        return True, None
+        return (True, None) if valid_magic else (False, f"Unrecognized image header: {path}")
     except Exception as exc:
         return False, f"Corrupt or unreadable image ({type(exc).__name__}): {exc}"
 
@@ -127,13 +387,7 @@ def resolve_image_path(
     verify_image_exists: bool = True,
     verify_image_readable: bool = False,
 ) -> tuple[str | None, bool]:
-    """Resolve image path while strictly enforcing visual_input semantics.
-
-    Returns (resolved_image_path, case_mismatch).
-    - If visual_input is False (visual_input_raw == "0"): ALWAYS returns (None, False).
-    - If visual_input is True (visual_input_raw in {"1", "2"}): searches direct,
-      'data/', and 'hallusion_bench/' layouts under data_root.
-    """
+    """Resolve image path across direct, data/, and hallusion_bench/ layouts."""
     if not visual_input:
         return None, False
 
@@ -183,6 +437,10 @@ def resolve_image_path(
     return str(candidate), case_mismatch
 
 
+# ---------------------------------------------------------------------------
+# Normalization, grouping, pilot selection, and dataset loader/auditor
+# ---------------------------------------------------------------------------
+
 def normalize_hallusion_record(
     raw_record: Mapping[str, Any],
     data_root: str | Path | None = None,
@@ -190,7 +448,6 @@ def normalize_hallusion_record(
     verify_image_exists: bool = True,
     verify_image_readable: bool = False,
 ) -> HallusionSample:
-    """Validate and normalize one raw HallusionBench.json record into HallusionSample."""
     errors = validate_raw_record(raw_record, index=index)
     if errors:
         raise HallusionSchemaError("; ".join(errors))
@@ -205,17 +462,11 @@ def normalize_hallusion_record(
     question = str(raw_record["question"]).strip()
 
     existing_sid = raw_record.get("sample_id")
-    if existing_sid is not None and str(existing_sid).strip():
-        sample_id = str(existing_sid).strip()
-    else:
-        sample_id = make_stable_sample_id(
-            category=category,
-            subcategory=subcategory,
-            set_id=set_id,
-            figure_id=figure_id,
-            question_id=question_id,
-            visual_input_raw=visual_input_raw,
-        )
+    sample_id = (
+        str(existing_sid).strip()
+        if existing_sid is not None and str(existing_sid).strip()
+        else make_stable_sample_id(category, subcategory, set_id, figure_id, question_id, visual_input_raw)
+    )
 
     image_path, case_mismatch = resolve_image_path(
         raw_record=raw_record,
@@ -228,23 +479,14 @@ def normalize_hallusion_record(
     raw_filename = raw_record.get("filename")
     filename = str(raw_filename).strip() if raw_filename is not None and str(raw_filename).strip() else None
 
-    gt_details_raw = raw_record.get("gt_answer_details")
-    gt_answer_details = str(gt_details_raw) if gt_details_raw is not None else None
-
-    note_raw = raw_record.get("sample_note")
-    sample_note = str(note_raw) if note_raw is not None else None
-
     raw_difficulty = raw_record.get("difficulty")
-    if isinstance(raw_difficulty, str) and raw_difficulty.strip():
-        difficulty: str | None = raw_difficulty.strip().lower()
-    else:
-        difficulty = derive_difficulty(category, visual_input_raw)
+    difficulty = (
+        raw_difficulty.strip().lower()
+        if isinstance(raw_difficulty, str) and raw_difficulty.strip()
+        else derive_difficulty(category, visual_input_raw)
+    )
 
-    extra = {
-        str(k): v
-        for k, v in raw_record.items()
-        if str(k) not in KNOWN_RAW_FIELDS and str(k) != "difficulty"
-    }
+    extra = {str(k): v for k, v in raw_record.items() if str(k) not in KNOWN_RAW_FIELDS}
 
     return HallusionSample(
         sample_id=sample_id,
@@ -264,8 +506,8 @@ def normalize_hallusion_record(
         figure_group_key=make_figure_group_key(category, subcategory, set_id, figure_id),
         question_pair_key=make_question_pair_key(category, subcategory, set_id, question_id),
         difficulty=difficulty,
-        gt_answer_details=gt_answer_details,
-        sample_note=sample_note,
+        gt_answer_details=str(raw_record["gt_answer_details"]) if raw_record.get("gt_answer_details") is not None else None,
+        sample_note=str(raw_record["sample_note"]) if raw_record.get("sample_note") is not None else None,
         source_index=index,
         image_case_mismatch=case_mismatch,
         extra_fields=extra,
@@ -273,12 +515,10 @@ def normalize_hallusion_record(
 
 
 def samples_to_dataset_index(samples: Sequence[HallusionSample]) -> dict[str, dict[str, Any]]:
-    """Index normalized HallusionSample records by sample_id for Member C scoring/analysis."""
     return {sample.sample_id: sample.to_dict() for sample in samples}
 
 
 def build_group_mappings(samples: Sequence[HallusionSample]) -> dict[str, Any]:
-    """Build deterministic, order-preserving group/figure/pair mappings for Member C."""
     by_set_group: dict[str, list[str]] = {}
     by_figure_group: dict[str, list[str]] = {}
     by_visual_figure_group: dict[str, list[str]] = {}
@@ -317,54 +557,41 @@ def check_group_integrity(
     *,
     flag_singleton_question_pairs: bool = True,
 ) -> list[str]:
-    """Inspect structural consistency of HallusionBench sets, figures, and question pairs."""
     issues: list[str] = []
-
     by_fig_visual_paths: dict[str, set[str]] = {}
     by_qpair: dict[str, list[HallusionSample]] = {}
-    by_set_visual_fig_ids: dict[str, set[str]] = {}
 
     for sample in samples:
         by_qpair.setdefault(sample.question_pair_key, []).append(sample)
         if sample.visual_input and sample.image_path:
-            norm_path = str(Path(sample.image_path)).lower()
-            by_fig_visual_paths.setdefault(sample.figure_group_key, set()).add(norm_path)
-            by_set_visual_fig_ids.setdefault(sample.group_or_pair_key, set()).add(sample.figure_id)
+            by_fig_visual_paths.setdefault(sample.figure_group_key, set()).add(str(Path(sample.image_path)).lower())
 
     for fig_key, paths in by_fig_visual_paths.items():
         if len(paths) > 1:
-            issues.append(
-                f"Figure group '{fig_key}' references multiple distinct image paths: {sorted(paths)}"
-            )
+            issues.append(f"Figure group '{fig_key}' references multiple distinct image paths: {sorted(paths)}")
 
     for qpair_key, items in by_qpair.items():
         if flag_singleton_question_pairs and len(items) < 2:
-            issues.append(
-                f"Question pair '{qpair_key}' has only {len(items)} sample(s) "
-                f"({[s.sample_id for s in items]}); verify whether control counterpart is missing"
-            )
-        fig_vis_keys = [(s.figure_id, s.visual_input_raw) for s in items]
-        if len(fig_vis_keys) != len(set(fig_vis_keys)):
-            issues.append(
-                f"Question pair '{qpair_key}' contains duplicate (figure_id, visual_input_raw) entries: {fig_vis_keys}"
-            )
+            issues.append(f"Question pair '{qpair_key}' has only {len(items)} sample(s) ({[s.sample_id for s in items]})")
+        fig_vis = [(s.figure_id, s.visual_input_raw) for s in items]
+        if len(fig_vis) != len(set(fig_vis)):
+            issues.append(f"Question pair '{qpair_key}' contains duplicate (figure_id, visual_input_raw) entries")
 
     return issues
 
 
 def select_frozen_pilot(
     samples: Sequence[HallusionSample],
-    target_groups: int = 6,
+    target_groups: int = 8,
     *,
-    include_vd: bool = True,
-    include_vs: bool = True,
-    include_text_only: bool = True,
-    include_edited_visual: bool = True,
+    balance_subcategories: bool = True,
 ) -> dict[str, Any]:
-    """Select a deterministic, reproducible pilot manifest preserving COMPLETE set groups.
+    """Select a deterministic frozen pilot preserving COMPLETE set groups across ALL subcategories.
 
-    Never splits a (category, subcategory, set_id) group so Member C can evaluate
-    aAcc, fAcc, and qAcc accurately on pilot runs.
+    By default (target_groups=8, balance_subcategories=True), picks 1 complete control group
+    per HallusionBench subcategory (chart, figure, illusion, map, math, ocr, table, video),
+    preferring compact groups with multi-condition pairs (visual_input 0/1/2) so aAcc, fAcc,
+    qAcc, VD/VS, and Easy/Hard are all well-represented in ~50-80 samples.
     """
     if target_groups <= 0:
         raise ValueError("target_groups must be a positive integer")
@@ -378,53 +605,45 @@ def select_frozen_pilot(
     ordered_keys = list(groups.keys())
     selected_keys: list[str] = []
 
-    def _pick_first_matching(predicate: Any) -> None:
-        if len(selected_keys) >= target_groups:
-            return
-        for key in ordered_keys:
-            if key in selected_keys:
-                continue
-            if predicate(groups[key]):
-                selected_keys.append(key)
-                return
+    def _group_rank(gkey: str) -> tuple[int, int, int, str]:
+        items = groups[gkey]
+        vis_types = {s.visual_input_raw for s in items}
+        pair_counts = Counter(s.question_pair_key for s in items)
+        has_complete_pair = any(cnt >= 2 for cnt in pair_counts.values())
+        # Prefer: (1) has complete control pair, (2) has >=2 visual_input conditions, (3) compact size.
+        return (0 if has_complete_pair else 1, 0 if len(vis_types) >= 2 else 1, len(items), gkey)
 
-    # 1. Prioritize groups that cover every key structural dimension of HallusionBench.
-    if include_vs and include_text_only:
-        _pick_first_matching(
-            lambda items: any(s.category == "VS" for s in items)
-            and any(s.visual_input_raw == "0" for s in items)
-        )
-    if include_vd and include_edited_visual:
-        _pick_first_matching(
-            lambda items: any(s.category == "VD" for s in items)
-            and any(s.visual_input_raw == "2" for s in items)
-        )
-    if include_vd:
-        _pick_first_matching(lambda items: any(s.category == "VD" for s in items))
-    if include_vs:
-        _pick_first_matching(lambda items: any(s.category == "VS" for s in items))
-    if include_text_only:
-        _pick_first_matching(lambda items: any(s.visual_input_raw == "0" for s in items))
-    if include_edited_visual:
-        _pick_first_matching(lambda items: any(s.visual_input_raw == "2" for s in items))
+    if balance_subcategories:
+        by_sub: dict[str, list[str]] = {}
+        for gkey in ordered_keys:
+            sub = groups[gkey][0].subcategory
+            by_sub.setdefault(sub, []).append(gkey)
+        for sub in sorted(by_sub.keys()):
+            if len(selected_keys) >= target_groups:
+                break
+            best_key = min(by_sub[sub], key=_group_rank)
+            selected_keys.append(best_key)
 
-    # 2. Fill remaining slots while balancing subcategories deterministically.
-    used_subcategories = {groups[k][0].subcategory for k in selected_keys}
-    for key in ordered_keys:
+    # Ensure both VD & VS and text-only / edited visual conditions are covered if slots remain.
+    for predicate in (
+        lambda items: any(s.visual_input_raw == "0" for s in items),
+        lambda items: any(s.visual_input_raw == "2" for s in items),
+        lambda items: any(s.category == "VD" for s in items),
+        lambda items: any(s.category == "VS" for s in items),
+    ):
         if len(selected_keys) >= target_groups:
             break
-        if key in selected_keys:
-            continue
-        sub = groups[key][0].subcategory
-        if sub not in used_subcategories:
-            selected_keys.append(key)
-            used_subcategories.add(sub)
+        already_covered = any(predicate(groups[k]) for k in selected_keys)
+        if not already_covered:
+            matching = [k for k in ordered_keys if k not in selected_keys and predicate(groups[k])]
+            if matching:
+                selected_keys.append(min(matching, key=_group_rank))
 
-    for key in ordered_keys:
+    for gkey in ordered_keys:
         if len(selected_keys) >= target_groups:
             break
-        if key not in selected_keys:
-            selected_keys.append(key)
+        if gkey not in selected_keys:
+            selected_keys.append(gkey)
 
     selected_samples: list[HallusionSample] = []
     for key in selected_keys:
@@ -438,19 +657,16 @@ def select_frozen_pilot(
         "selection_policy": {
             "preserve_complete_set_groups": True,
             "target_groups": target_groups,
-            "include_vd": include_vd,
-            "include_vs": include_vs,
-            "include_text_only": include_text_only,
-            "include_edited_visual": include_edited_visual,
+            "balance_subcategories": balance_subcategories,
         },
         "group_count": len(selected_keys),
         "sample_count": len(sample_ids),
         "figure_group_count": len(mappings["by_figure_group"]),
         "visual_figure_group_count": len(mappings["by_visual_figure_group"]),
         "question_pair_count": len(mappings["by_question_pair"]),
-        "breakdown_by_category": dict(Counter(s.category for s in selected_samples)),
-        "breakdown_by_subcategory": dict(Counter(s.subcategory for s in selected_samples)),
-        "breakdown_by_visual_input_raw": dict(Counter(s.visual_input_raw for s in selected_samples)),
+        "breakdown_by_category": dict(sorted(Counter(s.category for s in selected_samples).items())),
+        "breakdown_by_subcategory": dict(sorted(Counter(s.subcategory for s in selected_samples).items())),
+        "breakdown_by_visual_input_raw": dict(sorted(Counter(s.visual_input_raw for s in selected_samples).items())),
         "selected_group_keys": selected_keys,
         "sample_ids": sample_ids,
         "pilot_ids_sha256": sha256_json(sample_ids),
@@ -463,7 +679,6 @@ def filter_by_pilot_ids(
     *,
     require_complete_groups: bool = True,
 ) -> list[HallusionSample]:
-    """Filter samples strictly to a frozen pilot ID list, checking completeness and group integrity."""
     if not pilot_ids:
         raise ValueError("pilot_ids cannot be empty")
     if len(pilot_ids) != len(set(pilot_ids)):
@@ -479,16 +694,13 @@ def filter_by_pilot_ids(
     if require_complete_groups:
         selected_set = set(pilot_ids)
         full_groups = build_group_mappings(samples)["by_set_group"]
-        selected_group_keys = {s.group_or_pair_key for s in selected}
-        incomplete: dict[str, list[str]] = {}
-        for gkey in sorted(selected_group_keys):
-            missing_in_group = [sid for sid in full_groups[gkey] if sid not in selected_set]
-            if missing_in_group:
-                incomplete[gkey] = missing_in_group
+        incomplete = {
+            gkey: [sid for sid in full_groups[gkey] if sid not in selected_set]
+            for gkey in sorted({s.group_or_pair_key for s in selected})
+            if any(sid not in selected_set for sid in full_groups[gkey])
+        }
         if incomplete:
-            raise GroupIntegrityError(
-                f"Pilot selection splits complete set groups (breaks fAcc/qAcc): {incomplete}"
-            )
+            raise GroupIntegrityError(f"Pilot selection splits complete set groups: {incomplete}")
 
     return selected
 
@@ -501,7 +713,7 @@ class HallusionBenchDataset:
         json_path: str | Path,
         data_root: str | Path | None = None,
         *,
-        dataset_source: str = OFFICIAL_GITHUB_SOURCE,
+        dataset_source: str = HF_AUTHOR_MIRROR_SOURCE,
         dataset_revision: str | None = None,
         license_name: str = OFFICIAL_LICENSE,
     ) -> None:
@@ -512,12 +724,11 @@ class HallusionBenchDataset:
         self.license_name = license_name
 
     def read_raw(self) -> list[dict[str, Any]]:
-        """Read raw HallusionBench.json without downloading or mutating it."""
         if not self.json_path.is_file():
             raise FileNotFoundError(f"Dataset JSON file not found: {self.json_path}")
         raw_items = json.loads(self.json_path.read_text(encoding="utf-8"))
         if not isinstance(raw_items, list):
-            raise HallusionSchemaError(f"Expected a JSON list in {self.json_path}, got {type(raw_items).__name__}")
+            raise HallusionSchemaError(f"Expected a JSON list in {self.json_path}")
         return raw_items
 
     def load(
@@ -527,7 +738,6 @@ class HallusionBenchDataset:
         verify_image_readable: bool = False,
         verify_group_integrity: bool = False,
     ) -> list[HallusionSample]:
-        """Load, validate, and normalize all HallusionBench records in strict mode."""
         raw_items = self.read_raw()
         samples: list[HallusionSample] = []
         seen_ids: dict[str, int] = {}
@@ -565,14 +775,8 @@ class HallusionBenchDataset:
         verify_image_readable: bool = False,
         model_safe: bool = False,
     ) -> list[dict[str, Any]]:
-        """Load normalized records as dictionaries (directly consumable by Member B / Member C)."""
-        samples = self.load(
-            verify_images=verify_images,
-            verify_image_readable=verify_image_readable,
-        )
-        if model_safe:
-            return [s.to_model_safe_dict() for s in samples]
-        return [s.to_dict() for s in samples]
+        samples = self.load(verify_images=verify_images, verify_image_readable=verify_image_readable)
+        return [s.to_model_safe_dict() if model_safe else s.to_dict() for s in samples]
 
     def load_index(
         self,
@@ -580,15 +784,11 @@ class HallusionBenchDataset:
         verify_images: bool = True,
         verify_image_readable: bool = False,
     ) -> dict[str, dict[str, Any]]:
-        """Load normalized records keyed by sample_id (directly consumable by Member C)."""
-        samples = self.load(
-            verify_images=verify_images,
-            verify_image_readable=verify_image_readable,
+        return samples_to_dataset_index(
+            self.load(verify_images=verify_images, verify_image_readable=verify_image_readable)
         )
-        return samples_to_dataset_index(samples)
 
     def audit(self, *, verify_image_readable: bool = True) -> dict[str, Any]:
-        """Run comprehensive programmatic audit of HallusionBench.json and images on disk."""
         raw_items = self.read_raw()
         json_checksum = sha256_file(self.json_path)
 
@@ -617,14 +817,9 @@ class HallusionBenchDataset:
                 verify_image_exists=False,
                 verify_image_readable=False,
             )
-
             if sample.sample_id in seen_ids:
                 duplicate_sample_ids.append(
-                    {
-                        "sample_id": sample.sample_id,
-                        "first_index": seen_ids[sample.sample_id],
-                        "duplicate_index": idx,
-                    }
+                    {"sample_id": sample.sample_id, "first_index": seen_ids[sample.sample_id], "duplicate_index": idx}
                 )
             else:
                 seen_ids[sample.sample_id] = idx
@@ -639,34 +834,19 @@ class HallusionBenchDataset:
                 img_path = Path(sample.image_path)
                 if not img_path.is_file():
                     missing_image_samples.append(
-                        {
-                            "sample_id": sample.sample_id,
-                            "index": idx,
-                            "filename": sample.filename,
-                            "resolved_path": sample.image_path,
-                        }
+                        {"sample_id": sample.sample_id, "index": idx, "filename": sample.filename, "resolved_path": sample.image_path}
                     )
                 else:
                     existing_image_paths.add(str(img_path.resolve()))
                     if sample.image_case_mismatch:
                         case_mismatch_samples.append(
-                            {
-                                "sample_id": sample.sample_id,
-                                "index": idx,
-                                "raw_filename": sample.filename,
-                                "resolved_path": sample.image_path,
-                            }
+                            {"sample_id": sample.sample_id, "index": idx, "raw_filename": sample.filename, "resolved_path": sample.image_path}
                         )
                     if verify_image_readable:
                         ok, err = check_image_readable(img_path)
                         if not ok:
                             corrupt_image_samples.append(
-                                {
-                                    "sample_id": sample.sample_id,
-                                    "index": idx,
-                                    "resolved_path": sample.image_path,
-                                    "error": err,
-                                }
+                                {"sample_id": sample.sample_id, "index": idx, "resolved_path": sample.image_path, "error": err}
                             )
 
             valid_samples.append(sample)
@@ -677,7 +857,7 @@ class HallusionBenchDataset:
         group_warnings = check_group_integrity(valid_samples, flag_singleton_question_pairs=True)
 
         return {
-            "dataset_name": "HallusionBench",
+            "dataset_name": DATASET_NAME,
             "dataset_source": self.dataset_source,
             "dataset_revision": self.dataset_revision,
             "license": self.license_name,
@@ -729,21 +909,16 @@ class HallusionBenchDataset:
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="HallusionBench Member A dataset audit & pilot CLI")
-    parser.add_argument(
-        "--mode",
-        choices=("audit", "export-pilot", "verify-pilot"),
-        required=True,
-        help="audit: inspect dataset & images; export-pilot: generate frozen pilot IDs; verify-pilot: check pilot IDs",
-    )
-    parser.add_argument("--dataset-json", type=Path, required=True, help="Path to local HallusionBench.json")
-    parser.add_argument("--data-root", type=Path, default=None, help="Root directory containing VD/VS images")
-    parser.add_argument("--dataset-source", default=OFFICIAL_GITHUB_SOURCE)
+    parser = argparse.ArgumentParser(description="HallusionBench Part A dataset audit & pilot CLI")
+    parser.add_argument("--mode", choices=("audit", "export-pilot", "verify-pilot"), required=True)
+    parser.add_argument("--dataset-json", type=Path, required=True)
+    parser.add_argument("--data-root", type=Path, default=None)
+    parser.add_argument("--dataset-source", default=HF_AUTHOR_MIRROR_SOURCE)
     parser.add_argument("--dataset-revision", default=None)
-    parser.add_argument("--skip-image-integrity", action="store_true", help="Skip PIL/header readability check in audit")
-    parser.add_argument("--target-groups", type=int, default=6, help="Number of complete set groups for pilot export")
-    parser.add_argument("--pilot-file", type=Path, default=None, help="Pilot JSON manifest for verify-pilot")
-    parser.add_argument("--output", type=Path, default=None, help="Optional JSON output file path")
+    parser.add_argument("--skip-image-integrity", action="store_true")
+    parser.add_argument("--target-groups", type=int, default=8, help="Number of complete groups (default 8 = all 8 subcategories)")
+    parser.add_argument("--pilot-file", type=Path, default=None)
+    parser.add_argument("--output", type=Path, default=None)
     args = parser.parse_args(argv)
 
     dataset = HallusionBenchDataset(
@@ -763,11 +938,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 0 if report["integrity"]["is_clean"] else 1
 
     if args.mode == "export-pilot":
-        samples = dataset.load(
-            verify_images=True,
-            verify_image_readable=not args.skip_image_integrity,
-        )
-        manifest = select_frozen_pilot(samples, target_groups=args.target_groups)
+        samples = dataset.load(verify_images=True, verify_image_readable=not args.skip_image_integrity)
+        manifest = select_frozen_pilot(samples, target_groups=args.target_groups, balance_subcategories=True)
         manifest["dataset_source"] = args.dataset_source
         manifest["dataset_revision"] = args.dataset_revision
         manifest["json_sha256"] = sha256_file(args.dataset_json)
@@ -792,13 +964,19 @@ def main(argv: Sequence[str] | None = None) -> int:
 
         samples = dataset.load(verify_images=True, verify_image_readable=False)
         filtered = filter_by_pilot_ids(samples, pilot_ids, require_complete_groups=True)
-        summary = {
-            "status": "VALID",
-            "verified_sample_count": len(filtered),
-            "verified_group_count": len({s.group_or_pair_key for s in filtered}),
-            "pilot_ids_sha256": actual_sha,
-        }
-        print(json.dumps(summary, indent=2, ensure_ascii=False))
+        print(
+            json.dumps(
+                {
+                    "status": "VALID",
+                    "verified_sample_count": len(filtered),
+                    "verified_group_count": len({s.group_or_pair_key for s in filtered}),
+                    "subcategories": sorted({s.subcategory for s in filtered}),
+                    "pilot_ids_sha256": actual_sha,
+                },
+                indent=2,
+                ensure_ascii=False,
+            )
+        )
         return 0
 
     return 2
