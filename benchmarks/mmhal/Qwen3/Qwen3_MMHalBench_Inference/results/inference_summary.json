@@ -1,0 +1,7 @@
+{
+  "total_samples": 96,
+  "success_count": 41,
+  "failed_count": 55,
+  "duration_seconds": 14060.74,
+  "device": "Tesla T4"
+}
