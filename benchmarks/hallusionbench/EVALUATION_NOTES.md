@@ -33,8 +33,9 @@ Mọi chỉ số đều chỉ tính trên các bản ghi có `status == "COMPLET
 
 ## 3. Hợp đồng dữ liệu (Data Contract) với Thành viên A và B
 
-- **Từ Thành viên A (`dataset_records`):** Mỗi `sample_id` cần cung cấp `reference_answer` (`yes`/`no`), `category` (`VD`/`VS`), `difficulty` (nếu có), cùng `figure_key` và `pair_key` (hoặc bộ trường gốc `subcategory`, `set_id`, `figure_id`, `question_id` để `scoring.py` tự ghép khóa).
+- **Từ Thành viên A (`dataset.py` / `schema.py`):** Dùng `HallusionBenchDataset.load_index()` để lấy mapping theo `sample_id` gồm `reference_answer` (`yes`/`no`), `gt_answer` (`0`/`1`), `category` (`VD`/`VS`), `difficulty` (`easy`/`hard`), `visual_input` (`bool`), `visual_input_raw` (`0`/`1`/`2`), `figure_key` (`None` cho mẫu `text-only` để không làm nhiễu `fAcc`), và `pair_key` (bảo toàn cặp kiểm soát cho `qAcc`).
 - **Từ Thành viên B (`predictions.jsonl`):** Mỗi dòng bắt buộc có đủ 4 trường `sample_id`, `prediction`, `status`, `run_config_hash`. Các bản ghi có `status != "COMPLETED"` (như `FAILED` do OOM, timeout) được tách sang `errors.jsonl` với nhãn `technical_error` và **không** bị tính như dự đoán sai.
+- **Chấm trực tiếp thư mục run của B (`score_run_directory`):** Giữ nguyên `predictions.jsonl` gốc của B, cập nhật `metrics.json`, gộp lỗi chấm vào `errors.jsonl` mà không mất lỗi runtime từ B, và làm mới checksum SHA-256 trong `manifest.json` để pass `scripts/check_manifest.py`.
 - **Bảo toàn dữ liệu khi chạy tiếp (Resume):** Hàm `export_hallusionbench_artifacts` sử dụng `merge_result_records` để ngăn chặn việc ghi đè lên các `sample_id` đã có trạng thái `COMPLETED`.
 
 ---
@@ -52,7 +53,43 @@ Khi phân tích các trường hợp trả lời sai trong `analysis.py`, tuyệ
 
 ---
 
-## 5. Cách chạy kiểm thử trên CPU
+## 5. Cách chạy chấm điểm, phân tích & kiểm thử trên CPU
+
+### Chấm điểm một thư mục run từ Thành viên B
 
 ```powershell
-python -m pytest benchmarks/hallusionbench/tests/test_scoring.py -v
+python -m benchmarks.hallusionbench.scoring `
+  --run-dir results/<experiment_id>/<run_id> `
+  --dataset-json "$env:DATA_ROOT\HallusionBench.json" `
+  --data-root "$env:DATA_ROOT"
+```
+
+### Trích xuất bảng lỗi, so sánh 3 mô hình & đối chứng Before/After
+
+```powershell
+python -m benchmarks.hallusionbench.analysis `
+  --mode extract `
+  --run-dir results/<experiment_id>/<run_id> `
+  --dataset-json "$env:DATA_ROOT\HallusionBench.json"
+
+python -m benchmarks.hallusionbench.analysis `
+  --mode disagreements `
+  --run-dirs smolvlm2=results/exp/run_smolvlm2 qwen3_vl=results/exp/run_qwen3 `
+  --dataset-json "$env:DATA_ROOT\HallusionBench.json" `
+  --output results/exp/disagreements.json
+
+python -m benchmarks.hallusionbench.analysis `
+  --mode before-after `
+  --baseline-run-dir results/exp/run_baseline `
+  --improved-run-dir results/exp/run_improved `
+  --dataset-json "$env:DATA_ROOT\HallusionBench.json" `
+  --output results/exp/before_after.json
+```
+
+### Chạy kiểm thử đơn vị & tích hợp A → B → C
+
+```powershell
+python -m pytest benchmarks/hallusionbench/tests/ -v
+python -m unittest discover -s benchmarks/hallusionbench/tests -p "test_dataset.py" -v
+python -m unittest discover -s benchmarks/hallusionbench/tests -p "test_pipeline_e2e.py" -v
+```

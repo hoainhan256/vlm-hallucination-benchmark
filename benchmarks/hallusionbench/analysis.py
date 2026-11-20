@@ -1,12 +1,22 @@
-"""HallusionBench error extraction, cross-model disagreement, and before/after analysis."""
+"""HallusionBench error extraction, cross-model disagreement, and before/after analysis (Member C)."""
 
+from __future__ import annotations
+
+import argparse
+from collections import Counter
 import json
 from pathlib import Path
-from typing import Any, Iterable, Mapping
+import sys
+from typing import Any, Iterable, Mapping, Sequence
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 from benchmarks.hallusionbench.scoring import (
     _resolve_figure_key,
     _resolve_pair_key,
+    _resolve_reference_answer,
     parse_yes_no,
 )
 
@@ -61,16 +71,18 @@ def extract_error_cases(
                 "figure_key": _resolve_figure_key(meta) if meta else None,
                 "pair_key": _resolve_pair_key(meta) if meta else None,
                 "category": meta.get("category") if meta else None,
+                "difficulty": meta.get("difficulty") if meta else None,
                 "visual_input": meta.get("visual_input") if meta else None,
+                "visual_input_raw": meta.get("visual_input_raw") if meta else None,
                 "image_path": meta.get("image_path") if meta else None,
                 "question": meta.get("question") if meta else None,
-                "gt_answer": meta.get("reference_answer") if meta else None,
+                "gt_answer": _resolve_reference_answer(meta) if meta else None,
                 "raw_response": raw_resp,
                 "parsed_prediction": None,
                 "is_correct": False,
                 "preliminary_error_type": "technical_error",
                 "verified_error_type": "technical_error",
-                "evidence": pred.get("error", f"Inference status is {status}"),
+                "evidence": pred.get("error") or pred.get("error_type") or f"Inference status is {status}",
             })
             continue
 
@@ -83,7 +95,9 @@ def extract_error_cases(
                 "figure_key": None,
                 "pair_key": None,
                 "category": None,
+                "difficulty": None,
                 "visual_input": None,
+                "visual_input_raw": None,
                 "image_path": None,
                 "question": None,
                 "gt_answer": None,
@@ -97,7 +111,7 @@ def extract_error_cases(
             continue
 
         parsed_pred = parse_yes_no(pred.get("prediction"))
-        gt_answer = str(meta["reference_answer"]).strip().lower()
+        gt_answer = _resolve_reference_answer(meta)
 
         # 3. Vi phạm định dạng (không chốt được Yes/No)
         if parsed_pred is None:
@@ -108,7 +122,9 @@ def extract_error_cases(
                 "figure_key": _resolve_figure_key(meta),
                 "pair_key": _resolve_pair_key(meta),
                 "category": meta.get("category"),
+                "difficulty": meta.get("difficulty"),
                 "visual_input": meta.get("visual_input"),
+                "visual_input_raw": meta.get("visual_input_raw"),
                 "image_path": meta.get("image_path"),
                 "question": meta.get("question"),
                 "gt_answer": gt_answer,
@@ -130,7 +146,9 @@ def extract_error_cases(
                 "figure_key": _resolve_figure_key(meta),
                 "pair_key": _resolve_pair_key(meta),
                 "category": meta.get("category"),
+                "difficulty": meta.get("difficulty"),
                 "visual_input": meta.get("visual_input"),
+                "visual_input_raw": meta.get("visual_input_raw"),
                 "image_path": meta.get("image_path"),
                 "question": meta.get("question"),
                 "gt_answer": gt_answer,
@@ -162,7 +180,7 @@ def find_cross_model_disagreements(
                 continue
 
             parsed = parse_yes_no(pred.get("prediction"))
-            gt = str(meta["reference_answer"]).strip().lower()
+            gt = _resolve_reference_answer(meta)
             indexed_by_sample.setdefault(sample_id, {})[model_id] = {
                 "parsed_prediction": parsed,
                 "is_correct": parsed == gt if parsed is not None else False,
@@ -182,11 +200,12 @@ def find_cross_model_disagreements(
             disagreements.append({
                 "sample_id": sample_id,
                 "category": meta.get("category"),
+                "difficulty": meta.get("difficulty"),
                 "figure_key": _resolve_figure_key(meta),
                 "pair_key": _resolve_pair_key(meta),
                 "image_path": meta.get("image_path"),
                 "question": meta.get("question"),
-                "gt_answer": str(meta["reference_answer"]).strip().lower(),
+                "gt_answer": _resolve_reference_answer(meta),
                 "model_outcomes": outcomes,
             })
 
@@ -217,7 +236,7 @@ def compare_before_after(
     unchanged_wrong = 0
 
     for sid in common_ids:
-        gt = str(dataset_records[sid]["reference_answer"]).strip().lower()
+        gt = _resolve_reference_answer(dataset_records[sid])
         base_parsed = parse_yes_no(base_map[sid].get("prediction"))
         imp_parsed = parse_yes_no(imp_map[sid].get("prediction"))
 
@@ -251,6 +270,50 @@ def compare_before_after(
     }
 
 
+def summarize_error_cases(cases: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
+    """Summarize extracted error cases by taxonomy, category, and difficulty."""
+    return {
+        "total_error_cases": len(cases),
+        "by_preliminary_error_type": dict(
+            sorted(Counter(str(c.get("preliminary_error_type")) for c in cases).items())
+        ),
+        "by_verified_error_type": dict(
+            sorted(Counter(str(c.get("verified_error_type") or "pending_review") for c in cases).items())
+        ),
+        "by_category": dict(
+            sorted(Counter(str(c.get("category") or "UNKNOWN") for c in cases).items())
+        ),
+        "by_difficulty": dict(
+            sorted(Counter(str(c.get("difficulty") or "UNKNOWN") for c in cases).items())
+        ),
+    }
+
+
+def export_error_report(
+    cases: Sequence[Mapping[str, Any]],
+    output_dir: str | Path,
+) -> dict[str, str]:
+    """Export error_cases.json, error_summary.json, and error_cases.md for Gate G5 review."""
+    out = Path(output_dir)
+    out.mkdir(parents=True, exist_ok=True)
+
+    cases_path = out / "error_cases.json"
+    summary_path = out / "error_summary.json"
+    md_path = out / "error_cases.md"
+
+    cases_path.write_text(json.dumps(list(cases), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    summary_path.write_text(
+        json.dumps(summarize_error_cases(cases), indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    md_path.write_text(render_error_table_markdown(cases) + "\n", encoding="utf-8")
+    return {
+        "error_cases_json": str(cases_path),
+        "error_summary_json": str(summary_path),
+        "error_cases_md": str(md_path),
+    }
+
+
 def render_error_table_markdown(cases: Iterable[Mapping[str, Any]]) -> str:
     """Xuất bảng Markdown theo đúng mẫu Mục 5.4 của tài liệu phân công nhóm."""
     header = (
@@ -270,3 +333,86 @@ def render_error_table_markdown(cases: Iterable[Mapping[str, Any]]) -> str:
             f"{img_q} | `{c.get('gt_answer')}` | {raw_clean} | Sai | `{err_label}`: {evidence} |"
         )
     return "\n".join(rows)
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="HallusionBench Member C error analysis CLI")
+    parser.add_argument(
+        "--mode",
+        choices=("extract", "disagreements", "before-after"),
+        required=True,
+        help="extract: extract error table for 1 run; disagreements: compare models; before-after: Gate G6 diff",
+    )
+    parser.add_argument("--dataset-json", type=Path, required=True)
+    parser.add_argument("--data-root", type=Path, default=None)
+    parser.add_argument("--run-dir", type=Path, default=None, help="Run directory for --mode extract")
+    parser.add_argument("--model-id", default=None, help="Override model_id (auto-read from run_metadata.json)")
+    parser.add_argument("--run-id", default=None, help="Override run_id (auto-read from run_metadata.json)")
+    parser.add_argument("--output-dir", type=Path, default=None, help="Output directory for --mode extract")
+    parser.add_argument(
+        "--run-dirs",
+        nargs="+",
+        default=None,
+        help="Model=RunDir pairs for --mode disagreements (e.g. smolvlm2=path1 qwen3_vl=path2)",
+    )
+    parser.add_argument("--baseline-run-dir", type=Path, default=None)
+    parser.add_argument("--improved-run-dir", type=Path, default=None)
+    parser.add_argument("--output", type=Path, default=None, help="Output JSON file for disagreements/before-after")
+    args = parser.parse_args(argv)
+
+    from benchmarks.hallusionbench.dataset import HallusionBenchDataset
+
+    dataset_index = HallusionBenchDataset(args.dataset_json, data_root=args.data_root).load_index(
+        verify_images=False,
+        verify_image_readable=False,
+    )
+
+    if args.mode == "extract":
+        if args.run_dir is None:
+            raise ValueError("--run-dir is required for --mode extract")
+        preds = read_jsonl(args.run_dir / "predictions.jsonl")
+        meta_path = args.run_dir / "run_metadata.json"
+        run_meta = json.loads(meta_path.read_text(encoding="utf-8")) if meta_path.is_file() else {}
+        model_id = args.model_id or str(run_meta.get("model_id") or run_meta.get("model_key") or "unknown_model")
+        run_id = args.run_id or str(run_meta.get("run_id") or args.run_dir.name)
+        cases = extract_error_cases(preds, dataset_index, model_id=model_id, run_id=run_id)
+        out_dir = args.output_dir or (args.run_dir / "analysis")
+        paths = export_error_report(cases, out_dir)
+        print(json.dumps({"summary": summarize_error_cases(cases), "files": paths}, indent=2, ensure_ascii=False))
+        return 0
+
+    if args.mode == "disagreements":
+        if not args.run_dirs or len(args.run_dirs) < 2:
+            raise ValueError("--run-dirs requires at least 2 model=dir entries for --mode disagreements")
+        model_preds: dict[str, list[dict[str, Any]]] = {}
+        for entry in args.run_dirs:
+            if "=" not in entry:
+                raise ValueError(f"Expected model=run_dir format, got {entry!r}")
+            mkey, rdir = entry.split("=", 1)
+            model_preds[mkey.strip()] = read_jsonl(Path(rdir.strip()) / "predictions.jsonl")
+        disagreements = find_cross_model_disagreements(model_preds, dataset_index)
+        text = json.dumps(disagreements, indent=2, ensure_ascii=False)
+        if args.output is not None:
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            args.output.write_text(text + "\n", encoding="utf-8")
+        print(text)
+        return 0
+
+    if args.mode == "before-after":
+        if args.baseline_run_dir is None or args.improved_run_dir is None:
+            raise ValueError("--baseline-run-dir and --improved-run-dir are required for --mode before-after")
+        base_preds = read_jsonl(args.baseline_run_dir / "predictions.jsonl")
+        imp_preds = read_jsonl(args.improved_run_dir / "predictions.jsonl")
+        diff = compare_before_after(base_preds, imp_preds, dataset_index)
+        text = json.dumps(diff, indent=2, ensure_ascii=False)
+        if args.output is not None:
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            args.output.write_text(text + "\n", encoding="utf-8")
+        print(text)
+        return 0
+
+    return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

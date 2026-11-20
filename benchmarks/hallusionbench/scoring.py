@@ -1,10 +1,20 @@
-"""HallusionBench scoring and artifact export module."""
+"""HallusionBench scoring, run-directory evaluation, and artifact export module (Member C)."""
 
+from __future__ import annotations
+
+import argparse
 from collections import defaultdict
+from datetime import datetime, timezone
+import hashlib
 import json
 from pathlib import Path
 import re
-from typing import Any, Iterable, Mapping
+import sys
+from typing import Any, Iterable, Mapping, Sequence
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 try:
     from vlm_benchmark.results import merge_result_records, read_jsonl, validate_predictions
@@ -53,6 +63,29 @@ except ModuleNotFoundError:
         return list(merged.values())
 
 
+def _sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(65536), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _resolve_reference_answer(meta: Mapping[str, Any]) -> str:
+    """Resolve ground-truth answer to 'yes' or 'no' from Member A schema or raw HallusionBench.json."""
+    raw = meta.get("reference_answer")
+    if raw is None:
+        raw = meta.get("gt_answer")
+    if raw is None:
+        raise ValueError("Dataset metadata missing 'reference_answer' / 'gt_answer'")
+    norm = str(raw).strip().lower()
+    if norm in {"1", "yes"}:
+        return "yes"
+    if norm in {"0", "no"}:
+        return "no"
+    return norm
+
+
 def parse_yes_no(raw_text: Any) -> str | None:
     """Chuẩn hóa câu trả lời của VLM về 'yes', 'no' hoặc None (format violation).
 
@@ -86,9 +119,17 @@ def parse_yes_no(raw_text: Any) -> str | None:
 
 
 def _resolve_figure_key(meta: Mapping[str, Any]) -> str | None:
-    """Lấy khóa gộp cấp hình ảnh (fAcc) từ schema chuẩn hoặc ghép từ trường gốc."""
+    """Lấy khóa gộp cấp hình ảnh (fAcc) từ schema chuẩn hoặc ghép từ trường gốc.
+
+    Mẫu text-only (visual_input=False / visual_input_raw='0') không có ảnh nên trả về None
+    khi không được gán figure_key tường minh, tránh làm nhiễu mẫu số fAcc.
+    """
     if meta.get("figure_key") is not None:
         return str(meta["figure_key"])
+    if meta.get("visual_input") is False or str(meta.get("visual_input_raw", "")).strip() == "0":
+        return None
+    if meta.get("figure_group_key") is not None:
+        return str(meta["figure_group_key"])
     if meta.get("set_id") is not None and meta.get("figure_id") is not None:
         return f"{meta.get('category', '')}:{meta.get('subcategory', '')}:{meta['set_id']}:{meta['figure_id']}"
     return None
@@ -98,6 +139,8 @@ def _resolve_pair_key(meta: Mapping[str, Any]) -> str | None:
     """Lấy khóa gộp cấp cặp câu hỏi (qAcc) từ schema chuẩn hoặc ghép từ trường gốc."""
     if meta.get("pair_key") is not None:
         return str(meta["pair_key"])
+    if meta.get("question_pair_key") is not None:
+        return str(meta["question_pair_key"])
     if meta.get("set_id") is not None and meta.get("question_id") is not None:
         return f"{meta.get('category', '')}:{meta.get('subcategory', '')}:{meta['set_id']}:{meta['question_id']}"
     return None
@@ -166,7 +209,7 @@ def score_hallusionbench(
                 "sample_id": sample_id,
                 "error_type": "technical_error",
                 "status": status,
-                "detail": pred.get("error", "Non-completed inference status"),
+                "detail": pred.get("error") or pred.get("error_type") or "Non-completed inference status",
             })
             continue
 
@@ -182,7 +225,7 @@ def score_hallusionbench(
 
         # 3. Chuẩn hóa câu trả lời Yes/No
         parsed_pred = parse_yes_no(pred.get("prediction"))
-        gt_answer = str(meta["reference_answer"]).strip().lower()
+        gt_answer = _resolve_reference_answer(meta)
 
         if parsed_pred is None:
             error_records.append({
@@ -197,6 +240,11 @@ def score_hallusionbench(
 
         category = str(meta["category"]).strip().upper() if meta.get("category") else None
         difficulty = str(meta["difficulty"]).strip().lower() if meta.get("difficulty") else None
+        visual_raw = (
+            str(meta["visual_input_raw"]).strip()
+            if meta.get("visual_input_raw") is not None
+            else None
+        )
 
         valid_results.append({
             "sample_id": sample_id,
@@ -206,6 +254,7 @@ def score_hallusionbench(
             "category": category,
             "subcategory": meta.get("subcategory"),
             "difficulty": difficulty,
+            "visual_input_raw": visual_raw,
             "figure_key": _resolve_figure_key(meta),
             "pair_key": _resolve_pair_key(meta),
         })
@@ -223,6 +272,12 @@ def score_hallusionbench(
     for diff in sorted({r["difficulty"] for r in valid_results if r["difficulty"]}):
         diff_items = [r for r in valid_results if r["difficulty"] == diff]
         by_difficulty[diff] = _compute_subset_metrics(diff_items)
+
+    # Phân tách theo loại đầu vào thị giác (0=text-only, 1=ảnh gốc, 2=ảnh chỉnh sửa)
+    by_visual_input: dict[str, Any] = {}
+    for vis_code in sorted({r["visual_input_raw"] for r in valid_results if r["visual_input_raw"] is not None}):
+        vis_items = [r for r in valid_results if r["visual_input_raw"] == vis_code]
+        by_visual_input[vis_code] = _compute_subset_metrics(vis_items)
 
     metrics = {
         "benchmark": "hallusionbench",
@@ -243,8 +298,101 @@ def score_hallusionbench(
         },
         "by_category": by_category,
         "by_difficulty": by_difficulty,
+        "by_visual_input": by_visual_input,
     }
     return metrics, error_records
+
+
+def _refresh_manifest_checksums(run_dir: Path) -> None:
+    """Update SHA-256 checksums inside manifest.json after scoring updates metrics.json/errors.jsonl."""
+    manifest_path = run_dir / "manifest.json"
+    if not manifest_path.is_file():
+        return
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    files = manifest.get("files")
+    if not isinstance(files, dict):
+        files = {}
+    for name in (
+        "predictions.jsonl",
+        "metrics.json",
+        "run_config.yaml",
+        "run_metadata.json",
+        "errors.jsonl",
+        "run_status.json",
+    ):
+        file_path = run_dir / name
+        if file_path.is_file():
+            files[name] = {
+                "size_bytes": file_path.stat().st_size,
+                "sha256": _sha256_file(file_path),
+            }
+    manifest["files"] = files
+    manifest["scored_at_utc"] = datetime.now(timezone.utc).isoformat()
+    manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def score_run_directory(
+    run_dir: str | Path,
+    dataset_records: Mapping[str, Mapping[str, Any]],
+    *,
+    protocol_version: str = "unverified_draft_rule_based",
+    evaluation_mode: str = "alternative_evaluation_rule_based",
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    """Score an existing Member B run directory without mutating predictions.jsonl.
+
+    Updates metrics.json, merges scoring errors into errors.jsonl (preserving runtime
+    inference errors), and refreshes manifest.json checksums so scripts/check_manifest.py passes.
+    """
+    out_path = Path(run_dir)
+    pred_file = out_path / "predictions.jsonl"
+    if not pred_file.is_file():
+        raise FileNotFoundError(f"predictions.jsonl not found in run directory: {out_path}")
+
+    predictions = read_jsonl(pred_file)
+    metrics, scoring_errors = score_hallusionbench(
+        predictions,
+        dataset_records,
+        protocol_version=protocol_version,
+        evaluation_mode=evaluation_mode,
+    )
+
+    meta_path = out_path / "run_metadata.json"
+    if meta_path.is_file():
+        run_meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        metrics["run_identity"] = {
+            "experiment_id": run_meta.get("experiment_id"),
+            "run_id": run_meta.get("run_id"),
+            "stage": run_meta.get("stage"),
+            "model_key": run_meta.get("model_key"),
+            "model_id": run_meta.get("model_id"),
+            "run_config_hash": run_meta.get("run_config_hash"),
+        }
+
+    (out_path / "metrics.json").write_text(
+        json.dumps(metrics, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+
+    # Preserve existing runtime errors from Member B and append non-duplicate scoring errors.
+    errors_file = out_path / "errors.jsonl"
+    existing_errors = read_jsonl(errors_file) if errors_file.is_file() else []
+    existing_keys = {
+        (str(e.get("sample_id")), str(e.get("error_type")), str(e.get("detail") or e.get("message") or ""))
+        for e in existing_errors
+    }
+    merged_errors = list(existing_errors)
+    for err in scoring_errors:
+        key = (str(err.get("sample_id")), str(err.get("error_type")), str(err.get("detail") or ""))
+        if key not in existing_keys:
+            merged_errors.append(err)
+            existing_keys.add(key)
+
+    with errors_file.open("w", encoding="utf-8") as handle:
+        for err in merged_errors:
+            handle.write(json.dumps(err, ensure_ascii=False) + "\n")
+
+    _refresh_manifest_checksums(out_path)
+    return metrics, scoring_errors
 
 
 def export_hallusionbench_artifacts(
@@ -279,3 +427,32 @@ def export_hallusionbench_artifacts(
     with (out_path / "errors.jsonl").open("w", encoding="utf-8") as f:
         for err in error_records:
             f.write(json.dumps(err, ensure_ascii=False) + "\n")
+
+    _refresh_manifest_checksums(out_path)
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="HallusionBench Member C scoring CLI")
+    parser.add_argument("--run-dir", type=Path, required=True, help="Member B run directory containing predictions.jsonl")
+    parser.add_argument("--dataset-json", type=Path, required=True, help="Path to locked HallusionBench.json")
+    parser.add_argument("--data-root", type=Path, default=None, help="Dataset root directory")
+    parser.add_argument("--protocol-version", default="unverified_draft_rule_based")
+    parser.add_argument("--evaluation-mode", default="alternative_evaluation_rule_based")
+    args = parser.parse_args(argv)
+
+    from benchmarks.hallusionbench.dataset import HallusionBenchDataset
+
+    dataset = HallusionBenchDataset(args.dataset_json, data_root=args.data_root)
+    dataset_index = dataset.load_index(verify_images=False, verify_image_readable=False)
+    metrics, _ = score_run_directory(
+        args.run_dir,
+        dataset_index,
+        protocol_version=args.protocol_version,
+        evaluation_mode=args.evaluation_mode,
+    )
+    print(json.dumps(metrics, indent=2, ensure_ascii=False))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
