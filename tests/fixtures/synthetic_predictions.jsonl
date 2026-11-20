@@ -1,0 +1,2 @@
+{"sample_id":"fixture-001","prediction":"yes","status":"COMPLETED","run_config_hash":"fixture-only"}
+{"sample_id":"fixture-002","prediction":"no","status":"COMPLETED","run_config_hash":"fixture-only"}

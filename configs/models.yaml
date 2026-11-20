@@ -1,0 +1,41 @@
+
+protocol_version: "0.2"
+
+policy:
+  official_weights_only: true
+  allow_quantization: false
+  allow_finetuning: false
+  allow_dtype_fallback: false
+  require_exact_revision: true
+  approved_dtypes: []
+
+models:
+  qwen3_vl:
+    model_id: "Qwen/Qwen3-VL-4B-Instruct"
+    revision: null
+    processor_revision: null
+    target_dtype: "bfloat16"
+    dtype_status: "PENDING_VERIFICATION"
+    quantization: null
+    trust_remote_code: null
+    verification_status: "PENDING_VERIFICATION"
+
+  smolvlm2:
+    model_id: "HuggingFaceTB/SmolVLM2-2.2B-Instruct"
+    revision: null
+    processor_revision: null
+    target_dtype: "bfloat16"
+    dtype_status: "PENDING_VERIFICATION"
+    quantization: null
+    trust_remote_code: false
+    verification_status: "PENDING_VERIFICATION"
+
+  phi4_multimodal:
+    model_id: "microsoft/Phi-4-multimodal-instruct"
+    revision: null
+    processor_revision: null
+    target_dtype: "bfloat16"
+    dtype_status: "PENDING_VERIFICATION"
+    quantization: null
+    trust_remote_code: null
+    verification_status: "PENDING_VERIFICATION"

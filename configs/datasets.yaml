@@ -1,0 +1,46 @@
+protocol_version: "0.1"
+
+datasets:
+  pope:
+    name: "POPE"
+    source: "lmms-lab/POPE"
+    revision: null
+    subsets:
+      - "random"
+      - "popular"
+      - "adversarial"
+    sample_schema:
+      required_fields:
+        - "sample_id"
+        - "image"
+        - "question"
+        - "answer"
+    scoring_method: "preserve_original_POPE_sampling_and_metrics"
+    verification_status: "PENDING_VERIFICATION"
+    license: null
+
+  hallusionbench:
+    name: "HallusionBench"
+    source: "tianyi-lab/HallusionBench"
+    revision: null
+    subsets: null
+    sample_schema:
+      required_fields:
+        - "sample_id"
+        - "question"
+    scoring_method: "preserve_original_HallusionBench_protocol"
+    verification_status: "PENDING_VERIFICATION"
+    license: null
+
+  mmhal:
+    name: "MMHal-Bench"
+    source: "Shengcao1006/MMHal-Bench"
+    revision: null
+    subsets: null
+    sample_schema:
+      required_fields:
+        - "sample_id"
+        - "question"
+    scoring_method: "original_judge_protocol_pending_access_and_cost_verification"
+    verification_status: "PENDING_VERIFICATION"
+    license: null
