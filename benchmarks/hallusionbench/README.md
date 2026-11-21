@@ -8,15 +8,22 @@
 
 ```text
 benchmarks/hallusionbench/
-├── README.md                  # Tài liệu duy nhất của nhóm (dữ liệu, quy trình, cách chạy)
+├── README.md                  # Tài liệu chính của nhóm (dữ liệu, kết quả thật, quy trình, cách chạy)
 ├── __init__.py                # Export chính + lớp HallusionBenchBenchmark(BaseBenchmark)
 ├── dataset.py                 # Phần A: Schema, loader chỉ đọc, audit thật, chọn pilot đủ 8/8 dạng bài
 ├── inference.py               # Phần B: Prompt không lộ nhãn, runner tự resume, nạp 3 model HF, xuất 7 artifact + log/JSON giống MMHal
-├── evaluation.py              # Phần C: Chấm aAcc/fAcc/qAcc + VD/VS + Easy/Hard + bảng lỗi 6 nhãn + xuất gói deliverables chuẩn repo
-├── hallusionbench_colab.ipynb # Notebook Google Colab chia riêng từng model (5A/5B/5C) + xuất zip chuẩn cấu trúc repo
-├── results/                   # Nơi lưu kết quả inference & evaluation chạy thật theo từng model (7 artifact chuẩn + format MMHal)
+├── evaluation.py              # Phần C: Chấm aAcc/fAcc/qAcc + VD/VS + Easy/Hard + bảng lỗi + export deliverables + --mode visualize
+├── hallusionbench_colab.ipynb # Notebook Google Colab 1-click Run all (venv riêng cho Phi-4 + tự vẽ 5 biểu đồ & đóng zip)
+├── results/                   # Kết quả inference & đánh giá CHẠY THẬT của đủ 3/3 model (7 artifact chuẩn + format MMHal)
+│   ├── README.md              # Bảng tổng hợp 3 model + lệnh kiểm chứng
+│   ├── REPORT.md              # Báo cáo trực quan hoàn chỉnh nhúng sẵn 5 biểu đồ PNG (300 DPI)
+│   ├── figures/               # 5 biểu đồ PNG 300 DPI (fig1..fig5) sinh trực tiếp từ metrics thật
+│   ├── cross_model_disagreements.json  # 18 ca bất đồng giữa 3 model
+│   ├── smolvlm2/              # 7 artifact chuẩn + JSON/log MMHal + analysis/ + README.md
+│   ├── qwen3_vl/              # 7 artifact chuẩn + JSON/log MMHal + analysis/ + README.md
+│   └── phi4_multimodal/       # 7 artifact chuẩn + JSON/log MMHal + analysis/ + README.md
 └── tests/
-    └── test_hallusionbench.py # Toàn bộ unit test + E2E test CPU-only (chạy được cả unittest & pytest)
+    └── test_hallusionbench.py # Toàn bộ unit test + E2E test CPU-only (6/6 tests OK)
 ```
 
 ---
@@ -38,17 +45,20 @@ benchmarks/hallusionbench/
 
 ---
 
-## 3. Kết quả thực nghiệm đã có (Pilot 8/8 dạng bài — Tesla T4 `float16`)
+## 3. Kết quả thực nghiệm đã có (100% CHẠY THẬT — Pilot 8/8 dạng bài, Tesla T4 `float16`)
 
-> Chi tiết đầy đủ tại [`results/README.md`](results/README.md) và artifact chuẩn schema tại `results/hb_colab_t4_pilot/`. Kết quả chạy thật 0-epoch trên 34 câu hỏi (15 hình ảnh, 14 cặp kiểm soát phủ đủ 8/8 subcategory: `chart`, `figure`, `illusion`, `map`, `math`, `ocr`, `table`, `video`), **0 lỗi kỹ thuật / 0 lỗi định dạng**.
+> **Xác thực nguồn gốc dữ liệu (KHÔNG phải kết quả giả):**
+> - Toàn bộ kết quả bên dưới là **kết quả inference thật (0-epoch, zero-shot)** chạy trên **Google Colab GPU Tesla T4 (14.56 GiB VRAM)** ngày **21/11/2026** bằng trọng số chính thức tải trực tiếp từ Hugging Face và bộ dữ liệu thật `rayguan/HallusionBench` @ `2067dfdce5abc7efdbb0927f4721ae282f0b6c51` (`HallusionBench.json` SHA-256 `ca6e0fb6...`).
+> - Phạm vi đã chạy: tập **`pilot` cố định gồm 34 câu hỏi / 15 hình ảnh thật / 14 cặp kiểm soát** phủ đủ **8/8 dạng bài** (`chart`, `figure`, `illusion`, `map`, `math`, `ocr`, `table`, `video`), **0 lỗi kỹ thuật / 0 lỗi định dạng** (`errors.jsonl` rỗng ở cả 3 model). Không mạo nhận là `full_baseline` (1.129 câu) hay `official`.
+> - Bằng chứng tái lập đầy đủ nằm trong từng thư mục model (`predictions.jsonl` có câu trả lời gốc & `timing_ms` thực tế từng câu, `run_metadata.json` có GPU/CUDA/commit SHA của model & git, `inference_log.txt`, và `manifest.json` có SHA-256 toàn bộ tệp), được lưu đồng thời tại [`benchmarks/hallusionbench/results/`](results/README.md) và `results/hb_colab_t4_pilot/` (đúng `docs/result_schema.md`).
 
-| Model | Revision | Stage / Status | Hoàn thành | aAcc | fAcc | qAcc | Báo cáo chi tiết |
-|---|---|---|---:|---:|---:|---:|---|
-| `smolvlm2` (`HuggingFaceTB/SmolVLM2-2.2B-Instruct`) | `be92141c8d` | `pilot` / `COMPLETED` | 34/34 | **58.82%** | **40.00%** | **7.14%** | [`results/smolvlm2/README.md`](results/smolvlm2/README.md) |
-| `qwen3_vl` (`Qwen/Qwen3-VL-4B-Instruct`) | `ebb281ec70` | `pilot` / `COMPLETED` | 34/34 | **67.65%** | **60.00%** | **21.43%** | [`results/qwen3_vl/README.md`](results/qwen3_vl/README.md) |
-| `phi4_multimodal` (`microsoft/Phi-4-multimodal-instruct`) | `93f923e1a7` | `pilot` / `COMPLETED` | 34/34 | **61.76%** | **40.00%** | **21.43%** | [`results/phi4_multimodal/README.md`](results/phi4_multimodal/README.md) |
+| Model | Model Revision (HF SHA) | Stage / Status | Avg Latency | Hoàn thành | aAcc | fAcc | qAcc | Báo cáo chi tiết |
+|---|---|---|---:|---:|---:|---:|---:|---|
+| `smolvlm2` (`HuggingFaceTB/SmolVLM2-2.2B-Instruct`) | `be92141c8d` | `pilot` / `COMPLETED` | 0.95s | 34/34 | **58.82%** | **40.00%** | **7.14%** | [`results/smolvlm2/README.md`](results/smolvlm2/README.md) |
+| `qwen3_vl` (`Qwen/Qwen3-VL-4B-Instruct`) | `ebb281ec70` | `pilot` / `COMPLETED` | 0.64s | 34/34 | **67.65%** | **60.00%** | **21.43%** | [`results/qwen3_vl/README.md`](results/qwen3_vl/README.md) |
+| `phi4_multimodal` (`microsoft/Phi-4-multimodal-instruct`) | `93f923e1a7` | `pilot` / `COMPLETED` | 16.76s *(CPU offload)* | 34/34 | **61.76%** | **40.00%** | **21.43%** | [`results/phi4_multimodal/README.md`](results/phi4_multimodal/README.md) |
 
-- **Bất đồng giữa 3 mô hình đã chạy:** **18 ca** ([`results/cross_model_disagreements.json`](results/cross_model_disagreements.json)).
+- **Bất đồng giữa 3 mô hình:** **18 ca** ([`results/cross_model_disagreements.json`](results/cross_model_disagreements.json)) | Cùng đúng: **13/34** | Cùng sai: **3/34**.
 - **Báo cáo trực quan & 5 biểu đồ PNG (300 DPI):** [`results/REPORT.md`](results/REPORT.md) và thư mục [`results/figures/`](results/figures/).
 
 ---
@@ -89,12 +99,15 @@ python -m benchmarks.hallusionbench.dataset --mode export-pilot --dataset-json "
 # - SmolVLM2 / Qwen3-VL (cần transformers mới):
 python -m benchmarks.hallusionbench.inference --mode run --allow-model-load --model-key smolvlm2 --stage pilot --dtype float16 --attn-implementation sdpa --dataset-json "$DATA_ROOT/HallusionBench.json" --data-root "$DATA_ROOT" --dataset-revision 2067dfdce5abc7efdbb0927f4721ae282f0b6c51 --pilot-file pilot_ids_8sub.json --experiment-id hb_pilot --run-id pilot_smolvlm2_fp16 --output-root "$OUTPUT_DIR"
 # - Phi-4-multimodal (cần transformers==4.48.2 accelerate==1.3.0 peft==0.13.2; thêm CPU offload trên T4):
-python -m benchmarks.hallusionbench.inference --mode run --allow-model-load --model-key phi4_multimodal --trust-remote-code --stage pilot --dtype float16 --attn-implementation eager --max-gpu-memory 10GiB --max-cpu-memory 12GiB --offload-folder /tmp/phi4_offload --dataset-json "$DATA_ROOT/HallusionBench.json" --data-root "$DATA_ROOT" --dataset-revision 2067dfdce5abc7efdbb0927f4721ae282f0b6c51 --pilot-file pilot_ids_8sub.json --experiment-id hb_pilot --run-id pilot_phi4_multimodal_fp16 --output-root "$OUTPUT_DIR"
+python -m benchmarks.hallusionbench.inference --mode run --allow-model-load --model-key phi4_multimodal --trust-remote-code --stage pilot --dtype float16 --attn-implementation eager --max-gpu-memory 8GiB --max-cpu-memory 10GiB --offload-folder /tmp/phi4_offload --dataset-json "$DATA_ROOT/HallusionBench.json" --data-root "$DATA_ROOT" --dataset-revision 2067dfdce5abc7efdbb0927f4721ae282f0b6c51 --pilot-file pilot_ids_8sub.json --experiment-id hb_pilot --run-id pilot_phi4_multimodal_fp16 --output-root "$OUTPUT_DIR"
 
 # 3. Chấm điểm, xuất gói chuẩn repo (7 artifact + format MMHal) vào benchmarks/hallusionbench/results/ & kiểm chứng
 python -m benchmarks.hallusionbench.evaluation --mode export-deliverables --overwrite-export --run-dirs smolvlm2="$OUTPUT_DIR/hb_pilot/pilot_smolvlm2_fp16" qwen3_vl="$OUTPUT_DIR/hb_pilot/pilot_qwen3_vl_fp16" phi4_multimodal="$OUTPUT_DIR/hb_pilot/pilot_phi4_multimodal_fp16" --dataset-json "$DATA_ROOT/HallusionBench.json" --data-root "$DATA_ROOT"
 python scripts/check_results.py benchmarks/hallusionbench/results/smolvlm2/predictions.jsonl
 python scripts/check_manifest.py benchmarks/hallusionbench/results/smolvlm2
+
+# 4. Sinh lại bộ 5 biểu đồ PNG (300 DPI) & báo cáo REPORT.md từ kết quả thật
+python -m benchmarks.hallusionbench.evaluation --mode visualize --results-dir benchmarks/hallusionbench/results
 ```
 
 ### 5.3. Chạy kiểm thử CPU-only
