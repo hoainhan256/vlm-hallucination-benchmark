@@ -1,0 +1,51 @@
+{
+  "model_name": "Qwen/Qwen3-VL-4B-Instruct",
+  "model_source": "Qwen/Qwen3-VL-4B-Instruct",
+  "dataset_name": "lmms-lab-encoder/POPE",
+  "dataset_split": "test",
+  "dataset_files": [
+    "data/test-00000-of-00003.parquet",
+    "data/test-00001-of-00003.parquet",
+    "data/test-00002-of-00003.parquet"
+  ],
+  "data_source_mode": "hub_parquet",
+  "total_samples_in_split": 9000,
+  "total_samples": 9000,
+  "processed_samples": 9000,
+  "pending_samples": 0,
+  "successful_samples": 9000,
+  "failed_samples": 0,
+  "invalid_predictions": 0,
+  "yes_count": 3886,
+  "no_count": 5114,
+  "parsed_but_extra_text_count": 0,
+  "sample_key_mode": "id",
+  "inference_timestamp_utc": "2026-11-20T11:01:26.591321+00:00",
+  "inference_parameters": {
+    "max_samples": null,
+    "sampling": "head",
+    "seed": 42,
+    "batch_size": 1,
+    "max_new_tokens": 8,
+    "do_sample": false,
+    "temperature": null,
+    "max_image_side": 1024,
+    "oom_fallback_sides": [
+      768,
+      512,
+      384
+    ],
+    "dtype": "torch.float16",
+    "prompt_template": "Answer the following question based only on the provided image.\n\nQuestion: {question}\n\nRespond with exactly one word: Yes or No.\n\nDo not provide explanations.",
+    "save_interval": 100,
+    "resume": true,
+    "retry_failed": true
+  },
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "transformers": "5.20.2",
+    "gpu": "Tesla T4"
+  },
+  "interrupted": false
+}
