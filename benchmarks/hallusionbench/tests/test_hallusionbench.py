@@ -610,6 +610,35 @@ class TestHallusionBenchSuite(unittest.TestCase):
                 0,
             )
 
+            # Optional matplotlib visualization check (runs when matplotlib is installed)
+            try:
+                import matplotlib  # noqa: F401
+            except ModuleNotFoundError:
+                pass
+            else:
+                self.assertEqual(
+                    evaluation_cli_main(
+                        [
+                            "--mode", "visualize",
+                            "--results-dir", str(deliverables_out),
+                            "--dpi", "100",
+                        ]
+                    ),
+                    0,
+                )
+                for fig_name in (
+                    "fig1_overall_metrics.png",
+                    "fig2_category_and_difficulty.png",
+                    "fig3_subcategory_heatmap.png",
+                    "fig4_visual_input_condition.png",
+                    "fig5_errors_and_latency.png",
+                ):
+                    fig_path = deliverables_out / "figures" / fig_name
+                    self.assertTrue(fig_path.is_file() and fig_path.stat().st_size > 1000, f"Invalid chart {fig_name}")
+                rep_text = (deliverables_out / "REPORT.md").read_text(encoding="utf-8")
+                self.assertIn("fig1_overall_metrics.png", rep_text)
+                self.assertIn("fig4_visual_input_condition.png", rep_text)
+
 
 if __name__ == "__main__":
     unittest.main()

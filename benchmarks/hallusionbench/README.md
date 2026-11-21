@@ -49,6 +49,7 @@ benchmarks/hallusionbench/
 | `phi4_multimodal` (`microsoft/Phi-4-multimodal-instruct`) | `93f923e1a7` | `pilot` / `COMPLETED` | 34/34 | **61.76%** | **40.00%** | **21.43%** | [`results/phi4_multimodal/README.md`](results/phi4_multimodal/README.md) |
 
 - **Bất đồng giữa 3 mô hình đã chạy:** **18 ca** ([`results/cross_model_disagreements.json`](results/cross_model_disagreements.json)).
+- **Báo cáo trực quan & 5 biểu đồ PNG (300 DPI):** [`results/REPORT.md`](results/REPORT.md) và thư mục [`results/figures/`](results/figures/).
 
 ---
 
