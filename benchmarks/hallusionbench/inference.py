@@ -252,6 +252,9 @@ class HallusionRunConfig:
     quantization: str | None = None
     attn_implementation: str | None = None
     device_map: str | dict[str, Any] | None = "auto"
+    max_gpu_memory: str | None = None
+    max_cpu_memory: str | None = None
+    offload_folder: str | None = None
     trust_remote_code: bool = False
     dataset_source: str = HF_AUTHOR_MIRROR_SOURCE
     dataset_revision: str | None = None
@@ -447,7 +450,21 @@ def collect_runtime_environment(repo_root: str | Path = REPO_ROOT) -> dict[str, 
 
 def write_manifest(run_dir: Path, run_config: HallusionRunConfig, status: str) -> dict[str, Any]:
     files: dict[str, dict[str, Any]] = {}
-    for name in ("predictions.jsonl", "metrics.json", "run_config.yaml", "run_metadata.json", "errors.jsonl", "run_status.json"):
+    tracked_names = (
+        "predictions.jsonl",
+        "metrics.json",
+        "run_config.yaml",
+        "run_metadata.json",
+        "errors.jsonl",
+        "run_status.json",
+        "inference_config.json",
+        "inference_summary.json",
+        "inference_log.txt",
+        f"{run_config.model_key}_hallusionbench_responses.json",
+        f"{run_config.model_key}_hallusionbench_evaluation.json",
+        f"{run_config.model_key}_hallusionbench_summary.json",
+    )
+    for name in tracked_names:
         file_path = run_dir / name
         if file_path.exists():
             files[name] = {"size_bytes": file_path.stat().st_size, "sha256": sha256_file(file_path)}
@@ -465,6 +482,57 @@ def write_manifest(run_dir: Path, run_config: HallusionRunConfig, status: str) -
     }
     _write_json(run_dir / "manifest.json", manifest)
     return manifest
+
+
+def _append_log_line(path: Path, message: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+    with path.open("a", encoding="utf-8") as handle:
+        handle.write(f"[{stamp}] {message}\n")
+        handle.flush()
+
+
+def _format_mmhal_style_responses(
+    merged_records: Sequence[Mapping[str, Any]],
+    question_lookup: Mapping[str, str],
+    filename_lookup: Mapping[str, str | None],
+) -> list[dict[str, Any]]:
+    """Build clean human-readable responses JSON (MMHal-style) without leaking ground truth."""
+    responses: list[dict[str, Any]] = []
+    for rec in merged_records:
+        sid = str(rec.get("sample_id"))
+        meta = rec.get("metadata") if isinstance(rec.get("metadata"), Mapping) else {}
+        status = rec.get("status")
+        responses.append(
+            {
+                "sample_id": sid,
+                "category": meta.get("category"),
+                "subcategory": meta.get("subcategory"),
+                "visual_input": rec.get("visual_input", meta.get("visual_input")),
+                "visual_input_raw": meta.get("visual_input_raw"),
+                "set_id": meta.get("set_id"),
+                "figure_id": meta.get("figure_id"),
+                "question_id": meta.get("question_id"),
+                "filename": filename_lookup.get(sid),
+                "question": question_lookup.get(sid),
+                "prompt": rec.get("prompt"),
+                "model_answer": rec.get("raw_prediction", rec.get("prediction")) or "",
+                "inference_status": "SUCCESS" if status == "COMPLETED" else str(status or "FAILED"),
+                "timing_ms": rec.get("timing_ms"),
+                "error": rec.get("error"),
+            }
+        )
+    return responses
+
+
+def _resolve_device_label(env: Mapping[str, Any], runtime_info: Mapping[str, Any]) -> str:
+    gpus = env.get("gpu")
+    if isinstance(gpus, list) and gpus:
+        return ", ".join(str(g) for g in gpus)
+    alloc = runtime_info.get("device_allocation")
+    if isinstance(alloc, str) and alloc:
+        return alloc
+    return "cpu"
 
 
 def write_blocked_run(
@@ -586,6 +654,8 @@ class HallusionInferenceRunner:
         predictions_path = self.output_dir / "predictions.jsonl"
         errors_path = self.output_dir / "errors.jsonl"
         run_status_path = self.output_dir / "run_status.json"
+        log_path = self.output_dir / "inference_log.txt"
+        responses_json_path = self.output_dir / f"{self.run_config.model_key}_hallusionbench_responses.json"
 
         existing_records: list[dict[str, Any]] = []
         if resume:
@@ -600,6 +670,45 @@ class HallusionInferenceRunner:
 
         (self.output_dir / "run_config.yaml").write_text(_dump_yaml(self.run_config.to_dict()), encoding="utf-8")
         started_at = _utc_now_iso()
+        run_t0 = time.perf_counter()
+        _write_json(
+            self.output_dir / "inference_config.json",
+            {
+                "experiment_id": self.run_config.experiment_id,
+                "run_id": self.run_config.run_id,
+                "benchmark": "hallusionbench",
+                "stage": self.run_config.stage,
+                "model_key": self.run_config.model_key,
+                "model_id": self.run_config.model_id,
+                "model_revision": self.run_config.model_revision,
+                "processor_revision": self.run_config.processor_revision,
+                "dataset": self.run_config.dataset_source,
+                "dataset_revision": self.run_config.dataset_revision,
+                "total_samples": len(records),
+                "target_dtype": self.run_config.dtype,
+                "attn_implementation": self.run_config.attn_implementation,
+                "device_map": self.run_config.device_map,
+                "max_gpu_memory": self.run_config.max_gpu_memory,
+                "max_cpu_memory": self.run_config.max_cpu_memory,
+                "offload_folder": self.run_config.offload_folder,
+                "prompt_config": self.run_config.prompt_config.to_dict(),
+                "generation_config": {
+                    **self.run_config.generation_config_dict(),
+                    "temperature": self.run_config.temperature,
+                    "top_p": self.run_config.top_p,
+                    "batch_size": self.run_config.batch_size,
+                    "seed": self.run_config.seed,
+                },
+                "run_config_hash": self.config_hash,
+                "timestamp": started_at,
+            },
+        )
+        _append_log_line(
+            log_path,
+            f"START run_id={self.run_config.run_id} model={self.run_config.model_id} "
+            f"stage={self.run_config.stage} dtype={self.run_config.dtype} "
+            f"scope={len(records)} already_completed={len(completed_ids)}",
+        )
         _write_json(
             run_status_path,
             {
@@ -617,6 +726,8 @@ class HallusionInferenceRunner:
         merged_records = list(existing_records)
         new_completed = new_failed = skipped_completed = 0
         seen_scope_ids: set[str] = set()
+        question_lookup: dict[str, str] = {}
+        filename_lookup: dict[str, str | None] = {}
 
         for idx, raw_record in enumerate(records):
             sample_id_hint = str(raw_record.get("sample_id") or f"idx_{idx}")
@@ -630,6 +741,9 @@ class HallusionInferenceRunner:
                     verify_image_exists=self.verify_image_exists,
                 )
                 sample_id = prepared.sample_id
+                question_lookup[sample_id] = str(raw_record.get("question", ""))
+                raw_fn = raw_record.get("filename")
+                filename_lookup[sample_id] = str(raw_fn) if raw_fn is not None else None
                 if sample_id in seen_scope_ids:
                     raise ValueError(f"Duplicate sample_id in input scope: {sample_id}")
                 seen_scope_ids.add(sample_id)
@@ -661,11 +775,20 @@ class HallusionInferenceRunner:
                 _write_jsonl(predictions_path, merged_records)
                 completed_ids.add(sample_id)
                 new_completed += 1
+                preview = raw_response.replace("\n", " ").strip()[:80]
+                _append_log_line(
+                    log_path,
+                    f"[{idx + 1}/{len(records)}] ID {sample_id} ({elapsed_ms}ms) -> {preview}",
+                )
 
             except Exception as exc:
                 elapsed_ms = round((time.perf_counter() - t0) * 1000.0, 2)
                 sample_id = prepared.sample_id if prepared is not None else sample_id_hint
                 err_type = _classify_exception(exc)
+                _append_log_line(
+                    log_path,
+                    f"[{idx + 1}/{len(records)}] ID {sample_id} ERROR ({err_type}, {elapsed_ms}ms): {exc}",
+                )
                 _append_jsonl(
                     errors_path,
                     {
@@ -715,8 +838,43 @@ class HallusionInferenceRunner:
         total_failed = sum(1 for r in merged_records if r.get("status") != "COMPLETED")
         final_status = "COMPLETED" if total_failed == 0 and total_completed == len(records) else "FAILED"
         finished_at = _utc_now_iso()
+        duration_seconds = round(time.perf_counter() - run_t0, 2)
 
         runtime_info = model_adapter.get_runtime_info()
+        timings = [float(r["timing_ms"]) for r in merged_records if isinstance(r.get("timing_ms"), (int, float))]
+        avg_latency_ms = round(sum(timings) / len(timings), 2) if timings else None
+
+        responses_payload = _format_mmhal_style_responses(merged_records, question_lookup, filename_lookup)
+        responses_json_path.write_text(
+            json.dumps(responses_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        )
+        _write_json(
+            self.output_dir / "inference_summary.json",
+            {
+                "experiment_id": self.run_config.experiment_id,
+                "run_id": self.run_config.run_id,
+                "benchmark": "hallusionbench",
+                "model_key": self.run_config.model_key,
+                "model_id": self.run_config.model_id,
+                "stage": self.run_config.stage,
+                "status": final_status,
+                "total_samples": len(records),
+                "success_count": total_completed,
+                "failed_count": total_failed,
+                "duration_seconds": duration_seconds,
+                "avg_latency_ms": avg_latency_ms,
+                "device": _resolve_device_label(env, runtime_info),
+                "dtype": self.run_config.dtype,
+                "run_config_hash": self.config_hash,
+                "started_at_utc": started_at,
+                "finished_at_utc": finished_at,
+            },
+        )
+        _append_log_line(
+            log_path,
+            f"FINISH status={final_status} success={total_completed}/{len(records)} "
+            f"failed={total_failed} duration_s={duration_seconds}",
+        )
         _write_json(
             self.output_dir / "metrics.json",
             {
@@ -745,6 +903,9 @@ class HallusionInferenceRunner:
                 "dtype": self.run_config.dtype,
                 "attn_implementation": runtime_info.get("attn_implementation", self.run_config.attn_implementation),
                 "device_allocation": runtime_info.get("device_allocation"),
+                "max_gpu_memory": self.run_config.max_gpu_memory,
+                "max_cpu_memory": self.run_config.max_cpu_memory,
+                "offload_folder": self.run_config.offload_folder,
                 "run_config_hash": self.config_hash,
                 "status": final_status,
                 "counts": {
@@ -794,6 +955,7 @@ class HuggingFaceHallusionModel:
         }
 
     def load_model(self) -> None:
+        os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
         import torch
         from transformers import AutoProcessor
 
@@ -813,11 +975,20 @@ class HuggingFaceHallusionModel:
             "torch_dtype": torch_dtype,
             "device_map": self.run_config.device_map,
             "trust_remote_code": self.run_config.trust_remote_code,
+            "low_cpu_mem_usage": True,
         }
         if self.run_config.model_revision:
             model_kwargs["revision"] = self.run_config.model_revision
         if self.run_config.attn_implementation:
             model_kwargs["attn_implementation"] = self.run_config.attn_implementation
+        if self.run_config.max_gpu_memory:
+            max_mem: dict[Any, str] = {0: self.run_config.max_gpu_memory}
+            if self.run_config.max_cpu_memory:
+                max_mem["cpu"] = self.run_config.max_cpu_memory
+            model_kwargs["max_memory"] = max_mem
+        if self.run_config.offload_folder:
+            Path(self.run_config.offload_folder).mkdir(parents=True, exist_ok=True)
+            model_kwargs["offload_folder"] = self.run_config.offload_folder
 
         family = self.spec["loader_family"]
         if family == "smolvlm2":
@@ -825,9 +996,12 @@ class HuggingFaceHallusionModel:
 
             self.model = AutoModelForImageTextToText.from_pretrained(self.run_config.model_id, **model_kwargs)
         elif family == "qwen3_vl":
-            from transformers import Qwen3VLForConditionalGeneration
+            try:
+                from transformers import Qwen3VLForConditionalGeneration as QwenVLMClass
+            except ImportError:
+                from transformers import AutoModelForImageTextToText as QwenVLMClass
 
-            self.model = Qwen3VLForConditionalGeneration.from_pretrained(self.run_config.model_id, **model_kwargs)
+            self.model = QwenVLMClass.from_pretrained(self.run_config.model_id, **model_kwargs)
         elif family == "phi4_multimodal":
             from transformers import AutoConfig, AutoModelForCausalLM
 
@@ -900,7 +1074,10 @@ class HuggingFaceHallusionModel:
         import torch
         from PIL import Image
 
-        pil_image = Image.open(prepared.image_path).convert("RGB") if prepared.visual_input and prepared.image_path else None
+        pil_image = None
+        if prepared.visual_input and prepared.image_path:
+            with Image.open(prepared.image_path) as img:
+                pil_image = img.convert("RGB")
         if prepared.visual_input and pil_image is None:
             raise ValueError(f"Sample {prepared.sample_id}: visual_input is True but image_path is None")
 
@@ -941,14 +1118,19 @@ class HuggingFaceHallusionModel:
             except (TypeError, ValueError):
                 pass
 
-        with torch.inference_mode():
-            output_ids = self.model.generate(**moved, **gen_kwargs)
+        try:
+            with torch.inference_mode():
+                output_ids = self.model.generate(**moved, **gen_kwargs)
 
-        input_len = int(moved["input_ids"].shape[-1])
-        decoded = self.processor.batch_decode(
-            output_ids[:, input_len:], skip_special_tokens=True, clean_up_tokenization_spaces=False
-        )[0]
-        return decoded.strip()
+            input_len = int(moved["input_ids"].shape[-1])
+            decoded = self.processor.batch_decode(
+                output_ids[:, input_len:], skip_special_tokens=True, clean_up_tokenization_spaces=False
+            )[0]
+            return decoded.strip()
+        finally:
+            del moved, inputs
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
 
     def release_resources(self) -> None:
         self.model = None
@@ -986,6 +1168,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--dtype", choices=ALLOWED_DTYPES, default="bfloat16")
     parser.add_argument("--attn-implementation", default=None)
     parser.add_argument("--device-map", default="auto")
+    parser.add_argument("--max-gpu-memory", default=None, help="Optional GPU memory cap for CPU offload (e.g. 10GiB)")
+    parser.add_argument("--max-cpu-memory", default=None, help="Optional CPU RAM cap for offload (e.g. 12GiB)")
+    parser.add_argument("--offload-folder", default=None, help="Optional disk offload directory when VRAM+RAM is tight")
     parser.add_argument("--model-revision", default=None)
     parser.add_argument("--processor-revision", default=None)
     parser.add_argument("--dataset-json", type=Path, default=None)
@@ -1021,6 +1206,9 @@ def main(argv: Sequence[str] | None = None) -> int:
         dtype=args.dtype,
         attn_implementation=args.attn_implementation,
         device_map=args.device_map,
+        max_gpu_memory=args.max_gpu_memory,
+        max_cpu_memory=args.max_cpu_memory,
+        offload_folder=args.offload_folder,
         trust_remote_code=trust_remote,
         dataset_source=args.dataset_source,
         dataset_revision=args.dataset_revision,

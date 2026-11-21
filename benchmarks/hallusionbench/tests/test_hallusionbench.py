@@ -470,6 +470,146 @@ class TestHallusionBenchSuite(unittest.TestCase):
                     exp_dir,
                 )
 
+    def test_dual_format_mmhal_deliverables_backfill_and_offload_hash_stability(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            json_path = _build_fixture_dataset(root)
+            ds = HallusionBenchDataset(json_path, data_root=root)
+            samples = ds.load(verify_images=True)
+            recs = [s.to_model_safe_dict() for s in samples]
+
+            # Hardware offload knobs must NOT break config_hash() compatibility with existing runs
+            cfg_plain = HallusionRunConfig(
+                experiment_id="exp_dual", run_id="run_phi4", model_key="phi4_multimodal",
+                model_id="microsoft/Phi-4-multimodal-instruct", stage="pilot", dtype="float16",
+                attn_implementation="eager", trust_remote_code=True,
+            )
+            cfg_offload = HallusionRunConfig(
+                experiment_id="exp_dual", run_id="run_phi4", model_key="phi4_multimodal",
+                model_id="microsoft/Phi-4-multimodal-instruct", stage="pilot", dtype="float16",
+                attn_implementation="eager", trust_remote_code=True,
+                max_gpu_memory="10GiB", max_cpu_memory="12GiB", offload_folder=str(root / "offload"),
+            )
+            self.assertEqual(cfg_plain.config_hash(), cfg_offload.config_hash())
+
+            # Run 1 (new runner emits both 7 official artifacts and MMHal-style files)
+            run_phi4 = root / "runs" / "phi4"
+            m_phi4 = ScriptedModel(
+                {
+                    "catVD_subillusion_set0_fig0_q0_vis1": "No",
+                    "catVD_subillusion_set0_fig1_q0_vis2": "Yes",
+                    "catVS_subchart_set3_fig0_q0_vis0": "Yes",
+                    "catVS_subchart_set3_fig1_q0_vis1": "No",
+                }
+            )
+            HallusionInferenceRunner(cfg_offload, run_phi4, data_root=root).run(
+                recs, m_phi4, hardware_info={"cuda_available": False, "bf16_supported": False}
+            )
+            for fname in (
+                "inference_config.json",
+                "inference_summary.json",
+                "inference_log.txt",
+                "phi4_multimodal_hallusionbench_responses.json",
+            ):
+                self.assertTrue((run_phi4 / fname).is_file(), f"Missing {fname}")
+            responses = json.loads((run_phi4 / "phi4_multimodal_hallusionbench_responses.json").read_text(encoding="utf-8"))
+            self.assertEqual(len(responses), 4)
+            self.assertNotIn("gt_answer", responses[0])  # No label leakage in inference responses
+
+            # Run 2 simulates a legacy run (only 7 official artifacts) -> scoring & export must backfill MMHal files
+            run_smol = root / "runs" / "smolvlm2"
+            cfg_smol = HallusionRunConfig(
+                experiment_id="exp_dual", run_id="run_smol", model_key="smolvlm2",
+                model_id="HuggingFaceTB/SmolVLM2-2.2B-Instruct", stage="pilot", dtype="float16",
+            )
+            m_smol = ScriptedModel(
+                {
+                    "catVD_subillusion_set0_fig0_q0_vis1": "Yes",
+                    "catVD_subillusion_set0_fig1_q0_vis2": "Yes",
+                    "catVS_subchart_set3_fig0_q0_vis0": "Yes",
+                    "catVS_subchart_set3_fig1_q0_vis1": "No",
+                }
+            )
+            HallusionInferenceRunner(cfg_smol, run_smol, data_root=root).run(
+                recs, m_smol, hardware_info={"cuda_available": False, "bf16_supported": False}
+            )
+            for legacy_remove in (
+                "inference_config.json",
+                "inference_summary.json",
+                "smolvlm2_hallusionbench_responses.json",
+            ):
+                (run_smol / legacy_remove).unlink()
+
+            deliverables_out = root / "repo_results"
+            self.assertEqual(
+                evaluation_cli_main(
+                    [
+                        "--mode", "export-deliverables",
+                        "--run-dirs", f"smolvlm2={run_smol}", f"phi4_multimodal={run_phi4}",
+                        "--dataset-json", str(json_path), "--data-root", str(root),
+                        "--output-dir", str(deliverables_out),
+                    ]
+                ),
+                0,
+            )
+
+            # Verify both models pass official repo checkers AND have complete MMHal-style deliverables
+            for mk in ("smolvlm2", "phi4_multimodal"):
+                mdir = deliverables_out / mk
+                for fname in (
+                    "predictions.jsonl",
+                    "metrics.json",
+                    "run_config.yaml",
+                    "run_metadata.json",
+                    "errors.jsonl",
+                    "run_status.json",
+                    "manifest.json",
+                    "inference_config.json",
+                    "inference_summary.json",
+                    f"{mk}_hallusionbench_responses.json",
+                    f"{mk}_hallusionbench_evaluation.json",
+                    f"{mk}_hallusionbench_summary.json",
+                    "README.md",
+                ):
+                    self.assertTrue((mdir / fname).is_file(), f"Missing exported {mk}/{fname}")
+                self.assertTrue((mdir / "analysis" / "error_cases.md").is_file())
+                for script_args in (
+                    [str(REPO_ROOT / "scripts" / "check_results.py"), str(mdir / "predictions.jsonl")],
+                    [str(REPO_ROOT / "scripts" / "check_manifest.py"), str(mdir)],
+                ):
+                    proc = subprocess.run([sys.executable, "-B", *script_args], capture_output=True, text=True, check=False)
+                    self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+
+            master_readme = (deliverables_out / "README.md").read_text(encoding="utf-8")
+            self.assertIn("`smolvlm2`", master_readme)
+            self.assertIn("`phi4_multimodal`", master_readme)
+            self.assertIn("`qwen3_vl`", master_readme)  # Honestly listed as PENDING
+            self.assertIn("PENDING", master_readme)
+            self.assertTrue((deliverables_out / "cross_model_disagreements.json").is_file())
+
+            # Refuses overwriting COMPLETED export unless --overwrite-export is passed
+            with self.assertRaises(FileExistsError):
+                evaluation_cli_main(
+                    [
+                        "--mode", "export-deliverables",
+                        "--run-dirs", f"phi4_multimodal={run_phi4}",
+                        "--dataset-json", str(json_path), "--data-root", str(root),
+                        "--output-dir", str(deliverables_out),
+                    ]
+                )
+            self.assertEqual(
+                evaluation_cli_main(
+                    [
+                        "--mode", "export-deliverables",
+                        "--overwrite-export",
+                        "--run-dirs", f"phi4_multimodal={run_phi4}",
+                        "--dataset-json", str(json_path), "--data-root", str(root),
+                        "--output-dir", str(deliverables_out),
+                    ]
+                ),
+                0,
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
