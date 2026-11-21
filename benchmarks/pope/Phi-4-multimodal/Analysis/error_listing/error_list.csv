@@ -1,0 +1,50 @@
+﻿case_id,error_type,object,question,label,pred,raw_output,categories,image_source,sample_key
+FN_01,FN,backpack,Is there a backpack in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000199764,random:499
+FN_02,FN,bed,Is there a bed in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000506178,random:1035
+FN_03,FN,bed,Is there a bed in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000283412,random:35
+FN_04,FN,bird,Is there a bird in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000016775,random:1543
+FN_05,FN,bottle,Is there a bottle in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000167724,random:2057
+FN_06,FN,bowl,Is there a bowl in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000346707,random:1761
+FN_07,FN,broccoli,Is there a broccoli in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000316700,random:1101
+FN_08,FN,car,Is there a car in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000001171,random:1793
+FN_09,FN,chair,Is there a chair in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000501652,random:2173
+FN_10,FN,clock,Is there a clock in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000007795,random:787
+FN_11,FN,laptop,Is there a laptop in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000304819,random:2243
+FN_12,FN,laptop,Is there a laptop in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000286342,random:1853
+FN_13,FN,orange,Is there an orange in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000355342,random:1305
+FN_14,FN,oven,Is there an oven in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000167724,random:2053
+FN_15,FN,person,Is there a person in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000240434,random:2247
+FN_16,FN,person,Is there a person in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000033270,random:159
+FN_17,FN,person,Is there a person in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000498100,random:1191
+FN_18,FN,person,Is there a person in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000346707,random:1763
+FN_19,FN,person,Is there a person in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000200739,random:2535
+FN_20,FN,spoon,Is there a spoon in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000465346,random:2785
+FN_21,FN,sports ball,Is there a sports ball in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000555538,random:2843
+FN_22,FN,sports ball,Is there a sports ball in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000023084,random:2205
+FN_23,FN,sports ball,Is there a sports ball in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000083275,random:455
+FN_24,FN,sports ball,Is there a sports ball in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000323752,random:2955
+FN_25,FN,traffic light,Is there a traffic light in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000256906,random:2377
+FN_26,FN,traffic light,Is there a traffic light in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000054025,random:343
+FN_27,FN,tv,Is there a tv in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000516916,random:133
+FN_28,FN,tv,Is there a tv in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000093948,random:1855
+FN_29,FN,tv,Is there a tv in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000353096,random:517
+FN_30,FN,tv,Is there a tv in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000407386,random:1441
+FN_31,FN,tv,Is there a tv in the image?,yes,no,No,"random,popular,adversarial",COCO_val2014_000000515820,random:1891
+FP_01,FP,backpack,Is there a backpack in the image?,no,yes,Yes,adversarial,COCO_val2014_000000473199,adversarial:1726
+FP_02,FP,bear,Is there a bear in the image?,no,yes,Yes,adversarial,COCO_val2014_000000572260,adversarial:1954
+FP_03,FP,bicycle,Is there a bicycle in the image?,no,yes,Yes,adversarial,COCO_val2014_000000579277,adversarial:2308
+FP_04,FP,bottle,Is there a bottle in the image?,no,yes,Yes,adversarial,COCO_val2014_000000196462,adversarial:1920
+FP_05,FP,car,Is there a car in the image?,no,yes,Yes,popular,COCO_val2014_000000235203,popular:2938
+FP_06,FP,car,Is there a car in the image?,no,yes,Yes,adversarial,COCO_val2014_000000533201,adversarial:2930
+FP_07,FP,chair,Is there a chair in the image?,no,yes,Yes,popular,COCO_val2014_000000153300,popular:1030
+FP_08,FP,chair,Is there a chair in the image?,no,yes,Yes,"popular,adversarial",COCO_val2014_000000203479,popular:772
+FP_09,FP,chair,Is there a chair in the image?,no,yes,Yes,"popular,adversarial",COCO_val2014_000000190788,popular:2914
+FP_10,FP,chair,Is there a chair in the image?,no,yes,Yes,popular,COCO_val2014_000000003845,popular:2964
+FP_11,FP,couch,Is there a couch in the image?,no,yes,Yes,adversarial,COCO_val2014_000000534942,adversarial:2920
+FP_12,FP,dining table,Is there a dining table in the image?,no,yes,Yes,"popular,adversarial",COCO_val2014_000000307262,popular:2410
+FP_13,FP,dining table,Is there a dining table in the image?,no,yes,Yes,popular,COCO_val2014_000000360600,popular:224
+FP_14,FP,dining table,Is there a dining table in the image?,no,yes,Yes,adversarial,COCO_val2014_000000084410,adversarial:2390
+FP_15,FP,dining table,Is there a dining table in the image?,no,yes,Yes,adversarial,COCO_val2014_000000355256,adversarial:2236
+FP_16,FP,person,Is there a person in the image?,no,yes,Yes,"popular,adversarial",COCO_val2014_000000186709,popular:1346
+FP_17,FP,tie,Is there a tie in the image?,no,yes,Yes,random,COCO_val2014_000000511341,random:1406
+FP_18,FP,truck,Is there a truck in the image?,no,yes,Yes,random,COCO_val2014_000000525667,random:1134

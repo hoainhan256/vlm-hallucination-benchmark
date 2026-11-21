@@ -1,0 +1,901 @@
+id,question_id,question,prediction,image_source,category,status,error,raw_output,row_index,sample_key,latency_ms
+20,21,Is there a potted plant in the image?,No,COCO_val2014_000000211674,adversarial,success,,No,20,20,1121.7
+57,58,Is there a car in the image?,No,COCO_val2014_000000017708,adversarial,success,,No,57,57,1536.5
+64,65,Is there a bottle in the image?,No,COCO_val2014_000000574692,adversarial,success,,No,64,64,981.2
+65,66,Is there a cup in the image?,Yes,COCO_val2014_000000574692,adversarial,success,,Yes,65,65,979.3
+67,68,Is there a handbag in the image?,No,COCO_val2014_000000353180,adversarial,success,,No,67,67,985.5
+87,88,Is there a truck in the image?,Yes,COCO_val2014_000000219622,adversarial,success,,Yes,87,87,979.0
+98,99,Is there a remote in the image?,No,COCO_val2014_000000482476,adversarial,success,,No,98,98,990.3
+104,105,Is there a person in the image?,Yes,COCO_val2014_000000131115,adversarial,success,,Yes,104,104,980.7
+120,121,Is there a bowl in the image?,No,COCO_val2014_000000336872,adversarial,success,,No,120,120,1539.5
+122,123,Is there a spoon in the image?,No,COCO_val2014_000000336872,adversarial,success,,No,122,122,1519.2
+166,167,Is there a cow in the image?,No,COCO_val2014_000000140583,adversarial,success,,No,166,166,1545.5
+174,175,Is there a sink in the image?,Yes,COCO_val2014_000000288639,adversarial,success,,Yes,174,174,1544.7
+186,187,Is there a person in the image?,Yes,COCO_val2014_000000063953,adversarial,success,,Yes,186,186,989.5
+193,194,Is there a person in the image?,No,COCO_val2014_000000526321,adversarial,success,,No,193,193,983.4
+211,212,Is there a truck in the image?,No,COCO_val2014_000000170517,adversarial,success,,No,211,211,995.5
+223,224,Is there a car in the image?,No,COCO_val2014_000000360600,adversarial,success,,No,223,223,1548.3
+231,232,Is there a car in the image?,No,COCO_val2014_000000031773,adversarial,success,,No,231,231,1553.2
+232,233,Is there a mouse in the image?,Yes,COCO_val2014_000000031773,adversarial,success,,Yes,232,232,1549.9
+241,242,Is there a person in the image?,No,COCO_val2014_000000574057,adversarial,success,,No,241,241,1550.0
+246,247,Is there a traffic light in the image?,No,COCO_val2014_000000456178,adversarial,success,,No,246,246,1641.2
+248,249,Is there a truck in the image?,Yes,COCO_val2014_000000456178,adversarial,success,,Yes,248,248,1567.6
+251,252,Is there a chair in the image?,No,COCO_val2014_000000456178,adversarial,success,,No,251,251,1569.7
+253,254,Is there a car in the image?,No,COCO_val2014_000000565941,adversarial,success,,No,253,253,968.9
+255,256,Is there a spoon in the image?,Yes,COCO_val2014_000000565941,adversarial,success,,Yes,255,255,967.6
+256,257,Is there a dining table in the image?,Yes,COCO_val2014_000000565941,adversarial,success,,Yes,256,256,1003.2
+258,259,Is there a car in the image?,No,COCO_val2014_000000485564,adversarial,success,,No,258,258,1003.7
+270,271,Is there a backpack in the image?,Yes,COCO_val2014_000000205729,adversarial,success,,Yes,270,270,1552.8
+278,279,Is there a chair in the image?,Yes,COCO_val2014_000000424792,adversarial,success,,Yes,278,278,1657.3
+281,282,Is there a potted plant in the image?,No,COCO_val2014_000000424792,adversarial,success,,No,281,281,1664.2
+304,305,Is there a potted plant in the image?,Yes,COCO_val2014_000000515904,adversarial,success,,Yes,304,304,1004.0
+305,306,Is there a person in the image?,No,COCO_val2014_000000515904,adversarial,success,,No,305,305,996.6
+322,323,Is there a handbag in the image?,Yes,COCO_val2014_000000538236,adversarial,success,,Yes,322,322,994.2
+341,342,Is there a tv in the image?,No,COCO_val2014_000000060213,adversarial,success,,No,341,341,1591.6
+348,349,Is there a person in the image?,Yes,COCO_val2014_000000084447,adversarial,success,,Yes,348,348,1577.5
+360,361,Is there a sandwich in the image?,Yes,COCO_val2014_000000575755,adversarial,success,,Yes,360,360,999.8
+372,373,Is there a person in the image?,Yes,COCO_val2014_000000311327,adversarial,success,,Yes,372,372,1579.4
+391,392,Is there a bottle in the image?,No,COCO_val2014_000000170365,adversarial,success,,No,391,391,997.8
+393,394,Is there a person in the image?,No,COCO_val2014_000000170365,adversarial,success,,No,393,393,998.7
+412,413,Is there a tie in the image?,Yes,COCO_val2014_000000239347,adversarial,success,,Yes,412,412,1586.2
+425,426,Is there a tv in the image?,No,COCO_val2014_000000249715,adversarial,success,,No,425,425,978.5
+427,428,Is there a car in the image?,No,COCO_val2014_000000080022,adversarial,success,,No,427,427,1011.9
+438,439,Is there a chair in the image?,Yes,COCO_val2014_000000231589,adversarial,success,,Yes,438,438,1016.9
+447,448,Is there a chair in the image?,No,COCO_val2014_000000465275,adversarial,success,,No,447,447,1590.5
+450,451,Is there a baseball glove in the image?,Yes,COCO_val2014_000000083275,adversarial,success,,Yes,450,450,1043.8
+452,453,Is there a person in the image?,Yes,COCO_val2014_000000083275,adversarial,success,,Yes,452,452,1002.9
+464,465,Is there a bowl in the image?,Yes,COCO_val2014_000000131018,adversarial,success,,Yes,464,464,1587.5
+478,479,Is there a backpack in the image?,Yes,COCO_val2014_000000332025,adversarial,success,,Yes,478,478,1774.1
+479,480,Is there a handbag in the image?,No,COCO_val2014_000000332025,adversarial,success,,No,479,479,1782.9
+480,481,Is there a person in the image?,Yes,COCO_val2014_000000318204,adversarial,success,,Yes,480,480,1605.0
+497,498,Is there a backpack in the image?,No,COCO_val2014_000000069189,adversarial,success,,No,497,497,1821.7
+505,506,Is there a dining table in the image?,No,COCO_val2014_000000148766,adversarial,success,,No,505,505,1671.6
+517,518,Is there a person in the image?,No,COCO_val2014_000000353096,adversarial,success,,No,517,517,1010.8
+518,519,Is there a mouse in the image?,Yes,COCO_val2014_000000353096,adversarial,success,,Yes,518,518,1007.4
+525,526,Is there a dining table in the image?,Yes,COCO_val2014_000000207205,adversarial,success,,Yes,525,525,1685.8
+529,530,Is there a car in the image?,No,COCO_val2014_000000427113,adversarial,success,,No,529,529,1633.8
+535,536,Is there a bottle in the image?,No,COCO_val2014_000000498374,adversarial,success,,No,535,535,1611.5
+545,546,Is there a backpack in the image?,No,COCO_val2014_000000013348,adversarial,success,,No,545,545,1009.0
+555,556,Is there a cup in the image?,Yes,COCO_val2014_000000190185,adversarial,success,,Yes,555,555,1591.4
+560,561,Is there a bowl in the image?,No,COCO_val2014_000000209755,adversarial,success,,No,560,560,1009.5
+591,592,Is there a bus in the image?,No,COCO_val2014_000000557016,adversarial,success,,No,591,591,1675.4
+609,610,Is there a bus in the image?,No,COCO_val2014_000000520524,adversarial,success,,No,609,609,1591.6
+620,621,Is there a bed in the image?,No,COCO_val2014_000000374061,adversarial,success,,No,620,620,1581.1
+630,631,Is there a bowl in the image?,No,COCO_val2014_000000572075,adversarial,success,,No,630,630,999.1
+666,667,Is there a person in the image?,No,COCO_val2014_000000237767,adversarial,success,,No,666,666,1779.4
+670,671,Is there a dining table in the image?,Yes,COCO_val2014_000000237767,adversarial,success,,Yes,670,670,1896.7
+689,690,Is there a truck in the image?,No,COCO_val2014_000000069196,adversarial,success,,No,689,689,1648.8
+692,693,Is there a couch in the image?,Yes,COCO_val2014_000000366141,adversarial,success,,Yes,692,692,1575.9
+758,759,Is there a train in the image?,No,COCO_val2014_000000044520,adversarial,success,,No,758,758,993.0
+760,761,Is there a stop sign in the image?,Yes,COCO_val2014_000000044520,adversarial,success,,Yes,760,760,1019.8
+766,767,Is there a microwave in the image?,No,COCO_val2014_000000518177,adversarial,success,,No,766,766,996.3
+772,773,Is there a dining table in the image?,No,COCO_val2014_000000203479,adversarial,success,,No,772,772,1012.4
+778,779,Is there a dining table in the image?,Yes,COCO_val2014_000000551881,adversarial,success,,Yes,778,778,1660.1
+786,787,Is there a clock in the image?,No,COCO_val2014_000000007795,adversarial,success,,No,786,786,995.3
+793,794,Is there a person in the image?,No,COCO_val2014_000000303099,adversarial,success,,No,793,793,976.9
+798,799,Is there a fire hydrant in the image?,Yes,COCO_val2014_000000147289,adversarial,success,,Yes,798,798,1779.0
+802,803,Is there a stop sign in the image?,Yes,COCO_val2014_000000147289,adversarial,success,,Yes,802,802,1878.4
+806,807,Is there a person in the image?,Yes,COCO_val2014_000000102439,adversarial,success,,Yes,806,806,979.0
+822,823,Is there a chair in the image?,Yes,COCO_val2014_000000327532,adversarial,success,,Yes,822,822,994.3
+837,838,Is there an oven in the imange?,No,COCO_val2014_000000300876,adversarial,success,,No,837,837,1899.0
+853,854,Is there a car in the image?,No,COCO_val2014_000000270609,adversarial,success,,No,853,853,1003.3
+862,863,Is there a laptop in the image?,Yes,COCO_val2014_000000208028,adversarial,success,,Yes,862,862,996.9
+870,871,Is there a person in the image?,Yes,COCO_val2014_000000424642,adversarial,success,,Yes,870,870,974.6
+871,872,Is there a car in the image?,No,COCO_val2014_000000424642,adversarial,success,,No,871,871,970.2
+875,876,Is there a dog in the image?,No,COCO_val2014_000000424642,adversarial,success,,No,875,875,972.7
+888,889,Is there a sink in the image?,Yes,COCO_val2014_000000079446,adversarial,success,,Yes,888,888,946.6
+895,896,Is there a frisbee in the image?,No,COCO_val2014_000000354398,adversarial,success,,No,895,895,1601.2
+901,902,Is there a potted plant in the image?,Yes,COCO_val2014_000000430052,adversarial,success,,Yes,901,901,1592.1
+907,908,Is there a bear in the image?,Yes,COCO_val2014_000000567886,adversarial,success,,Yes,907,907,971.7
+916,917,Is there a potted plant in the image?,Yes,COCO_val2014_000000539251,adversarial,success,,Yes,916,916,1116.0
+920,921,Is there a carrot in the image?,Yes,COCO_val2014_000000551908,adversarial,success,,Yes,920,920,1000.9
+959,960,Is there a dining table in the image?,No,COCO_val2014_000000489728,adversarial,success,,No,959,959,1645.1
+972,973,Is there a motorcycle in the image?,Yes,COCO_val2014_000000178078,adversarial,success,,Yes,972,972,974.4
+974,975,Is there a car in the image?,Yes,COCO_val2014_000000178078,adversarial,success,,Yes,974,974,975.7
+982,983,Is there a dining table in the image?,Yes,COCO_val2014_000000197219,adversarial,success,,Yes,982,982,1040.9
+986,987,Is there a cake in the image?,No,COCO_val2014_000000460931,adversarial,success,,No,986,986,1762.4
+992,993,Is there a person in the image?,Yes,COCO_val2014_000000506483,adversarial,success,,Yes,992,992,1004.5
+1001,1002,Is there a cup in the image?,No,COCO_val2014_000000468934,adversarial,success,,No,1001,1001,1572.9
+1009,1010,Is there a dining table in the image?,No,COCO_val2014_000000273450,adversarial,success,,No,1009,1009,1816.1
+1013,1014,Is there a truck in the image?,Yes,COCO_val2014_000000273450,adversarial,success,,Yes,1013,1013,1922.7
+1025,1026,Is there a dining table in the image?,No,COCO_val2014_000000449432,adversarial,success,,No,1025,1025,1046.7
+1029,1030,Is there a banana in the image?,No,COCO_val2014_000000153300,adversarial,success,,No,1029,1029,1676.8
+1047,1048,Is there a truck in the image?,No,COCO_val2014_000000205206,adversarial,success,,No,1047,1047,1009.5
+1062,1063,Is there a person in the image?,Yes,COCO_val2014_000000278771,adversarial,success,,Yes,1062,1062,1579.7
+1082,1083,Is there a sports ball in the image?,No,COCO_val2014_000000124629,adversarial,success,,No,1082,1082,1032.5
+1097,1098,Is there a truck in the image?,No,COCO_val2014_000000199959,adversarial,success,,No,1097,1097,1022.4
+1100,1101,Is there a broccoli in the image?,No,COCO_val2014_000000316700,adversarial,success,,No,1100,1100,1628.8
+1136,1137,Is there a clock in the image?,Yes,COCO_val2014_000000246145,adversarial,success,,Yes,1136,1136,1594.7
+1161,1162,Is there a car in the image?,No,COCO_val2014_000000275863,adversarial,success,,No,1161,1161,1002.3
+1163,1164,Is there a backpack in the image?,No,COCO_val2014_000000275863,adversarial,success,,No,1163,1163,1006.0
+1171,1172,Is there a person in the image?,No,COCO_val2014_000000513136,adversarial,success,,No,1171,1171,1588.6
+1186,1187,Is there a donut in the image?,Yes,COCO_val2014_000000175437,adversarial,success,,Yes,1186,1186,1589.3
+1197,1198,Is there a person in the image?,No,COCO_val2014_000000375909,adversarial,success,,No,1197,1197,1111.7
+1210,1211,Is there a spoon in the image?,No,COCO_val2014_000000124930,adversarial,success,,No,1210,1210,1015.7
+1214,1215,Is there a handbag in the image?,No,COCO_val2014_000000112664,adversarial,success,,No,1214,1214,1012.9
+1216,1217,Is there a suitcase in the image?,Yes,COCO_val2014_000000112664,adversarial,success,,Yes,1216,1216,1019.1
+1224,1225,Is there a truck in the image?,No,COCO_val2014_000000377401,adversarial,success,,No,1224,1224,1035.2
+1225,1226,Is there a person in the image?,No,COCO_val2014_000000377401,adversarial,success,,No,1225,1225,1028.0
+1230,1231,Is there a vase in the image?,Yes,COCO_val2014_000000049473,adversarial,success,,Yes,1230,1230,999.6
+1239,1240,Is there a truck in the image?,Yes,COCO_val2014_000000153865,adversarial,success,,Yes,1239,1239,1023.3
+1240,1241,Is there a kite in the image?,Yes,COCO_val2014_000000153865,adversarial,success,,Yes,1240,1240,1026.7
+1244,1245,Is there a spoon in the image?,Yes,COCO_val2014_000000383185,adversarial,success,,Yes,1244,1244,999.2
+1269,1270,Is there a dining table in the image?,No,COCO_val2014_000000244455,adversarial,success,,No,1269,1269,1611.1
+1283,1284,Is there a handbag in the image?,Yes,COCO_val2014_000000098493,adversarial,success,,Yes,1283,1283,1005.9
+1285,1286,Is there a car in the image?,No,COCO_val2014_000000201148,adversarial,success,,No,1285,1285,1075.7
+1287,1288,Is there a dining table in the image?,No,COCO_val2014_000000201148,adversarial,success,,No,1287,1287,1154.3
+1291,1292,Is there a person in the image?,No,COCO_val2014_000000307166,adversarial,success,,No,1291,1291,1590.2
+1300,1301,Is there a bottle in the image?,Yes,COCO_val2014_000000313034,adversarial,success,,Yes,1300,1300,1582.1
+1304,1305,Is there an orange in the imange?,No,COCO_val2014_000000355342,adversarial,success,,No,1304,1304,1037.0
+1309,1310,Is there a person in the image?,No,COCO_val2014_000000333237,adversarial,success,,No,1309,1309,1016.4
+1315,1316,Is there a tv in the image?,No,COCO_val2014_000000526368,adversarial,success,,No,1315,1315,1584.2
+1316,1317,Is there a dining table in the image?,Yes,COCO_val2014_000000526368,adversarial,success,,Yes,1316,1316,1663.3
+1320,1321,Is there a chair in the image?,Yes,COCO_val2014_000000429033,adversarial,success,,Yes,1320,1320,1595.5
+1324,1325,Is there a laptop in the image?,Yes,COCO_val2014_000000429033,adversarial,success,,Yes,1324,1324,1592.5
+1326,1327,Is there a tv in the image?,No,COCO_val2014_000000287035,adversarial,success,,No,1326,1326,980.7
+1328,1329,Is there a mouse in the image?,Yes,COCO_val2014_000000287035,adversarial,success,,Yes,1328,1328,976.9
+1330,1331,Is there a laptop in the image?,Yes,COCO_val2014_000000287035,adversarial,success,,Yes,1330,1330,974.4
+1331,1332,Is there a bottle in the image?,No,COCO_val2014_000000287035,adversarial,success,,No,1331,1331,980.2
+1357,1358,Is there a dining table in the image?,No,COCO_val2014_000000505542,adversarial,success,,No,1357,1357,1678.3
+1361,1362,Is there a bus in the image?,No,COCO_val2014_000000505542,adversarial,success,,No,1361,1361,1735.7
+1371,1372,Is there a person in the image?,No,COCO_val2014_000000280810,adversarial,success,,No,1371,1371,980.9
+1390,1391,Is there a chair in the image?,Yes,COCO_val2014_000000123017,adversarial,success,,Yes,1390,1390,1687.1
+1394,1395,Is there a handbag in the image?,Yes,COCO_val2014_000000316237,adversarial,success,,Yes,1394,1394,1645.8
+1415,1416,Is there a backpack in the image?,Yes,COCO_val2014_000000200583,adversarial,success,,Yes,1415,1415,1580.9
+1423,1424,Is there a person in the image?,No,COCO_val2014_000000100215,adversarial,success,,No,1423,1423,975.1
+1427,1428,Is there a dining table in the image?,Yes,COCO_val2014_000000100215,adversarial,success,,Yes,1427,1427,1006.6
+1429,1430,Is there a dining table in the image?,No,COCO_val2014_000000017379,adversarial,success,,No,1429,1429,1658.3
+1433,1434,Is there a car in the image?,No,COCO_val2014_000000017379,adversarial,success,,No,1433,1433,1591.2
+1435,1436,Is there a dining table in the image?,Yes,COCO_val2014_000000511622,adversarial,success,,Yes,1435,1435,1664.0
+1437,1438,Is there a bottle in the image?,Yes,COCO_val2014_000000511622,adversarial,success,,Yes,1437,1437,1591.4
+1443,1444,Is there a mouse in the image?,No,COCO_val2014_000000407386,adversarial,success,,No,1443,1443,1582.1
+1446,1447,Is there a spoon in the image?,Yes,COCO_val2014_000000039516,adversarial,success,,Yes,1446,1446,998.7
+1451,1452,Is there a dining table in the image?,Yes,COCO_val2014_000000039516,adversarial,success,,Yes,1451,1451,1033.1
+1458,1459,Is there a person in the image?,Yes,COCO_val2014_000000115626,adversarial,success,,Yes,1458,1458,1588.2
+1464,1465,Is there a traffic light in the image?,Yes,COCO_val2014_000000391735,adversarial,success,,Yes,1464,1464,1049.9
+1488,1489,Is there a snowboard in the image?,Yes,COCO_val2014_000000302405,adversarial,success,,Yes,1488,1488,978.6
+1506,1507,Is there a clock in the image?,Yes,COCO_val2014_000000023731,adversarial,success,,Yes,1506,1506,1103.5
+1516,1517,Is there a dining table in the image?,Yes,COCO_val2014_000000463640,adversarial,success,,Yes,1516,1516,1939.6
+1559,1560,Is there a dining table in the image?,No,COCO_val2014_000000441156,adversarial,success,,No,1559,1559,1660.1
+1563,1564,Is there a surfboard in the image?,No,COCO_val2014_000000408757,adversarial,success,,No,1563,1563,1113.9
+1567,1568,Is there a dining table in the image?,No,COCO_val2014_000000550691,adversarial,success,,No,1567,1567,1657.2
+1568,1569,Is there a car in the image?,Yes,COCO_val2014_000000550691,adversarial,success,,Yes,1568,1568,1587.6
+1584,1585,Is there a bowl in the image?,Yes,COCO_val2014_000000198312,adversarial,success,,Yes,1584,1584,1611.7
+1591,1592,Is there a dining table in the image?,No,COCO_val2014_000000485485,adversarial,success,,No,1591,1591,1658.9
+1597,1598,Is there a handbag in the image?,Yes,COCO_val2014_000000309371,adversarial,success,,Yes,1597,1597,1701.2
+1600,1601,Is there a bench in the image?,Yes,COCO_val2014_000000309371,adversarial,success,,Yes,1600,1600,1686.7
+1601,1602,Is there a dining table in the image?,Yes,COCO_val2014_000000309371,adversarial,success,,Yes,1601,1601,1769.5
+1620,1621,Is there a motorcycle in the image?,Yes,COCO_val2014_000000397665,adversarial,success,,Yes,1620,1620,1000.0
+1625,1626,Is there a backpack in the image?,Yes,COCO_val2014_000000397665,adversarial,success,,Yes,1625,1625,1006.0
+1632,1633,Is there a person in the image?,Yes,COCO_val2014_000000499105,adversarial,success,,Yes,1632,1632,986.3
+1695,1696,Is there a car in the image?,No,COCO_val2014_000000348524,adversarial,success,,No,1695,1695,1053.1
+1708,1709,Is there a couch in the image?,Yes,COCO_val2014_000000301575,adversarial,success,,Yes,1708,1708,1756.7
+1710,1711,Is there a baseball glove in the image?,Yes,COCO_val2014_000000239773,adversarial,success,,Yes,1710,1710,1030.2
+1718,1719,Is there a clock in the image?,Yes,COCO_val2014_000000354976,adversarial,success,,Yes,1718,1718,1575.6
+1723,1724,Is there a car in the image?,No,COCO_val2014_000000473199,adversarial,success,,No,1723,1723,1583.3
+1730,1731,Is there a teddy bear in the image?,Yes,COCO_val2014_000000311759,adversarial,success,,Yes,1730,1730,1677.8
+1739,1740,Is there a bird in the image?,No,COCO_val2014_000000431615,adversarial,success,,No,1739,1739,1016.7
+1753,1754,Is there a person in the image?,No,COCO_val2014_000000372009,adversarial,success,,No,1753,1753,1077.3
+1755,1756,Is there a book in the image?,No,COCO_val2014_000000372009,adversarial,success,,No,1755,1755,1073.4
+1756,1757,Is there a teddy bear in the image?,Yes,COCO_val2014_000000372009,adversarial,success,,Yes,1756,1756,1114.3
+1769,1770,Is there a chair in the image?,Yes,COCO_val2014_000000501898,adversarial,success,,Yes,1769,1769,999.2
+1782,1783,Is there a person in the image?,Yes,COCO_val2014_000000510138,adversarial,success,,Yes,1782,1782,1772.0
+1796,1797,Is there a bottle in the image?,Yes,COCO_val2014_000000100238,adversarial,success,,Yes,1796,1796,1588.4
+1818,1819,Is there a clock in the image?,No,COCO_val2014_000000436127,adversarial,success,,No,1818,1818,1770.2
+1822,1823,Is there a horse in the image?,Yes,COCO_val2014_000000436127,adversarial,success,,Yes,1822,1822,1767.3
+1844,1845,Is there a clock in the image?,Yes,COCO_val2014_000000474741,adversarial,success,,Yes,1844,1844,953.9
+1847,1848,Is there a car in the image?,No,COCO_val2014_000000474741,adversarial,success,,No,1847,1847,952.1
+1851,1852,Is there a chair in the image?,No,COCO_val2014_000000286342,adversarial,success,,No,1851,1851,1000.9
+1862,1863,Is there a person in the image?,Yes,COCO_val2014_000000405740,adversarial,success,,Yes,1862,1862,1010.4
+1863,1864,Is there a car in the image?,No,COCO_val2014_000000405740,adversarial,success,,No,1863,1863,1012.6
+1866,1867,Is there a person in the image?,Yes,COCO_val2014_000000304387,adversarial,success,,Yes,1866,1866,1010.8
+1885,1886,Is there a person in the image?,No,COCO_val2014_000000312406,adversarial,success,,No,1885,1885,1577.7
+1886,1887,Is there a bowl in the image?,Yes,COCO_val2014_000000312406,adversarial,success,,Yes,1886,1886,1584.8
+1888,1889,Is there a cup in the image?,Yes,COCO_val2014_000000312406,adversarial,success,,Yes,1888,1888,1574.0
+1890,1891,Is there a tv in the image?,No,COCO_val2014_000000515820,adversarial,success,,No,1890,1890,1769.1
+1901,1902,Is there a tv in the image?,No,COCO_val2014_000000031971,adversarial,success,,No,1901,1901,1763.0
+1904,1905,Is there a person in the image?,Yes,COCO_val2014_000000418680,adversarial,success,,Yes,1904,1904,1580.7
+1909,1910,Is there a car in the image?,No,COCO_val2014_000000459680,adversarial,success,,No,1909,1909,1112.3
+1913,1914,Is there a handbag in the image?,No,COCO_val2014_000000459680,adversarial,success,,No,1913,1913,1109.1
+1921,1922,Is there a car in the image?,No,COCO_val2014_000000276693,adversarial,success,,No,1921,1921,997.3
+1947,1948,Is there a dining table in the image?,No,COCO_val2014_000000384970,adversarial,success,,No,1947,1947,1031.5
+1948,1949,Is there a car in the image?,Yes,COCO_val2014_000000384970,adversarial,success,,Yes,1948,1948,998.3
+1950,1951,Is there a wine glass in the image?,No,COCO_val2014_000000572260,adversarial,success,,No,1950,1950,1667.8
+1952,1953,Is there a teddy bear in the image?,Yes,COCO_val2014_000000572260,adversarial,success,,Yes,1952,1952,1657.9
+1976,1977,Is there a surfboard in the image?,Yes,COCO_val2014_000000293564,adversarial,success,,Yes,1976,1976,1044.8
+1981,1982,Is there a dining table in the image?,Yes,COCO_val2014_000000452297,adversarial,success,,Yes,1981,1981,1018.9
+1996,1997,Is there a person in the image?,Yes,COCO_val2014_000000172648,adversarial,success,,Yes,1996,1996,1582.0
+2001,2002,Is there a dining table in the image?,No,COCO_val2014_000000308907,adversarial,success,,No,2001,2001,1048.9
+2003,2004,Is there a motorcycle in the image?,No,COCO_val2014_000000308907,adversarial,success,,No,2003,2003,998.8
+2008,2009,Is there a car in the image?,Yes,COCO_val2014_000000263594,adversarial,success,,Yes,2008,2008,957.3
+2031,2032,Is there a car in the image?,No,COCO_val2014_000000454607,adversarial,success,,No,2031,2031,1568.8
+2050,2051,Is there a baseball bat in the image?,Yes,COCO_val2014_000000348469,adversarial,success,,Yes,2050,2050,1043.8
+2057,2058,Is there a dining table in the image?,Yes,COCO_val2014_000000167724,adversarial,success,,Yes,2057,2057,1652.8
+2062,2063,Is there a car in the image?,Yes,COCO_val2014_000000262736,adversarial,success,,Yes,2062,2062,994.3
+2065,2066,Is there a car in the image?,No,COCO_val2014_000000076416,adversarial,success,,No,2065,2065,1582.1
+2076,2077,Is there a bowl in the image?,Yes,COCO_val2014_000000445200,adversarial,success,,Yes,2076,2076,999.6
+2078,2079,Is there a broccoli in the image?,No,COCO_val2014_000000445200,adversarial,success,,No,2078,2078,1002.3
+2087,2088,Is there a cup in the image?,Yes,COCO_val2014_000000433574,adversarial,success,,Yes,2087,2087,1573.4
+2090,2091,Is there a person in the image?,Yes,COCO_val2014_000000212241,adversarial,success,,Yes,2090,2090,1002.9
+2091,2092,Is there a dining table in the image?,No,COCO_val2014_000000212241,adversarial,success,,No,2091,2091,1037.8
+2110,2111,Is there a dining table in the image?,Yes,COCO_val2014_000000410597,adversarial,success,,Yes,2110,2110,1041.9
+2112,2113,Is there a mouse in the image?,Yes,COCO_val2014_000000382617,adversarial,success,,Yes,2112,2112,1583.0
+2129,2130,Is there a handbag in the image?,No,COCO_val2014_000000120792,adversarial,success,,No,2129,2129,1584.5
+2134,2135,Is there a fire hydrant in the image?,Yes,COCO_val2014_000000125524,adversarial,success,,Yes,2134,2134,1005.7
+2140,2141,Is there a tennis racket in the image?,Yes,COCO_val2014_000000196053,adversarial,success,,Yes,2140,2140,1038.3
+2141,2142,Is there a chair in the image?,No,COCO_val2014_000000196053,adversarial,success,,No,2141,2141,995.3
+2148,2149,Is there a backpack in the image?,Yes,COCO_val2014_000000088507,adversarial,success,,Yes,2148,2148,996.8
+2163,2164,Is there a baseball glove in the image?,No,COCO_val2014_000000155131,adversarial,success,,No,2163,2163,1657.4
+2190,2191,Is there a dog in the image?,Yes,COCO_val2014_000000372819,adversarial,success,,Yes,2190,2190,1011.7
+2195,2196,Is there a backpack in the image?,No,COCO_val2014_000000372819,adversarial,success,,No,2195,2195,1006.8
+2204,2205,Is there a sports ball in the image?,No,COCO_val2014_000000023084,adversarial,success,,No,2204,2204,1020.4
+2208,2209,Is there a pizza in the image?,Yes,COCO_val2014_000000545353,adversarial,success,,Yes,2208,2208,1582.6
+2216,2217,Is there a person in the image?,Yes,COCO_val2014_000000394535,adversarial,success,,Yes,2216,2216,998.4
+2221,2222,Is there a car in the image?,No,COCO_val2014_000000579415,adversarial,success,,No,2221,2221,996.1
+2225,2226,Is there a backpack in the image?,Yes,COCO_val2014_000000579415,adversarial,success,,Yes,2225,2225,995.0
+2232,2233,Is there a person in the image?,Yes,COCO_val2014_000000355256,adversarial,success,,Yes,2232,2232,1000.9
+2235,2236,Is there a dining table in the image?,Yes,COCO_val2014_000000355256,adversarial,success,,Yes,2235,2235,1040.1
+2241,2242,Is there a couch in the image?,No,COCO_val2014_000000304819,adversarial,success,,No,2241,2241,1583.6
+2244,2245,Is there a clock in the image?,No,COCO_val2014_000000240434,adversarial,success,,No,2244,2244,998.7
+2246,2247,Is there a person in the image?,No,COCO_val2014_000000240434,adversarial,success,,No,2246,2246,1006.3
+2253,2254,Is there a cup in the image?,Yes,COCO_val2014_000000199940,adversarial,success,,Yes,2253,2253,992.2
+2256,2257,Is there a backpack in the image?,Yes,COCO_val2014_000000549390,adversarial,success,,Yes,2256,2256,1001.6
+2266,2267,Is there a tie in the image?,Yes,COCO_val2014_000000235541,adversarial,success,,Yes,2266,2266,1001.0
+2283,2284,Is there a handbag in the image?,No,COCO_val2014_000000006033,adversarial,success,,No,2283,2283,1584.9
+2298,2299,Is there a person in the image?,Yes,COCO_val2014_000000298633,adversarial,success,,Yes,2298,2298,1001.5
+2318,2319,Is there a person in the image?,Yes,COCO_val2014_000000553992,adversarial,success,,Yes,2318,2318,975.4
+2320,2321,Is there a remote in the image?,Yes,COCO_val2014_000000553992,adversarial,success,,Yes,2320,2320,979.7
+2322,2323,Is there a vase in the image?,Yes,COCO_val2014_000000243158,adversarial,success,,Yes,2322,2322,1581.3
+2323,2324,Is there a potted plant in the image?,No,COCO_val2014_000000243158,adversarial,success,,No,2323,2323,1591.7
+2330,2331,Is there a person in the image?,Yes,COCO_val2014_000000303971,adversarial,success,,Yes,2330,2330,1000.1
+2332,2333,Is there a remote in the image?,Yes,COCO_val2014_000000303971,adversarial,success,,Yes,2332,2332,996.7
+2340,2341,Is there a clock in the image?,Yes,COCO_val2014_000000343967,adversarial,success,,Yes,2340,2340,1583.8
+2349,2350,Is there a dining table in the image?,No,COCO_val2014_000000477598,adversarial,success,,No,2349,2349,1034.2
+2350,2351,Is there a frisbee in the image?,Yes,COCO_val2014_000000477598,adversarial,success,,Yes,2350,2350,1031.0
+2366,2367,Is there a broccoli in the image?,Yes,COCO_val2014_000000337502,adversarial,success,,Yes,2366,2366,994.0
+2415,2416,Is there a person in the image?,No,COCO_val2014_000000573796,adversarial,success,,No,2415,2415,999.9
+2428,2429,Is there a cup in the image?,Yes,COCO_val2014_000000472375,adversarial,success,,Yes,2428,2428,1762.1
+2439,2440,Is there a car in the image?,No,COCO_val2014_000000267684,adversarial,success,,No,2439,2439,1574.9
+2454,2455,Is there a person in the image?,Yes,COCO_val2014_000000149592,adversarial,success,,Yes,2454,2454,1002.7
+2505,2506,Is there a backpack in the image?,Yes,COCO_val2014_000000073182,adversarial,success,,Yes,2505,2505,997.9
+2510,2511,Is there a car in the image?,No,COCO_val2014_000000246928,adversarial,success,,No,2510,2510,1013.3
+2511,2512,Is there a truck in the image?,No,COCO_val2014_000000246928,adversarial,success,,No,2511,2511,1016.1
+2524,2525,Is there a dining table in the image?,Yes,COCO_val2014_000000209290,adversarial,success,,Yes,2524,2524,1888.9
+2546,2547,Is there a person in the image?,Yes,COCO_val2014_000000163575,adversarial,success,,Yes,2546,2546,1744.6
+2547,2548,Is there a dining table in the image?,No,COCO_val2014_000000163575,adversarial,success,,No,2547,2547,1683.3
+2592,2593,Is there a person in the image?,Yes,COCO_val2014_000000299986,adversarial,success,,Yes,2592,2592,1584.8
+2614,2615,Is there a bench in the image?,Yes,COCO_val2014_000000415727,adversarial,success,,Yes,2614,2614,1577.4
+2618,2619,Is there a suitcase in the image?,No,COCO_val2014_000000222118,adversarial,success,,No,2618,2618,1004.8
+2635,2636,Is there a skis in the image?,No,COCO_val2014_000000016451,adversarial,success,,No,2635,2635,1765.8
+2636,2637,Is there a person in the image?,Yes,COCO_val2014_000000016451,adversarial,success,,Yes,2636,2636,1763.2
+2645,2646,Is there a car in the image?,No,COCO_val2014_000000429706,adversarial,success,,No,2645,2645,1027.3
+2665,2666,Is there a dining table in the image?,No,COCO_val2014_000000123570,adversarial,success,,No,2665,2665,1044.5
+2674,2675,Is there a tennis racket in the image?,Yes,COCO_val2014_000000365317,adversarial,success,,Yes,2674,2674,1033.8
+2702,2703,Is there a motorcycle in the image?,No,COCO_val2014_000000163814,adversarial,success,,No,2702,2702,1046.4
+2742,2743,Is there a vase in the image?,Yes,COCO_val2014_000000233426,adversarial,success,,Yes,2742,2742,1025.6
+2778,2779,Is there a person in the image?,Yes,COCO_val2014_000000079213,adversarial,success,,Yes,2778,2778,1587.8
+2789,2790,Is there a person in the image?,No,COCO_val2014_000000465346,adversarial,success,,No,2789,2789,1768.1
+2791,2792,Is there a truck in the image?,Yes,COCO_val2014_000000514248,adversarial,success,,Yes,2791,2791,976.5
+2800,2801,Is there a sink in the image?,Yes,COCO_val2014_000000355776,adversarial,success,,Yes,2800,2800,1685.4
+2818,2819,Is there a sports ball in the image?,Yes,COCO_val2014_000000559547,adversarial,success,,Yes,2818,2818,1608.0
+2824,2825,Is there a tie in the image?,Yes,COCO_val2014_000000230175,adversarial,success,,Yes,2824,2824,1625.6
+2839,2840,Is there a dog in the image?,No,COCO_val2014_000000555538,adversarial,success,,No,2839,2839,1017.0
+2845,2846,Is there a car in the image?,No,COCO_val2014_000000264155,adversarial,success,,No,2845,2845,1013.3
+2849,2850,Is there a bowl in the image?,Yes,COCO_val2014_000000264155,adversarial,success,,Yes,2849,2849,1017.0
+2850,2851,Is there a truck in the image?,Yes,COCO_val2014_000000125572,adversarial,success,,Yes,2850,2850,1005.4
+2854,2855,Is there a person in the image?,Yes,COCO_val2014_000000125572,adversarial,success,,Yes,2854,2854,1000.1
+2856,2857,Is there a person in the image?,Yes,COCO_val2014_000000560744,adversarial,success,,Yes,2856,2856,1609.4
+2862,2863,Is there a person in the image?,Yes,COCO_val2014_000000045685,adversarial,success,,Yes,2862,2862,986.1
+2865,2866,Is there a baseball glove in the image?,No,COCO_val2014_000000045685,adversarial,success,,No,2865,2865,1012.5
+2879,2880,Is there a chair in the image?,No,COCO_val2014_000000008749,adversarial,success,,No,2879,2879,1002.1
+2904,2905,Is there a tv in the image?,No,COCO_val2014_000000141278,adversarial,success,,No,2904,2904,980.9
+2909,2910,Is there a bottle in the image?,Yes,COCO_val2014_000000141278,adversarial,success,,Yes,2909,2909,984.8
+2922,2923,Is there a pizza in the image?,Yes,COCO_val2014_000000377951,adversarial,success,,Yes,2922,2922,1007.8
+2928,2929,Is there a truck in the image?,Yes,COCO_val2014_000000533201,adversarial,success,,Yes,2928,2928,978.0
+2934,2935,Is there a person in the image?,Yes,COCO_val2014_000000235203,adversarial,success,,Yes,2934,2934,1578.7
+2947,2948,Is there a car in the image?,No,COCO_val2014_000000401398,adversarial,success,,No,2947,2947,1003.4
+2956,2957,Is there a tennis racket in the image?,Yes,COCO_val2014_000000323752,adversarial,success,,Yes,2956,2956,1042.0
+2960,2961,Is there a broccoli in the image?,Yes,COCO_val2014_000000003845,adversarial,success,,Yes,2960,2960,978.0
+2969,2970,Is there a chair in the image?,No,COCO_val2014_000000122962,adversarial,success,,No,2969,2969,1012.7
+2990,2991,Is there a broccoli in the image?,Yes,COCO_val2014_000000361430,adversarial,success,,Yes,2990,2990,1567.6
+2993,2994,Is there a bottle in the image?,No,COCO_val2014_000000361430,adversarial,success,,No,2993,2993,1574.6
+3014,15,Is there a bicycle in the image?,Yes,COCO_val2014_000000429109,popular,success,,Yes,3014,3014,1004.0
+3016,17,Is there a car in the image?,No,COCO_val2014_000000429109,popular,success,,No,3016,3016,997.1
+3022,23,Is there a car in the image?,No,COCO_val2014_000000211674,popular,success,,No,3022,3022,1015.9
+3035,36,Is there a chair in the image?,No,COCO_val2014_000000283412,popular,success,,No,3035,3035,997.1
+3042,43,Is there a tv in the image?,Yes,COCO_val2014_000000461331,popular,success,,Yes,3042,3042,1573.7
+3047,48,Is there a car in the image?,No,COCO_val2014_000000461331,popular,success,,No,3047,3047,1567.2
+3070,71,Is there a bus in the image?,Yes,COCO_val2014_000000353180,popular,success,,Yes,3070,3070,1006.7
+3084,85,Is there a person in the image?,Yes,COCO_val2014_000000219622,popular,success,,Yes,3084,3084,996.6
+3093,94,Is there a chair in the image?,No,COCO_val2014_000000300368,popular,success,,No,3093,3093,1590.2
+3097,98,Is there a dining table in the image?,No,COCO_val2014_000000482476,popular,success,,No,3097,3097,1039.9
+3106,107,Is there a baseball bat in the image?,Yes,COCO_val2014_000000131115,popular,success,,Yes,3106,3106,1032.9
+3119,120,Is there a chair in the image?,No,COCO_val2014_000000381895,popular,success,,No,3119,3119,1026.2
+3126,127,Is there a bed in the image?,Yes,COCO_val2014_000000075591,popular,success,,Yes,3126,3126,1770.4
+3128,129,Is there a cat in the image?,Yes,COCO_val2014_000000075591,popular,success,,Yes,3128,3128,1759.6
+3140,141,Is there a toothbrush in the image?,Yes,COCO_val2014_000000542145,popular,success,,Yes,3140,3140,987.2
+3152,153,Is there a person in the image?,Yes,COCO_val2014_000000297078,popular,success,,Yes,3152,3152,974.9
+3158,159,Is there a person in the image?,Yes,COCO_val2014_000000033270,popular,success,,Yes,3158,3158,1003.4
+3163,164,Is there a dining table in the image?,No,COCO_val2014_000000140583,popular,success,,No,3163,3163,1650.9
+3166,167,Is there a cow in the image?,No,COCO_val2014_000000140583,popular,success,,No,3166,3166,1571.5
+3169,170,Is there a dining table in the image?,No,COCO_val2014_000000421455,popular,success,,No,3169,3169,1009.0
+3200,201,Is there a person in the image?,Yes,COCO_val2014_000000042190,popular,success,,Yes,3200,3200,994.6
+3210,211,Is there a dog in the image?,Yes,COCO_val2014_000000170517,popular,success,,Yes,3210,3210,1005.8
+3234,235,Is there a tv in the image?,Yes,COCO_val2014_000000500257,popular,success,,Yes,3234,3234,951.3
+3246,247,Is there a traffic light in the image?,No,COCO_val2014_000000456178,popular,success,,No,3246,3246,1666.4
+3248,249,Is there a truck in the image?,Yes,COCO_val2014_000000456178,popular,success,,Yes,3248,3248,1593.5
+3251,252,Is there a cup in the image?,No,COCO_val2014_000000456178,popular,success,,No,3251,3251,1585.7
+3256,257,Is there a dining table in the image?,Yes,COCO_val2014_000000565941,popular,success,,Yes,3256,3256,1037.3
+3263,264,Is there a cup in the image?,No,COCO_val2014_000000485564,popular,success,,No,3263,3263,1010.8
+3264,265,Is there a truck in the image?,Yes,COCO_val2014_000000454642,popular,success,,Yes,3264,3264,979.7
+3266,267,Is there a person in the image?,Yes,COCO_val2014_000000454642,popular,success,,Yes,3266,3266,980.2
+3276,277,Is there a couch in the image?,Yes,COCO_val2014_000000424792,popular,success,,Yes,3276,3276,1666.8
+3299,300,Is there a cup in the image?,No,COCO_val2014_000000480122,popular,success,,No,3299,3299,1760.8
+3310,311,Is there a sports ball in the image?,Yes,COCO_val2014_000000437347,popular,success,,Yes,3310,3310,1652.9
+3321,322,Is there a chair in the image?,No,COCO_val2014_000000538236,popular,success,,No,3321,3321,995.8
+3331,332,Is there a car in the image?,No,COCO_val2014_000000217397,popular,success,,No,3331,3331,1580.9
+3338,339,Is there a bed in the image?,Yes,COCO_val2014_000000060213,popular,success,,Yes,3338,3338,1581.1
+3341,342,Is there a car in the image?,No,COCO_val2014_000000060213,popular,success,,No,3341,3341,1591.5
+3351,352,Is there a car in the image?,No,COCO_val2014_000000084447,popular,success,,No,3351,3351,1578.8
+3353,354,Is there a chair in the image?,No,COCO_val2014_000000084447,popular,success,,No,3353,3353,1582.9
+3356,357,Is there a dining table in the image?,No,COCO_val2014_000000192660,popular,success,,No,3356,3356,1670.7
+3362,363,Is there a carrot in the image?,Yes,COCO_val2014_000000575755,popular,success,,Yes,3362,3362,1000.7
+3363,364,Is there a car in the image?,No,COCO_val2014_000000575755,popular,success,,No,3363,3363,1002.4
+3365,366,Is there a chair in the image?,No,COCO_val2014_000000575755,popular,success,,No,3365,3365,1000.4
+3366,367,Is there a person in the image?,Yes,COCO_val2014_000000354088,popular,success,,Yes,3366,3366,1001.3
+3371,372,Is there a bottle in the image?,No,COCO_val2014_000000354088,popular,success,,No,3371,3371,1002.1
+3380,381,Is there a bench in the image?,No,COCO_val2014_000000456552,popular,success,,No,3380,3380,1002.8
+3382,383,Is there a skateboard in the image?,Yes,COCO_val2014_000000456552,popular,success,,Yes,3382,3382,1000.2
+3392,393,Is there a potted plant in the image?,Yes,COCO_val2014_000000170365,popular,success,,Yes,3392,3392,1006.4
+3399,400,Is there a car in the image?,No,COCO_val2014_000000021645,popular,success,,No,3399,3399,982.7
+3401,402,Is there a cup in the image?,No,COCO_val2014_000000021645,popular,success,,No,3401,3401,980.9
+3419,420,Is there a cup in the image?,No,COCO_val2014_000000007320,popular,success,,No,3419,3419,992.8
+3421,422,Is there a dining table in the image?,No,COCO_val2014_000000249715,popular,success,,No,3421,3421,1007.0
+3449,450,Is there a chair in the image?,No,COCO_val2014_000000465275,popular,success,,No,3449,3449,1598.3
+3460,461,Is there a skis in the image?,Yes,COCO_val2014_000000406403,popular,success,,Yes,3460,3460,1582.4
+3463,464,Is there a dining table in the image?,No,COCO_val2014_000000131018,popular,success,,No,3463,3463,1656.3
+3470,471,Is there a person in the image?,Yes,COCO_val2014_000000332625,popular,success,,Yes,3470,3470,1009.0
+3471,472,Is there a car in the image?,No,COCO_val2014_000000332625,popular,success,,No,3471,3471,997.9
+3480,481,Is there a person in the image?,Yes,COCO_val2014_000000318204,popular,success,,Yes,3480,3480,1566.2
+3488,489,Is there a laptop in the image?,Yes,COCO_val2014_000000455157,popular,success,,Yes,3488,3488,1765.0
+3500,501,Is there a truck in the image?,Yes,COCO_val2014_000000199764,popular,success,,Yes,3500,3500,997.9
+3503,504,Is there a bottle in the image?,Yes,COCO_val2014_000000199764,popular,success,,Yes,3503,3503,996.4
+3557,558,Is there a car in the image?,No,COCO_val2014_000000190185,popular,success,,No,3557,3557,1569.4
+3559,560,Is there a dining table in the image?,No,COCO_val2014_000000209755,popular,success,,No,3559,3559,1038.5
+3577,578,Is there a dining table in the image?,No,COCO_val2014_000000287305,popular,success,,No,3577,3577,1065.7
+3582,583,Is there a sink in the image?,Yes,COCO_val2014_000000257327,popular,success,,Yes,3582,3582,989.4
+3590,591,Is there a bicycle in the image?,Yes,COCO_val2014_000000557016,popular,success,,Yes,3590,3590,1668.3
+3599,600,Is there a chair in the image?,No,COCO_val2014_000000105732,popular,success,,No,3599,3599,1590.2
+3634,635,Is there a cat in the image?,Yes,COCO_val2014_000000572075,popular,success,,Yes,3634,3634,1006.7
+3644,645,Is there a bicycle in the image?,Yes,COCO_val2014_000000382670,popular,success,,Yes,3644,3644,1584.3
+3664,665,Is there a sheep in the image?,Yes,COCO_val2014_000000245642,popular,success,,Yes,3664,3664,1591.1
+3678,679,Is there a cake in the image?,Yes,COCO_val2014_000000094501,popular,success,,Yes,3678,3678,1775.4
+3704,705,Is there a bench in the image?,Yes,COCO_val2014_000000032610,popular,success,,Yes,3704,3704,1002.3
+3706,707,Is there a laptop in the image?,Yes,COCO_val2014_000000032610,popular,success,,Yes,3706,3706,1000.3
+3708,709,Is there a person in the image?,Yes,COCO_val2014_000000239130,popular,success,,Yes,3708,3708,1681.2
+3721,722,Is there a dining table in the image?,No,COCO_val2014_000000538054,popular,success,,No,3721,3721,1665.4
+3724,725,Is there a handbag in the image?,Yes,COCO_val2014_000000538054,popular,success,,Yes,3724,3724,1590.2
+3769,770,Is there a car in the image?,No,COCO_val2014_000000203479,popular,success,,No,3769,3769,987.0
+3780,781,Is there a dog in the image?,Yes,COCO_val2014_000000369541,popular,success,,Yes,3780,3780,984.1
+3795,796,Is there a dining table in the image?,No,COCO_val2014_000000303099,popular,success,,No,3795,3795,1009.0
+3809,810,Is there a chair in the image?,No,COCO_val2014_000000102439,popular,success,,No,3809,3809,983.3
+3813,814,Is there a dining table in the image?,No,COCO_val2014_000000183757,popular,success,,No,3813,3813,1665.4
+3827,828,Is there a cup in the image?,No,COCO_val2014_000000327532,popular,success,,No,3827,3827,1005.1
+3849,850,Is there a car in the image?,No,COCO_val2014_000000288042,popular,success,,No,3849,3849,1582.1
+3850,851,Is there an umbrella in the image?,Yes,COCO_val2014_000000288042,popular,success,,Yes,3850,3850,1586.2
+3855,856,Is there a bottle in the image?,No,COCO_val2014_000000270609,popular,success,,No,3855,3855,1012.6
+3874,875,Is there a frisbee in the image?,Yes,COCO_val2014_000000424642,popular,success,,Yes,3874,3874,1008.8
+3876,877,Is there a tv in the image?,Yes,COCO_val2014_000000467176,popular,success,,Yes,3876,3876,1000.5
+3892,893,Is there a toilet in the image?,Yes,COCO_val2014_000000079446,popular,success,,Yes,3892,3892,952.4
+3895,896,Is there a dining table in the image?,No,COCO_val2014_000000354398,popular,success,,No,3895,3895,1612.3
+3902,903,Is there a bird in the image?,Yes,COCO_val2014_000000430052,popular,success,,Yes,3902,3902,1587.0
+3914,915,Is there a person in the image?,Yes,COCO_val2014_000000539251,popular,success,,Yes,3914,3914,1107.1
+3922,923,Is there a bed in the image?,No,COCO_val2014_000000551908,popular,success,,No,3922,3922,995.7
+3947,948,Is there a bottle in the image?,No,COCO_val2014_000000111817,popular,success,,No,3947,3947,1671.8
+4000,1001,Is there a fork in the image?,Yes,COCO_val2014_000000468934,popular,success,,Yes,4000,4000,1569.6
+4002,1003,Is there a sink in the image?,Yes,COCO_val2014_000000189694,popular,success,,Yes,4002,4002,1568.2
+4034,1035,Is there a bed in the image?,Yes,COCO_val2014_000000506178,popular,success,,Yes,4034,4034,982.1
+4036,1037,Is there a remote in the image?,Yes,COCO_val2014_000000506178,popular,success,,Yes,4036,4036,988.5
+4037,1038,Is there a chair in the image?,Yes,COCO_val2014_000000506178,popular,success,,Yes,4037,4037,980.7
+4045,1046,Is there a person in the image?,No,COCO_val2014_000000205206,popular,success,,No,4045,4045,999.6
+4080,1081,Is there a person in the image?,Yes,COCO_val2014_000000124629,popular,success,,Yes,4080,4080,999.3
+4095,1096,Is there a car in the image?,Yes,COCO_val2014_000000199959,popular,success,,Yes,4095,4095,1020.9
+4133,1134,Is there a bottle in the image?,No,COCO_val2014_000000525667,popular,success,,No,4133,4133,1575.2
+4136,1137,Is there a clock in the image?,Yes,COCO_val2014_000000246145,popular,success,,Yes,4136,4136,1580.1
+4137,1138,Is there a car in the image?,No,COCO_val2014_000000246145,popular,success,,No,4137,4137,1587.0
+4180,1181,Is there a person in the image?,No,COCO_val2014_000000184338,popular,success,,No,4180,4180,994.0
+4185,1186,Is there a chair in the image?,No,COCO_val2014_000000175437,popular,success,,No,4185,4185,1575.3
+4186,1187,Is there a donut in the image?,Yes,COCO_val2014_000000175437,popular,success,,Yes,4186,4186,1590.0
+4219,1220,Is there a person in the image?,No,COCO_val2014_000000377879,popular,success,,No,4219,4219,1588.2
+4242,1243,Is there a banana in the image?,Yes,COCO_val2014_000000383185,popular,success,,Yes,4242,4242,999.2
+4249,1250,Is there a car in the image?,No,COCO_val2014_000000388983,popular,success,,No,4249,4249,986.4
+4251,1252,Is there a chair in the image?,No,COCO_val2014_000000388983,popular,success,,No,4251,4251,987.0
+4255,1256,Is there a dining table in the image?,No,COCO_val2014_000000295377,popular,success,,No,4255,4255,1675.1
+4265,1266,Is there a car in the image?,No,COCO_val2014_000000034773,popular,success,,No,4265,4265,1594.0
+4283,1284,Is there a bottle in the image?,No,COCO_val2014_000000098493,popular,success,,No,4283,4283,1002.5
+4301,1302,Is there a chair in the image?,No,COCO_val2014_000000313034,popular,success,,No,4301,4301,1586.6
+4309,1310,Is there a person in the image?,No,COCO_val2014_000000333237,popular,success,,No,4309,4309,1020.3
+4314,1315,Is there a laptop in the image?,Yes,COCO_val2014_000000526368,popular,success,,Yes,4314,4314,1592.3
+4320,1321,Is there a chair in the image?,Yes,COCO_val2014_000000429033,popular,success,,Yes,4320,4320,1598.1
+4326,1327,Is there a tv in the image?,No,COCO_val2014_000000287035,popular,success,,No,4326,4326,981.3
+4329,1330,Is there a car in the image?,No,COCO_val2014_000000287035,popular,success,,No,4329,4329,985.1
+4337,1338,Is there a chair in the image?,No,COCO_val2014_000000299074,popular,success,,No,4337,4337,1593.6
+4339,1340,Is there a person in the image?,No,COCO_val2014_000000120648,popular,success,,No,4339,4339,1575.0
+4346,1347,Is there a truck in the image?,Yes,COCO_val2014_000000186709,popular,success,,Yes,4346,4346,1598.0
+4355,1356,Is there a cup in the image?,No,COCO_val2014_000000025972,popular,success,,No,4355,4355,1672.1
+4375,1376,Is there a person in the image?,Yes,COCO_val2014_000000037900,popular,success,,Yes,4375,4375,1009.9
+4378,1379,Is there a knife in the image?,Yes,COCO_val2014_000000037900,popular,success,,Yes,4378,4378,1010.7
+4380,1381,Is there a traffic light in the image?,Yes,COCO_val2014_000000534516,popular,success,,Yes,4380,4380,1045.3
+4381,1382,Is there a dining table in the image?,No,COCO_val2014_000000534516,popular,success,,No,4381,4381,1052.1
+4387,1388,Is there a person in the image?,No,COCO_val2014_000000123017,popular,success,,No,4387,4387,1681.7
+4393,1394,Is there a dining table in the image?,No,COCO_val2014_000000316237,popular,success,,No,4393,4393,1738.2
+4451,1452,Is there a car in the image?,No,COCO_val2014_000000039516,popular,success,,No,4451,4451,1001.1
+4454,1455,Is there a bowl in the image?,Yes,COCO_val2014_000000018918,popular,success,,Yes,4454,4454,1584.1
+4458,1459,Is there a person in the image?,Yes,COCO_val2014_000000115626,popular,success,,Yes,4458,4458,1593.5
+4468,1469,Is there a person in the image?,Yes,COCO_val2014_000000391735,popular,success,,Yes,4468,4468,1019.0
+4470,1471,Is there a chair in the image?,Yes,COCO_val2014_000000236370,popular,success,,Yes,4470,4470,1581.0
+4471,1472,Is there a dining table in the image?,No,COCO_val2014_000000236370,popular,success,,No,4471,4471,1652.8
+4497,1498,Is there a car in the image?,No,COCO_val2014_000000554328,popular,success,,No,4497,4497,1681.7
+4501,1502,Is there a person in the image?,Yes,COCO_val2014_000000384040,popular,success,,Yes,4501,4501,1623.2
+4515,1516,Is there a chair in the image?,No,COCO_val2014_000000463640,popular,success,,No,4515,4515,1805.6
+4524,1525,Is there a baseball glove in the image?,Yes,COCO_val2014_000000524979,popular,success,,Yes,4524,4524,1063.7
+4526,1527,Is there a person in the image?,Yes,COCO_val2014_000000524979,popular,success,,Yes,4526,4526,1053.0
+4564,1565,Is there an umbrella in the image?,Yes,COCO_val2014_000000408757,popular,success,,Yes,4564,4564,1089.3
+4573,1574,Is there a dining table in the image?,No,COCO_val2014_000000204100,popular,success,,No,4573,4573,1123.7
+4583,1584,Is there a chair in the image?,No,COCO_val2014_000000468169,popular,success,,No,4583,4583,1119.8
+4584,1585,Is there a bowl in the image?,Yes,COCO_val2014_000000198312,popular,success,,Yes,4584,4584,1580.6
+4585,1586,Is there a person in the image?,No,COCO_val2014_000000198312,popular,success,,No,4585,4585,1582.9
+4607,1608,Is there a bowl in the image?,No,COCO_val2014_000000472143,popular,success,,No,4607,4607,1763.2
+4613,1614,Is there a chair in the image?,No,COCO_val2014_000000236023,popular,success,,No,4613,4613,977.3
+4633,1634,Is there a dining table in the image?,No,COCO_val2014_000000499105,popular,success,,No,4633,4633,1008.9
+4646,1647,Is there a person in the image?,No,COCO_val2014_000000281028,popular,success,,No,4646,4646,1576.9
+4651,1652,Is there a dining table in the image?,No,COCO_val2014_000000199122,popular,success,,No,4651,4651,1031.4
+4652,1653,Is there a person in the image?,Yes,COCO_val2014_000000199122,popular,success,,Yes,4652,4652,998.6
+4655,1656,Is there a cup in the image?,No,COCO_val2014_000000199122,popular,success,,No,4655,4655,994.1
+4665,1666,Is there a car in the image?,No,COCO_val2014_000000482829,popular,success,,No,4665,4665,996.7
+4691,1692,Is there a cup in the image?,No,COCO_val2014_000000331366,popular,success,,No,4691,4691,1573.2
+4698,1699,Is there a sandwich in the image?,Yes,COCO_val2014_000000108189,popular,success,,Yes,4698,4698,1594.6
+4703,1704,Is there a chair in the image?,No,COCO_val2014_000000108189,popular,success,,No,4703,4703,1591.1
+4726,1727,Is there a potted plant in the image?,Yes,COCO_val2014_000000473199,popular,success,,Yes,4726,4726,1594.9
+4727,1728,Is there a bottle in the image?,No,COCO_val2014_000000473199,popular,success,,No,4727,4727,1575.9
+4735,1736,Is there a dining table in the image?,No,COCO_val2014_000000431615,popular,success,,No,4735,4735,1045.0
+4737,1738,Is there a car in the image?,No,COCO_val2014_000000431615,popular,success,,No,4737,4737,1013.1
+4746,1747,Is there a banana in the image?,Yes,COCO_val2014_000000246199,popular,success,,Yes,4746,4746,1004.9
+4757,1758,Is there a car in the image?,No,COCO_val2014_000000372009,popular,success,,No,4757,4757,1081.1
+4764,1765,Is there a person in the image?,Yes,COCO_val2014_000000501898,popular,success,,Yes,4764,4764,1005.5
+4788,1789,Is there a truck in the image?,No,COCO_val2014_000000001171,popular,success,,No,4788,4788,1032.1
+4796,1797,Is there a bottle in the image?,Yes,COCO_val2014_000000100238,popular,success,,Yes,4796,4796,1580.3
+4804,1805,Is there a bus in the image?,Yes,COCO_val2014_000000465418,popular,success,,Yes,4804,4804,1046.6
+4823,1824,Is there a cup in the image?,No,COCO_val2014_000000436127,popular,success,,No,4823,4823,1768.3
+4832,1833,Is there a dining table in the image?,Yes,COCO_val2014_000000349936,popular,success,,Yes,4832,4832,1658.0
+4836,1837,Is there a person in the image?,Yes,COCO_val2014_000000333756,popular,success,,Yes,4836,4836,1765.0
+4839,1840,Is there a car in the image?,No,COCO_val2014_000000333756,popular,success,,No,4839,4839,1778.3
+4862,1863,Is there a person in the image?,Yes,COCO_val2014_000000405740,popular,success,,Yes,4862,4862,1010.0
+4863,1864,Is there a car in the image?,No,COCO_val2014_000000405740,popular,success,,No,4863,4863,1010.0
+4872,1873,Is there a sink in the image?,No,COCO_val2014_000000147165,popular,success,,No,4872,4872,982.0
+4876,1877,Is there a spoon in the image?,Yes,COCO_val2014_000000147165,popular,success,,Yes,4876,4876,983.3
+4878,1879,Is there a truck in the image?,Yes,COCO_val2014_000000495311,popular,success,,Yes,4878,4878,1573.9
+4901,1902,Is there a car in the image?,No,COCO_val2014_000000031971,popular,success,,No,4901,4901,1770.0
+4904,1905,Is there a person in the image?,Yes,COCO_val2014_000000418680,popular,success,,Yes,4904,4904,1583.6
+4910,1911,Is there an orange in the image?,No,COCO_val2014_000000459680,popular,success,,No,4910,4910,1118.4
+4922,1923,Is there a person in the image?,Yes,COCO_val2014_000000276693,popular,success,,Yes,4922,4922,996.3
+4931,1932,Is there a bowl in the image?,No,COCO_val2014_000000356424,popular,success,,No,4931,4931,1591.5
+4943,1944,Is there a backpack in the image?,No,COCO_val2014_000000172342,popular,success,,No,4943,4943,995.2
+4945,1946,Is there a dining table in the image?,No,COCO_val2014_000000384970,popular,success,,No,4945,4945,1037.3
+4980,1981,Is there a banana in the image?,Yes,COCO_val2014_000000452297,popular,success,,Yes,4980,4980,1049.6
+4982,1983,Is there a spoon in the image?,Yes,COCO_val2014_000000452297,popular,success,,Yes,4982,4982,1045.4
+4993,1994,Is there a dining table in the image?,No,COCO_val2014_000000172648,popular,success,,No,4993,4993,1663.2
+4994,1995,Is there a car in the image?,Yes,COCO_val2014_000000172648,popular,success,,Yes,4994,4994,1570.2
+4998,1999,Is there a traffic light in the image?,Yes,COCO_val2014_000000308907,popular,success,,Yes,4998,4998,1033.4
+5012,2013,Is there a person in the image?,Yes,COCO_val2014_000000501294,popular,success,,Yes,5012,5012,1582.5
+5013,2014,Is there a car in the image?,No,COCO_val2014_000000501294,popular,success,,No,5013,5013,1590.2
+5015,2016,Is there a chair in the image?,Yes,COCO_val2014_000000501294,popular,success,,Yes,5015,5015,1585.4
+5019,2020,Is there a chair in the image?,No,COCO_val2014_000000500680,popular,success,,No,5019,5019,1574.0
+5030,2031,Is there a person in the image?,Yes,COCO_val2014_000000454607,popular,success,,Yes,5030,5030,1579.8
+5039,2040,Is there a chair in the image?,No,COCO_val2014_000000363908,popular,success,,No,5039,5039,995.3
+5047,2048,Is there a dining table in the image?,No,COCO_val2014_000000348469,popular,success,,No,5047,5047,1035.6
+5063,2064,Is there a chair in the image?,No,COCO_val2014_000000262736,popular,success,,No,5063,5063,998.7
+5071,2072,Is there a dining table in the image?,No,COCO_val2014_000000541783,popular,success,,No,5071,5071,1551.3
+5073,2074,Is there a car in the image?,No,COCO_val2014_000000541783,popular,success,,No,5073,5073,1621.8
+5075,2076,Is there a chair in the image?,No,COCO_val2014_000000541783,popular,success,,No,5075,5075,1623.9
+5087,2088,Is there a bottle in the image?,No,COCO_val2014_000000433574,popular,success,,No,5087,5087,1589.0
+5091,2092,Is there a chair in the image?,No,COCO_val2014_000000212241,popular,success,,No,5091,5091,1002.0
+5096,2097,Is there a train in the image?,Yes,COCO_val2014_000000114941,popular,success,,Yes,5096,5096,1024.1
+5105,2106,Is there a backpack in the image?,Yes,COCO_val2014_000000493753,popular,success,,Yes,5105,5105,1574.6
+5107,2108,Is there a car in the image?,No,COCO_val2014_000000410597,popular,success,,No,5107,5107,1011.9
+5113,2114,Is there a person in the image?,No,COCO_val2014_000000382617,popular,success,,No,5113,5113,1587.9
+5115,2116,Is there a car in the image?,No,COCO_val2014_000000382617,popular,success,,No,5115,5115,1591.8
+5124,2125,Is there a person in the image?,Yes,COCO_val2014_000000120792,popular,success,,Yes,5124,5124,1574.9
+5128,2129,Is there a chair in the image?,Yes,COCO_val2014_000000120792,popular,success,,Yes,5128,5128,1567.0
+5145,2146,Is there a car in the image?,No,COCO_val2014_000000156704,popular,success,,No,5145,5145,1011.1
+5150,2151,Is there a person in the image?,Yes,COCO_val2014_000000088507,popular,success,,Yes,5150,5150,1000.1
+5167,2168,Is there a dining table in the image?,No,COCO_val2014_000000252135,popular,success,,No,5167,5167,1034.1
+5172,2173,Is there a chair in the image?,No,COCO_val2014_000000501652,popular,success,,No,5172,5172,1584.3
+5184,2185,Is there a bowl in the image?,Yes,COCO_val2014_000000332908,popular,success,,Yes,5184,5184,1590.6
+5194,2195,Is there a bench in the image?,Yes,COCO_val2014_000000372819,popular,success,,Yes,5194,5194,1014.4
+5195,2196,Is there a cup in the image?,No,COCO_val2014_000000372819,popular,success,,No,5195,5195,1009.1
+5216,2217,Is there a person in the image?,Yes,COCO_val2014_000000394535,popular,success,,Yes,5216,5216,1003.2
+5219,2220,Is there a cup in the image?,No,COCO_val2014_000000394535,popular,success,,No,5219,5219,1001.9
+5220,2221,Is there a traffic light in the image?,Yes,COCO_val2014_000000579415,popular,success,,Yes,5220,5220,1021.7
+5221,2222,Is there a dining table in the image?,No,COCO_val2014_000000579415,popular,success,,No,5221,5221,1020.4
+5232,2233,Is there a person in the image?,Yes,COCO_val2014_000000355256,popular,success,,Yes,5232,5232,1008.9
+5235,2236,Is there a car in the image?,No,COCO_val2014_000000355256,popular,success,,No,5235,5235,1001.0
+5237,2238,Is there a cup in the image?,No,COCO_val2014_000000355256,popular,success,,No,5237,5237,1003.5
+5245,2246,Is there a dining table in the image?,Yes,COCO_val2014_000000240434,popular,success,,Yes,5245,5245,1034.6
+5251,2252,Is there a person in the image?,No,COCO_val2014_000000199940,popular,success,,No,5251,5251,978.5
+5260,2261,Is there a bicycle in the image?,Yes,COCO_val2014_000000549390,popular,success,,Yes,5260,5260,1000.8
+5263,2264,Is there a dining table in the image?,No,COCO_val2014_000000235541,popular,success,,No,5263,5263,1036.3
+5268,2269,Is there a tv in the image?,No,COCO_val2014_000000068418,popular,success,,No,5268,5268,1575.6
+5271,2272,Is there a dining table in the image?,No,COCO_val2014_000000068418,popular,success,,No,5271,5271,1650.3
+5281,2282,Is there a dining table in the image?,No,COCO_val2014_000000006033,popular,success,,No,5281,5281,1673.3
+5289,2290,Is there a car in the image?,No,COCO_val2014_000000021327,popular,success,,No,5289,5289,1004.4
+5322,2323,Is there a vase in the image?,Yes,COCO_val2014_000000243158,popular,success,,Yes,5322,5322,1581.6
+5324,2325,Is there a couch in the image?,Yes,COCO_val2014_000000243158,popular,success,,Yes,5324,5324,1568.2
+5334,2335,Is there a car in the image?,Yes,COCO_val2014_000000405762,popular,success,,Yes,5334,5334,995.8
+5343,2344,Is there a dining table in the image?,Yes,COCO_val2014_000000343967,popular,success,,Yes,5343,5343,1652.0
+5366,2367,Is there a broccoli in the image?,Yes,COCO_val2014_000000337502,popular,success,,Yes,5366,5366,996.2
+5371,2372,Is there a dining table in the image?,No,COCO_val2014_000000325347,popular,success,,No,5371,5371,1099.0
+5374,2375,Is there a sports ball in the image?,No,COCO_val2014_000000325347,popular,success,,No,5374,5374,1115.4
+5383,2384,Is there a dining table in the image?,No,COCO_val2014_000000061507,popular,success,,No,5383,5383,1652.8
+5386,2387,Is there a suitcase in the image?,No,COCO_val2014_000000061507,popular,success,,No,5386,5386,1569.7
+5389,2390,Is there a person in the image?,No,COCO_val2014_000000084410,popular,success,,No,5389,5389,1569.5
+5418,2419,Is there a pizza in the image?,Yes,COCO_val2014_000000154846,popular,success,,Yes,5418,5418,991.1
+5428,2429,Is there a cup in the image?,Yes,COCO_val2014_000000472375,popular,success,,Yes,5428,5428,1758.8
+5433,2434,Is there a chair in the image?,No,COCO_val2014_000000446651,popular,success,,No,5433,5433,1007.2
+5434,2435,Is there a car in the image?,Yes,COCO_val2014_000000446651,popular,success,,Yes,5434,5434,1000.4
+5441,2442,Is there a chair in the image?,No,COCO_val2014_000000267684,popular,success,,No,5441,5441,1577.4
+5450,2451,Is there a bottle in the image?,Yes,COCO_val2014_000000294475,popular,success,,Yes,5450,5450,1682.8
+5487,2488,Is there a car in the image?,No,COCO_val2014_000000071738,popular,success,,No,5487,5487,1037.7
+5508,2509,Is there a chair in the image?,Yes,COCO_val2014_000000246928,popular,success,,Yes,5508,5508,1012.3
+5509,2510,Is there a person in the image?,No,COCO_val2014_000000246928,popular,success,,No,5509,5509,1017.8
+5511,2512,Is there a dining table in the image?,No,COCO_val2014_000000246928,popular,success,,No,5511,5511,1047.8
+5513,2514,Is there a cup in the image?,No,COCO_val2014_000000246928,popular,success,,No,5513,5513,1015.1
+5529,2530,Is there a car in the image?,No,COCO_val2014_000000564511,popular,success,,No,5529,5529,1592.8
+5530,2531,Is there a bottle in the image?,Yes,COCO_val2014_000000564511,popular,success,,Yes,5530,5530,1588.3
+5538,2539,Is there a snowboard in the image?,Yes,COCO_val2014_000000462805,popular,success,,Yes,5538,5538,1590.4
+5545,2546,Is there a dining table in the image?,No,COCO_val2014_000000163575,popular,success,,No,5545,5545,1676.6
+5552,2553,Is there a bottle in the image?,Yes,COCO_val2014_000000059383,popular,success,,Yes,5552,5552,1574.0
+5561,2562,Is there a chair in the image?,No,COCO_val2014_000000478736,popular,success,,No,5561,5561,1602.6
+5591,2592,Is there a chair in the image?,No,COCO_val2014_000000142056,popular,success,,No,5591,5591,1009.4
+5600,2601,Is there a bottle in the image?,Yes,COCO_val2014_000000521643,popular,success,,Yes,5600,5600,1683.5
+5602,2603,Is there a dining table in the image?,Yes,COCO_val2014_000000521643,popular,success,,Yes,5602,5602,1603.8
+5611,2612,Is there a dining table in the image?,No,COCO_val2014_000000415727,popular,success,,No,5611,5611,1667.0
+5620,2621,Is there a handbag in the image?,Yes,COCO_val2014_000000222118,popular,success,,Yes,5620,5620,1002.7
+5627,2628,Is there a car in the image?,No,COCO_val2014_000000514292,popular,success,,No,5627,5627,1591.9
+5628,2629,Is there a dining table in the image?,Yes,COCO_val2014_000000117527,popular,success,,Yes,5628,5628,1045.6
+5640,2641,Is there a tv in the image?,Yes,COCO_val2014_000000429706,popular,success,,Yes,5640,5640,1023.0
+5641,2642,Is there a dining table in the image?,No,COCO_val2014_000000429706,popular,success,,No,5641,5641,1059.8
+5644,2645,Is there a person in the image?,Yes,COCO_val2014_000000429706,popular,success,,Yes,5644,5644,1021.6
+5668,2669,Is there an umbrella in the image?,Yes,COCO_val2014_000000123570,popular,success,,Yes,5668,5668,1016.4
+5670,2671,Is there a person in the image?,Yes,COCO_val2014_000000365317,popular,success,,Yes,5670,5670,995.8
+5672,2673,Is there a sports ball in the image?,Yes,COCO_val2014_000000365317,popular,success,,Yes,5672,5672,1033.2
+5677,2678,Is there a dining table in the image?,No,COCO_val2014_000000224155,popular,success,,No,5677,5677,1006.9
+5678,2679,Is there a toilet in the image?,No,COCO_val2014_000000224155,popular,success,,No,5678,5678,980.8
+5682,2683,Is there a keyboard in the image?,Yes,COCO_val2014_000000191964,popular,success,,Yes,5682,5682,979.0
+5718,2719,Is there a bowl in the image?,Yes,COCO_val2014_000000367528,popular,success,,Yes,5718,5718,1008.9
+5736,2737,Is there a baseball glove in the image?,Yes,COCO_val2014_000000050627,popular,success,,Yes,5736,5736,1657.6
+5741,2742,Is there a chair in the image?,No,COCO_val2014_000000050627,popular,success,,No,5741,5741,1575.6
+5749,2750,Is there a dining table in the image?,No,COCO_val2014_000000372817,popular,success,,No,5749,5749,1041.2
+5767,2768,Is there a person in the image?,No,COCO_val2014_000000092624,popular,success,,No,5767,5767,1000.2
+5782,2783,Is there a remote in the image?,Yes,COCO_val2014_000000079213,popular,success,,Yes,5782,5782,1582.1
+5793,2794,Is there a chair in the image?,No,COCO_val2014_000000514248,popular,success,,No,5793,5793,983.5
+5806,2807,Is there a dining table in the image?,Yes,COCO_val2014_000000575355,popular,success,,Yes,5806,5806,1663.2
+5817,2818,Is there a car in the image?,No,COCO_val2014_000000559547,popular,success,,No,5817,5817,1679.3
+5834,2835,Is there a sandwich in the image?,Yes,COCO_val2014_000000399702,popular,success,,Yes,5834,5834,1000.7
+5845,2846,Is there a car in the image?,No,COCO_val2014_000000264155,popular,success,,No,5845,5845,1008.5
+5848,2849,Is there a fork in the image?,Yes,COCO_val2014_000000264155,popular,success,,Yes,5848,5848,1006.7
+5850,2851,Is there a truck in the image?,Yes,COCO_val2014_000000125572,popular,success,,Yes,5850,5850,1001.3
+5854,2855,Is there a person in the image?,Yes,COCO_val2014_000000125572,popular,success,,Yes,5854,5854,993.5
+5855,2856,Is there a chair in the image?,No,COCO_val2014_000000125572,popular,success,,No,5855,5855,998.6
+5867,2868,Is there a chair in the image?,No,COCO_val2014_000000045685,popular,success,,No,5867,5867,993.9
+5874,2875,Is there a pizza in the image?,Yes,COCO_val2014_000000008749,popular,success,,Yes,5874,5874,997.8
+5893,2894,Is there a dining table in the image?,No,COCO_val2014_000000429913,popular,success,,No,5893,5893,1030.6
+5901,2902,Is there a car in the image?,No,COCO_val2014_000000554002,popular,success,,No,5901,5901,1004.2
+5902,2903,Is there a person in the image?,Yes,COCO_val2014_000000554002,popular,success,,Yes,5902,5902,1000.9
+5918,2919,Is there a cat in the image?,Yes,COCO_val2014_000000534942,popular,success,,Yes,5918,5918,991.8
+5933,2934,Is there a chair in the image?,Yes,COCO_val2014_000000533201,popular,success,,Yes,5933,5933,969.3
+5935,2936,Is there a dining table in the image?,No,COCO_val2014_000000235203,popular,success,,No,5935,5935,1647.1
+5946,2947,Is there a person in the image?,Yes,COCO_val2014_000000401398,popular,success,,Yes,5946,5946,993.4
+5957,2958,Is there a chair in the image?,No,COCO_val2014_000000323752,popular,success,,No,5957,5957,993.6
+5973,2974,Is there a car in the image?,No,COCO_val2014_000000015738,popular,success,,No,5973,5973,1042.0
+5977,2978,Is there a car in the image?,Yes,COCO_val2014_000000497599,popular,success,,Yes,5977,5977,994.5
+6003,4,Is there a sandwich in the image?,No,COCO_val2014_000000310196,random,success,,No,6003,6003,1001.3
+6004,5,Is there a skis in the image?,Yes,COCO_val2014_000000310196,random,success,,Yes,6004,6004,997.6
+6012,13,Is there a person in the image?,Yes,COCO_val2014_000000429109,random,success,,Yes,6012,6012,998.5
+6022,23,Is there a car in the image?,No,COCO_val2014_000000211674,random,success,,No,6022,6022,1013.6
+6050,51,Is there a person in the image?,Yes,COCO_val2014_000000544456,random,success,,Yes,6050,6050,994.8
+6072,73,Is there a person in the image?,Yes,COCO_val2014_000000239444,random,success,,Yes,6072,6072,1569.6
+6082,83,Is there a hot dog in the image?,Yes,COCO_val2014_000000569839,random,success,,Yes,6082,6082,1032.8
+6087,88,Is there a potted plant in the image?,No,COCO_val2014_000000219622,random,success,,No,6087,6087,999.4
+6102,103,Is there a baseball glove in the image?,Yes,COCO_val2014_000000131115,random,success,,Yes,6102,6102,1029.7
+6105,106,Is there a sheep in the image?,No,COCO_val2014_000000131115,random,success,,No,6105,6105,993.2
+6112,113,Is there a toilet in the image?,Yes,COCO_val2014_000000157084,random,success,,Yes,6112,6112,999.7
+6121,122,Is there a skis in the image?,No,COCO_val2014_000000336872,random,success,,No,6121,6121,1573.7
+6134,135,Is there a mouse in the image?,Yes,COCO_val2014_000000516916,random,success,,Yes,6134,6134,1569.4
+6136,137,Is there a laptop in the image?,Yes,COCO_val2014_000000516916,random,success,,Yes,6136,6136,1567.5
+6140,141,Is there a toothbrush in the image?,Yes,COCO_val2014_000000542145,random,success,,Yes,6140,6140,981.8
+6151,152,Is there a bear in the image?,No,COCO_val2014_000000297078,random,success,,No,6151,6151,996.8
+6152,153,Is there a person in the image?,Yes,COCO_val2014_000000297078,random,success,,Yes,6152,6152,977.5
+6172,173,Is there a person in the image?,Yes,COCO_val2014_000000421455,random,success,,Yes,6172,6172,979.0
+6176,177,Is there a toothbrush in the image?,Yes,COCO_val2014_000000288639,random,success,,Yes,6176,6176,1586.7
+6179,180,Is there a horse in the image?,No,COCO_val2014_000000288639,random,success,,No,6179,6179,1586.3
+6192,193,Is there a laptop in the image?,Yes,COCO_val2014_000000526321,random,success,,Yes,6192,6192,1001.6
+6193,194,Is there a truck in the image?,No,COCO_val2014_000000526321,random,success,,No,6193,6193,999.8
+6201,202,Is there a couch in the image?,No,COCO_val2014_000000042190,random,success,,No,6201,6201,1009.0
+6203,204,Is there a wine glass in the image?,No,COCO_val2014_000000042190,random,success,,No,6203,6203,1037.6
+6233,234,Is there a vase in the image?,Yes,COCO_val2014_000000031773,random,success,,Yes,6233,6233,1581.9
+6235,236,Is there a stop sign in the image?,No,COCO_val2014_000000500257,random,success,,No,6235,6235,985.2
+6240,241,Is there a car in the image?,No,COCO_val2014_000000574057,random,success,,No,6240,6240,1594.1
+6284,285,Is there a suitcase in the image?,Yes,COCO_val2014_000000329717,random,success,,Yes,6284,6284,984.3
+6292,293,Is there a horse in the image?,Yes,COCO_val2014_000000012333,random,success,,Yes,6292,6292,1011.2
+6294,295,Is there a banana in the image?,Yes,COCO_val2014_000000480122,random,success,,Yes,6294,6294,1772.4
+6299,300,Is there a remote in the image?,No,COCO_val2014_000000480122,random,success,,No,6299,6299,1771.4
+6303,304,Is there a baseball bat in the image?,No,COCO_val2014_000000515904,random,success,,No,6303,6303,1038.1
+6304,305,Is there a potted plant in the image?,Yes,COCO_val2014_000000515904,random,success,,Yes,6304,6304,1004.6
+6310,311,Is there a sports ball in the image?,Yes,COCO_val2014_000000437347,random,success,,Yes,6310,6310,1659.7
+6323,324,Is there a traffic light in the image?,No,COCO_val2014_000000538236,random,success,,No,6323,6323,1040.9
+6331,332,Is there a tv in the image?,No,COCO_val2014_000000217397,random,success,,No,6331,6331,1583.8
+6332,333,Is there a wine glass in the image?,Yes,COCO_val2014_000000217397,random,success,,Yes,6332,6332,1663.7
+6334,335,Is there a bottle in the image?,Yes,COCO_val2014_000000217397,random,success,,Yes,6334,6334,1586.0
+6339,340,Is there a dog in the image?,No,COCO_val2014_000000060213,random,success,,No,6339,6339,1579.6
+6384,385,Is there a spoon in the image?,Yes,COCO_val2014_000000350898,random,success,,Yes,6384,6384,1583.5
+6389,390,Is there a remote in the image?,Yes,COCO_val2014_000000350898,random,success,,Yes,6389,6389,1586.3
+6411,412,Is there a bench in the image?,No,COCO_val2014_000000239347,random,success,,No,6411,6411,1581.5
+6420,421,Is there a chair in the image?,Yes,COCO_val2014_000000249715,random,success,,Yes,6420,6420,983.1
+6451,452,Is there a spoon in the image?,No,COCO_val2014_000000083275,random,success,,No,6451,6451,1000.1
+6452,453,Is there a person in the image?,Yes,COCO_val2014_000000083275,random,success,,Yes,6452,6452,999.7
+6485,486,Is there a tie in the image?,No,COCO_val2014_000000318204,random,success,,No,6485,6485,1579.3
+6502,503,Is there a person in the image?,Yes,COCO_val2014_000000199764,random,success,,Yes,6502,6502,997.1
+6515,516,Is there an oven in the image?,No,COCO_val2014_000000175506,random,success,,No,6515,6515,1003.7
+6530,531,Is there a bench in the image?,Yes,COCO_val2014_000000427113,random,success,,Yes,6530,6530,1570.2
+6531,532,Is there a donut in the image?,No,COCO_val2014_000000427113,random,success,,No,6531,6531,1569.8
+6543,544,Is there a toilet in the image?,No,COCO_val2014_000000013348,random,success,,No,6543,6543,997.1
+6578,579,Is there a car in the image?,Yes,COCO_val2014_000000287305,random,success,,Yes,6578,6578,1019.1
+6612,613,Is there a person in the image?,Yes,COCO_val2014_000000580294,random,success,,Yes,6612,6612,997.8
+6616,617,Is there a spoon in the image?,Yes,COCO_val2014_000000580294,random,success,,Yes,6616,6616,1000.8
+6624,625,Is there a snowboard in the image?,Yes,COCO_val2014_000000094944,random,success,,Yes,6624,6624,1002.4
+6627,628,Is there a bed in the image?,No,COCO_val2014_000000094944,random,success,,No,6627,6627,999.6
+6652,653,Is there a chair in the image?,Yes,COCO_val2014_000000414516,random,success,,Yes,6652,6652,1571.4
+6654,655,Is there a traffic light in the image?,Yes,COCO_val2014_000000204360,random,success,,Yes,6654,6654,1005.3
+6659,660,Is there an apple in the image?,No,COCO_val2014_000000204360,random,success,,No,6659,6659,975.4
+6665,666,Is there a clock in the image?,No,COCO_val2014_000000245642,random,success,,No,6665,6665,1572.6
+6667,668,Is there a skateboard in the image?,No,COCO_val2014_000000237767,random,success,,No,6667,6667,1762.9
+6678,679,Is there a cake in the image?,Yes,COCO_val2014_000000094501,random,success,,Yes,6678,6678,1756.9
+6687,688,Is there a bench in the image?,No,COCO_val2014_000000069196,random,success,,No,6687,6687,1644.4
+6700,701,Is there a fork in the image?,No,COCO_val2014_000000093946,random,success,,No,6700,6700,1570.6
+6715,716,Is there a cake in the image?,No,COCO_val2014_000000226097,random,success,,No,6715,6715,1004.8
+6727,728,Is there a bear in the image?,No,COCO_val2014_000000114710,random,success,,No,6727,6727,1007.6
+6730,731,Is there a sheep in the image?,Yes,COCO_val2014_000000114710,random,success,,Yes,6730,6730,1006.4
+6735,736,Is there a baseball glove in the image?,No,COCO_val2014_000000113701,random,success,,No,6735,6735,1654.8
+6736,737,Is there a bed in the image?,Yes,COCO_val2014_000000113701,random,success,,Yes,6736,6736,1591.3
+6748,749,Is there a vase in the image?,Yes,COCO_val2014_000000482275,random,success,,Yes,6748,6748,1581.3
+6771,772,Is there a dog in the image?,No,COCO_val2014_000000203479,random,success,,No,6771,6771,988.1
+6776,777,Is there a potted plant in the image?,Yes,COCO_val2014_000000551881,random,success,,Yes,6776,6776,1602.0
+6781,782,Is there a cat in the image?,No,COCO_val2014_000000369541,random,success,,No,6781,6781,987.6
+6782,783,Is there a person in the image?,Yes,COCO_val2014_000000369541,random,success,,Yes,6782,6782,985.8
+6787,788,Is there a train in the image?,No,COCO_val2014_000000007795,random,success,,No,6787,6787,1000.5
+6816,817,Is there a person in the image?,Yes,COCO_val2014_000000500473,random,success,,Yes,6816,6816,1585.0
+6820,821,Is there a handbag in the image?,Yes,COCO_val2014_000000500473,random,success,,Yes,6820,6820,1588.9
+6822,823,Is there a chair in the image?,Yes,COCO_val2014_000000327532,random,success,,Yes,6822,6822,1000.6
+6824,825,Is there a person in the image?,Yes,COCO_val2014_000000327532,random,success,,Yes,6824,6824,1000.0
+6841,842,Is there a keyboard in the image?,No,COCO_val2014_000000443240,random,success,,No,6841,6841,1590.7
+6842,843,Is there a chair in the image?,Yes,COCO_val2014_000000443240,random,success,,Yes,6842,6842,1582.7
+6865,866,Is there a parking meter in the image?,No,COCO_val2014_000000314992,random,success,,No,6865,6865,1023.0
+6867,868,Is there a toothbrush in the image?,No,COCO_val2014_000000314992,random,success,,No,6867,6867,1050.4
+6868,869,Is there a cell phone in the image?,Yes,COCO_val2014_000000314992,random,success,,Yes,6868,6868,1014.7
+6870,871,Is there a person in the image?,Yes,COCO_val2014_000000424642,random,success,,Yes,6870,6870,984.6
+6885,886,Is there a book in the image?,No,COCO_val2014_000000087435,random,success,,No,6885,6885,1079.0
+6894,895,Is there a dog in the image?,Yes,COCO_val2014_000000354398,random,success,,Yes,6894,6894,1674.1
+6899,900,Is there a suitcase in the image?,No,COCO_val2014_000000354398,random,success,,No,6899,6899,1669.9
+6926,927,Is there a car in the image?,Yes,COCO_val2014_000000102906,random,success,,Yes,6926,6926,1008.2
+6937,938,Is there an umbrella in the image?,No,COCO_val2014_000000280734,random,success,,No,6937,6937,1006.7
+6938,939,Is there a person in the image?,Yes,COCO_val2014_000000280734,random,success,,Yes,6938,6938,1014.0
+6940,941,Is there a dining table in the image?,Yes,COCO_val2014_000000280734,random,success,,Yes,6940,6940,1046.4
+6948,949,Is there a person in the image?,Yes,COCO_val2014_000000379162,random,success,,Yes,6948,6948,999.4
+6968,969,Is there a person in the image?,No,COCO_val2014_000000358255,random,success,,No,6968,6968,1031.5
+6979,980,Is there a scissors in the image?,No,COCO_val2014_000000197219,random,success,,No,6979,6979,1011.6
+6983,984,Is there a bear in the image?,No,COCO_val2014_000000197219,random,success,,No,6983,6983,1014.4
+6986,987,Is there a cake in the image?,No,COCO_val2014_000000460931,random,success,,No,6986,6986,1775.0
+6997,998,Is there a remote in the image?,No,COCO_val2014_000000468934,random,success,,No,6997,6997,1585.3
+7000,1001,Is there a fork in the image?,Yes,COCO_val2014_000000468934,random,success,,Yes,7000,7000,1587.5
+7005,1006,Is there a banana in the image?,No,COCO_val2014_000000189694,random,success,,No,7005,7005,1568.6
+7009,1010,Is there a keyboard in the image?,No,COCO_val2014_000000273450,random,success,,No,7009,7009,1996.1
+7023,1024,Is there a tennis racket in the image?,No,COCO_val2014_000000449432,random,success,,No,7023,7023,1034.9
+7032,1033,Is there a person in the image?,Yes,COCO_val2014_000000506178,random,success,,Yes,7032,7032,981.1
+7045,1046,Is there a skateboard in the image?,No,COCO_val2014_000000205206,random,success,,No,7045,7045,1000.4
+7064,1065,Is there a sports ball in the image?,No,COCO_val2014_000000278771,random,success,,No,7064,7064,1671.1
+7095,1096,Is there a laptop in the image?,No,COCO_val2014_000000199959,random,success,,No,7095,7095,1024.7
+7115,1116,Is there a laptop in the image?,No,COCO_val2014_000000378873,random,success,,No,7115,7115,1006.1
+7119,1120,Is there a snowboard in the image?,No,COCO_val2014_000000574790,random,success,,No,7119,7119,996.8
+7120,1121,Is there a car in the image?,Yes,COCO_val2014_000000574790,random,success,,Yes,7120,7120,993.9
+7125,1126,Is there a skateboard in the image?,No,COCO_val2014_000000011241,random,success,,No,7125,7125,989.0
+7133,1134,Is there a truck in the image?,Yes,COCO_val2014_000000525667,random,success,,Yes,7133,7133,1576.2
+7136,1137,Is there a clock in the image?,Yes,COCO_val2014_000000246145,random,success,,Yes,7136,7136,1586.0
+7141,1142,Is there a stop sign in the image?,No,COCO_val2014_000000313162,random,success,,No,7141,7141,1886.3
+7159,1160,Is there a pizza in the image?,No,COCO_val2014_000000275863,random,success,,No,7159,7159,997.1
+7166,1167,Is there a spoon in the image?,No,COCO_val2014_000000327038,random,success,,No,7166,7166,1076.3
+7174,1175,Is there a dining table in the image?,Yes,COCO_val2014_000000513136,random,success,,Yes,7174,7174,1668.2
+7197,1198,Is there a giraffe in the image?,No,COCO_val2014_000000375909,random,success,,No,7197,7197,1096.7
+7204,1205,Is there a person in the image?,Yes,COCO_val2014_000000396338,random,success,,Yes,7204,7204,996.7
+7209,1210,Is there a bicycle in the image?,No,COCO_val2014_000000124930,random,success,,No,7209,7209,1006.9
+7228,1229,Is there a car in the image?,Yes,COCO_val2014_000000377401,random,success,,Yes,7228,7228,1019.9
+7229,1230,Is there a keyboard in the image?,No,COCO_val2014_000000377401,random,success,,No,7229,7229,1022.5
+7238,1239,Is there a car in the image?,Yes,COCO_val2014_000000153865,random,success,,Yes,7238,7238,1031.1
+7240,1241,Is there a kite in the image?,Yes,COCO_val2014_000000153865,random,success,,Yes,7240,7240,1024.9
+7242,1243,Is there a banana in the image?,Yes,COCO_val2014_000000383185,random,success,,Yes,7242,7242,999.2
+7250,1251,Is there a bowl in the image?,No,COCO_val2014_000000388983,random,success,,No,7250,7250,983.2
+7255,1256,Is there a baseball glove in the image?,No,COCO_val2014_000000295377,random,success,,No,7255,7255,1675.3
+7266,1267,Is there a truck in the image?,Yes,COCO_val2014_000000244455,random,success,,Yes,7266,7266,1689.2
+7274,1275,Is there a dining table in the image?,Yes,COCO_val2014_000000303652,random,success,,Yes,7274,7274,1657.9
+7275,1276,Is there a chair in the image?,Yes,COCO_val2014_000000303652,random,success,,Yes,7275,7275,1572.8
+7278,1279,Is there a truck in the image?,Yes,COCO_val2014_000000098493,random,success,,Yes,7278,7278,1000.7
+7280,1281,Is there a clock in the image?,Yes,COCO_val2014_000000098493,random,success,,Yes,7280,7280,999.3
+7291,1292,Is there a sink in the image?,Yes,COCO_val2014_000000307166,random,success,,Yes,7291,7291,1576.3
+7292,1293,Is there a bottle in the image?,Yes,COCO_val2014_000000307166,random,success,,Yes,7292,7292,1585.4
+7293,1294,Is there a bus in the image?,No,COCO_val2014_000000307166,random,success,,No,7293,7293,1571.0
+7300,1301,Is there a bottle in the image?,Yes,COCO_val2014_000000313034,random,success,,Yes,7300,7300,1569.2
+7336,1337,Is there a bus in the image?,Yes,COCO_val2014_000000299074,random,success,,Yes,7336,7336,1571.8
+7344,1345,Is there a car in the image?,Yes,COCO_val2014_000000186709,random,success,,Yes,7344,7344,1591.9
+7347,1348,Is there a cow in the image?,No,COCO_val2014_000000186709,random,success,,No,7347,7347,1586.9
+7378,1379,Is there a knife in the image?,Yes,COCO_val2014_000000037900,random,success,,Yes,7378,7378,1011.6
+7379,1380,Is there a vase in the image?,No,COCO_val2014_000000037900,random,success,,No,7379,7379,1026.1
+7391,1392,Is there a toilet in the image?,No,COCO_val2014_000000123017,random,success,,No,7391,7391,1667.7
+7393,1394,Is there a chair in the image?,No,COCO_val2014_000000316237,random,success,,No,7393,7393,1642.9
+7395,1396,Is there a wine glass in the image?,No,COCO_val2014_000000316237,random,success,,No,7395,7395,1738.1
+7415,1416,Is there a carrot in the image?,No,COCO_val2014_000000200583,random,success,,No,7415,7415,1598.3
+7420,1421,Is there a person in the image?,Yes,COCO_val2014_000000424585,random,success,,Yes,7420,7420,998.0
+7439,1440,Is there a wine glass in the image?,No,COCO_val2014_000000511622,random,success,,No,7439,7439,1671.0
+7449,1450,Is there a parking meter in the image?,No,COCO_val2014_000000039516,random,success,,No,7449,7449,1033.3
+7461,1462,Is there a baseball glove in the image?,No,COCO_val2014_000000115626,random,success,,No,7461,7461,1656.4
+7465,1466,Is there a handbag in the image?,No,COCO_val2014_000000391735,random,success,,No,7465,7465,1006.0
+7474,1475,Is there a book in the image?,Yes,COCO_val2014_000000236370,random,success,,Yes,7474,7474,1582.4
+7486,1487,Is there a car in the image?,Yes,COCO_val2014_000000377352,random,success,,Yes,7486,7486,1006.8
+7492,1493,Is there a person in the image?,Yes,COCO_val2014_000000302405,random,success,,Yes,7492,7492,980.3
+7506,1507,Is there a clock in the image?,Yes,COCO_val2014_000000023731,random,success,,Yes,7506,7506,1113.6
+7509,1510,Is there a bowl in the image?,Yes,COCO_val2014_000000023731,random,success,,Yes,7509,7509,1104.5
+7513,1514,Is there an airplane in the image?,No,COCO_val2014_000000463640,random,success,,No,7513,7513,1812.9
+7518,1519,Is there a potted plant in the image?,Yes,COCO_val2014_000000365822,random,success,,Yes,7518,7518,1595.3
+7520,1521,Is there a bottle in the image?,Yes,COCO_val2014_000000365822,random,success,,Yes,7520,7520,1593.3
+7528,1529,Is there a sports ball in the image?,Yes,COCO_val2014_000000524979,random,success,,Yes,7528,7528,1055.1
+7532,1533,Is there a bed in the image?,Yes,COCO_val2014_000000070813,random,success,,Yes,7532,7532,1665.2
+7533,1534,Is there a kite in the image?,No,COCO_val2014_000000070813,random,success,,No,7533,7533,1673.1
+7552,1553,Is there a sports ball in the image?,No,COCO_val2014_000000015338,random,success,,No,7552,7552,1044.3
+7558,1559,Is there an elephant in the image?,Yes,COCO_val2014_000000441156,random,success,,Yes,7558,7558,1572.5
+7590,1591,Is there a person in the image?,No,COCO_val2014_000000485485,random,success,,No,7590,7590,1580.6
+7619,1620,Is there a spoon in the image?,No,COCO_val2014_000000214244,random,success,,No,7619,7619,998.8
+7636,1637,Is there a tennis racket in the image?,Yes,COCO_val2014_000000499105,random,success,,Yes,7636,7636,1006.8
+7650,1651,Is there a baseball glove in the image?,Yes,COCO_val2014_000000199122,random,success,,Yes,7650,7650,1032.5
+7652,1653,Is there a person in the image?,Yes,COCO_val2014_000000199122,random,success,,Yes,7652,7652,995.3
+7664,1665,Is there a sports ball in the image?,Yes,COCO_val2014_000000482829,random,success,,Yes,7664,7664,1039.4
+7676,1677,Is there a clock in the image?,No,COCO_val2014_000000246999,random,success,,No,7676,7676,1590.2
+7691,1692,Is there a boat in the image?,No,COCO_val2014_000000331366,random,success,,No,7691,7691,1584.1
+7697,1698,Is there a backpack in the image?,No,COCO_val2014_000000348524,random,success,,No,7697,7697,1053.8
+7706,1707,Is there a person in the image?,No,COCO_val2014_000000301575,random,success,,No,7706,7706,1745.6
+7711,1712,Is there a skis in the image?,No,COCO_val2014_000000239773,random,success,,No,7711,7711,995.7
+7713,1714,Is there a train in the image?,No,COCO_val2014_000000239773,random,success,,No,7713,7713,1000.1
+7722,1723,Is there a person in the image?,Yes,COCO_val2014_000000473199,random,success,,Yes,7722,7722,1584.1
+7736,1737,Is there a person in the image?,Yes,COCO_val2014_000000431615,random,success,,Yes,7736,7736,1013.4
+7743,1744,Is there a sink in the image?,No,COCO_val2014_000000343401,random,success,,No,7743,7743,1015.9
+7761,1762,Is there a horse in the image?,No,COCO_val2014_000000346707,random,success,,No,7761,7761,1005.2
+7769,1770,Is there a vase in the image?,No,COCO_val2014_000000501898,random,success,,No,7769,7769,999.3
+7783,1784,Is there an oven in the image?,Yes,COCO_val2014_000000510138,random,success,,Yes,7783,7783,1759.5
+7791,1792,Is there a bowl in the image?,No,COCO_val2014_000000001171,random,success,,No,7791,7791,1009.6
+7797,1798,Is there a bicycle in the image?,No,COCO_val2014_000000100238,random,success,,No,7797,7797,1587.0
+7811,1812,Is there a book in the image?,No,COCO_val2014_000000392364,random,success,,No,7811,7811,1757.0
+7822,1823,Is there a horse in the image?,Yes,COCO_val2014_000000436127,random,success,,Yes,7822,7822,1770.6
+7825,1826,Is there a potted plant in the image?,No,COCO_val2014_000000198397,random,success,,No,7825,7825,1010.4
+7853,1854,Is there a baseball bat in the image?,No,COCO_val2014_000000286342,random,success,,No,7853,7853,1033.3
+7874,1875,Is there a person in the image?,Yes,COCO_val2014_000000147165,random,success,,Yes,7874,7874,981.2
+7885,1886,Is there a snowboard in the image?,No,COCO_val2014_000000312406,random,success,,No,7885,7885,1583.7
+7886,1887,Is there a bowl in the image?,Yes,COCO_val2014_000000312406,random,success,,Yes,7886,7886,1566.5
+7894,1895,Is there a person in the image?,Yes,COCO_val2014_000000515820,random,success,,Yes,7894,7894,1760.4
+7896,1897,Is there an orange in the image?,Yes,COCO_val2014_000000031971,random,success,,Yes,7896,7896,1767.6
+7910,1911,Is there an orange in the image?,No,COCO_val2014_000000459680,random,success,,No,7910,7910,1102.8
+7919,1920,Is there a bicycle in the image?,No,COCO_val2014_000000196462,random,success,,No,7919,7919,1583.7
+7921,1922,Is there a cup in the image?,No,COCO_val2014_000000276693,random,success,,No,7921,7921,998.7
+7953,1954,Is there a train in the image?,No,COCO_val2014_000000572260,random,success,,No,7953,7953,1576.6
+7962,1963,Is there a banana in the image?,Yes,COCO_val2014_000000379404,random,success,,Yes,7962,7962,1630.6
+7967,1968,Is there a bird in the image?,No,COCO_val2014_000000379404,random,success,,No,7967,7967,1629.9
+7973,1974,Is there a banana in the image?,No,COCO_val2014_000000044801,random,success,,No,7973,7973,997.9
+7981,1982,Is there a broccoli in the image?,No,COCO_val2014_000000452297,random,success,,No,7981,7981,1047.8
+7992,1993,Is there a truck in the image?,Yes,COCO_val2014_000000172648,random,success,,Yes,7992,7992,1583.7
+7997,1998,Is there a dining table in the image?,No,COCO_val2014_000000172648,random,success,,No,7997,7997,1728.0
+8000,2001,Is there a person in the image?,No,COCO_val2014_000000308907,random,success,,No,8000,8000,997.6
+8006,2007,Is there a truck in the image?,Yes,COCO_val2014_000000263594,random,success,,Yes,8006,8006,959.8
+8033,2034,Is there a handbag in the image?,No,COCO_val2014_000000454607,random,success,,No,8033,8033,1582.7
+8051,2052,Is there a frisbee in the image?,No,COCO_val2014_000000348469,random,success,,No,8051,8051,1041.8
+8058,2059,Is there a dog in the image?,Yes,COCO_val2014_000000262736,random,success,,Yes,8058,8058,997.6
+8059,2060,Is there a cup in the image?,No,COCO_val2014_000000262736,random,success,,No,8059,8059,998.8
+8060,2061,Is there a truck in the image?,No,COCO_val2014_000000262736,random,success,,No,8060,8060,997.6
+8076,2077,Is there a bowl in the image?,Yes,COCO_val2014_000000445200,random,success,,Yes,8076,8076,1000.3
+8094,2095,Is there a person in the image?,No,COCO_val2014_000000114941,random,success,,No,8094,8094,1006.9
+8117,2118,Is there a giraffe in the image?,No,COCO_val2014_000000382617,random,success,,No,8117,8117,1678.5
+8122,2123,Is there a couch in the image?,Yes,COCO_val2014_000000467887,random,success,,Yes,8122,8122,1579.9
+8129,2130,Is there a surfboard in the image?,No,COCO_val2014_000000120792,random,success,,No,8129,8129,1669.8
+8133,2134,Is there a zebra in the image?,No,COCO_val2014_000000125524,random,success,,No,8133,8133,1009.6
+8149,2150,Is there a clock in the image?,No,COCO_val2014_000000088507,random,success,,No,8149,8149,996.0
+8150,2151,Is there a person in the image?,Yes,COCO_val2014_000000088507,random,success,,Yes,8150,8150,1002.6
+8165,2166,Is there a hot dog in the image?,No,COCO_val2014_000000155131,random,success,,No,8165,8165,1647.5
+8168,2169,Is there a person in the image?,Yes,COCO_val2014_000000252135,random,success,,Yes,8168,8168,1001.6
+8181,2182,Is there an elephant in the image?,No,COCO_val2014_000000238691,random,success,,No,8181,8181,1583.2
+8187,2188,Is there a stop sign in the image?,No,COCO_val2014_000000332908,random,success,,No,8187,8187,1663.6
+8194,2195,Is there a bench in the image?,Yes,COCO_val2014_000000372819,random,success,,Yes,8194,8194,1008.0
+8201,2202,Is there a bicycle in the image?,No,COCO_val2014_000000470699,random,success,,No,8201,8201,1027.8
+8202,2203,Is there a person in the image?,Yes,COCO_val2014_000000023084,random,success,,Yes,8202,8202,984.4
+8215,2216,Is there a bench in the image?,No,COCO_val2014_000000394535,random,success,,No,8215,8215,998.8
+8231,2232,Is there a tie in the image?,No,COCO_val2014_000000233521,random,success,,No,8231,8231,1002.2
+8245,2246,Is there a spoon in the image?,Yes,COCO_val2014_000000240434,random,success,,Yes,8245,8245,999.5
+8275,2276,Is there a fork in the image?,No,COCO_val2014_000000368541,random,success,,No,8275,8275,1580.7
+8287,2288,Is there a traffic light in the image?,No,COCO_val2014_000000021327,random,success,,No,8287,8287,1032.7
+8289,2290,Is there a banana in the image?,No,COCO_val2014_000000021327,random,success,,No,8289,8289,998.6
+8294,2295,Is there a person in the image?,Yes,COCO_val2014_000000390157,random,success,,Yes,8294,8294,1599.4
+8309,2310,Is there a surfboard in the image?,No,COCO_val2014_000000579277,random,success,,No,8309,8309,1044.6
+8310,2311,Is there a person in the image?,Yes,COCO_val2014_000000042685,random,success,,Yes,8310,8310,998.9
+8341,2342,Is there a kite in the image?,No,COCO_val2014_000000343967,random,success,,No,8341,8341,1589.5
+8354,2355,Is there a bowl in the image?,Yes,COCO_val2014_000000044993,random,success,,Yes,8354,8354,1042.8
+8363,2364,Is there a fire hydrant in the image?,No,COCO_val2014_000000381195,random,success,,No,8363,8363,1006.3
+8375,2376,Is there a toilet in the image?,No,COCO_val2014_000000325347,random,success,,No,8375,8375,1074.6
+8385,2386,Is there a laptop in the image?,No,COCO_val2014_000000061507,random,success,,No,8385,8385,1568.3
+8397,2398,Is there a parking meter in the image?,No,COCO_val2014_000000288576,random,success,,No,8397,8397,1034.2
+8398,2399,Is there a frisbee in the image?,Yes,COCO_val2014_000000288576,random,success,,Yes,8398,8398,1036.2
+8403,2404,Is there a bird in the image?,No,COCO_val2014_000000328301,random,success,,No,8403,8403,1001.7
+8407,2408,Is there a carrot in the image?,No,COCO_val2014_000000307262,random,success,,No,8407,8407,1821.6
+8437,2438,Is there a baseball bat in the image?,No,COCO_val2014_000000267684,random,success,,No,8437,8437,1660.4
+8446,2447,Is there a fork in the image?,Yes,COCO_val2014_000000238029,random,success,,Yes,8446,8446,1583.5
+8449,2450,Is there a handbag in the image?,No,COCO_val2014_000000294475,random,success,,No,8449,8449,1666.0
+8480,2481,Is there a cup in the image?,Yes,COCO_val2014_000000038645,random,success,,Yes,8480,8480,1585.5
+8505,2506,Is there a stop sign in the image?,No,COCO_val2014_000000073182,random,success,,No,8505,8505,1036.0
+8513,2514,Is there an apple in the image?,No,COCO_val2014_000000246928,random,success,,No,8513,8513,1016.4
+8514,2515,Is there a truck in the image?,Yes,COCO_val2014_000000528136,random,success,,Yes,8514,8514,1574.9
+8527,2528,Is there a knife in the image?,Yes,COCO_val2014_000000564511,random,success,,Yes,8527,8527,1593.5
+8530,2531,Is there a bottle in the image?,Yes,COCO_val2014_000000564511,random,success,,Yes,8530,8530,1589.1
+8531,2532,Is there a stop sign in the image?,No,COCO_val2014_000000564511,random,success,,No,8531,8531,1662.8
+8542,2543,Is there a skis in the image?,Yes,COCO_val2014_000000462805,random,success,,Yes,8542,8542,1593.5
+8544,2545,Is there a dog in the image?,Yes,COCO_val2014_000000163575,random,success,,Yes,8544,8544,1748.4
+8553,2554,Is there a vase in the image?,No,COCO_val2014_000000059383,random,success,,No,8553,8553,1586.9
+8555,2556,Is there a traffic light in the image?,No,COCO_val2014_000000059383,random,success,,No,8555,8555,1664.2
+8575,2576,Is there a vase in the image?,No,COCO_val2014_000000516601,random,success,,No,8575,8575,1072.8
+8577,2578,Is there a tennis racket in the image?,No,COCO_val2014_000000516601,random,success,,No,8577,8577,1102.6
+8585,2586,Is there a bed in the image?,No,COCO_val2014_000000562155,random,success,,No,8585,8585,1596.2
+8588,2589,Is there a sports ball in the image?,No,COCO_val2014_000000142056,random,success,,No,8588,8588,1039.1
+8612,2613,Is there a person in the image?,Yes,COCO_val2014_000000415727,random,success,,Yes,8612,8612,1585.9
+8614,2615,Is there a bench in the image?,Yes,COCO_val2014_000000415727,random,success,,Yes,8614,8614,1584.8
+8620,2621,Is there a handbag in the image?,Yes,COCO_val2014_000000222118,random,success,,Yes,8620,8620,1001.5
+8629,2630,Is there a dog in the image?,No,COCO_val2014_000000117527,random,success,,No,8629,8629,1005.7
+8641,2642,Is there a bottle in the image?,No,COCO_val2014_000000429706,random,success,,No,8641,8641,1021.0
+8644,2645,Is there a person in the image?,Yes,COCO_val2014_000000429706,random,success,,Yes,8644,8644,1027.2
+8645,2646,Is there a chair in the image?,No,COCO_val2014_000000429706,random,success,,No,8645,8645,1024.6
+8653,2654,Is there a truck in the image?,No,COCO_val2014_000000283168,random,success,,No,8653,8653,1000.9
+8661,2662,Is there a keyboard in the image?,No,COCO_val2014_000000405205,random,success,,No,8661,8661,979.0
+8663,2664,Is there an airplane in the image?,No,COCO_val2014_000000405205,random,success,,No.,8663,8663,1084.7
+8669,2670,Is there a carrot in the image?,No,COCO_val2014_000000123570,random,success,,No,8669,8669,1011.4
+8687,2688,Is there a truck in the image?,No,COCO_val2014_000000191964,random,success,,No,8687,8687,981.6
+8691,2692,Is there a kite in the image?,No,COCO_val2014_000000265472,random,success,,No,8691,8691,983.9
+8708,2709,Is there a train in the image?,Yes,COCO_val2014_000000505933,random,success,,Yes,8708,8708,1022.0
+8752,2753,Is there a handbag in the image?,Yes,COCO_val2014_000000372817,random,success,,Yes,8752,8752,1009.9
+8760,2761,Is there a baseball glove in the image?,Yes,COCO_val2014_000000579231,random,success,,Yes,8760,8760,1053.3
+8765,2766,Is there a bus in the image?,No,COCO_val2014_000000579231,random,success,,No,8765,8765,1017.5
+8766,2767,Is there a giraffe in the image?,Yes,COCO_val2014_000000092624,random,success,,Yes,8766,8766,1037.3
+8770,2771,Is there a zebra in the image?,Yes,COCO_val2014_000000092624,random,success,,Yes,8770,8770,1001.8
+8776,2777,Is there a chair in the image?,Yes,COCO_val2014_000000390184,random,success,,Yes,8776,8776,1021.5
+8795,2796,Is there a toaster in the image?,No,COCO_val2014_000000514248,random,success,,No,8795,8795,982.3
+8810,2811,Is there a person in the image?,Yes,COCO_val2014_000000396068,random,success,,Yes,8810,8810,1825.9
+8815,2816,Is there a banana in the image?,No,COCO_val2014_000000559547,random,success,,No,8815,8815,1679.1
+8826,2827,Is there a backpack in the image?,Yes,COCO_val2014_000000159969,random,success,,Yes,8826,8826,995.6
+8831,2832,Is there a wine glass in the image?,No,COCO_val2014_000000159969,random,success,,No,8831,8831,1030.2
+8834,2835,Is there a sandwich in the image?,Yes,COCO_val2014_000000399702,random,success,,Yes,8834,8834,994.9
+8841,2842,Is there a tv in the image?,No,COCO_val2014_000000555538,random,success,,No,8841,8841,1021.8
+8844,2845,Is there a person in the image?,Yes,COCO_val2014_000000264155,random,success,,Yes,8844,8844,1013.0
+8848,2849,Is there a fork in the image?,Yes,COCO_val2014_000000264155,random,success,,Yes,8848,8848,1008.7
+8908,2909,Is there a laptop in the image?,Yes,COCO_val2014_000000141278,random,success,,Yes,8908,8908,987.1
+8913,2914,Is there a bowl in the image?,No,COCO_val2014_000000190788,random,success,,No,8913,8913,1568.8
+8929,2930,Is there a remote in the image?,No,COCO_val2014_000000533201,random,success,,No,8929,8929,978.6
+8931,2932,Is there a bowl in the image?,No,COCO_val2014_000000533201,random,success,,No,8931,8931,977.6
+8940,2941,Is there a baseball glove in the image?,No,COCO_val2014_000000468997,random,success,,No,8940,8940,1664.2
+8956,2957,Is there a tennis racket in the image?,Yes,COCO_val2014_000000323752,random,success,,Yes,8956,8956,1033.1
+8958,2959,Is there a spoon in the image?,Yes,COCO_val2014_000000003845,random,success,,Yes,8958,8958,979.2
+8965,2966,Is there a carrot in the image?,No,COCO_val2014_000000122962,random,success,,No,8965,8965,1006.4
+8976,2977,Is there a chair in the image?,Yes,COCO_val2014_000000497599,random,success,,Yes,8976,8976,1001.1
+8983,2984,Is there a refrigerator in the image?,Yes,COCO_val2014_000000121959,random,success,,Yes,8983,8983,1588.0
+8984,2985,Is there a person in the image?,Yes,COCO_val2014_000000121959,random,success,,Yes,8984,8984,1592.3
+8999,3000,Is there a bus in the image?,No,COCO_val2014_000000277289,random,success,,No,8999,8999,1580.0

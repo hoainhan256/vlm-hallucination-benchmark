@@ -19,3 +19,15 @@ checkpoints/
 
 # Notebook
 .ipynb_checkpoints/
+*.ipynb_checkpoints/
+
+# Local environments and secrets
+.env.*
+!.env.example
+.cache/
+cache/
+hf_cache/
+model_cache/
+logs/*.log
+tmp/
+*.tmp

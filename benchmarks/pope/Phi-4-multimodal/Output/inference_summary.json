@@ -1,0 +1,81 @@
+{
+  "model_name": "microsoft/Phi-4-multimodal-instruct",
+  "model_source": "microsoft/Phi-4-multimodal-instruct",
+  "model_revision": null,
+  "dataset_name": "lmms-lab-encoder/POPE",
+  "dataset_revision": "4db1276663dfa5eb8ad16a52d24c31a09e470896",
+  "dataset_split": "test",
+  "dataset_files": [
+    "data/test-00000-of-00003.parquet",
+    "data/test-00001-of-00003.parquet",
+    "data/test-00002-of-00003.parquet"
+  ],
+  "data_source_mode": "hub_parquet",
+  "subset_name": "pope_subset_900_seed42",
+  "subset_ids_sha256": "75676fd7ecaffd366aa6b5d50195ae23f2281b07d834d06e82754ae3a0caddd6",
+  "scope": "subset_900_not_full_9000",
+  "is_complete_subset": true,
+  "total_samples_in_split": 9000,
+  "total_samples": 900,
+  "processed_samples": 900,
+  "pending_samples": 0,
+  "successful_samples": 900,
+  "failed_samples": 0,
+  "invalid_predictions": 0,
+  "yes_count": 441,
+  "no_count": 459,
+  "parsed_but_extra_text_count": 0,
+  "latency": {
+    "count": 900,
+    "mean_ms": 1275.5,
+    "median_ms": 1040.0,
+    "p95_ms": 1759.6
+  },
+  "sample_key_mode": "id",
+  "inference_timestamp_utc": "2026-11-21T11:11:54.280962+00:00",
+  "inference_parameters": {
+    "use_subset": true,
+    "subset_name": "pope_subset_900_seed42",
+    "max_samples": null,
+    "sampling": "stratified_subset",
+    "seed": 42,
+    "batch_size": 1,
+    "max_new_tokens": 8,
+    "do_sample": false,
+    "temperature": null,
+    "max_image_side": 1024,
+    "oom_fallback_sides": [
+      768,
+      512,
+      384
+    ],
+    "dtype": "torch.float16",
+    "attn_implementation": "eager",
+    "trust_remote_code": true,
+    "prompt_template": "Answer the following question based only on the provided image.\n\nQuestion: {question}\n\nRespond with exactly one word: Yes or No.\n\nDo not provide explanations.",
+    "phi4_chat_format": "<|user|><|image_1|>{prompt}<|end|><|assistant|>",
+    "save_interval": 100,
+    "resume": true,
+    "retry_failed": true
+  },
+  "device_allocation": null,
+  "max_memory": {
+    "gpu0": "9GiB",
+    "gpu1": "13GiB",
+    "single_gpu": "13GiB",
+    "cpu": "20GiB"
+  },
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "transformers": "4.48.2",
+    "accelerate": "1.3.0",
+    "huggingface_hub": "0.36.2",
+    "gpu": [
+      "Tesla T4",
+      "Tesla T4"
+    ],
+    "cuda": "13.0"
+  },
+  "interrupted": false
+}
