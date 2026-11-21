@@ -16,6 +16,7 @@ venv/
 data/raw/
 results/raw/
 checkpoints/
+dataset/
 
 # Notebook
 .ipynb_checkpoints/
