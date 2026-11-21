@@ -46,9 +46,9 @@ benchmarks/hallusionbench/
 |---|---|---|---:|---:|---:|---:|---|
 | `smolvlm2` (`HuggingFaceTB/SmolVLM2-2.2B-Instruct`) | `be92141c8d` | `pilot` / `COMPLETED` | 34/34 | **58.82%** | **40.00%** | **7.14%** | [`results/smolvlm2/README.md`](results/smolvlm2/README.md) |
 | `qwen3_vl` (`Qwen/Qwen3-VL-4B-Instruct`) | `ebb281ec70` | `pilot` / `COMPLETED` | 34/34 | **67.65%** | **60.00%** | **21.43%** | [`results/qwen3_vl/README.md`](results/qwen3_vl/README.md) |
-| `phi4_multimodal` (`microsoft/Phi-4-multimodal-instruct`) | *(chờ chạy)* | `PENDING` | 0/34 | — | — | — | *(chạy Cell 5C — tự tạo venv `transformers==4.48.2`)* |
+| `phi4_multimodal` (`microsoft/Phi-4-multimodal-instruct`) | `93f923e1a7` | `pilot` / `COMPLETED` | 34/34 | **61.76%** | **40.00%** | **21.43%** | [`results/phi4_multimodal/README.md`](results/phi4_multimodal/README.md) |
 
-- **Bất đồng giữa 2 mô hình đã chạy:** **15 ca** ([`results/cross_model_disagreements.json`](results/cross_model_disagreements.json)).
+- **Bất đồng giữa 3 mô hình đã chạy:** **18 ca** ([`results/cross_model_disagreements.json`](results/cross_model_disagreements.json)).
 
 ---
 

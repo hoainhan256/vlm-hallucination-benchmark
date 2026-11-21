@@ -7,7 +7,7 @@
   "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
   "run_config_hash": "69970a0702d84a36cab936be8c2dfa74d5b029029a7f183c10d6929ce9213edf",
   "status": "COMPLETED",
-  "generated_at_utc": "2026-11-21T07:28:31.011208+00:00",
+  "generated_at_utc": "2026-11-21T08:01:56.623729+00:00",
   "files": {
     "predictions.jsonl": {
       "size_bytes": 24117,
@@ -23,7 +23,7 @@
     },
     "run_metadata.json": {
       "size_bytes": 1992,
-      "sha256": "184752d93ce8269b750e866c30493d492a198f81cc6e2d7aa7374883269037ba"
+      "sha256": "51c6a906f54360508577752f2ffe6fa811a4183cbca07d3dd420bbd1027617fd"
     },
     "errors.jsonl": {
       "size_bytes": 0,
@@ -31,19 +31,19 @@
     },
     "run_status.json": {
       "size_bytes": 344,
-      "sha256": "0d2e5357521c01f0fe67eab27b9abcfdfc95314cb32b4f27b4deffd807cc0ba8"
+      "sha256": "64d2836ffd4cf70a4b6e02b1d23bdd9fd654167b6af9238293955f0804a7625a"
     },
     "inference_config.json": {
       "size_bytes": 1033,
-      "sha256": "9a60f475ae5805e0759a4c879ec4505c54efd8ce4c7ebe4ff9e304a1c1ad34ae"
+      "sha256": "73a171844faee29e598da422c6eeda01d2543f08ee28e1394fecb27ed6712c8e"
     },
     "inference_summary.json": {
       "size_bytes": 610,
-      "sha256": "d8986edf358a5a438f1f548c7eb4935e9143b4ce9eb38e6e35e922a38333c811"
+      "sha256": "b194700f3e7bd977e2ae260739ceb0bfa52f9918d67f16fa30a6f700c152810a"
     },
     "inference_log.txt": {
-      "size_bytes": 250,
-      "sha256": "495728f1f2b02533a8c7b47468165dc12ae053bffa8f4879c7991d88541eb36c"
+      "size_bytes": 750,
+      "sha256": "67dc9b7a1eecf09ceaf81d35fa4412ab1144bfa5fd457d88f230178ec99c0b1e"
     },
     "smolvlm2_hallusionbench_responses.json": {
       "size_bytes": 21538,
@@ -55,8 +55,8 @@
     },
     "smolvlm2_hallusionbench_summary.json": {
       "size_bytes": 5124,
-      "sha256": "2cb789de8c8da5a5106526ce75889bb017626d27d7a66f48dfcc546dec823c55"
+      "sha256": "1afffd1ce9b122ebe57a863ba79c8395317352f40f0fa0cf41a176a68597777a"
     }
   },
-  "scored_at_utc": "2026-11-21T07:29:50.902499+00:00"
+  "scored_at_utc": "2026-11-21T08:18:49.246955+00:00"
 }

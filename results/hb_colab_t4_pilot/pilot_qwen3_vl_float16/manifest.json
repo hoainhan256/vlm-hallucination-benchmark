@@ -7,7 +7,7 @@
   "model_id": "Qwen/Qwen3-VL-4B-Instruct",
   "run_config_hash": "f26ce735c59ce2a3b876c631638c7586946883ef2c07adb5b3533ce9dc501dae",
   "status": "COMPLETED",
-  "generated_at_utc": "2026-11-21T07:29:24.372013+00:00",
+  "generated_at_utc": "2026-11-21T08:04:49.378180+00:00",
   "files": {
     "predictions.jsonl": {
       "size_bytes": 22360,
@@ -23,7 +23,7 @@
     },
     "run_metadata.json": {
       "size_bytes": 1981,
-      "sha256": "321044de4fda572ae739cdb493d45953c01db548af7528bedc03e90aae30eb69"
+      "sha256": "2ebb14b47ad0a22d3535517005c886fed395625cc431634f91331b2a21e534df"
     },
     "errors.jsonl": {
       "size_bytes": 0,
@@ -31,19 +31,19 @@
     },
     "run_status.json": {
       "size_bytes": 344,
-      "sha256": "c6c6a0f2454b296a0bf1901a6bc4b2861745da24f136a26a38b6abb10894ef72"
+      "sha256": "e9b3c16dcf6716d1abeab93c2315833556195b5f17583739decd4a79ca289343"
     },
     "inference_config.json": {
       "size_bytes": 1022,
-      "sha256": "04f47de51c95949e86258e90493fea78833a2709be4e8cdaeca1999a9f3d842b"
+      "sha256": "7786e9daf1cf15c726d5536af6f36bf7f0203c3d543513eed47f9ebaef3dd3f9"
     },
     "inference_summary.json": {
       "size_bytes": 599,
-      "sha256": "6ae7810eafd6c60a2ab4ce61de35b2896de00123f88348136621dd2230f59521"
+      "sha256": "3b2bf0fed9ce9ba79a279e8ae998f172c88a38fd768852cfb874b4237462e28f"
     },
     "inference_log.txt": {
-      "size_bytes": 239,
-      "sha256": "6f14c3d6af8a4ff5714ea02f9d7c1822635f24a2445455f70f72b1a76ea8b031"
+      "size_bytes": 717,
+      "sha256": "9667cb493d48ffe5d4dedd4f8f43bf448c9f1d335e295787850e3220f7a313ae"
     },
     "qwen3_vl_hallusionbench_responses.json": {
       "size_bytes": 20845,
@@ -55,8 +55,8 @@
     },
     "qwen3_vl_hallusionbench_summary.json": {
       "size_bytes": 5110,
-      "sha256": "9ed260540a1477e436af230acd8679972b9dc253f624034cf95f6d835f131c05"
+      "sha256": "f010071fd5394f8c7c708c81f8637a1a6fffc7f4fb6896ad6c810eb31ba75672"
     }
   },
-  "scored_at_utc": "2026-11-21T07:29:50.608206+00:00"
+  "scored_at_utc": "2026-11-21T08:18:43.816845+00:00"
 }

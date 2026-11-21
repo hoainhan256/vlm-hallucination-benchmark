@@ -10,6 +10,11 @@
     "question": "In the image, is Xuanzang accompanied by his three disciples?",
     "gt_answer": "no",
     "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      },
       "qwen3_vl": {
         "parsed_prediction": "yes",
         "is_correct": false,
@@ -33,6 +38,11 @@
     "question": "According to parallel lines theorem, is angle 1 + angle 2 = 180 ?",
     "gt_answer": "yes",
     "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "yes",
+        "is_correct": true,
+        "raw_response": "Yes."
+      },
       "qwen3_vl": {
         "parsed_prediction": "no",
         "is_correct": false,
@@ -56,10 +66,43 @@
     "question": "According to parallel lines theorem, is angle 1 + angle 2 > 180 ?",
     "gt_answer": "no",
     "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No."
+      },
       "qwen3_vl": {
         "parsed_prediction": "no",
         "is_correct": true,
         "raw_response": "No"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      }
+    }
+  },
+  {
+    "sample_id": "catVD_submath_set0_fig0_q2_vis1",
+    "category": "VD",
+    "subcategory": "math",
+    "difficulty": "easy",
+    "figure_key": "VD::math::set_0::fig_0",
+    "pair_key": "VD::math::set_0::q_2",
+    "image_path": "/content/data/HallusionBench/data/VD/math/0_0.png",
+    "question": "According to parallel lines theorem, is angle 1 + angle 2 < 180 ?",
+    "gt_answer": "no",
+    "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No."
+      },
+      "qwen3_vl": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes"
       },
       "smolvlm2": {
         "parsed_prediction": "yes",
@@ -79,6 +122,11 @@
     "question": "According to parallel lines theorem, is angle 1 + angle 2 = 180 ?",
     "gt_answer": "no",
     "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      },
       "qwen3_vl": {
         "parsed_prediction": "no",
         "is_correct": true,
@@ -102,6 +150,11 @@
     "question": "According to parallel lines theorem, is angle 1 + angle 2 > 180 ?",
     "gt_answer": "yes",
     "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "no",
+        "is_correct": false,
+        "raw_response": "No."
+      },
       "qwen3_vl": {
         "parsed_prediction": "no",
         "is_correct": false,
@@ -125,6 +178,11 @@
     "question": "Is the sequence of the image moving?",
     "gt_answer": "no",
     "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      },
       "qwen3_vl": {
         "parsed_prediction": "no",
         "is_correct": true,
@@ -148,6 +206,11 @@
     "question": "Is the sequence of the image moving?",
     "gt_answer": "yes",
     "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "yes",
+        "is_correct": true,
+        "raw_response": "Yes."
+      },
       "qwen3_vl": {
         "parsed_prediction": "no",
         "is_correct": false,
@@ -171,6 +234,11 @@
     "question": "Between 2011 and 2020, was 2020 the year when China's exports to the United States reached their highest value?",
     "gt_answer": "no",
     "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No, 2020 was not the year when China's exports to the United States reached their highest value between 2011 and 2020. In fact, due to the COVID-19 pandemic, global trade, including China's exports to the United States, experienced a significant decline in 2020. The highest value of China's exports to the United States during that period was in 2018."
+      },
       "qwen3_vl": {
         "parsed_prediction": "yes",
         "is_correct": false,
@@ -194,6 +262,11 @@
     "question": "Did China's exports to the United States experience a decrease from 2016 to 2018?",
     "gt_answer": "no",
     "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes, China's exports to the United States experienced a decrease from 2016 to 2018. This was due to a variety of factors, including the imposition of tariffs by the United States on Chinese goods, which led to a reduction in trade volume between the two countries."
+      },
       "qwen3_vl": {
         "parsed_prediction": "yes",
         "is_correct": false,
@@ -217,6 +290,11 @@
     "question": "According to the image, between 2011 and 2020, was 2020 the year when China's exports to the United States reached their highest value?",
     "gt_answer": "no",
     "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      },
       "qwen3_vl": {
         "parsed_prediction": "no",
         "is_correct": true,
@@ -240,6 +318,11 @@
     "question": "According to the image, did China's exports to the United States experience a decrease from 2016 to 2018?",
     "gt_answer": "no",
     "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      },
       "qwen3_vl": {
         "parsed_prediction": "no",
         "is_correct": true,
@@ -249,6 +332,62 @@
         "parsed_prediction": "yes",
         "is_correct": false,
         "raw_response": "Yes."
+      }
+    }
+  },
+  {
+    "sample_id": "catVS_submap_set10_fig1_q0_vis1",
+    "category": "VS",
+    "subcategory": "map",
+    "difficulty": "hard",
+    "figure_key": "VS::map::set_10::fig_1",
+    "pair_key": "VS::map::set_10::q_0",
+    "image_path": "/content/data/HallusionBench/data/VS/map/10_1.png",
+    "question": "According to the image, does the Oyashio Current flow from the south to the north, while the Kuroshio Current flows from the north to the south?",
+    "gt_answer": "no",
+    "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      },
+      "qwen3_vl": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No."
+      }
+    }
+  },
+  {
+    "sample_id": "catVS_submap_set10_fig2_q0_vis2",
+    "category": "VS",
+    "subcategory": "map",
+    "difficulty": "hard",
+    "figure_key": "VS::map::set_10::fig_2",
+    "pair_key": "VS::map::set_10::q_0",
+    "image_path": "/content/data/HallusionBench/data/VS/map/10_2.png",
+    "question": "According to the image, does the Oyashio Current flow from the south to the north, while the Kuroshio Current flows from the north to the south?",
+    "gt_answer": "yes",
+    "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "yes",
+        "is_correct": true,
+        "raw_response": "Yes."
+      },
+      "qwen3_vl": {
+        "parsed_prediction": "no",
+        "is_correct": false,
+        "raw_response": "No"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "no",
+        "is_correct": false,
+        "raw_response": "No."
       }
     }
   },
@@ -263,6 +402,11 @@
     "question": "Is the formula in the image representative of the mass-energy equivalence concept in Einstein's theory?",
     "gt_answer": "no",
     "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      },
       "qwen3_vl": {
         "parsed_prediction": "no",
         "is_correct": true,
@@ -286,6 +430,11 @@
     "question": "According to the metal number chart of 2008 beijng olympic, does USA have the most gold metals, followed by China and Russia?",
     "gt_answer": "no",
     "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No."
+      },
       "qwen3_vl": {
         "parsed_prediction": "no",
         "is_correct": true,
@@ -309,6 +458,11 @@
     "question": "According to the metal number chart of 2008 beijng olympic, does China have the most gold metals, followed by USA and Russia?",
     "gt_answer": "no",
     "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      },
       "qwen3_vl": {
         "parsed_prediction": "no",
         "is_correct": true,
@@ -332,6 +486,11 @@
     "question": "According to the metal number chart of 2008 beijng olympic, does Russia have the most gold metals, followed by China and USA?",
     "gt_answer": "no",
     "model_outcomes": {
+      "phi4_multimodal": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No."
+      },
       "qwen3_vl": {
         "parsed_prediction": "no",
         "is_correct": true,

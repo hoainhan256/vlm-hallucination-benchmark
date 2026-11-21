@@ -9,11 +9,11 @@
   "total_samples": 34,
   "success_count": 34,
   "failed_count": 0,
-  "duration_seconds": 0.04,
+  "duration_seconds": 0.86,
   "avg_latency_ms": 951.3,
   "device": "Tesla T4",
   "dtype": "float16",
   "run_config_hash": "69970a0702d84a36cab936be8c2dfa74d5b029029a7f183c10d6929ce9213edf",
-  "started_at_utc": "2026-11-21T07:28:30.914100+00:00",
-  "finished_at_utc": "2026-11-21T07:28:30.958086+00:00"
+  "started_at_utc": "2026-11-21T08:01:53.376026+00:00",
+  "finished_at_utc": "2026-11-21T08:01:54.238860+00:00"
 }

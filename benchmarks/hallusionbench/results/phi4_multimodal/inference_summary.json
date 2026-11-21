@@ -1,0 +1,19 @@
+{
+  "experiment_id": "hb_colab_t4_pilot",
+  "run_id": "pilot_phi4_multimodal_float16",
+  "benchmark": "hallusionbench",
+  "model_key": "phi4_multimodal",
+  "model_id": "microsoft/Phi-4-multimodal-instruct",
+  "stage": "pilot",
+  "status": "COMPLETED",
+  "total_samples": 34,
+  "success_count": 34,
+  "failed_count": 0,
+  "duration_seconds": 570.31,
+  "avg_latency_ms": 16761.11,
+  "device": "Tesla T4",
+  "dtype": "float16",
+  "run_config_hash": "f5b6ff22449f36fa338e0be60e6d163c5c5bd277878f56cc74376691982fe756",
+  "started_at_utc": "2026-11-21T08:08:52.191008+00:00",
+  "finished_at_utc": "2026-11-21T08:18:22.502061+00:00"
+}
