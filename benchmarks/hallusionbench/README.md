@@ -38,7 +38,21 @@ benchmarks/hallusionbench/
 
 ---
 
-## 3. Quy tắc Benchmark chuẩn chỉ (Không train — 0 epoch)
+## 3. Kết quả thực nghiệm đã có (Pilot 8/8 dạng bài — Tesla T4 `float16`)
+
+> Chi tiết đầy đủ tại [`results/README.md`](results/README.md) và artifact chuẩn schema tại `results/hb_colab_t4_pilot/`. Kết quả chạy thật 0-epoch trên 34 câu hỏi (15 hình ảnh, 14 cặp kiểm soát phủ đủ 8/8 subcategory: `chart`, `figure`, `illusion`, `map`, `math`, `ocr`, `table`, `video`), **0 lỗi kỹ thuật / 0 lỗi định dạng**.
+
+| Model | Revision | Stage / Status | Hoàn thành | aAcc | fAcc | qAcc | Báo cáo chi tiết |
+|---|---|---|---:|---:|---:|---:|---|
+| `smolvlm2` (`HuggingFaceTB/SmolVLM2-2.2B-Instruct`) | `be92141c8d` | `pilot` / `COMPLETED` | 34/34 | **58.82%** | **40.00%** | **7.14%** | [`results/smolvlm2/README.md`](results/smolvlm2/README.md) |
+| `qwen3_vl` (`Qwen/Qwen3-VL-4B-Instruct`) | `ebb281ec70` | `pilot` / `COMPLETED` | 34/34 | **67.65%** | **60.00%** | **21.43%** | [`results/qwen3_vl/README.md`](results/qwen3_vl/README.md) |
+| `phi4_multimodal` (`microsoft/Phi-4-multimodal-instruct`) | *(chờ chạy)* | `PENDING` | 0/34 | — | — | — | *(chạy Cell 5C — tự tạo venv `transformers==4.48.2`)* |
+
+- **Bất đồng giữa 2 mô hình đã chạy:** **15 ca** ([`results/cross_model_disagreements.json`](results/cross_model_disagreements.json)).
+
+---
+
+## 4. Quy tắc Benchmark chuẩn chỉ (Không train — 0 epoch)
 
 1. **Không train / không sửa trọng số / không lượng tử hóa (`INT4`/`INT8`)**, giải mã tất định `do_sample = False`, dùng chung prompt `"<question> Please answer yes or no."`.
 2. **GPU T4 không hỗ trợ `bfloat16` native** (`sm_75`): chạy `float16` ở chế độ `smoke_test`, `pilot` (8 nhóm trọn vẹn phủ đủ **8/8 dạng bài**), hoặc `full_baseline` (**1.129 câu**). Không gọi là `official` trước khi nhóm trưởng duyệt khóa `configs/models.yaml` & `configs/datasets.yaml`.
@@ -53,19 +67,17 @@ benchmarks/hallusionbench/
 
 ---
 
-## 4. Cách chạy (Colab chia riêng từng model / Kaggle 2×T4 / CLI)
+## 5. Cách chạy (Colab chia riêng từng model / Kaggle 2×T4 / CLI)
 
-### 4.1. Chạy nhanh & chính xác nhất trên Google Colab (Khuyến nghị)
+### 5.1. Chạy nhanh & chính xác nhất trên Google Colab (Khuyến nghị)
 Mở [hallusionbench_colab.ipynb](hallusionbench_colab.ipynb) trên Colab, chọn **Runtime → GPU (T4 / L4)**:
 - **Cell 1:** Mount Google Drive + tự liệt kê các run đã có trên Drive để biết ngay thiếu model nào.
-- **Cell 2:** Chọn `ENV_MODE`:
-  - `"standard"` khi chạy **SmolVLM2** (`Cell 5A`) hoặc **Qwen3-VL** (`Cell 5B`).
-  - `"phi4"` (`transformers==4.48.2`, `accelerate==1.3.0`, `peft==0.13.2`) khi chạy **Phi-4-multimodal** (`Cell 5C` — nhớ **Restart session** nếu vừa chạy `ENV_MODE="standard"` trước đó).
+- **Cell 2:** Clone/pull nhánh `benchmark/hallusionbench` & cài môi trường chính (`transformers` mới cho **SmolVLM2** & **Qwen3-VL**).
 - **Cell 4:** Tự tải dataset 1 lần rồi lưu `.tar` lên Google Drive, chạy `audit` & tạo `pilot_ids_8sub.json` phủ đủ **8/8 subcategory**.
-- **Cell 5 + Cell 5A / 5B / 5C:** Chọn `STAGE` (`"smoke_test"` | `"pilot"` | `"full_baseline"`) rồi chạy **riêng từng model**; tự lưu từng mẫu vào Drive & tự resume. Trên T4, `Cell 5C` tự bật CPU offload (`--max-gpu-memory 10GiB --max-cpu-memory 12GiB --offload-folder /content/phi4_offload`) đúng chính sách `docs/model_policy.md` để không bị OOM.
+- **Cell 5 + Cell 5A / 5B / 5C:** Chọn `STAGE` (`"smoke_test"` | `"pilot"` | `"full_baseline"`) rồi chạy từng model hoặc bấm **Run all** một lần cho đủ cả 3 model! Riêng **Cell 5C (`phi4_multimodal`)** tự tạo venv tách biệt `/content/venv_phi4` (`transformers==4.48.2`, `accelerate==1.3.0`, `peft==0.13.2`, kế thừa PyTorch/CUDA của Colab) và bật CPU offload trên T4 (`--max-gpu-memory 8GiB --max-cpu-memory 10GiB --offload-folder /content/phi4_offload`) nên không xung đột với `transformers 5.x` và không bị OOM.
 - **Cell 6–8:** Tự phát hiện mọi model đã chạy trên Drive (kể cả các run cũ đã chạy từ trước), chấm điểm, bổ sung đầy đủ file format MMHal, chạy `scripts/check_results.py` & `scripts/check_manifest.py`, xuất đúng cấu trúc `benchmarks/hallusionbench/results/` và tải 1 file `.zip` về giải nén thẳng vào gốc repo để `git add` & `git push`.
 
-### 4.2. Chạy bằng lệnh CLI (Kaggle 2×T4 / Linux / PowerShell)
+### 5.2. Chạy bằng lệnh CLI (Kaggle 2×T4 / Linux / PowerShell)
 
 ```bash
 # 1. Audit & xuất tập pilot phủ đủ 8/8 dạng bài (tải dataset vào DATA_ROOT ngoài Git trước)
@@ -84,7 +96,7 @@ python scripts/check_results.py benchmarks/hallusionbench/results/smolvlm2/predi
 python scripts/check_manifest.py benchmarks/hallusionbench/results/smolvlm2
 ```
 
-### 4.3. Chạy kiểm thử CPU-only
+### 5.3. Chạy kiểm thử CPU-only
 
 ```bash
 python scripts/check_repository.py

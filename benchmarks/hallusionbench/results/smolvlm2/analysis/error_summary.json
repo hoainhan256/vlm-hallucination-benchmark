@@ -1,0 +1,26 @@
+{
+  "total_error_cases": 14,
+  "by_preliminary_error_type": {
+    "incorrect_prediction": 14
+  },
+  "by_verified_error_type": {
+    "pending_review": 14
+  },
+  "by_category": {
+    "VD": 5,
+    "VS": 9
+  },
+  "by_subcategory": {
+    "chart": 2,
+    "illusion": 1,
+    "map": 2,
+    "math": 3,
+    "ocr": 1,
+    "table": 4,
+    "video": 1
+  },
+  "by_difficulty": {
+    "easy": 4,
+    "hard": 10
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "benchmark": "hallusionbench",
+  "protocol_version": "unverified_draft_rule_based",
+  "evaluation_mode": "alternative_evaluation_rule_based",
+  "summary_counts": {
+    "total_predictions_received": 34,
+    "scored_questions": 34,
+    "scored_figures": 15,
+    "scored_complete_pairs": 14,
+    "incomplete_pairs_skipped": 0,
+    "error_records": 0
+  },
+  "metrics": {
+    "aAcc": 0.588235,
+    "fAcc": 0.4,
+    "qAcc": 0.071429
+  },
+  "by_category": {
+    "VD": {
+      "aAcc": 0.583333,
+      "fAcc": 0.5,
+      "qAcc": 0.166667,
+      "counts": {
+        "scored_questions": 12,
+        "scored_figures": 8,
+        "scored_complete_pairs": 6,
+        "incomplete_pairs_skipped": 0
+      }
+    },
+    "VS": {
+      "aAcc": 0.590909,
+      "fAcc": 0.285714,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 22,
+        "scored_figures": 7,
+        "scored_complete_pairs": 8,
+        "incomplete_pairs_skipped": 0
+      }
+    }
+  },
+  "by_subcategory": {
+    "chart": {
+      "aAcc": 0.5,
+      "fAcc": 0.0,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 4,
+        "scored_figures": 1,
+        "scored_complete_pairs": 2,
+        "incomplete_pairs_skipped": 0
+      }
+    },
+    "figure": {
+      "aAcc": 1.0,
+      "fAcc": 1.0,
+      "qAcc": 1.0,
+      "counts": {
+        "scored_questions": 2,
+        "scored_figures": 2,
+        "scored_complete_pairs": 1,
+        "incomplete_pairs_skipped": 0
+      }
+    },
+    "illusion": {
+      "aAcc": 0.5,
+      "fAcc": 0.5,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 2,
+        "scored_figures": 2,
+        "scored_complete_pairs": 1,
+        "incomplete_pairs_skipped": 0
+      }
+    },
+    "map": {
+      "aAcc": 0.666667,
+      "fAcc": 0.5,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 6,
+        "scored_figures": 2,
+        "scored_complete_pairs": 2,
+        "incomplete_pairs_skipped": 0
+      }
+    },
+    "math": {
+      "aAcc": 0.5,
+      "fAcc": 0.0,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 6,
+        "scored_figures": 2,
+        "scored_complete_pairs": 3,
+        "incomplete_pairs_skipped": 0
+      }
+    },
+    "ocr": {
+      "aAcc": 0.666667,
+      "fAcc": 0.5,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 3,
+        "scored_figures": 2,
+        "scored_complete_pairs": 1,
+        "incomplete_pairs_skipped": 0
+      }
+    },
+    "table": {
+      "aAcc": 0.555556,
+      "fAcc": 0.0,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 9,
+        "scored_figures": 2,
+        "scored_complete_pairs": 3,
+        "incomplete_pairs_skipped": 0
+      }
+    },
+    "video": {
+      "aAcc": 0.5,
+      "fAcc": 0.5,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 2,
+        "scored_figures": 2,
+        "scored_complete_pairs": 1,
+        "incomplete_pairs_skipped": 0
+      }
+    }
+  },
+  "by_difficulty": {
+    "easy": {
+      "aAcc": 0.714286,
+      "fAcc": 0.5,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 14,
+        "scored_figures": 4,
+        "scored_complete_pairs": 0,
+        "incomplete_pairs_skipped": 14
+      }
+    },
+    "hard": {
+      "aAcc": 0.5,
+      "fAcc": 0.363636,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 20,
+        "scored_figures": 11,
+        "scored_complete_pairs": 6,
+        "incomplete_pairs_skipped": 8
+      }
+    }
+  },
+  "by_visual_input": {
+    "0": {
+      "aAcc": 0.875,
+      "fAcc": 0.0,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 8,
+        "scored_figures": 0,
+        "scored_complete_pairs": 0,
+        "incomplete_pairs_skipped": 8
+      }
+    },
+    "1": {
+      "aAcc": 0.571429,
+      "fAcc": 0.5,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 14,
+        "scored_figures": 8,
+        "scored_complete_pairs": 0,
+        "incomplete_pairs_skipped": 14
+      }
+    },
+    "2": {
+      "aAcc": 0.416667,
+      "fAcc": 0.285714,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 12,
+        "scored_figures": 7,
+        "scored_complete_pairs": 0,
+        "incomplete_pairs_skipped": 12
+      }
+    }
+  },
+  "run_identity": {
+    "experiment_id": "hb_colab_t4_pilot",
+    "run_id": "pilot_smolvlm2_float16",
+    "stage": "pilot",
+    "model_key": "smolvlm2",
+    "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+    "run_config_hash": "69970a0702d84a36cab936be8c2dfa74d5b029029a7f183c10d6929ce9213edf"
+  }
+}

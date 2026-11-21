@@ -1,0 +1,347 @@
+[
+  {
+    "sample_id": "catVD_subfigure_set0_fig1_q0_vis2",
+    "category": "VD",
+    "subcategory": "figure",
+    "difficulty": "hard",
+    "figure_key": "VD::figure::set_0::fig_1",
+    "pair_key": "VD::figure::set_0::q_0",
+    "image_path": "/content/data/HallusionBench/data/VD/figure/0_1.png",
+    "question": "In the image, is Xuanzang accompanied by his three disciples?",
+    "gt_answer": "no",
+    "model_outcomes": {
+      "qwen3_vl": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No."
+      }
+    }
+  },
+  {
+    "sample_id": "catVD_submath_set0_fig0_q0_vis1",
+    "category": "VD",
+    "subcategory": "math",
+    "difficulty": "easy",
+    "figure_key": "VD::math::set_0::fig_0",
+    "pair_key": "VD::math::set_0::q_0",
+    "image_path": "/content/data/HallusionBench/data/VD/math/0_0.png",
+    "question": "According to parallel lines theorem, is angle 1 + angle 2 = 180 ?",
+    "gt_answer": "yes",
+    "model_outcomes": {
+      "qwen3_vl": {
+        "parsed_prediction": "no",
+        "is_correct": false,
+        "raw_response": "No"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "yes",
+        "is_correct": true,
+        "raw_response": "Yes."
+      }
+    }
+  },
+  {
+    "sample_id": "catVD_submath_set0_fig0_q1_vis1",
+    "category": "VD",
+    "subcategory": "math",
+    "difficulty": "easy",
+    "figure_key": "VD::math::set_0::fig_0",
+    "pair_key": "VD::math::set_0::q_1",
+    "image_path": "/content/data/HallusionBench/data/VD/math/0_0.png",
+    "question": "According to parallel lines theorem, is angle 1 + angle 2 > 180 ?",
+    "gt_answer": "no",
+    "model_outcomes": {
+      "qwen3_vl": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      }
+    }
+  },
+  {
+    "sample_id": "catVD_submath_set0_fig1_q0_vis2",
+    "category": "VD",
+    "subcategory": "math",
+    "difficulty": "hard",
+    "figure_key": "VD::math::set_0::fig_1",
+    "pair_key": "VD::math::set_0::q_0",
+    "image_path": "/content/data/HallusionBench/data/VD/math/0_1.png",
+    "question": "According to parallel lines theorem, is angle 1 + angle 2 = 180 ?",
+    "gt_answer": "no",
+    "model_outcomes": {
+      "qwen3_vl": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      }
+    }
+  },
+  {
+    "sample_id": "catVD_submath_set0_fig1_q1_vis2",
+    "category": "VD",
+    "subcategory": "math",
+    "difficulty": "hard",
+    "figure_key": "VD::math::set_0::fig_1",
+    "pair_key": "VD::math::set_0::q_1",
+    "image_path": "/content/data/HallusionBench/data/VD/math/0_1.png",
+    "question": "According to parallel lines theorem, is angle 1 + angle 2 > 180 ?",
+    "gt_answer": "yes",
+    "model_outcomes": {
+      "qwen3_vl": {
+        "parsed_prediction": "no",
+        "is_correct": false,
+        "raw_response": "No"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "yes",
+        "is_correct": true,
+        "raw_response": "Yes."
+      }
+    }
+  },
+  {
+    "sample_id": "catVD_subvideo_set0_fig0_q0_vis1",
+    "category": "VD",
+    "subcategory": "video",
+    "difficulty": "easy",
+    "figure_key": "VD::video::set_0::fig_0",
+    "pair_key": "VD::video::set_0::q_0",
+    "image_path": "/content/data/HallusionBench/data/VD/video/0_0.png",
+    "question": "Is the sequence of the image moving?",
+    "gt_answer": "no",
+    "model_outcomes": {
+      "qwen3_vl": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "no"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      }
+    }
+  },
+  {
+    "sample_id": "catVD_subvideo_set0_fig1_q0_vis2",
+    "category": "VD",
+    "subcategory": "video",
+    "difficulty": "hard",
+    "figure_key": "VD::video::set_0::fig_1",
+    "pair_key": "VD::video::set_0::q_0",
+    "image_path": "/content/data/HallusionBench/data/VD/video/0_1.png",
+    "question": "Is the sequence of the image moving?",
+    "gt_answer": "yes",
+    "model_outcomes": {
+      "qwen3_vl": {
+        "parsed_prediction": "no",
+        "is_correct": false,
+        "raw_response": "no"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "yes",
+        "is_correct": true,
+        "raw_response": "Yes."
+      }
+    }
+  },
+  {
+    "sample_id": "catVS_subchart_set11_fig0_q0_vis0",
+    "category": "VS",
+    "subcategory": "chart",
+    "difficulty": "easy",
+    "figure_key": null,
+    "pair_key": "VS::chart::set_11::q_0",
+    "image_path": null,
+    "question": "Between 2011 and 2020, was 2020 the year when China's exports to the United States reached their highest value?",
+    "gt_answer": "no",
+    "model_outcomes": {
+      "qwen3_vl": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No."
+      }
+    }
+  },
+  {
+    "sample_id": "catVS_subchart_set11_fig0_q1_vis0",
+    "category": "VS",
+    "subcategory": "chart",
+    "difficulty": "easy",
+    "figure_key": null,
+    "pair_key": "VS::chart::set_11::q_1",
+    "image_path": null,
+    "question": "Did China's exports to the United States experience a decrease from 2016 to 2018?",
+    "gt_answer": "no",
+    "model_outcomes": {
+      "qwen3_vl": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No."
+      }
+    }
+  },
+  {
+    "sample_id": "catVS_subchart_set11_fig1_q0_vis1",
+    "category": "VS",
+    "subcategory": "chart",
+    "difficulty": "hard",
+    "figure_key": "VS::chart::set_11::fig_1",
+    "pair_key": "VS::chart::set_11::q_0",
+    "image_path": "/content/data/HallusionBench/data/VS/chart/11_1.png",
+    "question": "According to the image, between 2011 and 2020, was 2020 the year when China's exports to the United States reached their highest value?",
+    "gt_answer": "no",
+    "model_outcomes": {
+      "qwen3_vl": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      }
+    }
+  },
+  {
+    "sample_id": "catVS_subchart_set11_fig1_q1_vis1",
+    "category": "VS",
+    "subcategory": "chart",
+    "difficulty": "hard",
+    "figure_key": "VS::chart::set_11::fig_1",
+    "pair_key": "VS::chart::set_11::q_1",
+    "image_path": "/content/data/HallusionBench/data/VS/chart/11_1.png",
+    "question": "According to the image, did China's exports to the United States experience a decrease from 2016 to 2018?",
+    "gt_answer": "no",
+    "model_outcomes": {
+      "qwen3_vl": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      }
+    }
+  },
+  {
+    "sample_id": "catVS_subocr_set1_fig2_q0_vis2",
+    "category": "VS",
+    "subcategory": "ocr",
+    "difficulty": "hard",
+    "figure_key": "VS::ocr::set_1::fig_2",
+    "pair_key": "VS::ocr::set_1::q_0",
+    "image_path": "/content/data/HallusionBench/data/VS/ocr/1_2.png",
+    "question": "Is the formula in the image representative of the mass-energy equivalence concept in Einstein's theory?",
+    "gt_answer": "no",
+    "model_outcomes": {
+      "qwen3_vl": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      }
+    }
+  },
+  {
+    "sample_id": "catVS_subtable_set0_fig1_q1_vis1",
+    "category": "VS",
+    "subcategory": "table",
+    "difficulty": "hard",
+    "figure_key": "VS::table::set_0::fig_1",
+    "pair_key": "VS::table::set_0::q_1",
+    "image_path": "/content/data/HallusionBench/data/VS/table/0_1.png",
+    "question": "According to the metal number chart of 2008 beijng olympic, does USA have the most gold metals, followed by China and Russia?",
+    "gt_answer": "no",
+    "model_outcomes": {
+      "qwen3_vl": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      }
+    }
+  },
+  {
+    "sample_id": "catVS_subtable_set0_fig2_q0_vis2",
+    "category": "VS",
+    "subcategory": "table",
+    "difficulty": "hard",
+    "figure_key": "VS::table::set_0::fig_2",
+    "pair_key": "VS::table::set_0::q_0",
+    "image_path": "/content/data/HallusionBench/data/VS/table/0_2.png",
+    "question": "According to the metal number chart of 2008 beijng olympic, does China have the most gold metals, followed by USA and Russia?",
+    "gt_answer": "no",
+    "model_outcomes": {
+      "qwen3_vl": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      }
+    }
+  },
+  {
+    "sample_id": "catVS_subtable_set0_fig2_q2_vis2",
+    "category": "VS",
+    "subcategory": "table",
+    "difficulty": "hard",
+    "figure_key": "VS::table::set_0::fig_2",
+    "pair_key": "VS::table::set_0::q_2",
+    "image_path": "/content/data/HallusionBench/data/VS/table/0_2.png",
+    "question": "According to the metal number chart of 2008 beijng olympic, does Russia have the most gold metals, followed by China and USA?",
+    "gt_answer": "no",
+    "model_outcomes": {
+      "qwen3_vl": {
+        "parsed_prediction": "no",
+        "is_correct": true,
+        "raw_response": "No"
+      },
+      "smolvlm2": {
+        "parsed_prediction": "yes",
+        "is_correct": false,
+        "raw_response": "Yes."
+      }
+    }
+  }
+]

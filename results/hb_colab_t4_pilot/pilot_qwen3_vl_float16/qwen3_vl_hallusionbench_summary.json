@@ -1,0 +1,208 @@
+{
+  "benchmark": "HallusionBench",
+  "model_key": "qwen3_vl",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "model_revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "processor_revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "dataset": "rayguan/HallusionBench",
+  "dataset_revision": "2067dfdce5abc7efdbb0927f4721ae282f0b6c51",
+  "experiment_id": "hb_colab_t4_pilot",
+  "run_id": "pilot_qwen3_vl_float16",
+  "stage": "pilot",
+  "status": "COMPLETED",
+  "device": "Tesla T4",
+  "dtype": "float16",
+  "attn_implementation": "sdpa",
+  "run_config_hash": "f26ce735c59ce2a3b876c631638c7586946883ef2c07adb5b3533ce9dc501dae",
+  "inference_started_at_utc": "2026-11-21T07:29:24.258404+00:00",
+  "inference_finished_at_utc": "2026-11-21T07:29:24.310737+00:00",
+  "total_samples": 34,
+  "inference_success": 34,
+  "inference_failed": 0,
+  "evaluated_samples": 34,
+  "scored_figures": 15,
+  "scored_complete_pairs": 14,
+  "incomplete_pairs_skipped": 0,
+  "error_records": 0,
+  "metrics": {
+    "aAcc": 0.676471,
+    "fAcc": 0.6,
+    "qAcc": 0.214286
+  },
+  "by_category": {
+    "VD": {
+      "aAcc": 0.5,
+      "fAcc": 0.375,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 12,
+        "scored_figures": 8,
+        "scored_complete_pairs": 6,
+        "incomplete_pairs_skipped": 0
+      }
+    },
+    "VS": {
+      "aAcc": 0.772727,
+      "fAcc": 0.857143,
+      "qAcc": 0.375,
+      "counts": {
+        "scored_questions": 22,
+        "scored_figures": 7,
+        "scored_complete_pairs": 8,
+        "incomplete_pairs_skipped": 0
+      }
+    }
+  },
+  "by_subcategory": {
+    "chart": {
+      "aAcc": 0.5,
+      "fAcc": 1.0,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 4,
+        "scored_figures": 1,
+        "scored_complete_pairs": 2,
+        "incomplete_pairs_skipped": 0
+      }
+    },
+    "figure": {
+      "aAcc": 0.5,
+      "fAcc": 0.5,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 2,
+        "scored_figures": 2,
+        "scored_complete_pairs": 1,
+        "incomplete_pairs_skipped": 0
+      }
+    },
+    "illusion": {
+      "aAcc": 0.5,
+      "fAcc": 0.5,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 2,
+        "scored_figures": 2,
+        "scored_complete_pairs": 1,
+        "incomplete_pairs_skipped": 0
+      }
+    },
+    "map": {
+      "aAcc": 0.666667,
+      "fAcc": 0.5,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 6,
+        "scored_figures": 2,
+        "scored_complete_pairs": 2,
+        "incomplete_pairs_skipped": 0
+      }
+    },
+    "math": {
+      "aAcc": 0.5,
+      "fAcc": 0.0,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 6,
+        "scored_figures": 2,
+        "scored_complete_pairs": 3,
+        "incomplete_pairs_skipped": 0
+      }
+    },
+    "ocr": {
+      "aAcc": 1.0,
+      "fAcc": 1.0,
+      "qAcc": 1.0,
+      "counts": {
+        "scored_questions": 3,
+        "scored_figures": 2,
+        "scored_complete_pairs": 1,
+        "incomplete_pairs_skipped": 0
+      }
+    },
+    "table": {
+      "aAcc": 0.888889,
+      "fAcc": 1.0,
+      "qAcc": 0.666667,
+      "counts": {
+        "scored_questions": 9,
+        "scored_figures": 2,
+        "scored_complete_pairs": 3,
+        "incomplete_pairs_skipped": 0
+      }
+    },
+    "video": {
+      "aAcc": 0.5,
+      "fAcc": 0.5,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 2,
+        "scored_figures": 2,
+        "scored_complete_pairs": 1,
+        "incomplete_pairs_skipped": 0
+      }
+    }
+  },
+  "by_difficulty": {
+    "easy": {
+      "aAcc": 0.642857,
+      "fAcc": 0.75,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 14,
+        "scored_figures": 4,
+        "scored_complete_pairs": 0,
+        "incomplete_pairs_skipped": 14
+      }
+    },
+    "hard": {
+      "aAcc": 0.7,
+      "fAcc": 0.545455,
+      "qAcc": 0.666667,
+      "counts": {
+        "scored_questions": 20,
+        "scored_figures": 11,
+        "scored_complete_pairs": 6,
+        "incomplete_pairs_skipped": 8
+      }
+    }
+  },
+  "by_visual_input": {
+    "0": {
+      "aAcc": 0.625,
+      "fAcc": 0.0,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 8,
+        "scored_figures": 0,
+        "scored_complete_pairs": 0,
+        "incomplete_pairs_skipped": 8
+      }
+    },
+    "1": {
+      "aAcc": 0.857143,
+      "fAcc": 0.875,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 14,
+        "scored_figures": 8,
+        "scored_complete_pairs": 0,
+        "incomplete_pairs_skipped": 14
+      }
+    },
+    "2": {
+      "aAcc": 0.5,
+      "fAcc": 0.285714,
+      "qAcc": 0.0,
+      "counts": {
+        "scored_questions": 12,
+        "scored_figures": 7,
+        "scored_complete_pairs": 0,
+        "incomplete_pairs_skipped": 12
+      }
+    }
+  },
+  "protocol_version": "unverified_draft_rule_based",
+  "evaluation_mode": "alternative_evaluation_rule_based",
+  "evaluation_method": "Chấm tự động Yes/No tất định (alternative_evaluation_rule_based) cho aAcc, fAcc, qAcc; không gọi GPT-4 API. Technical errors được loại khỏi mẫu số điểm."
+}

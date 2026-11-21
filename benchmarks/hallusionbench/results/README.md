@@ -1,16 +1,22 @@
 # Kết quả thực nghiệm HallusionBench (Nhóm 2)
 
-Thư mục này là nơi lưu trữ kết quả inference & đánh giá **chạy thật** (0-epoch, không tạo dữ liệu giả theo `docs/result_schema.md`) cho 3 mô hình trên HallusionBench, kết hợp đồng thời:
-1. **7 artifact chuẩn repo (`docs/result_schema.md`):** `predictions.jsonl`, `metrics.json`, `run_config.yaml`, `run_metadata.json`, `errors.jsonl`, `run_status.json`, `manifest.json` (kiểm chứng bằng `scripts/check_results.py` & `scripts/check_manifest.py`).
-2. **Bộ tệp JSON / log / README dễ đọc tương đương nhánh `benchmark/mmhal`:** `<model>_hallusionbench_responses.json`, `<model>_hallusionbench_evaluation.json`, `<model>_hallusionbench_summary.json`, `inference_config.json`, `inference_summary.json`, `inference_log.txt`, `analysis/error_cases.md`, và `README.md` bảng điểm từng mô hình.
+Thư mục này lưu đồng thời **7 artifact chuẩn repo (`docs/result_schema.md`)** và **bộ tệp JSON/log dễ đọc (tương đương nhánh MMHal)** cho từng mô hình đã chạy inference thật (0-epoch, không tạo dữ liệu giả).
 
-## Trạng thái commit kết quả hiện tại
+## Bảng tổng hợp 3 mô hình
 
-| Model Key | Model ID | Trạng thái trên Git |
-|---|---|---|
-| `smolvlm2` | `HuggingFaceTB/SmolVLM2-2.2B-Instruct` | `PENDING` (chờ xuất gói từ Colab/Drive) |
-| `qwen3_vl` | `Qwen/Qwen3-VL-4B-Instruct` | `PENDING` (chờ xuất gói từ Colab/Drive) |
-| `phi4_multimodal` | `microsoft/Phi-4-multimodal-instruct` | `PENDING` (chờ chạy riêng & xuất gói từ Colab/Drive) |
+| Model Key | Model ID | Stage | Status | Dtype | Hoàn thành | aAcc | fAcc | qAcc | Thư mục |
+|---|---|---|---|---|---:|---:|---:|---:|---|
+| `smolvlm2` | `HuggingFaceTB/SmolVLM2-2.2B-Instruct` | `pilot` | `COMPLETED` | `float16` | 34/34 | **58.82%** | **40.00%** | **7.14%** | [`smolvlm2/`](smolvlm2/README.md) |
+| `qwen3_vl` | `Qwen/Qwen3-VL-4B-Instruct` | `pilot` | `COMPLETED` | `float16` | 34/34 | **67.65%** | **60.00%** | **21.43%** | [`qwen3_vl/`](qwen3_vl/README.md) |
+| `phi4_multimodal` | *(chưa có run)* | — | `PENDING` | — | 0 | — | — | — | — |
 
-> **Cách cập nhật thư mục này sau khi chạy Colab/Kaggle:**
-> Chạy Cell 6 → Cell 8 trong `benchmarks/hallusionbench/hallusionbench_colab.ipynb` (hoặc chạy CLI `python -m benchmarks.hallusionbench.evaluation --mode export-deliverables --overwrite-export --run-dirs smolvlm2=<dir1> qwen3_vl=<dir2> phi4_multimodal=<dir3> --dataset-json <HallusionBench.json> --data-root <DATA_ROOT>`). Tệp `README.md` này sẽ tự động được thay bằng bảng điểm thật của các mô hình đã chạy.
+- **Ca bất đồng giữa các mô hình:** **15** ca — xem [`cross_model_disagreements.json`](cross_model_disagreements.json).
+
+## Lệnh kiểm chứng lại artifact
+
+```bash
+python scripts/check_results.py benchmarks/hallusionbench/results/qwen3_vl/predictions.jsonl
+python scripts/check_manifest.py benchmarks/hallusionbench/results/qwen3_vl
+python scripts/check_results.py benchmarks/hallusionbench/results/smolvlm2/predictions.jsonl
+python scripts/check_manifest.py benchmarks/hallusionbench/results/smolvlm2
+```

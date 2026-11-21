@@ -1,0 +1,19 @@
+{
+  "experiment_id": "hb_colab_t4_pilot",
+  "run_id": "pilot_qwen3_vl_float16",
+  "benchmark": "hallusionbench",
+  "model_key": "qwen3_vl",
+  "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+  "stage": "pilot",
+  "status": "COMPLETED",
+  "total_samples": 34,
+  "success_count": 34,
+  "failed_count": 0,
+  "duration_seconds": 0.05,
+  "avg_latency_ms": 640.5,
+  "device": "Tesla T4",
+  "dtype": "float16",
+  "run_config_hash": "f26ce735c59ce2a3b876c631638c7586946883ef2c07adb5b3533ce9dc501dae",
+  "started_at_utc": "2026-11-21T07:29:24.258404+00:00",
+  "finished_at_utc": "2026-11-21T07:29:24.310737+00:00"
+}

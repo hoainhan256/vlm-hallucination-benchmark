@@ -1,0 +1,62 @@
+{
+  "experiment_id": "hb_colab_t4_pilot",
+  "run_id": "pilot_qwen3_vl_float16",
+  "benchmark": "hallusionbench",
+  "stage": "pilot",
+  "model_key": "qwen3_vl",
+  "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+  "run_config_hash": "f26ce735c59ce2a3b876c631638c7586946883ef2c07adb5b3533ce9dc501dae",
+  "status": "COMPLETED",
+  "generated_at_utc": "2026-11-21T07:29:24.372013+00:00",
+  "files": {
+    "predictions.jsonl": {
+      "size_bytes": 22360,
+      "sha256": "c9de12da7b6fb78bfa4a7364a0ed5c7f43d141f2c9924f8c8fb325eb5bf9968c"
+    },
+    "metrics.json": {
+      "size_bytes": 4464,
+      "sha256": "3585927c10a54322f4a9e818d4c18b82ce1b27613e4aa6649580a5525d861460"
+    },
+    "run_config.yaml": {
+      "size_bytes": 755,
+      "sha256": "bc50cc5175fcafb5b11e200716db06ab598c7b6a42f3a1ded8fdf69051031072"
+    },
+    "run_metadata.json": {
+      "size_bytes": 1981,
+      "sha256": "321044de4fda572ae739cdb493d45953c01db548af7528bedc03e90aae30eb69"
+    },
+    "errors.jsonl": {
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "run_status.json": {
+      "size_bytes": 344,
+      "sha256": "c6c6a0f2454b296a0bf1901a6bc4b2861745da24f136a26a38b6abb10894ef72"
+    },
+    "inference_config.json": {
+      "size_bytes": 1022,
+      "sha256": "04f47de51c95949e86258e90493fea78833a2709be4e8cdaeca1999a9f3d842b"
+    },
+    "inference_summary.json": {
+      "size_bytes": 599,
+      "sha256": "6ae7810eafd6c60a2ab4ce61de35b2896de00123f88348136621dd2230f59521"
+    },
+    "inference_log.txt": {
+      "size_bytes": 239,
+      "sha256": "6f14c3d6af8a4ff5714ea02f9d7c1822635f24a2445455f70f72b1a76ea8b031"
+    },
+    "qwen3_vl_hallusionbench_responses.json": {
+      "size_bytes": 20845,
+      "sha256": "9c9db68500fca178b6b757a58be7fcf2e74234d086057b170e69b31a853eb10f"
+    },
+    "qwen3_vl_hallusionbench_evaluation.json": {
+      "size_bytes": 27073,
+      "sha256": "948da87146375da9bb7d0055bffe773844c0340eca626fdc2d327df17aba992f"
+    },
+    "qwen3_vl_hallusionbench_summary.json": {
+      "size_bytes": 5110,
+      "sha256": "9ed260540a1477e436af230acd8679972b9dc253f624034cf95f6d835f131c05"
+    }
+  },
+  "scored_at_utc": "2026-11-21T07:29:50.608206+00:00"
+}

@@ -1,0 +1,2 @@
+[2026-11-21 07:28:30 UTC] START run_id=pilot_smolvlm2_float16 model=HuggingFaceTB/SmolVLM2-2.2B-Instruct stage=pilot dtype=float16 scope=34 already_completed=34
+[2026-11-21 07:28:30 UTC] FINISH status=COMPLETED success=34/34 failed=0 duration_s=0.04

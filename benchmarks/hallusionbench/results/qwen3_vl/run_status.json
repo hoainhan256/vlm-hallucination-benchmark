@@ -1,0 +1,11 @@
+{
+  "experiment_id": "hb_colab_t4_pilot",
+  "run_id": "pilot_qwen3_vl_float16",
+  "stage": "pilot",
+  "status": "COMPLETED",
+  "total_samples": 34,
+  "completed_samples": 34,
+  "failed_samples": 0,
+  "run_config_hash": "f26ce735c59ce2a3b876c631638c7586946883ef2c07adb5b3533ce9dc501dae",
+  "updated_at_utc": "2026-11-21T07:29:24.310737+00:00"
+}

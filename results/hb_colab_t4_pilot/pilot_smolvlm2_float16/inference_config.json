@@ -1,0 +1,35 @@
+{
+  "experiment_id": "hb_colab_t4_pilot",
+  "run_id": "pilot_smolvlm2_float16",
+  "benchmark": "hallusionbench",
+  "stage": "pilot",
+  "model_key": "smolvlm2",
+  "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+  "model_revision": null,
+  "processor_revision": null,
+  "dataset": "rayguan/HallusionBench",
+  "dataset_revision": "2067dfdce5abc7efdbb0927f4721ae282f0b6c51",
+  "total_samples": 34,
+  "target_dtype": "float16",
+  "attn_implementation": "sdpa",
+  "device_map": "auto",
+  "max_gpu_memory": null,
+  "max_cpu_memory": null,
+  "offload_folder": null,
+  "prompt_config": {
+    "prompt_version": "hallusionbench_yesno_v1",
+    "suffix": "Please answer yes or no.",
+    "append_suffix": true,
+    "system_prompt": null
+  },
+  "generation_config": {
+    "do_sample": false,
+    "max_new_tokens": 128,
+    "temperature": null,
+    "top_p": null,
+    "batch_size": 1,
+    "seed": 0
+  },
+  "run_config_hash": "69970a0702d84a36cab936be8c2dfa74d5b029029a7f183c10d6929ce9213edf",
+  "timestamp": "2026-11-21T07:28:30.914100+00:00"
+}

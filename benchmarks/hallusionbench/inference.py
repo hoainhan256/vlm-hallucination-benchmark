@@ -1109,14 +1109,17 @@ class HuggingFaceHallusionModel:
 
         if self.spec["loader_family"] == "phi4_multimodal":
             import inspect
+            import transformers as _tf
 
             # Workaround for Microsoft Phi-4-multimodal remote code on transformers >= 4.49/5.x
             # where generate() may pass num_logits_to_keep=None into forward().
-            try:
-                if "num_logits_to_keep" in inspect.signature(self.model.forward).parameters:
-                    gen_kwargs.setdefault("num_logits_to_keep", 1)
-            except (TypeError, ValueError):
-                pass
+            _ver_parts = tuple(int(x) for x in _tf.__version__.split(".")[:2] if x.isdigit())
+            if _ver_parts >= (4, 49):
+                try:
+                    if "num_logits_to_keep" in inspect.signature(self.model.forward).parameters:
+                        gen_kwargs.setdefault("num_logits_to_keep", 1)
+                except (TypeError, ValueError):
+                    pass
 
         try:
             with torch.inference_mode():
