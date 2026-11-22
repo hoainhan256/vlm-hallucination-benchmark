@@ -2,7 +2,7 @@
 
 Gói bàn giao GitHub ngày 21/11/2026, chỉ gồm phần việc SmolVLM2 × MMHal.
 Các bản làm việc ban đầu nằm ngoài gói vẫn giữ nguyên trên máy. Khi commit phần
-này, chỉ chọn `SmolVLM2/`, không dùng `git add .` ở repo cha.
+này, chỉ chọn `benchmarks/mmhal/SmolVLM2/`, không dùng `git add .` ở repo cha.
 
 ## Nội dung cần đưa lên GitHub
 
@@ -45,7 +45,7 @@ cập nhật cho bản công bố; semantic run/source hashes vẫn mô tả run
 Chạy từ repo cha:
 
 ```powershell
-cd SmolVLM2
+cd benchmarks/mmhal/SmolVLM2
 python -m pip install -r requirements.txt
 python -m pytest -q benchmarks/mmhal
 python -m benchmarks.mmhal check --config configs/full.yaml
@@ -74,13 +74,13 @@ tự sinh điểm mới; đổi source cần lượt chấm mới.
 Từ repo cha, xem danh sách rồi stage duy nhất gói:
 
 ```powershell
-git status --short -- SmolVLM2
-git add -- SmolVLM2
+git status --short -- benchmarks/mmhal/SmolVLM2
+git add -- benchmarks/mmhal/SmolVLM2
 git diff --cached --stat
 # Kiểm tra không có tệp đã stage từ trước ngoài phạm vi mong muốn
 git diff --cached --name-only
 git commit -m "Add SmolVLM2 MMHal benchmark and research report"
 ```
 
-Chưa tự commit hoặc push. Các thay đổi cũ ngoài `SmolVLM2/` không cần stage
+Chưa tự commit hoặc push. Các thay đổi cũ ngoài `benchmarks/mmhal/SmolVLM2/` không cần stage
 cho gói bàn giao này. Không reset/discard chúng khi chưa quyết định riêng.
