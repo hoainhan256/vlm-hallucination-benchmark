@@ -1,0 +1,2 @@
+{"sample_id": "mmhal-000", "kind": "inference_error", "exception_type": "RuntimeError", "run_config_hash": "870baf296999ee20340b5b18440d01679b97df9598100a877c9b221c78dccaab"}
+{"sample_id": null, "kind": "run_error", "exception_type": "RuntimeError", "run_config_hash": "870baf296999ee20340b5b18440d01679b97df9598100a877c9b221c78dccaab"}

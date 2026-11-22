@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-21",
+  "redactions": [],
+  "original_results_preserved_locally": true,
+  "no_model_weights_or_dataset_images": true,
+  "publication_scope": "Code and result files; report documents are published separately.",
+  "omitted_report_files": [
+    {
+      "path": "benchmarks/mmhal/ANALYSIS_full_infer_001.md",
+      "sha256": "8bbb49f742c72ad954d777b131edb6b467506bcf2840e8a39f6f75fe7c1d9c86"
+    },
+    {
+      "path": "reports/smolvlm2_mmhal_20261119/Bao_cao_SmolVLM2_MMHal.docx",
+      "sha256": "390908c88c657e76b0e2b35f594f1153aa9bb5302589fe570b458b7e87b0a5f2"
+    },
+    {
+      "path": "results/smolvlm2-mmhal-baseline/gpt6-interactive-001/report.md",
+      "sha256": "9a8859ecad32262ed05edae5cfd12dda27eca59d5ce3d0e203cbf4d49c95f045"
+    }
+  ],
+  "source_manifests_sha256": {
+    "results/smolvlm2-mmhal-baseline/gpt6-interactive-001/manifest.json": "ddf009913b2f121f2e6748fbbd480f664f6b76a7e8edb3e3bf3be952abcbcd5a",
+    "reports/smolvlm2_mmhal_20261119/manifest.json": "ddd15049ffae75975f1ee56e16f24703a647849934dc95912ad1815cabdb7b15"
+  },
+  "original_line_endings_restored": [
+    "reports/smolvlm2_mmhal_20261119/integration_record.json",
+    "reports/smolvlm2_mmhal_20261119/review_96_cases.csv",
+    "reports/smolvlm2_mmhal_20261119/visual_review_summary.json",
+    "results/smolvlm2-mmhal-baseline/full-infer-001/metrics.json",
+    "results/smolvlm2-mmhal-baseline/full-infer-001/pip_freeze.txt",
+    "results/smolvlm2-mmhal-baseline/full-infer-001/predictions.jsonl",
+    "results/smolvlm2-mmhal-baseline/full-infer-001/processor_config.json",
+    "results/smolvlm2-mmhal-baseline/full-infer-001/progress.jsonl",
+    "results/smolvlm2-mmhal-baseline/full-infer-001/responses.json",
+    "results/smolvlm2-mmhal-baseline/full-infer-001/run_config.yaml",
+    "results/smolvlm2-mmhal-baseline/full-infer-001/run_metadata.json",
+    "results/smolvlm2-mmhal-baseline/full-infer-001/run_status.json",
+    "results/smolvlm2-mmhal-baseline/gpt6-interactive-001/cases.csv",
+    "results/smolvlm2-mmhal-baseline/gpt6-interactive-001/judge_inputs.jsonl",
+    "results/smolvlm2-mmhal-baseline/gpt6-interactive-001/judge_reviews.jsonl",
+    "results/smolvlm2-mmhal-baseline/gpt6-interactive-001/metrics.json",
+    "results/smolvlm2-mmhal-baseline/gpt6-interactive-001/predictions.jsonl",
+    "results/smolvlm2-mmhal-baseline/gpt6-interactive-001/progress.jsonl",
+    "results/smolvlm2-mmhal-baseline/gpt6-interactive-001/review_ledger.tsv",
+    "results/smolvlm2-mmhal-baseline/gpt6-interactive-001/run_config.yaml",
+    "results/smolvlm2-mmhal-baseline/gpt6-interactive-001/run_metadata.json",
+    "results/smolvlm2-mmhal-baseline/gpt6-interactive-001/run_status.json",
+    "results/smolvlm2-mmhal-baseline/gpt6-interactive-001/source_manifest.json",
+    "results/smolvlm2-mmhal-baseline/pilot-infer-001/errors.jsonl",
+    "results/smolvlm2-mmhal-baseline/pilot-infer-001/metrics.json",
+    "results/smolvlm2-mmhal-baseline/pilot-infer-001/pip_freeze.txt",
+    "results/smolvlm2-mmhal-baseline/pilot-infer-001/predictions.jsonl",
+    "results/smolvlm2-mmhal-baseline/pilot-infer-001/processor_config.json",
+    "results/smolvlm2-mmhal-baseline/pilot-infer-001/progress.jsonl",
+    "results/smolvlm2-mmhal-baseline/pilot-infer-001/run_config.yaml",
+    "results/smolvlm2-mmhal-baseline/pilot-infer-001/run_metadata.json",
+    "results/smolvlm2-mmhal-baseline/pilot-infer-001/run_status.json",
+    "results/smolvlm2-mmhal-baseline/pilot-infer-002/metrics.json",
+    "results/smolvlm2-mmhal-baseline/pilot-infer-002/pip_freeze.txt",
+    "results/smolvlm2-mmhal-baseline/pilot-infer-002/predictions.jsonl",
+    "results/smolvlm2-mmhal-baseline/pilot-infer-002/processor_config.json",
+    "results/smolvlm2-mmhal-baseline/pilot-infer-002/progress.jsonl",
+    "results/smolvlm2-mmhal-baseline/pilot-infer-002/run_config.yaml",
+    "results/smolvlm2-mmhal-baseline/pilot-infer-002/run_metadata.json",
+    "results/smolvlm2-mmhal-baseline/pilot-infer-002/run_status.json"
+  ],
+  "original_visual_report_checksums": {}
+}

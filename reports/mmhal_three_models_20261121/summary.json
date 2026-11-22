@@ -1,0 +1,227 @@
+{
+  "dataset": "MMHal-Bench",
+  "questions": 96,
+  "models": {
+    "SmolVLM2": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+    "Qwen3": "Qwen/Qwen3-VL-4B-Instruct",
+    "Phi4": "microsoft/Phi-4-multimodal-instruct"
+  },
+  "model_outputs": 288,
+  "by_model": {
+    "SmolVLM2": {
+      "n": 96,
+      "source_score_sum": 315,
+      "source_average": 3.28125,
+      "source_below3": 34,
+      "visual_review_counts": {
+        "correct": 37,
+        "hallucination": 34,
+        "undetermined": 10,
+        "incomplete": 15
+      }
+    },
+    "Qwen3": {
+      "n": 96,
+      "source_score_sum": 410,
+      "source_average": 4.270833333333333,
+      "source_below3": 21,
+      "visual_review_counts": {
+        "correct": 59,
+        "hallucination": 24,
+        "undetermined": 11,
+        "incomplete": 2
+      }
+    },
+    "Phi4": {
+      "n": 96,
+      "source_score_sum": 366,
+      "source_average": 3.8125,
+      "source_below3": 23,
+      "visual_review_counts": {
+        "correct": 56,
+        "hallucination": 26,
+        "incomplete": 13,
+        "undetermined": 1
+      }
+    }
+  },
+  "by_question_type": {
+    "SmolVLM2": {
+      "attribute": {
+        "n": 12,
+        "source_average": 4.083333333333333,
+        "source_below3": 2,
+        "visual_hallucination": 2
+      },
+      "adversarial": {
+        "n": 12,
+        "source_average": 2.6666666666666665,
+        "source_below3": 6,
+        "visual_hallucination": 5
+      },
+      "comparison": {
+        "n": 12,
+        "source_average": 2.6666666666666665,
+        "source_below3": 6,
+        "visual_hallucination": 5
+      },
+      "counting": {
+        "n": 12,
+        "source_average": 3.3333333333333335,
+        "source_below3": 5,
+        "visual_hallucination": 5
+      },
+      "relation": {
+        "n": 12,
+        "source_average": 3.5833333333333335,
+        "source_below3": 3,
+        "visual_hallucination": 3
+      },
+      "environment": {
+        "n": 12,
+        "source_average": 4.0,
+        "source_below3": 1,
+        "visual_hallucination": 1
+      },
+      "holistic": {
+        "n": 12,
+        "source_average": 2.8333333333333335,
+        "source_below3": 7,
+        "visual_hallucination": 10
+      },
+      "other": {
+        "n": 12,
+        "source_average": 3.0833333333333335,
+        "source_below3": 4,
+        "visual_hallucination": 3
+      }
+    },
+    "Qwen3": {
+      "attribute": {
+        "n": 12,
+        "source_average": 4.0,
+        "source_below3": 4,
+        "visual_hallucination": 2
+      },
+      "adversarial": {
+        "n": 12,
+        "source_average": 4.416666666666667,
+        "source_below3": 2,
+        "visual_hallucination": 2
+      },
+      "comparison": {
+        "n": 12,
+        "source_average": 4.5,
+        "source_below3": 2,
+        "visual_hallucination": 5
+      },
+      "counting": {
+        "n": 12,
+        "source_average": 4.25,
+        "source_below3": 3,
+        "visual_hallucination": 3
+      },
+      "relation": {
+        "n": 12,
+        "source_average": 4.5,
+        "source_below3": 2,
+        "visual_hallucination": 0
+      },
+      "environment": {
+        "n": 12,
+        "source_average": 4.166666666666667,
+        "source_below3": 2,
+        "visual_hallucination": 5
+      },
+      "holistic": {
+        "n": 12,
+        "source_average": 4.416666666666667,
+        "source_below3": 2,
+        "visual_hallucination": 3
+      },
+      "other": {
+        "n": 12,
+        "source_average": 3.9166666666666665,
+        "source_below3": 4,
+        "visual_hallucination": 4
+      }
+    },
+    "Phi4": {
+      "attribute": {
+        "n": 12,
+        "source_average": 4.083333333333333,
+        "source_below3": 2,
+        "visual_hallucination": 1
+      },
+      "adversarial": {
+        "n": 12,
+        "source_average": 3.6666666666666665,
+        "source_below3": 3,
+        "visual_hallucination": 2
+      },
+      "comparison": {
+        "n": 12,
+        "source_average": 4.416666666666667,
+        "source_below3": 0,
+        "visual_hallucination": 1
+      },
+      "counting": {
+        "n": 12,
+        "source_average": 2.5,
+        "source_below3": 7,
+        "visual_hallucination": 4
+      },
+      "relation": {
+        "n": 12,
+        "source_average": 3.9166666666666665,
+        "source_below3": 3,
+        "visual_hallucination": 4
+      },
+      "environment": {
+        "n": 12,
+        "source_average": 3.6666666666666665,
+        "source_below3": 3,
+        "visual_hallucination": 3
+      },
+      "holistic": {
+        "n": 12,
+        "source_average": 4.25,
+        "source_below3": 3,
+        "visual_hallucination": 9
+      },
+      "other": {
+        "n": 12,
+        "source_average": 4.0,
+        "source_below3": 2,
+        "visual_hallucination": 2
+      }
+    }
+  },
+  "source_numeric_scores_preserved": true,
+  "judge": "GPT-6",
+  "newly_reviewed_outputs": 192,
+  "accepted_smol_outputs_integrated": 96,
+  "smol_visual_corrections": [
+    {
+      "model": "SmolVLM2",
+      "sample_id": "mmhal-078",
+      "old_visual_label": "hallucination",
+      "new_visual_label": "undetermined",
+      "reason": "Ảnh gốc phóng lớn cho thấy sàn dạng gạch và thảm; nhận xét cũ khẳng định sàn gỗ không đứng vững. Mô tả bố cục hai bộ giường của Smol còn mơ hồ, nên chuyển sang chưa kết luận thay vì dùng sàn gạch làm bằng chứng hallucination.",
+      "numeric_score_unchanged": true
+    },
+    {
+      "model": "SmolVLM2",
+      "sample_id": "mmhal-086",
+      "old_visual_label": "hallucination",
+      "new_visual_label": "undetermined",
+      "reason": "Áo trắng thực sự có trong ảnh. Thú giữa nhìn từ sau có tai lớn, có thể là voi hoặc đồ chơi cách điệu; chưa đủ bằng chứng bác bỏ elephant chắc chắn. Chuyển nhãn review ảnh cũ sang chưa kết luận, không sửa điểm text-reference.",
+      "numeric_score_unchanged": true
+    }
+  ],
+  "phi4_rationale_conflicts": 10,
+  "visual_vs_source_disagreements": 44,
+  "independent_human_review": false,
+  "can_rank_models_under_identical_protocol": false,
+  "reason": "Judge family confirmed; original scorer provenance, preprocessing and source rationale consistency differ across teams."
+}

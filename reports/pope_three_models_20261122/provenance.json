@@ -1,0 +1,63 @@
+{
+  "source_commit": "5902a028eced1acaecf0287623293145e0200f79",
+  "dataset_id": "lmms-lab-encoder/POPE",
+  "dataset_revision": "4db1276663dfa5eb8ad16a52d24c31a09e470896",
+  "subset_name": "pope_subset_900_seed42",
+  "subset_ids_sha256": "75676fd7ecaffd366aa6b5d50195ae23f2281b07d834d06e82754ae3a0caddd6",
+  "pilot_records": 900,
+  "model_outputs": 2700,
+  "categories": {
+    "adversarial": 300,
+    "popular": 300,
+    "random": 300
+  },
+  "label_counts": {
+    "yes": 462,
+    "no": 438
+  },
+  "unique_images": 426,
+  "source_files": [
+    {
+      "path": ".cache/pope-5902a02/benchmarks/pope/Qwen3/output/vlm_predictions.jsonl",
+      "git_branch": "benchmark/pope",
+      "git_commit": "5902a028eced1acaecf0287623293145e0200f79",
+      "sha256": "404dee0cb1a7848af5b71d416d749c646ab306d775df314b24e1c673669b91fd"
+    },
+    {
+      "path": ".cache/pope-5902a02/benchmarks/pope/SmolVLM2/Output/vlm_predictions.csv",
+      "git_branch": "benchmark/pope",
+      "git_commit": "5902a028eced1acaecf0287623293145e0200f79",
+      "sha256": "ceaad5df74608658779f7873bbe3cb5a6f1fd7f896e6aaf73a9b899fcd959583"
+    },
+    {
+      "path": ".cache/pope-5902a02/benchmarks/pope/Phi-4-multimodal/Output/vlm_predictions.csv",
+      "git_branch": "benchmark/pope",
+      "git_commit": "5902a028eced1acaecf0287623293145e0200f79",
+      "sha256": "9cdb9bfc9f022dfcc9b0119b87df6ae21eea2d22fbd79cb888cf4c75a056003a"
+    }
+  ],
+  "dataset_files": [
+    {
+      "file": "test-00000-of-00003.parquet",
+      "size": 85007167,
+      "sha256": "38851606d0e9f473c69dd45e3b018286842070473f168f7fa1c82e4c5086f116",
+      "url": "https://huggingface.co/datasets/lmms-lab-encoder/POPE/resolve/4db1276663dfa5eb8ad16a52d24c31a09e470896/data/test-00000-of-00003.parquet"
+    },
+    {
+      "file": "test-00001-of-00003.parquet",
+      "size": 85003430,
+      "sha256": "6800d7e0d43c7f7eb3e560faee8dd247ac35003f2d43955a29f66ef0dfb2aaa2",
+      "url": "https://huggingface.co/datasets/lmms-lab-encoder/POPE/resolve/4db1276663dfa5eb8ad16a52d24c31a09e470896/data/test-00001-of-00003.parquet"
+    },
+    {
+      "file": "test-00002-of-00003.parquet",
+      "size": 85012317,
+      "sha256": "f973337fbd2d114aaeeb9b96499b554df17d46654be3ff25aa14d3282c2a9d9a",
+      "url": "https://huggingface.co/datasets/lmms-lab-encoder/POPE/resolve/4db1276663dfa5eb8ad16a52d24c31a09e470896/data/test-00002-of-00003.parquet"
+    }
+  ],
+  "review_scope": "All pilot FP/FN, not all full-9000 errors",
+  "smol_image_linkage": "inferred from exact id/question/category and verified label; source CSV omits image_source",
+  "no_inference_rerun": true,
+  "primary_scorer": "POPE deterministic Yes/No formulas, not GPT scoring"
+}

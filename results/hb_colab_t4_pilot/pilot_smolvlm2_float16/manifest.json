@@ -1,0 +1,62 @@
+{
+  "experiment_id": "hb_colab_t4_pilot",
+  "run_id": "pilot_smolvlm2_float16",
+  "benchmark": "hallusionbench",
+  "stage": "pilot",
+  "model_key": "smolvlm2",
+  "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+  "run_config_hash": "69970a0702d84a36cab936be8c2dfa74d5b029029a7f183c10d6929ce9213edf",
+  "status": "COMPLETED",
+  "generated_at_utc": "2026-11-21T08:01:56.623729+00:00",
+  "files": {
+    "predictions.jsonl": {
+      "size_bytes": 24117,
+      "sha256": "731c8f233e9741a9248fc1e9bb64eba7e952eb311daf30195b8ff5f7c567a7ec"
+    },
+    "metrics.json": {
+      "size_bytes": 4478,
+      "sha256": "ca813f0e4822c25a49e202957b8aeabd9ad02cb490c5401fce69924ad8ea3842"
+    },
+    "run_config.yaml": {
+      "size_bytes": 766,
+      "sha256": "aa875f3ccb59877c52fe968134329a1561c7bb7e5a9d520b9b17fc7f9d36d006"
+    },
+    "run_metadata.json": {
+      "size_bytes": 1992,
+      "sha256": "51c6a906f54360508577752f2ffe6fa811a4183cbca07d3dd420bbd1027617fd"
+    },
+    "errors.jsonl": {
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "run_status.json": {
+      "size_bytes": 344,
+      "sha256": "64d2836ffd4cf70a4b6e02b1d23bdd9fd654167b6af9238293955f0804a7625a"
+    },
+    "inference_config.json": {
+      "size_bytes": 1033,
+      "sha256": "73a171844faee29e598da422c6eeda01d2543f08ee28e1394fecb27ed6712c8e"
+    },
+    "inference_summary.json": {
+      "size_bytes": 610,
+      "sha256": "b194700f3e7bd977e2ae260739ceb0bfa52f9918d67f16fa30a6f700c152810a"
+    },
+    "inference_log.txt": {
+      "size_bytes": 750,
+      "sha256": "67dc9b7a1eecf09ceaf81d35fa4412ab1144bfa5fd457d88f230178ec99c0b1e"
+    },
+    "smolvlm2_hallusionbench_responses.json": {
+      "size_bytes": 21538,
+      "sha256": "7c6b682928071a4f26ab85b5889df6221eab225bede6e858ff323e789872edd0"
+    },
+    "smolvlm2_hallusionbench_evaluation.json": {
+      "size_bytes": 27826,
+      "sha256": "6888e46510920ec17ac6abc55ddf174db73e61b0104000a50bdb53ebdbeb6414"
+    },
+    "smolvlm2_hallusionbench_summary.json": {
+      "size_bytes": 5124,
+      "sha256": "1afffd1ce9b122ebe57a863ba79c8395317352f40f0fa0cf41a176a68597777a"
+    }
+  },
+  "scored_at_utc": "2026-11-21T08:18:49.246955+00:00"
+}

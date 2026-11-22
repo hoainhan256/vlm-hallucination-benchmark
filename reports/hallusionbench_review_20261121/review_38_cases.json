@@ -1,0 +1,1650 @@
+[
+  {
+    "case_id": "HB01",
+    "sample_id": "catVS_subchart_set11_fig1_q0_vis1",
+    "verified_error_type": "hallucination",
+    "hallucination_status": "confirmed",
+    "subtype": "visual_chart_maximum",
+    "confidence": "high",
+    "evidence": "Đỉnh đường biểu diễn ở năm 2018, khoảng 480 B; năm 2020 khoảng 452 B. Câu trả lời Yes khẳng định sai rằng 2020 đạt giá trị cao nhất.",
+    "interpretation": "Mâu thuẫn trực tiếp với cực đại trong biểu đồ. Không xác định được nguyên nhân bên trong từ câu trả lời ngắn.",
+    "model_key": "smolvlm2",
+    "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+    "question": "According to the image, between 2011 and 2020, was 2020 the year when China's exports to the United States reached their highest value?",
+    "gt_answer": "no",
+    "gt_answer_details": "No. The highest value was in 2018.",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "chart",
+    "visual_input_raw": "1",
+    "image_file": "evidence/VS/chart/11_1.png",
+    "image_sha256": "515a915d65f90a277192649dee75f6691c105e5a5024d626ae2281a8ab3465f6",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_subchart_set11_fig0_q0_vis0",
+        "gt_answer": "no",
+        "model_answer": "No.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_subchart_set11_fig1_q0_vis1",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB01",
+    "sample_id": "catVS_subchart_set11_fig1_q0_vis1",
+    "verified_error_type": "hallucination",
+    "hallucination_status": "confirmed",
+    "subtype": "visual_chart_maximum",
+    "confidence": "high",
+    "evidence": "Đỉnh đường biểu diễn ở năm 2018, khoảng 480 B; năm 2020 khoảng 452 B. Câu trả lời Yes khẳng định sai rằng 2020 đạt giá trị cao nhất.",
+    "interpretation": "Mâu thuẫn trực tiếp với cực đại trong biểu đồ. Không xác định được nguyên nhân bên trong từ câu trả lời ngắn.",
+    "model_key": "phi4_multimodal",
+    "model_id": "microsoft/Phi-4-multimodal-instruct",
+    "question": "According to the image, between 2011 and 2020, was 2020 the year when China's exports to the United States reached their highest value?",
+    "gt_answer": "no",
+    "gt_answer_details": "No. The highest value was in 2018.",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "chart",
+    "visual_input_raw": "1",
+    "image_file": "evidence/VS/chart/11_1.png",
+    "image_sha256": "515a915d65f90a277192649dee75f6691c105e5a5024d626ae2281a8ab3465f6",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_subchart_set11_fig0_q0_vis0",
+        "gt_answer": "no",
+        "model_answer": "No, 2020 was not the year when China's exports to the United States reached their highest value between 2011 and 2020. In fact, due to the COVID-19 pandemic, global trade, including China's exports to the United States, experienced a significant decline in 2020. The highest value of China's exports to the United States during that period was in 2018.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_subchart_set11_fig1_q0_vis1",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB02",
+    "sample_id": "catVS_subchart_set11_fig1_q1_vis1",
+    "verified_error_type": "hallucination",
+    "hallucination_status": "confirmed",
+    "subtype": "visual_chart_trend",
+    "confidence": "high",
+    "evidence": "Từ 2016 khoảng 386 B đến 2018 khoảng 480 B, đường biểu diễn tăng. Yes khẳng định xu hướng giảm trái với ảnh.",
+    "interpretation": "Lỗi grounding quan hệ tăng giảm; chưa đủ bằng chứng kết luận do OCR, so sánh số hay language prior.",
+    "model_key": "smolvlm2",
+    "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+    "question": "According to the image, did China's exports to the United States experience a decrease from 2016 to 2018?",
+    "gt_answer": "no",
+    "gt_answer_details": "No. China's exports to the United States experience a increase from 2016 to 2018",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "chart",
+    "visual_input_raw": "1",
+    "image_file": "evidence/VS/chart/11_1.png",
+    "image_sha256": "515a915d65f90a277192649dee75f6691c105e5a5024d626ae2281a8ab3465f6",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_subchart_set11_fig0_q1_vis0",
+        "gt_answer": "no",
+        "model_answer": "No.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_subchart_set11_fig1_q1_vis1",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB02",
+    "sample_id": "catVS_subchart_set11_fig1_q1_vis1",
+    "verified_error_type": "hallucination",
+    "hallucination_status": "confirmed",
+    "subtype": "visual_chart_trend",
+    "confidence": "high",
+    "evidence": "Từ 2016 khoảng 386 B đến 2018 khoảng 480 B, đường biểu diễn tăng. Yes khẳng định xu hướng giảm trái với ảnh.",
+    "interpretation": "Lỗi grounding quan hệ tăng giảm; chưa đủ bằng chứng kết luận do OCR, so sánh số hay language prior.",
+    "model_key": "phi4_multimodal",
+    "model_id": "microsoft/Phi-4-multimodal-instruct",
+    "question": "According to the image, did China's exports to the United States experience a decrease from 2016 to 2018?",
+    "gt_answer": "no",
+    "gt_answer_details": "No. China's exports to the United States experience a increase from 2016 to 2018",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "chart",
+    "visual_input_raw": "1",
+    "image_file": "evidence/VS/chart/11_1.png",
+    "image_sha256": "515a915d65f90a277192649dee75f6691c105e5a5024d626ae2281a8ab3465f6",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_subchart_set11_fig0_q1_vis0",
+        "gt_answer": "no",
+        "model_answer": "Yes, China's exports to the United States experienced a decrease from 2016 to 2018. This was due to a variety of factors, including the imposition of tariffs by the United States on Chinese goods, which led to a reduction in trade volume between the two countries.",
+        "is_correct": false
+      },
+      {
+        "sample_id": "catVS_subchart_set11_fig1_q1_vis1",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB03",
+    "sample_id": "catVD_subillusion_set12_fig1_q0_vis2",
+    "verified_error_type": "undetermined",
+    "hallucination_status": "undetermined",
+    "subtype": "subjective_visual_illusion",
+    "confidence": "medium",
+    "evidence": "So với 12_0, miếng tròn đen ở góc trên phải trong 12_1 đã xoay làm đứt cấu hình tam giác Kanizsa. Annotation đổi Yes thành No; cả ba model vẫn Yes. Câu hỏi dùng perceived nên có yếu tố cảm nhận chủ quan.",
+    "interpretation": "Xác nhận sai theo nhãn benchmark và không đổi đáp án sau chỉnh sửa; chưa đủ để coi cảm nhận hình ảo là hallucination chắc chắn.",
+    "model_key": "smolvlm2",
+    "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+    "question": "Whether there is a triangle perceived in the image? Yes or No",
+    "gt_answer": "no",
+    "gt_answer_details": "No, there does not exist a white triangle that can be perceived in the image.",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "illusion",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VD/illusion/12_1.png",
+    "image_sha256": "03c34b46f0a70b596f18fdabfa0c394da12e339044bb3a2bf453f4e3595fcb64",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVD_subillusion_set12_fig0_q0_vis1",
+        "gt_answer": "yes",
+        "model_answer": "Yes.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVD_subillusion_set12_fig1_q0_vis2",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB03",
+    "sample_id": "catVD_subillusion_set12_fig1_q0_vis2",
+    "verified_error_type": "undetermined",
+    "hallucination_status": "undetermined",
+    "subtype": "subjective_visual_illusion",
+    "confidence": "medium",
+    "evidence": "So với 12_0, miếng tròn đen ở góc trên phải trong 12_1 đã xoay làm đứt cấu hình tam giác Kanizsa. Annotation đổi Yes thành No; cả ba model vẫn Yes. Câu hỏi dùng perceived nên có yếu tố cảm nhận chủ quan.",
+    "interpretation": "Xác nhận sai theo nhãn benchmark và không đổi đáp án sau chỉnh sửa; chưa đủ để coi cảm nhận hình ảo là hallucination chắc chắn.",
+    "model_key": "qwen3_vl",
+    "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+    "question": "Whether there is a triangle perceived in the image? Yes or No",
+    "gt_answer": "no",
+    "gt_answer_details": "No, there does not exist a white triangle that can be perceived in the image.",
+    "raw_response": "Yes",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "illusion",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VD/illusion/12_1.png",
+    "image_sha256": "03c34b46f0a70b596f18fdabfa0c394da12e339044bb3a2bf453f4e3595fcb64",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVD_subillusion_set12_fig0_q0_vis1",
+        "gt_answer": "yes",
+        "model_answer": "Yes",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVD_subillusion_set12_fig1_q0_vis2",
+        "gt_answer": "no",
+        "model_answer": "Yes",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB03",
+    "sample_id": "catVD_subillusion_set12_fig1_q0_vis2",
+    "verified_error_type": "undetermined",
+    "hallucination_status": "undetermined",
+    "subtype": "subjective_visual_illusion",
+    "confidence": "medium",
+    "evidence": "So với 12_0, miếng tròn đen ở góc trên phải trong 12_1 đã xoay làm đứt cấu hình tam giác Kanizsa. Annotation đổi Yes thành No; cả ba model vẫn Yes. Câu hỏi dùng perceived nên có yếu tố cảm nhận chủ quan.",
+    "interpretation": "Xác nhận sai theo nhãn benchmark và không đổi đáp án sau chỉnh sửa; chưa đủ để coi cảm nhận hình ảo là hallucination chắc chắn.",
+    "model_key": "phi4_multimodal",
+    "model_id": "microsoft/Phi-4-multimodal-instruct",
+    "question": "Whether there is a triangle perceived in the image? Yes or No",
+    "gt_answer": "no",
+    "gt_answer_details": "No, there does not exist a white triangle that can be perceived in the image.",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "illusion",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VD/illusion/12_1.png",
+    "image_sha256": "03c34b46f0a70b596f18fdabfa0c394da12e339044bb3a2bf453f4e3595fcb64",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVD_subillusion_set12_fig0_q0_vis1",
+        "gt_answer": "yes",
+        "model_answer": "Yes.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVD_subillusion_set12_fig1_q0_vis2",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB04",
+    "sample_id": "catVS_submap_set10_fig2_q0_vis2",
+    "verified_error_type": "undetermined",
+    "hallucination_status": "undetermined",
+    "subtype": "map_relation_or_prior",
+    "confidence": "medium",
+    "evidence": "Trong 10_2, nhãn Oyashio nằm ở tuyến đỏ từ nam lên bắc, Kuroshio ở tuyến xanh từ bắc xuống rồi sang đông. Smol và Qwen vẫn No, giống câu đối chứng không ảnh và ảnh gốc.",
+    "interpretation": "Sai theo quan hệ được vẽ. Mẫu không đổi đáp án phù hợp giả thuyết knowledge override, nhưng No đơn lẻ chưa phân biệt được lỗi đọc nhãn, suy luận và thiên kiến kiến thức.",
+    "model_key": "smolvlm2",
+    "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+    "question": "According to the image, does the Oyashio Current flow from the south to the north, while the Kuroshio Current flows from the north to the south?",
+    "gt_answer": "yes",
+    "gt_answer_details": "Yes. Oyashio Current flows from the south to the north and the Kuroshio Current flows from the north to the south",
+    "raw_response": "No.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "map",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VS/map/10_2.png",
+    "image_sha256": "6f9cdad934adce9e334f2e0170855ebfa428ff91e458cfdabbba189f7162ec1d",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_submap_set10_fig0_q0_vis0",
+        "gt_answer": "no",
+        "model_answer": "No.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_submap_set10_fig1_q0_vis1",
+        "gt_answer": "no",
+        "model_answer": "No.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_submap_set10_fig2_q0_vis2",
+        "gt_answer": "yes",
+        "model_answer": "No.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB04",
+    "sample_id": "catVS_submap_set10_fig2_q0_vis2",
+    "verified_error_type": "undetermined",
+    "hallucination_status": "undetermined",
+    "subtype": "map_relation_or_prior",
+    "confidence": "medium",
+    "evidence": "Trong 10_2, nhãn Oyashio nằm ở tuyến đỏ từ nam lên bắc, Kuroshio ở tuyến xanh từ bắc xuống rồi sang đông. Smol và Qwen vẫn No, giống câu đối chứng không ảnh và ảnh gốc.",
+    "interpretation": "Sai theo quan hệ được vẽ. Mẫu không đổi đáp án phù hợp giả thuyết knowledge override, nhưng No đơn lẻ chưa phân biệt được lỗi đọc nhãn, suy luận và thiên kiến kiến thức.",
+    "model_key": "qwen3_vl",
+    "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+    "question": "According to the image, does the Oyashio Current flow from the south to the north, while the Kuroshio Current flows from the north to the south?",
+    "gt_answer": "yes",
+    "gt_answer_details": "Yes. Oyashio Current flows from the south to the north and the Kuroshio Current flows from the north to the south",
+    "raw_response": "No",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "map",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VS/map/10_2.png",
+    "image_sha256": "6f9cdad934adce9e334f2e0170855ebfa428ff91e458cfdabbba189f7162ec1d",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_submap_set10_fig0_q0_vis0",
+        "gt_answer": "no",
+        "model_answer": "No",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_submap_set10_fig1_q0_vis1",
+        "gt_answer": "no",
+        "model_answer": "No",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_submap_set10_fig2_q0_vis2",
+        "gt_answer": "yes",
+        "model_answer": "No",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB05",
+    "sample_id": "catVS_submap_set10_fig2_q1_vis2",
+    "verified_error_type": "label_data_error",
+    "hallucination_status": "not_attributable",
+    "subtype": "annotation_internal_conflict",
+    "confidence": "high",
+    "evidence": "gt_answer=1 nhưng gt_answer_details viết Yes, the Kuroshio Current does not flow through Russia in this figure. Phần phủ định mâu thuẫn nhãn Yes. Ảnh không cho thấy tuyến Kuroshio đi qua lãnh thổ Nga; cả ba model nói No.",
+    "interpretation": "Có bằng chứng annotation tự mâu thuẫn. Không quy ba lượt này thành hallucination; giữ nguyên điểm gốc và yêu cầu phân xử nhãn riêng.",
+    "model_key": "smolvlm2",
+    "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+    "question": "According to the image, does the Kuroshio Current flow through Russia?",
+    "gt_answer": "yes",
+    "gt_answer_details": "Yes, the Kuroshio Current does not flow through Russia in this figure.",
+    "raw_response": "No.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "map",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VS/map/10_2.png",
+    "image_sha256": "6f9cdad934adce9e334f2e0170855ebfa428ff91e458cfdabbba189f7162ec1d",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_submap_set10_fig0_q1_vis0",
+        "gt_answer": "no",
+        "model_answer": "No.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_submap_set10_fig1_q1_vis1",
+        "gt_answer": "no",
+        "model_answer": "No.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_submap_set10_fig2_q1_vis2",
+        "gt_answer": "yes",
+        "model_answer": "No.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB05",
+    "sample_id": "catVS_submap_set10_fig2_q1_vis2",
+    "verified_error_type": "label_data_error",
+    "hallucination_status": "not_attributable",
+    "subtype": "annotation_internal_conflict",
+    "confidence": "high",
+    "evidence": "gt_answer=1 nhưng gt_answer_details viết Yes, the Kuroshio Current does not flow through Russia in this figure. Phần phủ định mâu thuẫn nhãn Yes. Ảnh không cho thấy tuyến Kuroshio đi qua lãnh thổ Nga; cả ba model nói No.",
+    "interpretation": "Có bằng chứng annotation tự mâu thuẫn. Không quy ba lượt này thành hallucination; giữ nguyên điểm gốc và yêu cầu phân xử nhãn riêng.",
+    "model_key": "qwen3_vl",
+    "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+    "question": "According to the image, does the Kuroshio Current flow through Russia?",
+    "gt_answer": "yes",
+    "gt_answer_details": "Yes, the Kuroshio Current does not flow through Russia in this figure.",
+    "raw_response": "No",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "map",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VS/map/10_2.png",
+    "image_sha256": "6f9cdad934adce9e334f2e0170855ebfa428ff91e458cfdabbba189f7162ec1d",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_submap_set10_fig0_q1_vis0",
+        "gt_answer": "no",
+        "model_answer": "No",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_submap_set10_fig1_q1_vis1",
+        "gt_answer": "no",
+        "model_answer": "No",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_submap_set10_fig2_q1_vis2",
+        "gt_answer": "yes",
+        "model_answer": "No",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB05",
+    "sample_id": "catVS_submap_set10_fig2_q1_vis2",
+    "verified_error_type": "label_data_error",
+    "hallucination_status": "not_attributable",
+    "subtype": "annotation_internal_conflict",
+    "confidence": "high",
+    "evidence": "gt_answer=1 nhưng gt_answer_details viết Yes, the Kuroshio Current does not flow through Russia in this figure. Phần phủ định mâu thuẫn nhãn Yes. Ảnh không cho thấy tuyến Kuroshio đi qua lãnh thổ Nga; cả ba model nói No.",
+    "interpretation": "Có bằng chứng annotation tự mâu thuẫn. Không quy ba lượt này thành hallucination; giữ nguyên điểm gốc và yêu cầu phân xử nhãn riêng.",
+    "model_key": "phi4_multimodal",
+    "model_id": "microsoft/Phi-4-multimodal-instruct",
+    "question": "According to the image, does the Kuroshio Current flow through Russia?",
+    "gt_answer": "yes",
+    "gt_answer_details": "Yes, the Kuroshio Current does not flow through Russia in this figure.",
+    "raw_response": "No, the Kuroshio Current does not flow through Russia according to the image.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "map",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VS/map/10_2.png",
+    "image_sha256": "6f9cdad934adce9e334f2e0170855ebfa428ff91e458cfdabbba189f7162ec1d",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_submap_set10_fig0_q1_vis0",
+        "gt_answer": "no",
+        "model_answer": "No, the Kuroshio Current does not flow through Russia. The Kuroshio Current, also known as the Japan Current, is a warm ocean current that flows northeastward along the coast of Japan and into the North Pacific Ocean. Russia, on the other hand, is located to the north of Japan and is bordered by the Arctic Ocean to the north, the Pacific Ocean to the east, and the Black Sea to the west. The Kuroshio Current does not extend into Russian waters.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_submap_set10_fig1_q1_vis1",
+        "gt_answer": "no",
+        "model_answer": "No, the Kuroshio Current does not flow through Russia according to the image.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_submap_set10_fig2_q1_vis2",
+        "gt_answer": "yes",
+        "model_answer": "No, the Kuroshio Current does not flow through Russia according to the image.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB06",
+    "sample_id": "catVD_submath_set0_fig0_q1_vis1",
+    "verified_error_type": "incorrect_prediction",
+    "hallucination_status": "not_established",
+    "subtype": "geometry_reasoning",
+    "confidence": "high",
+    "evidence": "Hai đường song song có hai góc trong cùng phía 1 và 2 bù nhau, tổng bằng 180 độ. Smol trả Yes cho tổng lớn hơn 180.",
+    "interpretation": "Lỗi suy luận hình học hoặc ràng buộc logic; không có phát biểu bịa vật thể để xác nhận hallucination riêng.",
+    "model_key": "smolvlm2",
+    "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+    "question": "According to parallel lines theorem, is angle 1 + angle 2 > 180 ?",
+    "gt_answer": "no",
+    "gt_answer_details": "angle 1 + angle 2 = 180 is correct",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "math",
+    "visual_input_raw": "1",
+    "image_file": "evidence/VD/math/0_0.png",
+    "image_sha256": "de78873c277cbc46a636cd28a1656dd7efb0725ca73be2e9e0b359b126b9d0ee",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVD_submath_set0_fig0_q1_vis1",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      },
+      {
+        "sample_id": "catVD_submath_set0_fig1_q1_vis2",
+        "gt_answer": "yes",
+        "model_answer": "Yes.",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "case_id": "HB07",
+    "sample_id": "catVD_submath_set0_fig0_q2_vis1",
+    "verified_error_type": "incorrect_prediction",
+    "hallucination_status": "not_established",
+    "subtype": "geometry_reasoning",
+    "confidence": "high",
+    "evidence": "Với hai đường song song, tổng hai góc trong cùng phía bằng 180 độ. Smol và Qwen trả Yes cho tổng nhỏ hơn 180.",
+    "interpretation": "Lỗi suy luận/so sánh góc. Smol còn đồng thời Yes cho ba mệnh đề bằng, lớn hơn và nhỏ hơn ở cùng ảnh.",
+    "model_key": "smolvlm2",
+    "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+    "question": "According to parallel lines theorem, is angle 1 + angle 2 < 180 ?",
+    "gt_answer": "no",
+    "gt_answer_details": "angle 1 + angle 2 = 180 is correct",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "math",
+    "visual_input_raw": "1",
+    "image_file": "evidence/VD/math/0_0.png",
+    "image_sha256": "de78873c277cbc46a636cd28a1656dd7efb0725ca73be2e9e0b359b126b9d0ee",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVD_submath_set0_fig0_q2_vis1",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      },
+      {
+        "sample_id": "catVD_submath_set0_fig1_q2_vis2",
+        "gt_answer": "no",
+        "model_answer": "No.",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "case_id": "HB07",
+    "sample_id": "catVD_submath_set0_fig0_q2_vis1",
+    "verified_error_type": "incorrect_prediction",
+    "hallucination_status": "not_established",
+    "subtype": "geometry_reasoning",
+    "confidence": "high",
+    "evidence": "Với hai đường song song, tổng hai góc trong cùng phía bằng 180 độ. Smol và Qwen trả Yes cho tổng nhỏ hơn 180.",
+    "interpretation": "Lỗi suy luận/so sánh góc. Smol còn đồng thời Yes cho ba mệnh đề bằng, lớn hơn và nhỏ hơn ở cùng ảnh.",
+    "model_key": "qwen3_vl",
+    "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+    "question": "According to parallel lines theorem, is angle 1 + angle 2 < 180 ?",
+    "gt_answer": "no",
+    "gt_answer_details": "angle 1 + angle 2 = 180 is correct",
+    "raw_response": "Yes",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "math",
+    "visual_input_raw": "1",
+    "image_file": "evidence/VD/math/0_0.png",
+    "image_sha256": "de78873c277cbc46a636cd28a1656dd7efb0725ca73be2e9e0b359b126b9d0ee",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVD_submath_set0_fig0_q2_vis1",
+        "gt_answer": "no",
+        "model_answer": "Yes",
+        "is_correct": false
+      },
+      {
+        "sample_id": "catVD_submath_set0_fig1_q2_vis2",
+        "gt_answer": "no",
+        "model_answer": "No",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "case_id": "HB08",
+    "sample_id": "catVD_submath_set0_fig1_q0_vis2",
+    "verified_error_type": "incorrect_prediction",
+    "hallucination_status": "not_established",
+    "subtype": "geometry_premise_override",
+    "confidence": "high",
+    "evidence": "Ở ảnh chỉnh sửa 0_1, đường phía trên nghiêng xuống về bên phải, không song song với đường dưới. Hai góc được đánh dấu có tổng lớn hơn 180, không bằng 180. Smol và Phi vẫn Yes cho bằng 180.",
+    "interpretation": "Phù hợp giả thuyết áp dụng định lý theo lời dẫn parallel lines thay vì kiểm tra tiền đề trong hình; chưa chứng minh cơ chế bên trong.",
+    "model_key": "smolvlm2",
+    "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+    "question": "According to parallel lines theorem, is angle 1 + angle 2 = 180 ?",
+    "gt_answer": "no",
+    "gt_answer_details": "angle 1 + angle 2 > 180 is correct",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "math",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VD/math/0_1.png",
+    "image_sha256": "3cac3abf8649da53673314853b785e0e2eaeec408f29522c9d8e187f5939ba01",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVD_submath_set0_fig0_q0_vis1",
+        "gt_answer": "yes",
+        "model_answer": "Yes.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVD_submath_set0_fig1_q0_vis2",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB08",
+    "sample_id": "catVD_submath_set0_fig1_q0_vis2",
+    "verified_error_type": "incorrect_prediction",
+    "hallucination_status": "not_established",
+    "subtype": "geometry_premise_override",
+    "confidence": "high",
+    "evidence": "Ở ảnh chỉnh sửa 0_1, đường phía trên nghiêng xuống về bên phải, không song song với đường dưới. Hai góc được đánh dấu có tổng lớn hơn 180, không bằng 180. Smol và Phi vẫn Yes cho bằng 180.",
+    "interpretation": "Phù hợp giả thuyết áp dụng định lý theo lời dẫn parallel lines thay vì kiểm tra tiền đề trong hình; chưa chứng minh cơ chế bên trong.",
+    "model_key": "phi4_multimodal",
+    "model_id": "microsoft/Phi-4-multimodal-instruct",
+    "question": "According to parallel lines theorem, is angle 1 + angle 2 = 180 ?",
+    "gt_answer": "no",
+    "gt_answer_details": "angle 1 + angle 2 > 180 is correct",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "math",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VD/math/0_1.png",
+    "image_sha256": "3cac3abf8649da53673314853b785e0e2eaeec408f29522c9d8e187f5939ba01",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVD_submath_set0_fig0_q0_vis1",
+        "gt_answer": "yes",
+        "model_answer": "Yes.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVD_submath_set0_fig1_q0_vis2",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB09",
+    "sample_id": "catVS_subocr_set1_fig2_q0_vis2",
+    "verified_error_type": "hallucination",
+    "hallucination_status": "confirmed",
+    "subtype": "symbol_substitution",
+    "confidence": "high",
+    "evidence": "Ảnh 1_1 ghi E = mc², còn 1_2 sửa số mũ thành 3. Smol và Phi vẫn Yes khi hỏi công thức khối lượng năng lượng Einstein.",
+    "interpretation": "Khẳng định ý nghĩa công thức quen thuộc bất chấp ký hiệu đã đổi. Có thể do bỏ sót ký tự hoặc ưu tiên mẫu quen thuộc; chưa tách được hai cơ chế.",
+    "model_key": "smolvlm2",
+    "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+    "question": "Is the formula in the image representative of the mass-energy equivalence concept in Einstein's theory?",
+    "gt_answer": "no",
+    "gt_answer_details": "No, the formula in the image does not represent the mass-energy equivalence concept in Einstein's theory of relativity.",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "ocr",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VS/ocr/1_2.png",
+    "image_sha256": "ef5ee9ee492c0b5c8507a64df563221e71ea2766faca82152614ad17a1ca2026",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_subocr_set1_fig0_q0_vis0",
+        "gt_answer": "yes",
+        "model_answer": "Yes.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_subocr_set1_fig1_q0_vis1",
+        "gt_answer": "yes",
+        "model_answer": "Yes.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_subocr_set1_fig2_q0_vis2",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB09",
+    "sample_id": "catVS_subocr_set1_fig2_q0_vis2",
+    "verified_error_type": "hallucination",
+    "hallucination_status": "confirmed",
+    "subtype": "symbol_substitution",
+    "confidence": "high",
+    "evidence": "Ảnh 1_1 ghi E = mc², còn 1_2 sửa số mũ thành 3. Smol và Phi vẫn Yes khi hỏi công thức khối lượng năng lượng Einstein.",
+    "interpretation": "Khẳng định ý nghĩa công thức quen thuộc bất chấp ký hiệu đã đổi. Có thể do bỏ sót ký tự hoặc ưu tiên mẫu quen thuộc; chưa tách được hai cơ chế.",
+    "model_key": "phi4_multimodal",
+    "model_id": "microsoft/Phi-4-multimodal-instruct",
+    "question": "Is the formula in the image representative of the mass-energy equivalence concept in Einstein's theory?",
+    "gt_answer": "no",
+    "gt_answer_details": "No, the formula in the image does not represent the mass-energy equivalence concept in Einstein's theory of relativity.",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "ocr",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VS/ocr/1_2.png",
+    "image_sha256": "ef5ee9ee492c0b5c8507a64df563221e71ea2766faca82152614ad17a1ca2026",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_subocr_set1_fig0_q0_vis0",
+        "gt_answer": "yes",
+        "model_answer": "Yes. The formula E=mc^2 is indeed representative of the mass-energy equivalence concept in Einstein's theory. It expresses the idea that mass (m) and energy (E) are interchangeable; they are different forms of the same thing. In this equation, c represents the speed of light in a vacuum, which is a constant. This equation shows that a small amount of mass can be converted into a large amount of energy, as the speed of light squared (c^2) is a very large number.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_subocr_set1_fig1_q0_vis1",
+        "gt_answer": "yes",
+        "model_answer": "Yes.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_subocr_set1_fig2_q0_vis2",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB10",
+    "sample_id": "catVS_subtable_set0_fig0_q0_vis0",
+    "verified_error_type": "hallucination",
+    "hallucination_status": "confirmed",
+    "subtype": "text_control_ranking",
+    "confidence": "high",
+    "evidence": "Đây là câu không ảnh. Bảng tham chiếu cùng set có China 51 gold, USA 36, Russia 23. Smol nói USA nhiều nhất, rồi Russia và Great Britain; Phi nói USA nhiều nhất dù tự nêu China 51 lớn hơn USA 36; Qwen chỉ No.",
+    "interpretation": "Smol và Phi có nội dung sai cụ thể để xác nhận hallucination văn bản; Qwen chỉ có đáp án sai nên không suy thêm loại hallucination hoặc cơ chế.",
+    "model_key": "smolvlm2",
+    "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+    "question": "Does China have the most gold metals, followed by USA and Russia in 2008 beijng olympic?",
+    "gt_answer": "yes",
+    "gt_answer_details": "China have the most gold metals, followed by USA and Russia in 2008 beijng olympic",
+    "raw_response": "No, China does not have the most gold metals in 2008 Beijing Olympics. The United States had the most gold metals, followed by Russia and Great Britain.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "table",
+    "visual_input_raw": "0",
+    "image_file": null,
+    "image_sha256": null,
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_subtable_set0_fig0_q0_vis0",
+        "gt_answer": "yes",
+        "model_answer": "No, China does not have the most gold metals in 2008 Beijing Olympics. The United States had the most gold metals, followed by Russia and Great Britain.",
+        "is_correct": false
+      },
+      {
+        "sample_id": "catVS_subtable_set0_fig1_q0_vis1",
+        "gt_answer": "yes",
+        "model_answer": "Yes.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_subtable_set0_fig2_q0_vis2",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB10",
+    "sample_id": "catVS_subtable_set0_fig0_q0_vis0",
+    "verified_error_type": "undetermined",
+    "hallucination_status": "undetermined",
+    "subtype": "text_control_ranking",
+    "confidence": "high",
+    "evidence": "Đây là câu không ảnh. Bảng tham chiếu cùng set có China 51 gold, USA 36, Russia 23. Smol nói USA nhiều nhất, rồi Russia và Great Britain; Phi nói USA nhiều nhất dù tự nêu China 51 lớn hơn USA 36; Qwen chỉ No.",
+    "interpretation": "Smol và Phi có nội dung sai cụ thể để xác nhận hallucination văn bản; Qwen chỉ có đáp án sai nên không suy thêm loại hallucination hoặc cơ chế.",
+    "model_key": "qwen3_vl",
+    "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+    "question": "Does China have the most gold metals, followed by USA and Russia in 2008 beijng olympic?",
+    "gt_answer": "yes",
+    "gt_answer_details": "China have the most gold metals, followed by USA and Russia in 2008 beijng olympic",
+    "raw_response": "No.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "table",
+    "visual_input_raw": "0",
+    "image_file": null,
+    "image_sha256": null,
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_subtable_set0_fig0_q0_vis0",
+        "gt_answer": "yes",
+        "model_answer": "No.",
+        "is_correct": false
+      },
+      {
+        "sample_id": "catVS_subtable_set0_fig1_q0_vis1",
+        "gt_answer": "yes",
+        "model_answer": "Yes",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_subtable_set0_fig2_q0_vis2",
+        "gt_answer": "no",
+        "model_answer": "No",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "case_id": "HB10",
+    "sample_id": "catVS_subtable_set0_fig0_q0_vis0",
+    "verified_error_type": "hallucination",
+    "hallucination_status": "confirmed",
+    "subtype": "text_control_ranking",
+    "confidence": "high",
+    "evidence": "Đây là câu không ảnh. Bảng tham chiếu cùng set có China 51 gold, USA 36, Russia 23. Smol nói USA nhiều nhất, rồi Russia và Great Britain; Phi nói USA nhiều nhất dù tự nêu China 51 lớn hơn USA 36; Qwen chỉ No.",
+    "interpretation": "Smol và Phi có nội dung sai cụ thể để xác nhận hallucination văn bản; Qwen chỉ có đáp án sai nên không suy thêm loại hallucination hoặc cơ chế.",
+    "model_key": "phi4_multimodal",
+    "model_id": "microsoft/Phi-4-multimodal-instruct",
+    "question": "Does China have the most gold metals, followed by USA and Russia in 2008 beijng olympic?",
+    "gt_answer": "yes",
+    "gt_answer_details": "China have the most gold metals, followed by USA and Russia in 2008 beijng olympic",
+    "raw_response": "No, China did not have the most gold medals in the 2008 Beijing Olympics. The United States won the most gold medals, followed by China and Russia. The United States won 36 gold medals, China won 51 gold medals, and Russia won 22 gold medals.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "table",
+    "visual_input_raw": "0",
+    "image_file": null,
+    "image_sha256": null,
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_subtable_set0_fig0_q0_vis0",
+        "gt_answer": "yes",
+        "model_answer": "No, China did not have the most gold medals in the 2008 Beijing Olympics. The United States won the most gold medals, followed by China and Russia. The United States won 36 gold medals, China won 51 gold medals, and Russia won 22 gold medals.",
+        "is_correct": false
+      },
+      {
+        "sample_id": "catVS_subtable_set0_fig1_q0_vis1",
+        "gt_answer": "yes",
+        "model_answer": "Yes.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_subtable_set0_fig2_q0_vis2",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB11",
+    "sample_id": "catVS_subtable_set0_fig1_q1_vis1",
+    "verified_error_type": "hallucination",
+    "hallucination_status": "confirmed",
+    "subtype": "table_column_ranking",
+    "confidence": "high",
+    "evidence": "Bảng gốc 0_1 có Gold China 51, USA 36, Russia 23. Smol Yes cho USA đứng đầu trái với cột Gold.",
+    "interpretation": "Khẳng định sai thứ hạng theo ảnh. Smol đồng thời Yes cho China đứng đầu ở câu khác trên cùng bảng.",
+    "model_key": "smolvlm2",
+    "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+    "question": "According to the metal number chart of 2008 beijng olympic, does USA have the most gold metals, followed by China and Russia?",
+    "gt_answer": "no",
+    "gt_answer_details": "China have the most gold metals, followed by USA and Russia in 2008 beijng olympic",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "table",
+    "visual_input_raw": "1",
+    "image_file": "evidence/VS/table/0_1.png",
+    "image_sha256": "cdcc9c9383e4307543385430672c64dd10c4eadd6bea39a6665015e22a4e4dad",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_subtable_set0_fig0_q1_vis0",
+        "gt_answer": "no",
+        "model_answer": "No, the United States does not have the most gold metals in 2008 Beijing Olympics. The United States won 81 gold medals, followed by China with 80 gold medals, and Russia with 76 gold medals.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_subtable_set0_fig1_q1_vis1",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      },
+      {
+        "sample_id": "catVS_subtable_set0_fig2_q1_vis2",
+        "gt_answer": "yes",
+        "model_answer": "Yes.",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "case_id": "HB12",
+    "sample_id": "catVS_subtable_set0_fig2_q0_vis2",
+    "verified_error_type": "hallucination",
+    "hallucination_status": "confirmed",
+    "subtype": "edited_table_ranking",
+    "confidence": "high",
+    "evidence": "Bảng chỉnh sửa 0_2 có Gold China 23, USA 36, Russia 23. Smol và Phi vẫn Yes cho China nhiều nhất.",
+    "interpretation": "Không cập nhật kết luận theo ô số bị thay đổi. Có dấu hiệu bám thứ tự hàng hoặc kiến thức trước đó; đây là giả thuyết cần thực nghiệm riêng.",
+    "model_key": "smolvlm2",
+    "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+    "question": "According to the metal number chart of 2008 beijng olympic, does China have the most gold metals, followed by USA and Russia?",
+    "gt_answer": "no",
+    "gt_answer_details": "According to the metal number chart of 2008 beijng olympic, USA have the most gold metals, followed by China and Russia?",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "table",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VS/table/0_2.png",
+    "image_sha256": "0450893b91c3e5085b806975a2e7e0dece105f3ce3df43a5d933ce52e1f6cde1",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_subtable_set0_fig0_q0_vis0",
+        "gt_answer": "yes",
+        "model_answer": "No, China does not have the most gold metals in 2008 Beijing Olympics. The United States had the most gold metals, followed by Russia and Great Britain.",
+        "is_correct": false
+      },
+      {
+        "sample_id": "catVS_subtable_set0_fig1_q0_vis1",
+        "gt_answer": "yes",
+        "model_answer": "Yes.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_subtable_set0_fig2_q0_vis2",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB12",
+    "sample_id": "catVS_subtable_set0_fig2_q0_vis2",
+    "verified_error_type": "hallucination",
+    "hallucination_status": "confirmed",
+    "subtype": "edited_table_ranking",
+    "confidence": "high",
+    "evidence": "Bảng chỉnh sửa 0_2 có Gold China 23, USA 36, Russia 23. Smol và Phi vẫn Yes cho China nhiều nhất.",
+    "interpretation": "Không cập nhật kết luận theo ô số bị thay đổi. Có dấu hiệu bám thứ tự hàng hoặc kiến thức trước đó; đây là giả thuyết cần thực nghiệm riêng.",
+    "model_key": "phi4_multimodal",
+    "model_id": "microsoft/Phi-4-multimodal-instruct",
+    "question": "According to the metal number chart of 2008 beijng olympic, does China have the most gold metals, followed by USA and Russia?",
+    "gt_answer": "no",
+    "gt_answer_details": "According to the metal number chart of 2008 beijng olympic, USA have the most gold metals, followed by China and Russia?",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "table",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VS/table/0_2.png",
+    "image_sha256": "0450893b91c3e5085b806975a2e7e0dece105f3ce3df43a5d933ce52e1f6cde1",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_subtable_set0_fig0_q0_vis0",
+        "gt_answer": "yes",
+        "model_answer": "No, China did not have the most gold medals in the 2008 Beijing Olympics. The United States won the most gold medals, followed by China and Russia. The United States won 36 gold medals, China won 51 gold medals, and Russia won 22 gold medals.",
+        "is_correct": false
+      },
+      {
+        "sample_id": "catVS_subtable_set0_fig1_q0_vis1",
+        "gt_answer": "yes",
+        "model_answer": "Yes.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_subtable_set0_fig2_q0_vis2",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB13",
+    "sample_id": "catVS_subtable_set0_fig2_q2_vis2",
+    "verified_error_type": "hallucination",
+    "hallucination_status": "confirmed",
+    "subtype": "edited_table_ranking",
+    "confidence": "high",
+    "evidence": "Bảng 0_2 có Russia 23, China 23, USA 36. Smol Yes cho Russia nhiều nhất, rồi China và USA, trái với số liệu và bỏ qua đồng hạng 23.",
+    "interpretation": "Lỗi so sánh theo bảng và nhất quán giữa các câu; không thể đồng thời có ba nước đều cao nhất với các giá trị này.",
+    "model_key": "smolvlm2",
+    "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+    "question": "According to the metal number chart of 2008 beijng olympic, does Russia have the most gold metals, followed by China and USA?",
+    "gt_answer": "no",
+    "gt_answer_details": "According to the metal number chart of 2008 beijng olympic, USA have the most gold metals, followed by China and Russia?",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "table",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VS/table/0_2.png",
+    "image_sha256": "0450893b91c3e5085b806975a2e7e0dece105f3ce3df43a5d933ce52e1f6cde1",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_subtable_set0_fig0_q2_vis0",
+        "gt_answer": "no",
+        "model_answer": "No, Russia does not have the most gold metals in 2008 Beijing Olympics. According to the International Olympic Committee (IOC), the United States had the most gold medals in the 2008 Beijing Olympics, with a total of 103 gold medals. China came in second with 90 gold medals, followed by Russia with 84 gold medals.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_subtable_set0_fig1_q2_vis1",
+        "gt_answer": "no",
+        "model_answer": "No.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_subtable_set0_fig2_q2_vis2",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB14",
+    "sample_id": "catVD_subvideo_set0_fig0_q0_vis1",
+    "verified_error_type": "undetermined",
+    "hallucination_status": "undetermined",
+    "subtype": "static_motion_illusion",
+    "confidence": "medium",
+    "evidence": "0_0.png là PNG một frame gồm hai panel họa tiết gây ảo giác chuyển động. Annotation nói không chuyển động, Smol và Phi Yes. Không có tín hiệu video theo thời gian trong PNG này.",
+    "interpretation": "Sai theo nhãn; chưa đủ để phân biệt cảm nhận ảo giác chuyển động với cách hiểu sequence. Không gọi là lỗi kỹ thuật chỉ vì tên subcategory là video.",
+    "model_key": "smolvlm2",
+    "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+    "question": "Is the sequence of the image moving?",
+    "gt_answer": "no",
+    "gt_answer_details": "the sequence of the image is not moving",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "video",
+    "visual_input_raw": "1",
+    "image_file": "evidence/VD/video/0_0.png",
+    "image_sha256": "a38e4718e82960f67f3cf54e54e99a989b2e26070e3d5c28347e584cab468bd1",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVD_subvideo_set0_fig0_q0_vis1",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      },
+      {
+        "sample_id": "catVD_subvideo_set0_fig1_q0_vis2",
+        "gt_answer": "yes",
+        "model_answer": "Yes.",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "case_id": "HB14",
+    "sample_id": "catVD_subvideo_set0_fig0_q0_vis1",
+    "verified_error_type": "undetermined",
+    "hallucination_status": "undetermined",
+    "subtype": "static_motion_illusion",
+    "confidence": "medium",
+    "evidence": "0_0.png là PNG một frame gồm hai panel họa tiết gây ảo giác chuyển động. Annotation nói không chuyển động, Smol và Phi Yes. Không có tín hiệu video theo thời gian trong PNG này.",
+    "interpretation": "Sai theo nhãn; chưa đủ để phân biệt cảm nhận ảo giác chuyển động với cách hiểu sequence. Không gọi là lỗi kỹ thuật chỉ vì tên subcategory là video.",
+    "model_key": "phi4_multimodal",
+    "model_id": "microsoft/Phi-4-multimodal-instruct",
+    "question": "Is the sequence of the image moving?",
+    "gt_answer": "no",
+    "gt_answer_details": "the sequence of the image is not moving",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "video",
+    "visual_input_raw": "1",
+    "image_file": "evidence/VD/video/0_0.png",
+    "image_sha256": "a38e4718e82960f67f3cf54e54e99a989b2e26070e3d5c28347e584cab468bd1",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVD_subvideo_set0_fig0_q0_vis1",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      },
+      {
+        "sample_id": "catVD_subvideo_set0_fig1_q0_vis2",
+        "gt_answer": "yes",
+        "model_answer": "Yes.",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "case_id": "HB15",
+    "sample_id": "catVS_subchart_set11_fig0_q0_vis0",
+    "verified_error_type": "undetermined",
+    "hallucination_status": "undetermined",
+    "subtype": "text_control_factual_error",
+    "confidence": "medium",
+    "evidence": "Không có ảnh trong đầu vào. Qwen Yes cho 2020 là năm cao nhất; annotation và biểu đồ đối chứng cùng set cho thấy đỉnh ở 2018.",
+    "interpretation": "Xác nhận sai kiến thức theo bộ dữ liệu; Yes đơn lẻ chưa cung cấp nội dung hay cơ chế đủ để gán hallucination thị giác.",
+    "model_key": "qwen3_vl",
+    "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+    "question": "Between 2011 and 2020, was 2020 the year when China's exports to the United States reached their highest value?",
+    "gt_answer": "no",
+    "gt_answer_details": "No. The highest value was in 2018.",
+    "raw_response": "Yes",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "chart",
+    "visual_input_raw": "0",
+    "image_file": null,
+    "image_sha256": null,
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_subchart_set11_fig0_q0_vis0",
+        "gt_answer": "no",
+        "model_answer": "Yes",
+        "is_correct": false
+      },
+      {
+        "sample_id": "catVS_subchart_set11_fig1_q0_vis1",
+        "gt_answer": "no",
+        "model_answer": "No",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "case_id": "HB16",
+    "sample_id": "catVS_subchart_set11_fig0_q1_vis0",
+    "verified_error_type": "undetermined",
+    "hallucination_status": "undetermined",
+    "subtype": "text_control_trend_and_cause",
+    "confidence": "high",
+    "evidence": "Không có ảnh trong đầu vào. Annotation và biểu đồ đối chứng cho thấy tăng từ 2016 tới 2018. Qwen chỉ Yes; Phi còn giải thích việc giảm do thuế quan, xây dựng nguyên nhân cho một xu hướng không xảy ra theo dữ liệu.",
+    "interpretation": "Phi có hallucination văn bản gồm xu hướng sai và lời giải thích nhân quả không được chứng minh; Qwen được giữ là sai kiến thức chưa phân loại hallucination chắc chắn.",
+    "model_key": "qwen3_vl",
+    "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+    "question": "Did China's exports to the United States experience a decrease from 2016 to 2018?",
+    "gt_answer": "no",
+    "gt_answer_details": "No. China's exports to the United States experience a increase from 2016 to 2018",
+    "raw_response": "Yes",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "chart",
+    "visual_input_raw": "0",
+    "image_file": null,
+    "image_sha256": null,
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_subchart_set11_fig0_q1_vis0",
+        "gt_answer": "no",
+        "model_answer": "Yes",
+        "is_correct": false
+      },
+      {
+        "sample_id": "catVS_subchart_set11_fig1_q1_vis1",
+        "gt_answer": "no",
+        "model_answer": "No",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "case_id": "HB16",
+    "sample_id": "catVS_subchart_set11_fig0_q1_vis0",
+    "verified_error_type": "hallucination",
+    "hallucination_status": "confirmed",
+    "subtype": "text_control_trend_and_cause",
+    "confidence": "high",
+    "evidence": "Không có ảnh trong đầu vào. Annotation và biểu đồ đối chứng cho thấy tăng từ 2016 tới 2018. Qwen chỉ Yes; Phi còn giải thích việc giảm do thuế quan, xây dựng nguyên nhân cho một xu hướng không xảy ra theo dữ liệu.",
+    "interpretation": "Phi có hallucination văn bản gồm xu hướng sai và lời giải thích nhân quả không được chứng minh; Qwen được giữ là sai kiến thức chưa phân loại hallucination chắc chắn.",
+    "model_key": "phi4_multimodal",
+    "model_id": "microsoft/Phi-4-multimodal-instruct",
+    "question": "Did China's exports to the United States experience a decrease from 2016 to 2018?",
+    "gt_answer": "no",
+    "gt_answer_details": "No. China's exports to the United States experience a increase from 2016 to 2018",
+    "raw_response": "Yes, China's exports to the United States experienced a decrease from 2016 to 2018. This was due to a variety of factors, including the imposition of tariffs by the United States on Chinese goods, which led to a reduction in trade volume between the two countries.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "chart",
+    "visual_input_raw": "0",
+    "image_file": null,
+    "image_sha256": null,
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_subchart_set11_fig0_q1_vis0",
+        "gt_answer": "no",
+        "model_answer": "Yes, China's exports to the United States experienced a decrease from 2016 to 2018. This was due to a variety of factors, including the imposition of tariffs by the United States on Chinese goods, which led to a reduction in trade volume between the two countries.",
+        "is_correct": false
+      },
+      {
+        "sample_id": "catVS_subchart_set11_fig1_q1_vis1",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB17",
+    "sample_id": "catVD_subfigure_set0_fig1_q0_vis2",
+    "verified_error_type": "hallucination",
+    "hallucination_status": "confirmed",
+    "subtype": "entity_completion",
+    "confidence": "high",
+    "evidence": "Ảnh 0_0 có Xuanzang cùng ba đồ đệ; 0_1 thay người bên trái bằng nhân vật nữ có nhiều đuôi, nên không còn đủ ba đồ đệ gốc. Qwen và Phi vẫn Yes.",
+    "interpretation": "Khẳng định bộ nhân vật quen thuộc vẫn đầy đủ khi thành viên đã bị thay. Phù hợp giả thuyết hoàn thiện ngữ cảnh quen thuộc, không chứng minh riêng language prior.",
+    "model_key": "qwen3_vl",
+    "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+    "question": "In the image, is Xuanzang accompanied by his three disciples?",
+    "gt_answer": "no",
+    "gt_answer_details": "Xuanzang is not accompanied by his three disciples.",
+    "raw_response": "Yes",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "figure",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VD/figure/0_1.png",
+    "image_sha256": "196552925a95965696cc3d4a67265a4151a36ea40d2bb3f2ebcfe0b4491476fd",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVD_subfigure_set0_fig0_q0_vis1",
+        "gt_answer": "yes",
+        "model_answer": "Yes",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVD_subfigure_set0_fig1_q0_vis2",
+        "gt_answer": "no",
+        "model_answer": "Yes",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB17",
+    "sample_id": "catVD_subfigure_set0_fig1_q0_vis2",
+    "verified_error_type": "hallucination",
+    "hallucination_status": "confirmed",
+    "subtype": "entity_completion",
+    "confidence": "high",
+    "evidence": "Ảnh 0_0 có Xuanzang cùng ba đồ đệ; 0_1 thay người bên trái bằng nhân vật nữ có nhiều đuôi, nên không còn đủ ba đồ đệ gốc. Qwen và Phi vẫn Yes.",
+    "interpretation": "Khẳng định bộ nhân vật quen thuộc vẫn đầy đủ khi thành viên đã bị thay. Phù hợp giả thuyết hoàn thiện ngữ cảnh quen thuộc, không chứng minh riêng language prior.",
+    "model_key": "phi4_multimodal",
+    "model_id": "microsoft/Phi-4-multimodal-instruct",
+    "question": "In the image, is Xuanzang accompanied by his three disciples?",
+    "gt_answer": "no",
+    "gt_answer_details": "Xuanzang is not accompanied by his three disciples.",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "figure",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VD/figure/0_1.png",
+    "image_sha256": "196552925a95965696cc3d4a67265a4151a36ea40d2bb3f2ebcfe0b4491476fd",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVD_subfigure_set0_fig0_q0_vis1",
+        "gt_answer": "yes",
+        "model_answer": "Yes, Xuanzang is accompanied by his three disciples in the image.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVD_subfigure_set0_fig1_q0_vis2",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB18",
+    "sample_id": "catVD_submath_set0_fig0_q0_vis1",
+    "verified_error_type": "incorrect_prediction",
+    "hallucination_status": "not_established",
+    "subtype": "geometry_reasoning",
+    "confidence": "high",
+    "evidence": "Ở ảnh 0_0 hai đường song song, hai góc trong cùng phía có tổng bằng 180. Qwen No cho mệnh đề bằng 180.",
+    "interpretation": "Lỗi hình học/nhận dạng quan hệ góc; không có chi tiết sinh thêm để xác nhận hallucination.",
+    "model_key": "qwen3_vl",
+    "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+    "question": "According to parallel lines theorem, is angle 1 + angle 2 = 180 ?",
+    "gt_answer": "yes",
+    "gt_answer_details": "angle 1 + angle 2 = 180 is correct",
+    "raw_response": "No",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "math",
+    "visual_input_raw": "1",
+    "image_file": "evidence/VD/math/0_0.png",
+    "image_sha256": "de78873c277cbc46a636cd28a1656dd7efb0725ca73be2e9e0b359b126b9d0ee",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVD_submath_set0_fig0_q0_vis1",
+        "gt_answer": "yes",
+        "model_answer": "No",
+        "is_correct": false
+      },
+      {
+        "sample_id": "catVD_submath_set0_fig1_q0_vis2",
+        "gt_answer": "no",
+        "model_answer": "No",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "case_id": "HB19",
+    "sample_id": "catVD_submath_set0_fig1_q1_vis2",
+    "verified_error_type": "incorrect_prediction",
+    "hallucination_status": "not_established",
+    "subtype": "geometry_reasoning",
+    "confidence": "high",
+    "evidence": "Ảnh 0_1 đã làm hai đường không song song; góc nhọn phía trên lớn hơn so với cấu hình song song, nên tổng hai góc đánh dấu lớn hơn 180. Qwen và Phi No.",
+    "interpretation": "Lỗi kiểm tra hình/so sánh tổng góc; không xác nhận hallucination chỉ từ đáp án No.",
+    "model_key": "qwen3_vl",
+    "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+    "question": "According to parallel lines theorem, is angle 1 + angle 2 > 180 ?",
+    "gt_answer": "yes",
+    "gt_answer_details": "angle 1 + angle 2 > 180 is correct",
+    "raw_response": "No",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "math",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VD/math/0_1.png",
+    "image_sha256": "3cac3abf8649da53673314853b785e0e2eaeec408f29522c9d8e187f5939ba01",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVD_submath_set0_fig0_q1_vis1",
+        "gt_answer": "no",
+        "model_answer": "No",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVD_submath_set0_fig1_q1_vis2",
+        "gt_answer": "yes",
+        "model_answer": "No",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB19",
+    "sample_id": "catVD_submath_set0_fig1_q1_vis2",
+    "verified_error_type": "incorrect_prediction",
+    "hallucination_status": "not_established",
+    "subtype": "geometry_reasoning",
+    "confidence": "high",
+    "evidence": "Ảnh 0_1 đã làm hai đường không song song; góc nhọn phía trên lớn hơn so với cấu hình song song, nên tổng hai góc đánh dấu lớn hơn 180. Qwen và Phi No.",
+    "interpretation": "Lỗi kiểm tra hình/so sánh tổng góc; không xác nhận hallucination chỉ từ đáp án No.",
+    "model_key": "phi4_multimodal",
+    "model_id": "microsoft/Phi-4-multimodal-instruct",
+    "question": "According to parallel lines theorem, is angle 1 + angle 2 > 180 ?",
+    "gt_answer": "yes",
+    "gt_answer_details": "angle 1 + angle 2 > 180 is correct",
+    "raw_response": "No.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "math",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VD/math/0_1.png",
+    "image_sha256": "3cac3abf8649da53673314853b785e0e2eaeec408f29522c9d8e187f5939ba01",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVD_submath_set0_fig0_q1_vis1",
+        "gt_answer": "no",
+        "model_answer": "No.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVD_submath_set0_fig1_q1_vis2",
+        "gt_answer": "yes",
+        "model_answer": "No.",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB20",
+    "sample_id": "catVD_subvideo_set0_fig1_q0_vis2",
+    "verified_error_type": "undetermined",
+    "hallucination_status": "undetermined",
+    "subtype": "static_sequence_interpretation",
+    "confidence": "medium",
+    "evidence": "0_1.png là PNG một frame; hai panel có bố trí họa tiết khác nhau. Annotation coi sequence là moving, Qwen No. File không có chuỗi frame thời gian để chứng minh chuyển động thực.",
+    "interpretation": "Giữ sai theo benchmark; chưa thể kết luận No là hallucination. Cần làm rõ quy ước panel sequence và kiểm tra model thực nhận montage hay media thời gian.",
+    "model_key": "qwen3_vl",
+    "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+    "question": "Is the sequence of the image moving?",
+    "gt_answer": "yes",
+    "gt_answer_details": "the sequence of the image is moving",
+    "raw_response": "no",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "video",
+    "visual_input_raw": "2",
+    "image_file": "evidence/VD/video/0_1.png",
+    "image_sha256": "4374d6174ef14309c6b5bf8f5432bf840f880bf4ef8520347aa8716197647629",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVD_subvideo_set0_fig0_q0_vis1",
+        "gt_answer": "no",
+        "model_answer": "no",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVD_subvideo_set0_fig1_q0_vis2",
+        "gt_answer": "yes",
+        "model_answer": "no",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "case_id": "HB21",
+    "sample_id": "catVS_submap_set10_fig1_q0_vis1",
+    "verified_error_type": "hallucination",
+    "hallucination_status": "confirmed",
+    "subtype": "map_direction_assertion",
+    "confidence": "high",
+    "evidence": "Ảnh gốc 10_1 gắn Oyashio với tuyến xanh từ bắc xuống, Kuroshio với tuyến đỏ từ nam lên. Phi Yes cho câu đảo hai hướng, trái với nhãn và mũi tên.",
+    "interpretation": "Khẳng định sai quan hệ hướng theo ảnh. Chưa đủ dữ liệu để xác định do nhận dạng nhãn, hướng mũi tên hay suy luận.",
+    "model_key": "phi4_multimodal",
+    "model_id": "microsoft/Phi-4-multimodal-instruct",
+    "question": "According to the image, does the Oyashio Current flow from the south to the north, while the Kuroshio Current flows from the north to the south?",
+    "gt_answer": "no",
+    "gt_answer_details": "No. Oyashio Current flows from the north to the south and the Kuroshio Current flows from the south to the north.",
+    "raw_response": "Yes.",
+    "original_is_correct": false,
+    "benchmark_score_unchanged": true,
+    "subcategory": "map",
+    "visual_input_raw": "1",
+    "image_file": "evidence/VS/map/10_1.png",
+    "image_sha256": "dd13b56921abef17111b9ec92e5d99aa624a4fb5b3693374747455a6538a68ee",
+    "reviewer": "GPT-6 interactive evidence review",
+    "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+    "independent_human_review": false,
+    "source_branch": "benchmark/hallusionbench",
+    "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+    "paired_outputs": [
+      {
+        "sample_id": "catVS_submap_set10_fig0_q0_vis0",
+        "gt_answer": "no",
+        "model_answer": "No, the Oyashio Current flows from the north to the south, while the Kuroshio Current flows from the east to the west.",
+        "is_correct": true
+      },
+      {
+        "sample_id": "catVS_submap_set10_fig1_q0_vis1",
+        "gt_answer": "no",
+        "model_answer": "Yes.",
+        "is_correct": false
+      },
+      {
+        "sample_id": "catVS_submap_set10_fig2_q0_vis2",
+        "gt_answer": "yes",
+        "model_answer": "Yes.",
+        "is_correct": true
+      }
+    ]
+  }
+]

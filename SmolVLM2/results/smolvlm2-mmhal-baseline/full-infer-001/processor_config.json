@@ -1,0 +1,46 @@
+{
+  "class": "SmolVLMProcessor",
+  "image_processor": {
+    "do_convert_rgb": true,
+    "do_image_splitting": true,
+    "do_normalize": true,
+    "do_pad": true,
+    "do_rescale": true,
+    "do_resize": true,
+    "image_mean": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "image_processor_type": "SmolVLMImageProcessor",
+    "image_std": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "max_image_size": {
+      "longest_edge": 384
+    },
+    "resample": 1,
+    "rescale_factor": 0.00392156862745098,
+    "size": {
+      "longest_edge": 1536
+    },
+    "video_sampling": {
+      "fps": 1,
+      "max_frames": 64,
+      "video_size": {
+        "longest_edge": 384
+      }
+    }
+  },
+  "tokenizer_class": "TokenizersBackend",
+  "chat_template": "<|im_start|>{% for message in messages %}{{message['role'] | capitalize}}{% if message['content'] is string %}{{': ' + message['content']}}{% else %}{% if message['content'][0]['type'] == 'image' %}{{':'}}{% else %}{{': '}}{% endif %}{% for line in message['content'] %}{% if line['type'] == 'text' %}{{line['text']}}{% elif line['type'] == 'image' %}{{ '<image>' }}{% endif %}{% endfor %}{% endif %}<end_of_utterance>\n{% endfor %}{% if add_generation_prompt %}{{ 'Assistant:' }}{% endif %}",
+  "preprocessing": "PIL RGB; official processor defaults; no external resizing",
+  "decoding": {
+    "num_beams": 1,
+    "do_sample": false,
+    "use_cache": true,
+    "max_new_tokens": 256
+  }
+}

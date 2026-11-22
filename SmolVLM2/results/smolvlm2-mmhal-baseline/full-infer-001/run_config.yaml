@@ -1,0 +1,128 @@
+approvals:
+  dataset_license: docs/approvals/mmhal-pilot.md#du-lieu
+  dtype_hardware: docs/approvals/mmhal-pilot.md#kiem-tra-gpu
+  generation: docs/approvals/mmhal-pilot.md#cau-hinh-suy-luan
+  inference: docs/approvals/mmhal-pilot.md#pham-vi
+  judge_access_cost: null
+  official: null
+dataset:
+  expected_count: 96
+  license: apache-2.0
+  revision: f5f49a938f45ed99e235b8519ba28f76832a2add
+  source: Shengcao1006/MMHal-Bench
+experiment_id: smolvlm2-mmhal-baseline
+generation:
+  do_sample: false
+  max_new_tokens: 256
+judge:
+  model: gpt-4-0314
+  protocol: original
+  temperature: 0.0
+  timeout_seconds: 90
+model:
+  attn_implementation: sdpa
+  device: cuda:0
+  dtype: bfloat16
+  model_id: HuggingFaceTB/SmolVLM2-2.2B-Instruct
+  processor_revision: be92141c8d0ceb98596a923c308ac2bbb4a7c466
+  revision: be92141c8d0ceb98596a923c308ac2bbb4a7c466
+protocol_version: mmhal-smolvlm2-v1
+sample_ids:
+- mmhal-000
+- mmhal-001
+- mmhal-002
+- mmhal-003
+- mmhal-004
+- mmhal-005
+- mmhal-006
+- mmhal-007
+- mmhal-008
+- mmhal-009
+- mmhal-010
+- mmhal-011
+- mmhal-012
+- mmhal-013
+- mmhal-014
+- mmhal-015
+- mmhal-016
+- mmhal-017
+- mmhal-018
+- mmhal-019
+- mmhal-020
+- mmhal-021
+- mmhal-022
+- mmhal-023
+- mmhal-024
+- mmhal-025
+- mmhal-026
+- mmhal-027
+- mmhal-028
+- mmhal-029
+- mmhal-030
+- mmhal-031
+- mmhal-032
+- mmhal-033
+- mmhal-034
+- mmhal-035
+- mmhal-036
+- mmhal-037
+- mmhal-038
+- mmhal-039
+- mmhal-040
+- mmhal-041
+- mmhal-042
+- mmhal-043
+- mmhal-044
+- mmhal-045
+- mmhal-046
+- mmhal-047
+- mmhal-048
+- mmhal-049
+- mmhal-050
+- mmhal-051
+- mmhal-052
+- mmhal-053
+- mmhal-054
+- mmhal-055
+- mmhal-056
+- mmhal-057
+- mmhal-058
+- mmhal-059
+- mmhal-060
+- mmhal-061
+- mmhal-062
+- mmhal-063
+- mmhal-064
+- mmhal-065
+- mmhal-066
+- mmhal-067
+- mmhal-068
+- mmhal-069
+- mmhal-070
+- mmhal-071
+- mmhal-072
+- mmhal-073
+- mmhal-074
+- mmhal-075
+- mmhal-076
+- mmhal-077
+- mmhal-078
+- mmhal-079
+- mmhal-080
+- mmhal-081
+- mmhal-082
+- mmhal-083
+- mmhal-084
+- mmhal-085
+- mmhal-086
+- mmhal-087
+- mmhal-088
+- mmhal-089
+- mmhal-090
+- mmhal-091
+- mmhal-092
+- mmhal-093
+- mmhal-094
+- mmhal-095
+seed: 0
+stage: pilot

@@ -1,0 +1,64 @@
+{
+  "experiment_id": "hb_colab_t4_pilot",
+  "run_id": "pilot_qwen3_vl_float16",
+  "benchmark": "hallusionbench",
+  "stage": "pilot",
+  "model_key": "qwen3_vl",
+  "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+  "configured_model_revision": null,
+  "configured_processor_revision": null,
+  "resolved_model_revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "resolved_processor_revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "dataset_source": "rayguan/HallusionBench",
+  "dataset_revision": "2067dfdce5abc7efdbb0927f4721ae282f0b6c51",
+  "dtype": "float16",
+  "attn_implementation": "sdpa",
+  "device_allocation": "cuda:0",
+  "max_gpu_memory": null,
+  "max_cpu_memory": null,
+  "offload_folder": null,
+  "run_config_hash": "f26ce735c59ce2a3b876c631638c7586946883ef2c07adb5b3533ce9dc501dae",
+  "status": "COMPLETED",
+  "counts": {
+    "scope_total": 34,
+    "total_completed": 34,
+    "total_failed": 0,
+    "new_completed_this_invocation": 0,
+    "new_failed_this_invocation": 0,
+    "skipped_already_completed": 34
+  },
+  "started_at_utc": "2026-11-21T08:04:46.082008+00:00",
+  "finished_at_utc": "2026-11-21T08:04:47.045931+00:00",
+  "environment": {
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+    "python_executable": "/usr/bin/python3",
+    "git_commit": "a4ca65c33a05328c6ca627dc973b6b101a4b2afd",
+    "packages": {
+      "torch": "2.14.1+cu130",
+      "transformers": "5.23.0",
+      "accelerate": "1.16.0",
+      "yaml": "6.0.3",
+      "PIL": "11.3.0",
+      "huggingface_hub": "1.33.0"
+    },
+    "cuda": "13.0",
+    "gpu": [
+      "Tesla T4"
+    ],
+    "repo_root": "/content/vlm-hallucination-benchmark",
+    "cuda_available": true,
+    "gpu_count": 1,
+    "bf16_supported": false,
+    "bf16_emulated_supported": true,
+    "gpus": [
+      {
+        "index": 0,
+        "name": "Tesla T4",
+        "total_memory_gib": 14.56,
+        "major": 7,
+        "minor": 5
+      }
+    ]
+  }
+}

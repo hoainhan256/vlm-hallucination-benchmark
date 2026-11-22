@@ -1,0 +1,45 @@
+{
+  "source_branch": "benchmark/hallusionbench",
+  "source_commit": "ea3f96dbc161a6e1948d605f02bcee971106b93a",
+  "dataset_revision": "2067dfdce5abc7efdbb0927f4721ae282f0b6c51",
+  "scope": "34 pilot questions per model, all 38 benchmark-incorrect responses reviewed",
+  "reviewer": "GPT-6 interactive evidence review",
+  "reviewed_at": "2026-11-21T20:17:42.199610+07:00",
+  "independent_human_review": false,
+  "unique_incorrect_questions": 21,
+  "reviewed_model_responses": 38,
+  "counts": {
+    "hallucination": 16,
+    "undetermined": 11,
+    "label_data_error": 3,
+    "incorrect_prediction": 8
+  },
+  "by_model": {
+    "smolvlm2": {
+      "hallucination": 7,
+      "undetermined": 3,
+      "label_data_error": 1,
+      "incorrect_prediction": 3
+    },
+    "qwen3_vl": {
+      "undetermined": 6,
+      "label_data_error": 1,
+      "incorrect_prediction": 3,
+      "hallucination": 1
+    },
+    "phi4_multimodal": {
+      "hallucination": 8,
+      "undetermined": 2,
+      "label_data_error": 1,
+      "incorrect_prediction": 2
+    }
+  },
+  "original_benchmark_scores_unchanged": true,
+  "limitations": [
+    "Supplemental review, not official HallusionBench semantic/consistency judge or independent human ground truth.",
+    "Confirmed counts refer to reviewed incorrect answers, not hallucination rates for all 34 questions.",
+    "Not all benchmark-correct rationales were exhaustively audited.",
+    "Source images pinned to dataset revision; no inference-time image checksums available to prove preprocessing identity.",
+    "11 cases retain an explicit undetermined conclusion; 3 involve a contradictory annotation."
+  ]
+}

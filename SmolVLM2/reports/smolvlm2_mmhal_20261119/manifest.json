@@ -1,0 +1,11 @@
+{
+  "source_predictions_sha256": "ab60e53debb875f9d8dad701a4fa543496b14ccb460881a27a06590a5b2efa5e",
+  "source_judge_predictions_sha256": "0e7cc1468cfdb47876e419c7ee218a1f750b4fd20b5cf1f9ec9fc5c64dace4de",
+  "review_ledger_sha256": "9687cb0541be34cf12bc6737f38ad616b9abeb98e5cf18b0f221140cfb6b22b3",
+  "files": {
+    "integration_record.json": "019c5b655923f19728fdad0b96cf8ad77c6a8e663f4a4d257767c148b206df33",
+    "review_96_cases.csv": "e08ac439b57dd10b111d5bbe9bfaf58597f930f03629a47ef2f69a8d025c35af",
+    "visual_review_summary.json": "3a36355b7765f61d153eded062473fcc5aceed2a06e5b5c6dda2db15081edc82"
+  },
+  "publication_copy": true
+}

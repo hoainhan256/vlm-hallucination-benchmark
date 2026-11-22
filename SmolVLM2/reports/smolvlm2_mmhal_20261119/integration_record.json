@@ -1,0 +1,27 @@
+{
+  "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+  "dataset": "Shengcao1006/MMHal-Bench",
+  "n": 96,
+  "inference_success": 96,
+  "source_run": "full-infer-001",
+  "stage": "exploratory",
+  "judge": "GPT-6 interactive text-reference",
+  "average_score": 3.28125,
+  "hallucination_rate": 0.3541666666666667,
+  "token_limit_count": 10,
+  "visual_review_counts": {
+    "correct": 37,
+    "hallucination": 36,
+    "undetermined": 8,
+    "incomplete": 15
+  },
+  "human_review": false,
+  "original_gpt4_comparable": false,
+  "dataset_revision": "f5f49a938f45ed99e235b8519ba28f76832a2add",
+  "model_revision": "be92141c8d0ceb98596a923c308ac2bbb4a7c466",
+  "generation": {
+    "do_sample": false,
+    "max_new_tokens": 256,
+    "seed": 0
+  }
+}

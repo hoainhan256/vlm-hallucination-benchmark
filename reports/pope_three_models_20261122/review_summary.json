@@ -1,0 +1,49 @@
+{
+  "scope": "exploratory pilot on identical 900 source rows per model",
+  "source_commit": "5902a028eced1acaecf0287623293145e0200f79",
+  "dataset_revision": "4db1276663dfa5eb8ad16a52d24c31a09e470896",
+  "n_questions": 900,
+  "n_model_outputs": 2700,
+  "n_error_rows": 357,
+  "n_unique_error_pairs": 182,
+  "n_reviewed_images": 159,
+  "n_native_resolution_followups": 32,
+  "unique_review_decisions": {
+    "FN_confirmed": 24,
+    "FP_supported": 24,
+    "label_boundary": 63,
+    "undetermined": 71
+  },
+  "review_decisions_by_model_error_rows": {
+    "SmolVLM2": {
+      "label_boundary": 51,
+      "undetermined": 52,
+      "FP_supported": 14,
+      "FN_confirmed": 19
+    },
+    "Qwen3": {
+      "FN_confirmed": 11,
+      "undetermined": 46,
+      "label_boundary": 40,
+      "FP_supported": 3
+    },
+    "Phi4": {
+      "FN_confirmed": 7,
+      "undetermined": 43,
+      "label_boundary": 52,
+      "FP_supported": 19
+    }
+  },
+  "primary_metrics": "deterministic POPE scoring against source labels",
+  "reviewer": "GPT-6 for supplemental visual review only; not a GPT benchmark judge",
+  "human_independent_review": false,
+  "primary_metric_unchanged_after_visual_review": true,
+  "official_or_full_three_model_claim": false,
+  "limitations": [
+    "Same source rows, but prompts, processor preprocessing and generation limits differ.",
+    "Smol source CSV omits image_source, so linkage uses id/question/category/label, not inference-time image hashes.",
+    "LBL and U are unresolved after visual inspection; neither is forced into a definite hallucination label.",
+    "No review of all full-9000 errors; full outputs only contribute an auxiliary quantitative table.",
+    "Phi detection/improvement packet concerns a different 900-row selection and is not combined with the latest inference."
+  ]
+}

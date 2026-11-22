@@ -1,0 +1,97 @@
+index	rating	category	visual_review	rationale
+0	5	correct	false	Trả lời đúng màu vàng của nắp vòi cứu hỏa, đủ thông tin cho câu hỏi.
+1	5	correct	false	Bác bỏ đúng tiền đề có người đang ngồi trên ghế.
+2	1	spatial_relation	false	Chọn ghế bên phải, trái với đáp án tham chiếu là ghế bên trái.
+3	1	counting	false	Khẳng định hai đèn giao thông thay vì bốn theo tham chiếu.
+4	1	attribute_binding	false	Gán sai màu theo vị trí: đặc biệt biển dưới vàng/đen trái với màu trắng trong tham chiếu.
+5	4	unsupported_inference_review	true	Bầu trời tối và đèn sáng phù hợp cảnh đêm; suy luận trời quang chưa được tham chiếu xác nhận nhưng cũng chưa bị bác bỏ. Điểm tạm không quy thêm chi tiết thành ảo giác chỉ vì thiếu trong đáp án.
+6	4	unverified_elaboration	true	Nêu đúng phố ướt, cây và bối cảnh đô thị. Các chi tiết mùa, biển cấm đỗ, xe buýt, cột kiến trúc chưa kiểm chứng từ tham chiếu; không mặc định sai vì tham chiếu thiếu. Câu trả lời bị cắt.
+7	5	correct	false	Giá 4 đô la mỗi giờ khớp tham chiếu.
+8	1	attribute_order	false	Đảo thứ tự màu từ phải sang trái: blue/black thay vì black/blue.
+9	3	abstention_false_premise_review	true	Không khẳng định giới tính, nhưng không bác bỏ rõ việc có người lái xe. Cụm nhắc lại người lái có thể là tiền giả định; chưa coi câu từ chối này là khẳng định có người.
+10	5	correct	false	Chọn đúng xe tải bên trái có cửa mở.
+11	1	counting	false	Đếm ba xe đạp thay vì bốn.
+12	5	correct	false	Quan hệ thuyền vàng ở phía trước du thuyền trắng khớp tham chiếu.
+13	5	correct	false	Trời nhiều mây nằm trong các khả năng được tham chiếu chấp nhận.
+14	4	unverified_elaboration	true	Mô tả nhiều thông tin về xe buýt, người đi xe đạp và cửa hàng phù hợp chủ đề. Chi tiết cầm biển stop và các chuỗi OCR chưa được tham chiếu xác nhận hoặc bác bỏ; theo prompt gốc không mặc định chi tiết ngoài đáp án là sai. Cần review ảnh riêng, câu bị cắt.
+15	1	brand_recognition	false	United Airlines trái với Virgin Airlines trong tham chiếu.
+16	5	correct	false	Màu áo xanh lá, xanh dương, đỏ theo trái sang phải đều khớp.
+17	1	adversarial_object	false	Bịa kính màu đen trong khi tham chiếu xác nhận người đàn ông không đeo kính.
+18	1	entity_binding	false	Gán người mặc quần dài là nam thay vì nữ theo tham chiếu.
+19	5	correct	false	Bốn người khớp tham chiếu.
+20	5	correct	false	Vị trí cô gái bên phải khớp tham chiếu.
+21	5	correct_with_extra_evidence	true	Kết luận ngoài trời đúng. Nước và trời là phần giải thích bổ sung chưa xác minh từ tham chiếu, cần xem ảnh nếu dùng làm bằng chứng thị giác.
+22	2	ocr_misreading	true	Mô tả cửa hàng đúng chủ đề nhưng tên Hawk's Bazaar khác Hawkin's Bazaar theo tham chiếu. Các chi tiết trang trí và biển khác chưa kiểm chứng; cần review ảnh và khả năng nhãn không hoàn chỉnh. Câu bị cắt.
+23	5	correct	false	Số áo 1097 khớp tham chiếu.
+24	4	incomplete_attribute_order	true	Nêu brown và black phù hợp nhưng không gắn thứ tự phải sang trái, thêm tan có thể là sắc độ thật. Thiếu thứ tự là lỗi trả lời chưa đầy đủ, chưa đủ bằng chứng kết luận màu tan bịa.
+25	1	adversarial_object	false	Chấp nhận có vicuna và gán nó nhìn toucan, trái với tham chiếu không có vicuna.
+26	1	spatial_relation	false	Chọn mèo ở giữa thay vì mèo bên phải há miệng.
+27	5	correct	false	Sáu ngựa vằn khớp tham chiếu.
+28	5	correct	false	Cừu phía trước màu trắng khớp tham chiếu.
+29	3	weather_undetermined	true	Tham chiếu chỉ xác nhận cảnh đêm, không xác nhận có mây hay trời quang. Câu trời quang thiếu căn cứ kiểm chứng nhưng không mâu thuẫn logic với ban đêm; cần ảnh trước khi gán hallucination.
+30	2	counting_in_description	false	Mô tả dài nhưng nêu bốn ngựa vằn và hai hươu cao cổ thay vì ba và bốn theo tham chiếu. Câu bị cắt.
+31	1	object_omission_as_absence	false	Khẳng định không có hươu cao cổ trong khi tham chiếu có một con.
+32	5	correct	false	Kiwi phía trước là khô khớp tham chiếu.
+33	3	abstention_false_premise_review	true	Từ chối xác định loại mứt nhưng không nói rõ không có mứt. Không tự quy câu không đủ thông tin thành ảo giác; cần review tiền giả định về mứt.
+34	4	incomplete_comparison	true	Nêu có khác màu phù hợp nhưng thiếu so sánh chín/đỏ và chưa chín/vàng; khác kích thước chưa được xác minh, không đủ để kết luận sai.
+35	1	counting	false	Sáu hàu trái với năm trong tham chiếu.
+36	1	spatial_relation	false	Nói bát broccoli nằm trên bát thịt viên thay vì ở cạnh.
+37	5	correct	false	Ngoài trời và nướng barbecue phù hợp người đang nướng trên bãi biển; không bắt buộc phải nhắc bãi biển.
+38	4	unverified_elaboration	true	Hoạt động ba người chuẩn bị thức ăn và logo khách sạn phù hợp. Cá salmon, asparagus, bát đang được cầm và bố trí tường chưa có đủ bằng chứng văn bản; không ép khớp tuyệt đối với tham chiếu vốn cũng dùng từ có thể.
+39	5	correct	false	Giá 5 bảng khớp; cần giữ Unicode gốc của ký hiệu tiền tệ khi xuất file.
+40	5	correct	false	Ba màu green, orange, blue khớp câu hỏi, không bắt buộc nêu vị trí.
+41	5	correct	false	Bác bỏ đúng có người đang chơi tennis.
+42	1	attribute_in_comparison	true	Mô tả ván đỏ phù hợp nhưng gán họa tiết đen/đỏ cho ván trắng khác mô tả trắng/màu gỗ đơn giản. Cần ảnh phân xử chi tiết phụ.
+43	5	correct	false	Ba con ngựa khớp tham chiếu.
+44	5	correct	false	Màu cam được tham chiếu chấp nhận.
+45	5	correct	false	Trong nhà khớp tham chiếu.
+46	4	unverified_elaboration	true	Nhận đúng bóng đá và đồng phục. Các chi tiết khán đài, tâm trạng và không có chữ đọc được chưa kiểm chứng nhưng không bị tham chiếu bác bỏ; không gán hallucination chỉ vì đáp án không đề cập. Bỏ sót người thứ ba không tự là hallucination. Câu bị cắt.
+47	1	ocr_event_identification	false	US Open trái với Indian Wells theo chữ trong tham chiếu.
+48	5	correct	false	Màu bạc là màu chính, không bắt buộc nhắc panel đen.
+49	5	correct	false	Số không bác bỏ đúng có người đang ăn.
+50	4	incomplete_comparison	true	Nhận xét giống nhau nhưng khác màu tay cầm còn mơ hồ: có thể nói chung vật liệu/bộ sản phẩm, không nhất thiết khẳng định cùng loại dụng cụ. Thiếu phân biệt dao/thìa/nĩa, cần review cách hiểu.
+51	5	correct	false	Hai nĩa khớp tham chiếu.
+52	1	spatial_order	false	Thứ tự phải sang trái spoon/mug/lid trái với lid/spoon/cup.
+53	5	correct	false	Ban ngày khớp tham chiếu.
+54	2	counting_in_description	false	Nói một cốc nước và một đĩa nhỏ trong khi tham chiếu hai cốc và hai đế lót. Các chi tiết bàn ghế khác cần review bổ sung.
+55	4	incomplete_answer	false	Chỉ đúng vị trí núm điều khiển phía trước nhưng chưa phân biệt nhóm sáu núm bên phải. Trả lời chưa đầy đủ không tự là hallucination.
+56	4	color_granularity_review	true	Yellow/purple/orange khớp; green so với teal có thể là khác độ chi tiết trong gọi màu, chưa đủ bằng chứng để coi chắc chắn sai.
+57	5	correct	false	Không thấy bàn tay phù hợp ảnh chỉ có găng tay; không bắt buộc diễn đạt y hệt đáp án.
+58	1	unsupported_hidden_content	true	Phân biệt mở/đóng đúng nhưng suy ra túi đóng có ít đồ hơn không được hỗ trợ. Cần ảnh xem có ngăn lộ nội dung hay không.
+59	1	counting	false	Sáu mũ đen thay vì năm.
+60	4	incomplete_relation	false	Một đồng hồ nằm trên đồng hồ kia phù hợp, nhưng thiếu màu và quan hệ bên trái.
+61	5	correct	false	Trong nhà khớp tham chiếu.
+62	2	internal_contradiction	false	Mô tả cùng bàn tay phải vừa không đeo nhẫn vừa có nhẫn; tham chiếu cả hai tay đều đeo nhẫn. Câu bị cắt.
+63	3	reflection_undetermined	true	Tham chiếu chỉ thấy lờ mờ vài người; không đủ để xác minh hay bác bỏ người mặc áo trắng. Câu trả lời quá cụ thể nhưng chưa có mâu thuẫn được chứng minh bằng đầu vào văn bản; cần ảnh để phân xử, không dùng thiếu chi tiết trong đáp án làm bằng chứng sai.
+64	5	correct	false	Màu bạc được chấp nhận trong tham chiếu.
+65	1	adversarial_object	false	Bịa màn hình đang phát video trong khi tham chiếu không có màn hình.
+66	3	ambiguous_answer	false	Cả hai thiết bị đều là iPod, nên iPod không xác định cái nào lớn hơn. Không đưa khẳng định thị giác sai, chấm không informative.
+67	1	counting	false	Hai điện thoại thay vì một.
+68	3	abstention	false	Từ chối xác định kết nối, không đưa khẳng định sai nhưng không trả lời được phủ định rõ như tham chiếu.
+69	4	location_specificity_review	true	Ngoài đồng tương thích khung cảnh ngoài trời nhưng tham chiếu chỉ xác nhận cây và núi, chưa chứng minh cánh đồng. Cần ảnh, không suy ra sai từ việc thiếu từ field trong đáp án.
+70	2	scene_relation	false	Nêu đúng TV và người mặc suit nhưng nói TV treo tường trong khi tham chiếu TV trên bàn. Các chữ/số overlay chưa xác minh. Câu bị cắt.
+71	3	abstention	false	Không nhận ra Macbook nhưng thể hiện chưa chắc chắn thay vì khẳng định Windows. Theo rubric gốc, không trả lời được không tự là hallucination.
+72	1	attribute	true	Hai gối ngoài light blue/light green khác white/grey theo tham chiếu. Cần xem ảnh để kiểm tra ảnh hưởng ánh sáng lên gọi màu.
+73	1	adversarial_object	false	Bịa ghế màu vàng trong khi tham chiếu không có ghế.
+74	5	correct	false	Gối bên phải gần camera hơn khớp tham chiếu.
+75	5	correct	false	Hai ghế khớp tham chiếu.
+76	3	ambiguous_answer	false	Cả ba gối đều có hình bàn tay đỏ nên mô tả này không xác định gối giữa có hình paper. Mơ hồ, chưa đủ để gán khẳng định sai.
+77	1	environment	false	Trời nắng trái với cảnh đêm tối trong tham chiếu.
+78	4	structure_undetermined	true	Tham chiếu nói hai deck beds nhưng không xác định rõ có hay không cấu trúc giường tầng. Không đủ bằng chứng văn bản bác bỏ thang hoặc giường hai tầng; cần ảnh, không tự gán hallucination. Câu bị cắt.
+79	4	weak_reasoning	false	Kết luận giấy chưa dùng khớp nhưng giải thích vòng lặp không cung cấp bằng chứng hình gấp trang trí.
+80	4	incomplete_attribute	false	Đỏ đúng một phần, bỏ sót trắng. Bỏ sót một màu không tự là khẳng định màu trắng không tồn tại.
+81	1	object_denial	true	Phủ nhận có vase trái với câu hỏi/tham chiếu bình rỗng; có thể liên quan ranh giới pot/vase, cần ảnh và review nhãn.
+82	5	correct	false	Bình bên phải lớn hơn khớp tham chiếu.
+83	5	correct	false	Sáu gấu bông khớp tham chiếu.
+84	5	correct	false	Hoa trên xanh, dưới trắng khớp tham chiếu.
+85	3	weather_undetermined	true	Tham chiếu chỉ xác nhận ban đêm, điều này không loại trừ mưa. Chưa đủ bằng chứng văn bản xác minh hay bác bỏ trời mưa; cần ảnh, không gán hallucination chỉ từ việc thiếu thông tin trong đáp án.
+86	2	attribute_in_description	false	Khẳng định bé mặc white onesie trái với tham chiếu chỉ mặc diaper. Chủng loại từng thú bông chưa xác minh. Câu bị cắt.
+87	1	ocr_transcription	true	Tên sách thiếu ký tự P đầu: ROVERBIAL thay vì Proverbial. Có thể là OCR thiếu ký tự nhìn khó, cần ảnh; giữ riêng lỗi transcription, không suy ra model bịa cả cuốn sách.
+88	5	correct	false	Màu bạc của nồi khớp tham chiếu.
+89	1	adversarial_action	false	Bịa hành động rửa bàn chải trong khi không có gì đang được rửa.
+90	1	comparison	false	Chọn máy giặt trái cao hơn, trái với máy bên phải cao hơn theo tham chiếu.
+91	5	correct	false	Một con gà khớp tham chiếu.
+92	5	correct	false	Tua vít trên cuộn giấy khớp tham chiếu.
+93	3	abstention	false	Không suy ra ban ngày nhưng không bịa một thời điểm khác. Không đủ thông tin theo model là câu không informative, không tự là hallucination.
+94	2	counting_in_description	false	Nói tám bánh xếp hai hàng bốn thay vì chín bánh theo lưới 3x3. Loại container và tên bánh cụ thể cần review thêm. Câu bị cắt.
+95	4	reflection_extra_object_review	true	Máy giặt phù hợp tham chiếu; sink là chi tiết bổ sung chưa xác minh nhưng tham chiếu không nói chỉ có máy giặt. Không tự coi sink sai vì không được liệt kê.

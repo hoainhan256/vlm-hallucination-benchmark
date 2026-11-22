@@ -1,0 +1,23 @@
+{
+  "random": {
+    "rows": 3000,
+    "exact_question_image_pairs": 3000,
+    "matched_after_audit_only_typo_normalization": 3000,
+    "label_mismatches": 0,
+    "upstream_sha256": "ac25245170b975a5bdf9080b23fd431dfe6be458bc038259c1f4f09a6bef7994"
+  },
+  "popular": {
+    "rows": 3000,
+    "exact_question_image_pairs": 3000,
+    "matched_after_audit_only_typo_normalization": 3000,
+    "label_mismatches": 0,
+    "upstream_sha256": "72c1a8ad45d0c13514f5f22598261df41d3b533854d29682e924db50ed8aa753"
+  },
+  "adversarial": {
+    "rows": 3000,
+    "exact_question_image_pairs": 2943,
+    "matched_after_audit_only_typo_normalization": 3000,
+    "label_mismatches": 0,
+    "upstream_sha256": "420b3407db1fa9f1187a805dca41cb7b97fd91504e6c2179706188c107fb8ef8"
+  }
+}

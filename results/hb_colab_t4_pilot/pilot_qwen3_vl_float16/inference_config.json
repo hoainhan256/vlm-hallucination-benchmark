@@ -1,0 +1,35 @@
+{
+  "experiment_id": "hb_colab_t4_pilot",
+  "run_id": "pilot_qwen3_vl_float16",
+  "benchmark": "hallusionbench",
+  "stage": "pilot",
+  "model_key": "qwen3_vl",
+  "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+  "model_revision": null,
+  "processor_revision": null,
+  "dataset": "rayguan/HallusionBench",
+  "dataset_revision": "2067dfdce5abc7efdbb0927f4721ae282f0b6c51",
+  "total_samples": 34,
+  "target_dtype": "float16",
+  "attn_implementation": "sdpa",
+  "device_map": "auto",
+  "max_gpu_memory": null,
+  "max_cpu_memory": null,
+  "offload_folder": null,
+  "prompt_config": {
+    "prompt_version": "hallusionbench_yesno_v1",
+    "suffix": "Please answer yes or no.",
+    "append_suffix": true,
+    "system_prompt": null
+  },
+  "generation_config": {
+    "do_sample": false,
+    "max_new_tokens": 128,
+    "temperature": null,
+    "top_p": null,
+    "batch_size": 1,
+    "seed": 0
+  },
+  "run_config_hash": "f26ce735c59ce2a3b876c631638c7586946883ef2c07adb5b3533ce9dc501dae",
+  "timestamp": "2026-11-21T08:04:46.082008+00:00"
+}

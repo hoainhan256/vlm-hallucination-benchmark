@@ -1,0 +1,9 @@
+# Install PyTorch matching the host CUDA runtime separately, then this file.
+PyYAML>=6,<7
+Pillow>=10,<13
+huggingface-hub>=0.30,<2
+transformers>=4.51.3,<6
+accelerate>=1,<2
+num2words>=0.5.14,<0.6
+# Exact installed versions are captured per run; use the pilot environment's
+# pip_freeze.txt to reproduce an accepted run. No flash-attn or quantization.

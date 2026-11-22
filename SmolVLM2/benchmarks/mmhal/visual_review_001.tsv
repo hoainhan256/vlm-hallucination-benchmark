@@ -1,0 +1,97 @@
+index	label	evidence
+0	correct	Nắp vòi cứu hỏa màu vàng, thân đỏ.
+1	correct	Hai ghế trước quán đều trống.
+2	hallucination	Lọ hoa đỏ nằm trên bàn/ghế bên trái, không phải bên phải.
+3	hallucination	Hai cụm đèn mỗi cụm hai đèn, tổng bốn.
+4	hallucination	Biển trên và dưới nền trắng, biển giữa nền xanh; model gán vàng đen cho biển dưới.
+5	undetermined	Ảnh ban đêm; bầu trời tối không đủ xác nhận thời tiết quang.
+6	hallucination	Lối đi ướt có cây nhưng không thấy xe buýt như model khẳng định; mùa và kiến trúc cũng bị suy diễn.
+7	correct	Nhãn đồng hồ ghi 4 đô la mỗi giờ.
+8	hallucination	Xe bên phải tối/đen, xe trái xanh; model đảo thứ tự.
+9	incomplete	Xe máy không có người ngồi; model từ chối giới tính nhưng chưa bác bỏ tiền đề.
+10	correct	Cửa xe cứu hỏa trái mở.
+11	hallucination	Bốn người cùng xe đạp, người thứ tư nhỏ ở xa; model đếm ba.
+12	correct	Thuyền vàng ở tiền cảnh phía trước du thuyền trắng.
+13	correct	Bầu trời nhiều mây.
+14	hallucination	Biển STOP gắn trên xe buýt, không phải vật người đi xe đạp đang cầm.
+15	undetermined	Có cả United ở tiền cảnh và đuôi Virgin phía sau. Câu hỏi back cần làm rõ đối tượng, không kết luận bịa hãng United.
+16	correct	Áo từ trái qua phải xanh lá, xanh dương, đỏ.
+17	hallucination	Không có kính trên mặt người; chỉ có nét vẽ đen.
+18	hallucination	Người trái mặc quần đùi, người nữ phải mặc quần dài.
+19	correct	Bức ảnh nhỏ trong trang trang trí có bốn người.
+20	correct	Nhân vật nữ ở bên phải nhóm ba nhân vật.
+21	correct	Người ở trên thuyền, phía sau có nước và cảnh ngoài trời.
+22	hallucination	Biển hiệu là Hawkins Bazaar, không phải Hawk's Bazaar; reference cũng ghi khác Hawkin's. Cần giữ vấn đề chuẩn hóa tên riêng.
+23	correct	Số áo người dẫn đầu là 1097.
+24	incomplete	Chỉ có hai chó đen và nâu; tan có thể là sắc nâu, nhưng model không trả lời theo thứ tự.
+25	hallucination	Ảnh là tranh chim toucan, không có vicuna.
+26	hallucination	Mèo há miệng ở phía phải/phía sau, không phải con nằm giữa phía trước.
+27	correct	Đàn ngựa vằn có các thân chồng lấp; câu sáu phù hợp tham chiếu, đếm từ tổng quan có độ chắc chắn vừa.
+28	correct	Con cừu gần máy ảnh nhất màu trắng.
+29	undetermined	Ảnh đua ngựa ban đêm không đủ chứng cứ xác định trời quang hay có mây.
+30	hallucination	Có ba ngựa vằn và bốn hươu cao cổ, model ghi bốn và hai.
+31	hallucination	Cổ/đầu hươu cao cổ lộ phía sau tê giác bên trái; model nói không có.
+32	correct	Các miếng kiwi ở phía trước là lát khô.
+33	incomplete	Bánh mì nướng không có mứt nhìn thấy; model chỉ từ chối loại mứt.
+34	incomplete	Một quả đỏ và hai quả vàng; model chỉ nói khác kích cỡ/màu, thiếu so sánh cụ thể.
+35	hallucination	Năm hàu mở trên đĩa, model nêu sáu.
+36	hallucination	Các bát đứng cạnh nhau, không xếp chồng.
+37	correct	Người nướng thức ăn ở ngoài trời, nhiều người xung quanh.
+38	hallucination	Bát rau nằm trên thớt đỏ; model nói người bên trái đang cầm bát. Đĩa cá của đầu bếp nhìn thấy, không coi salmon tự nó là lỗi.
+39	correct	Bảng ghi dumplings 5 bảng; ký hiệu tiền tệ cần giữ Unicode.
+40	correct	Ba dù có xanh lá, cam và xanh dương.
+41	correct	Chỉ vợt và bóng trên sân, không người chơi.
+42	hallucination	Ván trên có màu gỗ/trắng và hình nhỏ, model gán họa tiết đen đỏ; ván đỏ dưới phức tạp.
+43	correct	Ba con ngựa có người cưỡi.
+44	correct	Bóng bên trái màu cam/đỏ.
+45	correct	Sân hockey trong nhà.
+46	hallucination	Ghế khán đài phía sau hầu hết trống, model nói đầy khán giả; trên bảng có chữ nhìn thấy.
+47	hallucination	Sân ghi INDIAN WELLS, không phải US Open.
+48	correct	Lò vi sóng chủ yếu bạc và mặt đen.
+49	correct	Bàn ăn và ghế không có người.
+50	incomplete	Cùng một bộ dụng cụ ở nhiều góc nhìn nhưng gồm dao thìa nĩa khác nhau; câu same mơ hồ, không đủ để gán bịa.
+51	correct	Hai nĩa ở bên trái nhóm dụng cụ.
+52	hallucination	Từ phải qua trái là nắp, thìa, cốc; model hoán vị.
+53	correct	Ánh sáng ban ngày qua cửa sổ bếp.
+54	hallucination	Hai cốc trên hai đế lót; model nêu một cốc và đĩa nhỏ, thêm ghế nhựa xanh không phù hợp.
+55	incomplete	Chỉ núm trước bếp là đúng nhưng chưa chỉ nhóm sáu núm phải điều khiển mặt bếp.
+56	correct	Ô có tím vàng xanh ngả teal và cam; green là cách gọi màu thô chấp nhận được.
+57	correct	Chỉ có đôi găng đặt rời, không bàn tay thật.
+58	undetermined	Túi đóng không cho biết chứa ít đồ hơn. Nhận xét không có căn cứ, chưa biết nội dung thực để bác bỏ chắc chắn.
+59	hallucination	Năm mũ đen, model đếm sáu.
+60	incomplete	Đồng hồ đen chồng phía trước/trái đồng hồ đỏ; model chỉ nói một ở trên một.
+61	correct	Giày đặt trên thảm trong nhà.
+62	hallucination	Cả hai tay có nhẫn; model tự mâu thuẫn có/không nhẫn cùng tay.
+63	undetermined	Phản chiếu có vài người nhưng không đủ rõ để xác nhận người áo trắng cụ thể.
+64	correct	Vỏ laptop màu bạc.
+65	hallucination	Chỉ có chuột máy tính, không màn hình phát video.
+66	incomplete	Cả hai là iPod nên câu iPod không xác định thiết bị lớn hơn.
+67	hallucination	Một điện thoại bàn phím trượt, không phải hai máy.
+68	incomplete	Đầu cáp USB đang rời; model không xác định kết nối, không khẳng định sai.
+69	undetermined	Có con la, thảm thực vật và đồi; gọi là field chưa đủ chứng cứ để xác minh vị trí.
+70	hallucination	TV có chân đặt trên bàn với sách/bút, không treo tường.
+71	incomplete	Bàn phím có phím đặc trưng Mac nhưng model từ chối xác định, không bịa Windows.
+72	hallucination	Gối ngoài trắng/xám nhạt, model gán xanh dương và xanh lá; ánh sáng có thể ảnh hưởng sắc độ.
+73	hallucination	Đồ nội thất vàng xanh là sofa, không có ghế đơn mà câu hỏi giả định.
+74	correct	Gối phải lớn hơn trong phối cảnh và gần máy ảnh.
+75	correct	Hai ghế đơn độc lập; không tính sofa là ghế đơn.
+76	incomplete	Ba gối đều có hình bàn tay đỏ; cần chỉ gối giữa hình bàn tay xòe.
+77	hallucination	Bên ngoài cửa sổ tối; không có căn cứ trời nắng.
+78	hallucination	Ảnh thực sự có giường tầng và thang, reference thiếu chi tiết. Tuy vậy model bịa sàn gạch; ảnh cho thấy sàn gỗ và thảm.
+79	incomplete	Giấy được gấp trang trí, kết luận chưa dùng hợp lý nhưng lý do model vòng lặp.
+80	incomplete	Sách có đỏ và trắng/kem, model chỉ nêu đỏ.
+81	undetermined	Vật gốm miệng rộng có thể gọi pot/vase; phủ định vase có vấn đề thuật ngữ, không chắc là bịa đối tượng.
+82	correct	Bình bên phải lớn hơn trong ảnh.
+83	correct	Sáu gấu bông trên cầu thang.
+84	correct	Hoa trên xanh, hoa dưới trắng.
+85	undetermined	Ảnh nội thất ban đêm, không thấy mưa; không thể suy ra thời tiết thực bên ngoài.
+86	hallucination	Bé mặc onesie, reference chỉ diaper không đúng. Đồ chơi là chó/gấu/thỏ, không có voi như model; hallucination nằm ở con voi, không phải áo.
+87	incomplete	Chữ P đầu được trang trí tách bên trái; model đọc đúng phần ROVERBIAL nhưng bỏ initial, là OCR thiếu ký tự.
+88	correct	Nồi bằng kim loại bạc chứa quả đỏ.
+89	hallucination	Bồn rửa trống, không đang rửa bàn chải.
+90	hallucination	Máy bên phải có bảng điều khiển cao hơn.
+91	correct	Một gia cầm quay; nhãn gốc dùng chicken trong khi image_content có turkey, không ảnh hưởng số lượng.
+92	correct	Tua vít đặt trên hộp/cuộn giấy.
+93	incomplete	Ánh sáng ban ngày rõ qua cửa sổ; model chỉ nói không có giờ ghi trong ảnh.
+94	hallucination	Các bánh nằm thành lưới ba hàng, model ghi tám bánh hai hàng bốn; hơi nước che một phần nên vẫn cần người kiểm tra khi chốt nhãn.
+95	hallucination	Gương phản chiếu máy giặt; bồn rửa nằm ngoài vùng phản chiếu, model gộp cả bồn vào gương.

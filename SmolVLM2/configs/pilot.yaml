@@ -1,0 +1,35 @@
+protocol_version: mmhal-smolvlm2-v1
+experiment_id: smolvlm2-mmhal-baseline
+stage: pilot
+seed: 0
+model:
+  model_id: HuggingFaceTB/SmolVLM2-2.2B-Instruct
+  revision: be92141c8d0ceb98596a923c308ac2bbb4a7c466
+  processor_revision: be92141c8d0ceb98596a923c308ac2bbb4a7c466
+  dtype: bfloat16
+  device: cuda:0
+  attn_implementation: sdpa
+dataset:
+  source: Shengcao1006/MMHal-Bench
+  revision: f5f49a938f45ed99e235b8519ba28f76832a2add
+  license: apache-2.0
+  expected_count: 96
+# Fixed first topic, covering all eight question types. Not a representative score.
+sample_ids: [mmhal-000, mmhal-001, mmhal-002, mmhal-003, mmhal-004, mmhal-005, mmhal-006, mmhal-007]
+generation:
+  do_sample: false
+  max_new_tokens: 256
+judge:
+  model: gpt-4-0314
+  protocol: original
+  temperature: 0.0
+  timeout_seconds: 90
+# Replace null with a review/evidence reference after actual team approval.
+# Observed revisions above do not imply approval or hardware compatibility.
+approvals:
+  inference: null
+  dtype_hardware: null
+  generation: null
+  dataset_license: null
+  official: null
+  judge_access_cost: null

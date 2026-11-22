@@ -1,0 +1,16 @@
+experiment_id: smolvlm2-mmhal-baseline
+judge:
+  exact_model_snapshot: null
+  execution: Codex interactive conversation
+  family: GPT-6
+  images_provided: false
+  independent_api_requests: false
+  seed: null
+  temperature: null
+metric_scope: all_96
+protocol: mmhal-gpt6-interactive-text-v1
+rating_threshold: 3
+rubric: unmodified original MMHal template
+source_run_id: full-infer-001
+source_stage: pilot
+stage: exploratory_evaluation

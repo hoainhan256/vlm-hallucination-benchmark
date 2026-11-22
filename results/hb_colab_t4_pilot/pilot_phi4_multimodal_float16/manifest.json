@@ -1,0 +1,62 @@
+{
+  "experiment_id": "hb_colab_t4_pilot",
+  "run_id": "pilot_phi4_multimodal_float16",
+  "benchmark": "hallusionbench",
+  "stage": "pilot",
+  "model_key": "phi4_multimodal",
+  "model_id": "microsoft/Phi-4-multimodal-instruct",
+  "run_config_hash": "f5b6ff22449f36fa338e0be60e6d163c5c5bd277878f56cc74376691982fe756",
+  "status": "COMPLETED",
+  "generated_at_utc": "2026-11-21T08:18:23.246978+00:00",
+  "files": {
+    "predictions.jsonl": {
+      "size_bytes": 28091,
+      "sha256": "70a8405fa61c4b7c067c08d6bfe7d914c32d2b62f50b619a6f110e58adcecd67"
+    },
+    "metrics.json": {
+      "size_bytes": 4515,
+      "sha256": "f02dd372a4bc2082c526e499e4b69551bb93280d9fcd586ab17eb94ead0479fd"
+    },
+    "run_config.yaml": {
+      "size_bytes": 797,
+      "sha256": "3beccb4da3711932e5aa457569dfd462e79af4b9c98ee0c17dccdef601564292"
+    },
+    "run_metadata.json": {
+      "size_bytes": 3094,
+      "sha256": "fdd707d2c42ebe3c1850c1ddf80713f3bdf40fe05b936d95412169e7dc3d873b"
+    },
+    "errors.jsonl": {
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "run_status.json": {
+      "size_bytes": 351,
+      "sha256": "b5f8d40eef29c7cf95b5bbeb7721fb606cd544968f41f6d4c2c9311647559178"
+    },
+    "inference_config.json": {
+      "size_bytes": 1071,
+      "sha256": "f6d029c9b06601a29a01355fbf41f86a8bda45ad691ca7e5400ef1bd0ae8334d"
+    },
+    "inference_summary.json": {
+      "size_bytes": 628,
+      "sha256": "799ef42518cab7374be63207ced4988e72a9352c29ea1209a110ede02d6f884e"
+    },
+    "inference_log.txt": {
+      "size_bytes": 4118,
+      "sha256": "37fa909cd3c14715b12cd23c88ba49bb16f4d995fba39dc181535c3bc8696f99"
+    },
+    "phi4_multimodal_hallusionbench_responses.json": {
+      "size_bytes": 23440,
+      "sha256": "40f97cb323db7cd80c4f6699be475d08fc4edef110ee753d6d356dee4753c782"
+    },
+    "phi4_multimodal_hallusionbench_evaluation.json": {
+      "size_bytes": 29710,
+      "sha256": "df5c4ac8fb01e543a6a4ea5f21c6dc455537098a6310edebc313cedcddebf1a3"
+    },
+    "phi4_multimodal_hallusionbench_summary.json": {
+      "size_bytes": 5162,
+      "sha256": "7b6dd02617fb6b197386c011909d223cc89be6cc3a695efc6d02fa33e5946376"
+    }
+  },
+  "scored_at_utc": "2026-11-21T08:18:38.574334+00:00"
+}

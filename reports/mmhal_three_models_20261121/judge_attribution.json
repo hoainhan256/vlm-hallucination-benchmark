@@ -1,0 +1,11 @@
+{
+  "judge_model": "GPT-6",
+  "scope": "All 288 legacy scores attributed to GPT-6; all supplemental reviews use GPT-6",
+  "qwen3_phi4_confirmation_source": "Project owner states in this chat on 2026-11-21 that members confirmed GPT-6 judged all outputs.",
+  "owner_statement": "ghi vào là do mô hình GPT-6 chấm hết, tôi đã hỏi và xác nhận từ các thành viên",
+  "api_snapshot": null,
+  "temperature": null,
+  "seed": null,
+  "independent_human_judge": false,
+  "limitation": "Attribution confirmation establishes judge family, not proof that every team used identical inputs, original 5-shot prompts, or independent API calls."
+}

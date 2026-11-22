@@ -1,0 +1,92 @@
+[
+  {
+    "sample_id": "mmhal-035",
+    "model": "Phi4",
+    "model_answer": "There are five oysters visible in the photo.",
+    "source_score": 1,
+    "source_explanation": "GT states 5 oysters visible. Model counts 4 oysters, under-counting by one due to low resolution of small shell.",
+    "issue": "Giải thích nói 4 con hàu; câu trả lời đang lưu là five.",
+    "interpretation": "Rationale không khớp output đang lưu; cần phân xử nguồn chấm, không tự sửa score."
+  },
+  {
+    "sample_id": "mmhal-059",
+    "model": "Phi4",
+    "model_answer": "There are five black hats in the image.",
+    "source_score": 1,
+    "source_explanation": "GT states 5 black hats. Model claims 6 black hats (over-counting error).",
+    "issue": "Giải thích nói 6 mũ; câu trả lời là five.",
+    "interpretation": "Rationale không khớp output đang lưu; cần phân xử nguồn chấm, không tự sửa score."
+  },
+  {
+    "sample_id": "mmhal-067",
+    "model": "Phi4",
+    "model_answer": "There is only one mobile phone in the image.",
+    "source_score": 1,
+    "source_explanation": "GT states 1 phone. Model claims 2 phones (over-counting).",
+    "issue": "Giải thích nói 2 điện thoại; câu trả lời là only one.",
+    "interpretation": "Rationale không khớp output đang lưu; cần phân xử nguồn chấm, không tự sửa score."
+  },
+  {
+    "sample_id": "mmhal-068",
+    "model": "Phi4",
+    "model_answer": "No, the mouse is not connected to a computer.",
+    "source_score": 1,
+    "source_explanation": "Question asks if mouse connected to computer (GT: No). Model asserts mouse is connected to computer via USB cable. Relational hallucination.",
+    "issue": "Giải thích nói connected; câu trả lời là not connected.",
+    "interpretation": "Rationale không khớp output đang lưu; cần phân xử nguồn chấm, không tự sửa score."
+  },
+  {
+    "sample_id": "mmhal-069",
+    "model": "Phi4",
+    "model_answer": "Donkey",
+    "source_score": 4,
+    "source_explanation": "The model correctly answers mountain setting.",
+    "issue": "Giải thích nói mountain setting; câu trả lời là Donkey.",
+    "interpretation": "Rationale không khớp output đang lưu; cần phân xử nguồn chấm, không tự sửa score."
+  },
+  {
+    "sample_id": "mmhal-073",
+    "model": "Phi4",
+    "model_answer": "The color of the chair in the image is yellow.",
+    "source_score": 0,
+    "source_explanation": "Adversarial question asking chair color when no chair exists. Model hallucinates 'The color of the chair in the image is beige.'",
+    "issue": "Giải thích nói beige; câu trả lời là yellow.",
+    "interpretation": "Rationale không khớp output đang lưu; cần phân xử nguồn chấm, không tự sửa score."
+  },
+  {
+    "sample_id": "mmhal-083",
+    "model": "Phi4",
+    "model_answer": "There are seven teddy bears on the stairs.",
+    "source_score": 1,
+    "source_explanation": "GT states 6 teddy bears on stairs. Model counts 5 teddy bears (under-counting by one).",
+    "issue": "Giải thích nói 5 gấu; câu trả lời là seven.",
+    "interpretation": "Rationale không khớp output đang lưu; cần phân xử nguồn chấm, không tự sửa score."
+  },
+  {
+    "sample_id": "mmhal-087",
+    "model": "Phi4",
+    "model_answer": "proverbial philosophy",
+    "source_score": 4,
+    "source_explanation": "Model reads 'ROVERBIAL PHILOSOPHY', missing initial capital 'P' due to decorative font. Minor OCR truncation.",
+    "issue": "Giải thích nói thiếu P; câu trả lời đã là proverbial philosophy.",
+    "interpretation": "Rationale không khớp output đang lưu; cần phân xử nguồn chấm, không tự sửa score."
+  },
+  {
+    "sample_id": "mmhal-092",
+    "model": "Phi4",
+    "model_answer": "A toilet paper roll is placed on the tissue paper roll.",
+    "source_score": 5,
+    "source_explanation": "The model correctly identifies screwdriver placed on tissue roll.",
+    "issue": "Giải thích nói screwdriver; câu trả lời là toilet paper roll.",
+    "interpretation": "Rationale không khớp output đang lưu; cần phân xử nguồn chấm, không tự sửa score."
+  },
+  {
+    "sample_id": "mmhal-093",
+    "model": "Phi4",
+    "model_answer": "The photo was taken during the day, as evidenced by the natural light coming through the window. The sunlight illuminates the kitchen, creating a bright and inviting atmosphere. The presence of daylight suggests that the photo was taken during the daytime, possibly in the morning or afternoon when the sun is at a higher position in the sky. The kitchen is well-lit, and the overall ambiance is pleasant, making it an ideal setting for cooking and preparing meals.",
+    "source_score": 4,
+    "source_explanation": "Model answers 'afternoon' for daytime photo.",
+    "issue": "Giải thích nói afternoon; câu trả lời là during the day, possibly morning or afternoon.",
+    "interpretation": "Rationale không khớp output đang lưu; cần phân xử nguồn chấm, không tự sửa score."
+  }
+]

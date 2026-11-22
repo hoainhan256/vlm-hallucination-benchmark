@@ -1,0 +1,66 @@
+{
+  "experiment_id": "smolvlm2-mmhal-baseline",
+  "run_id": "pilot-infer-001",
+  "run_config_hash": "870baf296999ee20340b5b18440d01679b97df9598100a877c9b221c78dccaab",
+  "normalized_config": {
+    "protocol_version": "mmhal-smolvlm2-v1",
+    "experiment_id": "smolvlm2-mmhal-baseline",
+    "stage": "pilot",
+    "seed": 0,
+    "model": {
+      "model_id": "HuggingFaceTB/SmolVLM2-2.2B-Instruct",
+      "revision": "be92141c8d0ceb98596a923c308ac2bbb4a7c466",
+      "processor_revision": "be92141c8d0ceb98596a923c308ac2bbb4a7c466",
+      "dtype": "bfloat16",
+      "device": "cuda:0",
+      "attn_implementation": "sdpa"
+    },
+    "dataset": {
+      "source": "Shengcao1006/MMHal-Bench",
+      "revision": "f5f49a938f45ed99e235b8519ba28f76832a2add",
+      "license": "apache-2.0",
+      "expected_count": 96
+    },
+    "sample_ids": [
+      "mmhal-000",
+      "mmhal-001",
+      "mmhal-002",
+      "mmhal-003",
+      "mmhal-004",
+      "mmhal-005",
+      "mmhal-006",
+      "mmhal-007"
+    ],
+    "generation": {
+      "do_sample": false,
+      "max_new_tokens": 256
+    },
+    "judge": {
+      "model": "gpt-4-0314",
+      "protocol": "original",
+      "temperature": 0.0,
+      "timeout_seconds": 90
+    },
+    "approvals": {
+      "inference": "docs/approvals/mmhal-pilot.md#pham-vi",
+      "dtype_hardware": "docs/approvals/mmhal-pilot.md#kiem-tra-gpu",
+      "generation": "docs/approvals/mmhal-pilot.md#cau-hinh-suy-luan",
+      "dataset_license": "docs/approvals/mmhal-pilot.md#du-lieu",
+      "official": null,
+      "judge_access_cost": null
+    }
+  },
+  "files": {
+    "errors.jsonl": "a8df8bc55882891ad90fe40c63ebb0cbffcf0367b7d9a717960c4b273a7fd721",
+    "metrics.json": "e681d7aebcafd49c3f5e0b59b243777f1ab2ee68d5c1873783914d2bedc3eb69",
+    "pip_freeze.txt": "f6f7e6c4cc005968c85c8b6e4eb4db70776011b0fa8cca3c2e3f0745fbf9ca61",
+    "predictions.jsonl": "c7c94c955a65d0d84edf44ff9d70b2f3d5c9496843fa9b6a02d11694bb872002",
+    "processor_config.json": "f8f5ff893a08ba790aa4f631bdd1763b0b170953780c76af48454d505fe0d4e8",
+    "progress.jsonl": "12434a72a485fc33de5211f8a5162eb9dd95e3bf677d360035a54c7382828151",
+    "run_config.yaml": "d7de3554645d38dd25c778b695b508912ed74d9689c514fe38875aa685cc7156",
+    "run_metadata.json": "aa65a2f161ba10c1193d1d3043f7513bff9bca2eaa94b7f3b4e650f8082c34fd",
+    "run_status.json": "3450a27782d7ac3f2a871ca44693b735d3d1d41667db0e1c07d98b8cc05d495c"
+  },
+  "publication_copy": true,
+  "publication_note": "Machine paths redacted; run_config_hash and source hashes describe original local run. Do not resume archived publication copies."
+}

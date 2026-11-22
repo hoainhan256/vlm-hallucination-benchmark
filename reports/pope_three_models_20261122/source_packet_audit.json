@@ -1,0 +1,8 @@
+{
+  "phi_analysis_unique_pairs": 555,
+  "phi_analysis_occurrences": 900,
+  "matching_pairs_with_latest_phi_output": 80,
+  "matching_pair_prediction_disagreements": 4,
+  "smol_summary_n": 8607,
+  "smol_latest_n": 9000
+}

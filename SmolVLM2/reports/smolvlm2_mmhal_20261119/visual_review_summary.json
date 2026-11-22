@@ -1,0 +1,19 @@
+{
+  "protocol": "supplemental_image_assisted_review_v1",
+  "count": 96,
+  "labels": {
+    "correct": 37,
+    "hallucination": 36,
+    "undetermined": 8,
+    "incomplete": 15
+  },
+  "original_text_judge_average": 3.28125,
+  "original_text_judge_rate": 0.3541666666666667,
+  "not_an_official_rescore": true,
+  "independent_human_review": false,
+  "review_method": "All 96 images screened in 12 contact sheets; selected ambiguous cases opened at full resolution",
+  "limitations": "Same GPT-6 reviewer as text judge; image screening is not independent human ground truth",
+  "source_run_id": "full-infer-001",
+  "source_stage": "pilot",
+  "source_git_dirty": true
+}

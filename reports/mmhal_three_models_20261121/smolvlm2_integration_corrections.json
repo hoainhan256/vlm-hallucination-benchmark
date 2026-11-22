@@ -1,0 +1,18 @@
+[
+  {
+    "model": "SmolVLM2",
+    "sample_id": "mmhal-078",
+    "old_visual_label": "hallucination",
+    "new_visual_label": "undetermined",
+    "reason": "Ảnh gốc phóng lớn cho thấy sàn dạng gạch và thảm; nhận xét cũ khẳng định sàn gỗ không đứng vững. Mô tả bố cục hai bộ giường của Smol còn mơ hồ, nên chuyển sang chưa kết luận thay vì dùng sàn gạch làm bằng chứng hallucination.",
+    "numeric_score_unchanged": true
+  },
+  {
+    "model": "SmolVLM2",
+    "sample_id": "mmhal-086",
+    "old_visual_label": "hallucination",
+    "new_visual_label": "undetermined",
+    "reason": "Áo trắng thực sự có trong ảnh. Thú giữa nhìn từ sau có tai lớn, có thể là voi hoặc đồ chơi cách điệu; chưa đủ bằng chứng bác bỏ elephant chắc chắn. Chuyển nhãn review ảnh cũ sang chưa kết luận, không sửa điểm text-reference.",
+    "numeric_score_unchanged": true
+  }
+]

@@ -1,0 +1,40 @@
+approvals:
+  dataset_license: docs/approvals/mmhal-pilot.md#du-lieu
+  dtype_hardware: docs/approvals/mmhal-pilot.md#kiem-tra-gpu
+  generation: docs/approvals/mmhal-pilot.md#cau-hinh-suy-luan
+  inference: docs/approvals/mmhal-pilot.md#pham-vi
+  judge_access_cost: null
+  official: null
+dataset:
+  expected_count: 96
+  license: apache-2.0
+  revision: f5f49a938f45ed99e235b8519ba28f76832a2add
+  source: Shengcao1006/MMHal-Bench
+experiment_id: smolvlm2-mmhal-baseline
+generation:
+  do_sample: false
+  max_new_tokens: 256
+judge:
+  model: gpt-4-0314
+  protocol: original
+  temperature: 0.0
+  timeout_seconds: 90
+model:
+  attn_implementation: sdpa
+  device: cuda:0
+  dtype: bfloat16
+  model_id: HuggingFaceTB/SmolVLM2-2.2B-Instruct
+  processor_revision: be92141c8d0ceb98596a923c308ac2bbb4a7c466
+  revision: be92141c8d0ceb98596a923c308ac2bbb4a7c466
+protocol_version: mmhal-smolvlm2-v1
+sample_ids:
+- mmhal-000
+- mmhal-001
+- mmhal-002
+- mmhal-003
+- mmhal-004
+- mmhal-005
+- mmhal-006
+- mmhal-007
+seed: 0
+stage: pilot

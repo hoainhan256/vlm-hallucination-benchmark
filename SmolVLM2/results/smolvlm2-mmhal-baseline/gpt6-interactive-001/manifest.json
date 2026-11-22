@@ -1,0 +1,40 @@
+{
+  "experiment_id": "smolvlm2-mmhal-baseline",
+  "run_id": "gpt6-interactive-001",
+  "run_config_hash": "e3b0720e7ae88d8b0995bc1dd617a79cf9d9bb736740645a415c2e3d1f8d053c",
+  "normalized_config": {
+    "experiment_id": "smolvlm2-mmhal-baseline",
+    "stage": "exploratory_evaluation",
+    "protocol": "mmhal-gpt6-interactive-text-v1",
+    "source_run_id": "full-infer-001",
+    "judge": {
+      "family": "GPT-6",
+      "execution": "Codex interactive conversation",
+      "exact_model_snapshot": null,
+      "temperature": null,
+      "seed": null,
+      "independent_api_requests": false,
+      "images_provided": false
+    },
+    "rubric": "unmodified original MMHal template",
+    "rating_threshold": 3,
+    "metric_scope": "all_96",
+    "source_stage": "pilot"
+  },
+  "files": {
+    "cases.csv": "d91db3ce1a8e8479a636dfd838d8ae3aba0e10d680d9a825610de99a8c680572",
+    "errors.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "judge_inputs.jsonl": "d7507024924754d62648bf7f0e48a92cd2fdc68fcfe4553d0977935e0d67db7f",
+    "judge_reviews.jsonl": "6002c22d5a440a04065aba050e5584c25b9dec70e91936d2ab2546f8a248d090",
+    "metrics.json": "52344b5447fea7795a1a2b2671494ff1ad6b2fd65f91da4600b4459887149abc",
+    "predictions.jsonl": "0e7cc1468cfdb47876e419c7ee218a1f750b4fd20b5cf1f9ec9fc5c64dace4de",
+    "progress.jsonl": "0535d42384344d61a0fc82cadaf05109e7f7da28e46bb262915a67eb540f77c0",
+    "review_ledger.tsv": "935387eac23c78c90d3a311d1e8d27b72716345216d554d4714232d796948151",
+    "run_config.yaml": "8e0cdd19e74ceb15628e466421cf012521f005a5cd4bdcb50a0da4ea6adcf6c7",
+    "run_metadata.json": "ab6014469370753c143b72ee5dffca55fdfff789b0aa72caa4ea8b3827679e7d",
+    "run_status.json": "592d766c8dda3677a0670567461516a53154e622108d8db63d1fb3cf7c15ac5d",
+    "source_manifest.json": "0f61750d21d7b54ceea26cb4522a0dd8a790e5d307dda628afee1bb65a18c691"
+  },
+  "publication_copy": true,
+  "publication_note": "Machine paths redacted; run_config_hash and source hashes describe original local run. Do not resume archived publication copies."
+}

@@ -1,0 +1,142 @@
+{
+  "expected": 96,
+  "scored": 96,
+  "complete": true,
+  "average_score": 3.28125,
+  "hallucination_rate": 0.3541666666666667,
+  "valid_only_diagnostic": {
+    "count": 96,
+    "average_score": 3.28125,
+    "hallucination_rate": 0.3541666666666667
+  },
+  "by_question_type": {
+    "adversarial": {
+      "count": 12,
+      "average_score": 2.6666666666666665,
+      "hallucination_rate": 0.5
+    },
+    "attribute": {
+      "count": 12,
+      "average_score": 4.083333333333333,
+      "hallucination_rate": 0.16666666666666666
+    },
+    "comparison": {
+      "count": 12,
+      "average_score": 2.6666666666666665,
+      "hallucination_rate": 0.5
+    },
+    "counting": {
+      "count": 12,
+      "average_score": 3.3333333333333335,
+      "hallucination_rate": 0.4166666666666667
+    },
+    "environment": {
+      "count": 12,
+      "average_score": 4.0,
+      "hallucination_rate": 0.08333333333333333
+    },
+    "holistic": {
+      "count": 12,
+      "average_score": 2.8333333333333335,
+      "hallucination_rate": 0.5833333333333334
+    },
+    "other": {
+      "count": 12,
+      "average_score": 3.0833333333333335,
+      "hallucination_rate": 0.3333333333333333
+    },
+    "relation": {
+      "count": 12,
+      "average_score": 3.5833333333333335,
+      "hallucination_rate": 0.25
+    }
+  },
+  "by_question_topic": {
+    "accessory": {
+      "count": 8,
+      "average_score": 3.125,
+      "hallucination_rate": 0.375
+    },
+    "animal": {
+      "count": 8,
+      "average_score": 2.75,
+      "hallucination_rate": 0.5
+    },
+    "appliance": {
+      "count": 8,
+      "average_score": 3.25,
+      "hallucination_rate": 0.375
+    },
+    "electronic": {
+      "count": 8,
+      "average_score": 2.75,
+      "hallucination_rate": 0.375
+    },
+    "food": {
+      "count": 8,
+      "average_score": 3.5,
+      "hallucination_rate": 0.25
+    },
+    "furniture": {
+      "count": 8,
+      "average_score": 3.0,
+      "hallucination_rate": 0.375
+    },
+    "indoor": {
+      "count": 8,
+      "average_score": 3.25,
+      "hallucination_rate": 0.375
+    },
+    "kitchen": {
+      "count": 8,
+      "average_score": 3.875,
+      "hallucination_rate": 0.25
+    },
+    "outdoor": {
+      "count": 8,
+      "average_score": 3.25,
+      "hallucination_rate": 0.375
+    },
+    "person": {
+      "count": 8,
+      "average_score": 3.625,
+      "hallucination_rate": 0.375
+    },
+    "sports": {
+      "count": 8,
+      "average_score": 3.875,
+      "hallucination_rate": 0.25
+    },
+    "vehicle": {
+      "count": 8,
+      "average_score": 3.125,
+      "hallucination_rate": 0.375
+    }
+  },
+  "parse_policy": "original_substring_parser_all_96_valid_no_fallback_used",
+  "judge": {
+    "family": "GPT-6",
+    "execution": "Codex interactive conversation",
+    "exact_model_snapshot": null,
+    "temperature": null,
+    "seed": null,
+    "independent_api_requests": false,
+    "images_provided": false
+  },
+  "protocol": "mmhal-gpt6-interactive-text-v1",
+  "comparable_to_original": false,
+  "original_formula_verified": true,
+  "human_review": "PENDING",
+  "needs_visual_review": 24,
+  "hit_token_limit": 10,
+  "rating_histogram": {
+    "0": 0,
+    "1": 27,
+    "2": 7,
+    "3": 10,
+    "4": 16,
+    "5": 36,
+    "6": 0
+  },
+  "source_stage": "pilot"
+}
